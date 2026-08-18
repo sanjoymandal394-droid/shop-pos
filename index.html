@@ -2,96 +2,235 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Shop POS Pro V2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<title>Diamond Shop POS</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+ box-sizing:border-box;
+}
+
+:root{
+ --bg:#070b18;
+ --panel:#10172b;
+ --panel2:#151e36;
+ --purple:#8b5cf6;
+ --violet:#a855f7;
+ --cyan:#22d3ee;
+ --blue:#3b82f6;
+ --green:#22c55e;
+ --red:#ef4444;
+ --gold:#facc15;
+ --text:#f8fafc;
+ --muted:#94a3b8;
+ --border:#27324d;
+}
 
 body{
  margin:0;
+ background:
+ radial-gradient(circle at 20% 0%,#312e8155,transparent 35%),
+ radial-gradient(circle at 100% 20%,#0891b233,transparent 35%),
+ var(--bg);
+ color:var(--text);
  font-family:Arial,sans-serif;
- background:#f5f7fb;
- color:#172033;
- padding-bottom:78px;
+ padding-bottom:82px;
+ min-height:100vh;
 }
 
 header{
- background:#111827;
- color:white;
- padding:16px;
  position:sticky;
  top:0;
- z-index:20;
+ z-index:50;
+ padding:17px 16px;
+ background:
+ linear-gradient(135deg,#111827ee,#1e1b4bee);
+ border-bottom:1px solid #ffffff18;
+ box-shadow:0 8px 30px #0008,inset 0 -1px #ffffff0a;
+ backdrop-filter:blur(15px);
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:11px;
+}
+
+.diamond{
+ width:43px;
+ height:43px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:14px;
+ background:
+ linear-gradient(135deg,#67e8f9,#8b5cf6 50%,#ec4899);
+ box-shadow:
+ 0 0 20px #8b5cf688,
+ 0 0 45px #22d3ee33;
+ font-size:23px;
 }
 
 header h1{
  margin:0;
- font-size:21px;
-}
-
-header small{
- opacity:.7;
-}
-
-main{
- max-width:700px;
- margin:auto;
- padding:14px;
-}
-
-.page{display:none}
-.page.active{display:block}
-
-h2{
- margin:5px 0 15px;
  font-size:20px;
 }
 
-/* CARDS */
+header small{
+ color:#a5b4fc;
+ display:block;
+ margin-top:3px;
+}
+
+main{
+ max-width:720px;
+ margin:auto;
+ padding:15px;
+}
+
+.page{
+ display:none;
+ animation:fade .25s ease;
+}
+
+.page.active{
+ display:block;
+}
+
+@keyframes fade{
+ from{
+  opacity:0;
+  transform:translateY(5px);
+ }
+ to{
+  opacity:1;
+  transform:translateY(0);
+ }
+}
+
+h2{
+ margin:5px 0 15px;
+ font-size:21px;
+}
+
+h3{
+ margin-top:18px;
+}
 
 .cards{
  display:grid;
  grid-template-columns:repeat(2,1fr);
- gap:10px;
+ gap:11px;
 }
 
 .card{
- background:white;
- padding:15px;
- border-radius:15px;
- box-shadow:0 2px 10px #0000000c;
- margin-bottom:10px;
+ position:relative;
+ overflow:hidden;
+ background:
+ linear-gradient(145deg,#121a30,#0d1325);
+ border:1px solid #ffffff10;
+ padding:16px;
+ border-radius:18px;
+ box-shadow:
+ 0 8px 25px #0005,
+ inset 0 1px #ffffff08;
+ margin-bottom:11px;
+}
+
+.card::after{
+ content:"";
+ position:absolute;
+ width:70px;
+ height:70px;
+ right:-30px;
+ top:-30px;
+ background:#8b5cf622;
+ border-radius:50%;
+ filter:blur(4px);
 }
 
 .card small{
- color:#6b7280;
+ color:var(--muted);
 }
 
 .card strong{
  display:block;
- font-size:20px;
- margin-top:6px;
+ margin-top:7px;
+ font-size:21px;
 }
 
-/* FORM */
+.card .emoji{
+ font-size:23px;
+ margin-bottom:8px;
+}
+
+.hero{
+ padding:20px;
+ border-radius:22px;
+ margin-bottom:15px;
+ background:
+ linear-gradient(135deg,#312e81,#7c3aed,#0891b2);
+ box-shadow:
+ 0 15px 45px #7c3aed55;
+ position:relative;
+ overflow:hidden;
+}
+
+.hero:after{
+ content:"💎";
+ position:absolute;
+ right:-5px;
+ bottom:-22px;
+ font-size:100px;
+ opacity:.15;
+ transform:rotate(15deg);
+}
+
+.hero small{
+ color:#ddd6fe;
+}
+
+.hero h2{
+ margin:5px 0;
+ font-size:27px;
+}
+
+.hero p{
+ margin:4px 0;
+ color:#e0f2fe;
+}
 
 form{
- background:white;
- padding:15px;
- border-radius:15px;
+ background:
+ linear-gradient(145deg,#11192d,#0d1427);
+ border:1px solid #ffffff10;
+ padding:16px;
+ border-radius:18px;
+ box-shadow:0 8px 25px #0005;
  margin-bottom:15px;
- box-shadow:0 2px 10px #00000008;
 }
 
-input,select{
+input,
+select{
  width:100%;
  padding:13px;
  margin:6px 0 10px;
- border:1px solid #d1d5db;
- border-radius:10px;
+ background:#080d1c;
+ color:white;
+ border:1px solid #293550;
+ border-radius:11px;
  font-size:15px;
- background:white;
+ outline:none;
+}
+
+input:focus,
+select:focus{
+ border-color:var(--cyan);
+ box-shadow:
+ 0 0 0 3px #22d3ee18,
+ 0 0 15px #22d3ee22;
 }
 
 button{
@@ -101,278 +240,307 @@ button{
 
 .primary{
  width:100%;
- background:#111827;
- color:white;
  border:0;
+ border-radius:12px;
  padding:14px;
- border-radius:10px;
- font-size:15px;
+ color:white;
  font-weight:bold;
+ font-size:15px;
+ background:
+ linear-gradient(135deg,#7c3aed,#2563eb);
+ box-shadow:0 8px 20px #4f46e555;
+}
+
+.primary:active{
+ transform:scale(.98);
 }
 
 .green{
- background:#16a34a!important;
+ background:
+ linear-gradient(135deg,#16a34a,#059669);
+ box-shadow:0 8px 20px #10b98144;
 }
 
 .red{
- background:#dc2626!important;
+ background:
+ linear-gradient(135deg,#dc2626,#be123c);
 }
 
-.blue{
- background:#2563eb!important;
+.gold{
+ background:
+ linear-gradient(135deg,#eab308,#f97316);
+ color:#171717;
 }
 
-/* BOTTOM NAV */
-
-.bottom-nav{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- height:72px;
- background:white;
- border-top:1px solid #e5e7eb;
- display:flex;
- justify-content:space-around;
- align-items:center;
- z-index:100;
- box-shadow:0 -3px 15px #00000012;
-}
-
-.nav-item{
- border:0;
- background:none;
- color:#6b7280;
- font-size:11px;
- display:flex;
- flex-direction:column;
- align-items:center;
- gap:4px;
- padding:7px 8px;
- min-width:58px;
-}
-
-.nav-item .icon{
- font-size:21px;
-}
-
-.nav-item.active{
- color:#111827;
- font-weight:bold;
-}
-
-.nav-item.active .icon{
- transform:scale(1.08);
-}
-
-/* SEARCH */
-
-.search-box{
+.search{
  position:relative;
  margin-bottom:12px;
 }
 
-.search-box input{
- padding-left:42px;
+.search input{
  margin:0;
+ padding-left:43px;
 }
 
-.search-icon{
+.search span{
  position:absolute;
  left:14px;
  top:13px;
  font-size:18px;
 }
 
-/* PRODUCT LIST */
-
-.product-item{
- background:white;
- padding:13px;
- border-radius:12px;
- margin-bottom:8px;
+.product{
  display:flex;
  justify-content:space-between;
  align-items:center;
- box-shadow:0 1px 6px #00000009;
+ gap:10px;
+ background:
+ linear-gradient(145deg,#111a30,#0d1427);
+ border:1px solid #ffffff0d;
+ padding:13px;
+ border-radius:15px;
+ margin-bottom:9px;
+ box-shadow:0 5px 18px #0004;
 }
 
-.product-info b{
+.product b{
  display:block;
- margin-bottom:4px;
+ margin-bottom:5px;
 }
 
-.product-info small{
- color:#6b7280;
+.product small{
+ color:var(--muted);
 }
 
-.add-btn{
+.add{
  border:0;
- background:#111827;
+ background:
+ linear-gradient(135deg,#8b5cf6,#06b6d4);
  color:white;
  padding:9px 13px;
- border-radius:9px;
+ border-radius:10px;
  font-weight:bold;
+ box-shadow:0 5px 15px #8b5cf644;
 }
 
-/* CART */
-
-.cart-item{
- background:white;
+.cart{
+ background:
+ linear-gradient(145deg,#11192d,#0b1120);
+ border:1px solid #ffffff0e;
+ border-radius:17px;
  padding:12px;
- border-radius:12px;
- margin-bottom:8px;
+ margin-bottom:9px;
 }
 
-.cart-top{
+.cart-head{
  display:flex;
  justify-content:space-between;
 }
 
-.qty-row{
+.qty{
  display:flex;
  align-items:center;
  gap:8px;
  margin-top:9px;
 }
 
-.qty-btn{
+.qty button{
  width:34px;
  height:34px;
  border:0;
- border-radius:8px;
- background:#eef2f7;
+ border-radius:9px;
+ background:#202b45;
+ color:white;
  font-size:18px;
 }
 
-.remove-btn{
+.remove{
  border:0;
- background:#fee2e2;
- color:#b91c1c;
- padding:7px 10px;
- border-radius:7px;
+ padding:7px 9px;
+ background:#7f1d1d;
+ color:#fecaca;
+ border-radius:8px;
 }
 
 .summary{
- background:white;
- padding:15px;
- border-radius:15px;
- margin-top:12px;
+ background:
+ linear-gradient(145deg,#17203a,#10182b);
+ border:1px solid #ffffff12;
+ border-radius:18px;
+ padding:16px;
+ margin:12px 0;
 }
 
-.summary-row{
+.row{
  display:flex;
  justify-content:space-between;
  padding:7px 0;
+ color:#cbd5e1;
 }
 
-.grand-total{
- font-size:22px;
- font-weight:bold;
- border-top:1px solid #ddd;
+.total{
+ border-top:1px solid #ffffff15;
  margin-top:7px;
  padding-top:12px;
+ font-size:23px;
+ font-weight:bold;
+ color:#67e8f9;
 }
-
-/* TABLE */
-
-.table-wrap{
- overflow-x:auto;
-}
-
-table{
- width:100%;
- border-collapse:collapse;
- background:white;
-}
-
-th,td{
- padding:10px 7px;
- border-bottom:1px solid #eee;
- text-align:left;
- font-size:13px;
-}
-
-th{
- background:#f1f4f7;
-}
-
-/* BADGES */
 
 .badge{
- padding:4px 8px;
+ display:inline-block;
+ padding:5px 9px;
  border-radius:20px;
  font-size:11px;
+ font-weight:bold;
 }
 
 .good{
- background:#dcfce7;
- color:#166534;
+ background:#064e3b;
+ color:#86efac;
 }
 
 .low{
- background:#fee2e2;
- color:#991b1b;
+ background:#7f1d1d;
+ color:#fecaca;
+}
+
+.info{
+ background:#172554;
+ color:#93c5fd;
 }
 
 .alert{
- background:#fff3cd;
- padding:12px;
- border-radius:10px;
- margin:10px 0;
+ padding:13px;
+ border-radius:13px;
+ background:
+ linear-gradient(135deg,#78350f,#451a03);
+ border:1px solid #f59e0b44;
+ color:#fde68a;
+ margin:12px 0;
 }
 
-/* MORE */
-
-.more-grid{
+.quick{
  display:grid;
  grid-template-columns:repeat(2,1fr);
  gap:10px;
 }
 
-.more-btn{
- background:white;
- border:0;
- padding:20px 10px;
- border-radius:14px;
- box-shadow:0 2px 8px #0000000c;
- font-size:15px;
-}
-
-/* MODAL */
-
-.modal{
- display:none;
- position:fixed;
- inset:0;
- background:#00000066;
- z-index:200;
- padding:20px;
-}
-
-.modal-box{
- background:white;
- max-width:500px;
- margin:40px auto;
- padding:20px;
+.quick button{
+ border:1px solid #ffffff10;
+ background:
+ linear-gradient(145deg,#151f38,#0d1427);
+ color:white;
+ padding:17px 10px;
  border-radius:15px;
- max-height:85vh;
- overflow:auto;
+ font-size:14px;
+ box-shadow:0 5px 20px #0004;
 }
 
-.close{
- float:right;
+.report-card{
+ background:
+ linear-gradient(135deg,#151e36,#0d1427);
+ border:1px solid #ffffff10;
+ padding:18px;
+ border-radius:18px;
+ margin-bottom:11px;
+}
+
+.report-card strong{
+ display:block;
+ font-size:25px;
+ margin-top:7px;
+ color:#67e8f9;
+}
+
+.bottom{
+ position:fixed;
+ left:0;
+ right:0;
+ bottom:0;
+ height:76px;
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ background:
+ linear-gradient(180deg,#0d1428f5,#070b18);
+ border-top:1px solid #ffffff14;
+ box-shadow:0 -8px 30px #0008;
+ backdrop-filter:blur(18px);
+ z-index:100;
+}
+
+.nav{
  border:0;
- background:#eee;
- border-radius:50%;
- width:32px;
- height:32px;
+ background:none;
+ color:#64748b;
+ min-width:58px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:4px;
+ font-size:10px;
+ padding:7px;
 }
 
-/* PRINT */
+.nav .icon{
+ font-size:21px;
+}
+
+.nav.active{
+ color:#67e8f9;
+}
+
+.nav.active .icon{
+ filter:drop-shadow(0 0 8px #22d3ee);
+ transform:translateY(-2px);
+}
 
 #printArea{
  display:none;
+}
+
+@media(min-width:800px){
+
+ body{
+  padding-bottom:0;
+ }
+
+ .bottom{
+  top:0;
+  bottom:0;
+  right:auto;
+  width:210px;
+  height:100vh;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding-top:110px;
+  border-top:0;
+  border-right:1px solid #ffffff12;
+ }
+
+ .nav{
+  width:180px;
+  flex-direction:row;
+  justify-content:flex-start;
+  gap:12px;
+  padding:13px;
+  font-size:13px;
+ }
+
+ .nav .icon{
+  font-size:20px;
+ }
+
+ header{
+  margin-left:210px;
+ }
+
+ main{
+  margin-left:210px;
+  max-width:1000px;
+ }
+
 }
 
 @media print{
@@ -388,135 +556,133 @@ th{
  .invoice{
   width:80mm;
   margin:auto;
-  font-family:Arial;
   color:#000;
+  font-family:Arial;
  }
 
  .invoice h2{
   text-align:center;
  }
 
- .invoice-line{
+ .line{
   display:flex;
   justify-content:space-between;
-  font-size:12px;
   margin:5px 0;
+  font-size:12px;
  }
 
- .invoice-total{
+ .final{
   border-top:1px dashed #000;
-  margin-top:8px;
-  padding-top:8px;
+  padding-top:7px;
   font-weight:bold;
  }
 
 }
 
-/* DESKTOP */
-
-@media(min-width:800px){
-
- body{
-  padding-bottom:0;
- }
-
- .bottom-nav{
-  position:fixed;
-  top:0;
-  bottom:auto;
-  left:0;
-  width:220px;
-  height:100vh;
-  flex-direction:column;
-  justify-content:flex-start;
-  padding-top:100px;
-  border-right:1px solid #ddd;
-  border-top:0;
- }
-
- .nav-item{
-  width:190px;
-  flex-direction:row;
-  justify-content:flex-start;
-  gap:12px;
-  padding:13px;
- }
-
- main{
-  margin-left:220px;
-  max-width:900px;
- }
-
- header{
-  margin-left:220px;
- }
-}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>🏪 Shop POS Pro</h1>
-<small>Inventory • Sales • Purchase • Profit</small>
+
+<div class="brand">
+
+<div class="diamond">💎</div>
+
+<div>
+
+<h1>Diamond Shop POS</h1>
+
+<small>Smart • Fast • Professional</small>
+
+</div>
+
+</div>
+
 </header>
 
+
 <main>
+
 
 <!-- HOME -->
 
 <section id="home" class="page active">
 
-<h2>🏠 Dashboard</h2>
+<div class="hero">
+
+<small>WELCOME BACK 👋</small>
+
+<h2>Shop Dashboard</h2>
+
+<p>Manage your business smarter.</p>
+
+</div>
+
 
 <div class="cards">
 
 <div class="card">
+<div class="emoji">💰</div>
 <small>Today's Sales</small>
 <strong id="todaySales">₹0.00</strong>
 </div>
 
 <div class="card">
+<div class="emoji">📈</div>
 <small>Today's Profit</small>
 <strong id="todayProfit">₹0.00</strong>
 </div>
 
 <div class="card">
+<div class="emoji">💵</div>
 <small>Cash</small>
 <strong id="cashTotal">₹0.00</strong>
 </div>
 
 <div class="card">
+<div class="emoji">📱</div>
 <small>UPI</small>
 <strong id="upiTotal">₹0.00</strong>
 </div>
 
 <div class="card">
-<small>Total Stock</small>
+<div class="emoji">📦</div>
+<small>Stock Value</small>
 <strong id="stockValue">₹0.00</strong>
 </div>
 
 <div class="card">
-<small>Products</small>
+<div class="emoji">💎</div>
+<small>Total Products</small>
 <strong id="productCount">0</strong>
 </div>
 
 </div>
 
+
 <div id="lowStock"></div>
 
-<div class="card">
-<b>⚡ Quick Actions</b>
-<br><br>
 
-<button class="primary green" onclick="showPage('sales')">
-💰 New Sale
+<h3>⚡ Quick Actions</h3>
+
+<div class="quick">
+
+<button onclick="showPage('sales')">
+💰<br>New Sale
 </button>
 
-<br><br>
+<button onclick="showPage('products')">
+📦<br>Add Product
+</button>
 
-<button class="primary" onclick="showPage('products')">
-📦 Add Product
+<button onclick="showPage('purchase')">
+🛒<br>Purchase
+</button>
+
+<button onclick="showPage('reports')">
+📊<br>Reports
 </button>
 
 </div>
@@ -532,51 +698,40 @@ th{
 
 <form onsubmit="addProduct(event)">
 
-<input id="pName"
-placeholder="Product Name"
-required>
+<input id="pName" placeholder="Product Name" required>
 
-<input id="pCategory"
-placeholder="Category">
+<input id="pCategory" placeholder="Category">
 
-<input id="pBuy"
-type="number"
-step="0.01"
-placeholder="Purchase Price"
-required>
+<input id="pBuy" type="number" step="0.01"
+placeholder="Purchase Price" required>
 
-<input id="pSell"
-type="number"
-step="0.01"
-placeholder="Selling Price"
-required>
+<input id="pSell" type="number" step="0.01"
+placeholder="Selling Price" required>
 
-<input id="pStock"
-type="number"
-placeholder="Opening Stock"
-required>
+<input id="pStock" type="number"
+placeholder="Opening Stock" required>
 
-<input id="pMin"
-type="number"
-placeholder="Minimum Stock"
-value="5">
+<input id="pMin" type="number"
+value="5"
+placeholder="Minimum Stock">
 
 <button class="primary">
-➕ Add Product
+💎 Add Product
 </button>
 
 </form>
 
-<div class="search-box">
 
-<span class="search-icon">🔍</span>
+<div class="search">
 
-<input
-id="productSearch"
-placeholder="Search product..."
+<span>🔍</span>
+
+<input id="productSearch"
+placeholder="Search products..."
 oninput="renderProducts()">
 
 </div>
+
 
 <div id="productList"></div>
 
@@ -593,14 +748,12 @@ oninput="renderProducts()">
 
 <select id="purchaseProduct" required></select>
 
-<input
-id="purchaseQty"
+<input id="purchaseQty"
 type="number"
 placeholder="Quantity"
 required>
 
-<input
-id="purchasePrice"
+<input id="purchasePrice"
 type="number"
 step="0.01"
 placeholder="Purchase Price"
@@ -621,70 +774,94 @@ required>
 
 <section id="sales" class="page">
 
+<div class="hero">
+
+<small>POINT OF SALE</small>
+
 <h2>💰 New Sale</h2>
 
-<div class="search-box">
+<p>Search product and add to cart.</p>
 
-<span class="search-icon">🔍</span>
+</div>
 
-<input
-id="saleSearch"
-placeholder="Search product to sell..."
+
+<div class="search">
+
+<span>🔍</span>
+
+<input id="saleSearch"
+placeholder="Search product..."
 oninput="renderSaleProducts()">
 
 </div>
 
+
 <div id="saleProductList"></div>
 
-<h3>🛒 Cart</h3>
+
+<h3>🛒 Shopping Cart</h3>
 
 <div id="cart"></div>
 
+
 <div class="summary">
 
-<div class="summary-row">
+<div class="row">
+
 <span>Subtotal</span>
+
 <b id="cartSubtotal">₹0.00</b>
+
 </div>
 
-<label>Discount</label>
 
-<input
-id="discount"
+<label>💸 Discount</label>
+
+<input id="discount"
 type="number"
 step="0.01"
 value="0"
-placeholder="Discount"
+placeholder="Enter discount"
 oninput="renderCart()">
 
-<div class="summary-row grand-total">
-<span>Total</span>
+
+<div class="row total">
+
+<span>Grand Total</span>
+
 <b id="cartTotal">₹0.00</b>
+
 </div>
 
 </div>
+
 
 <form onsubmit="completeSale(event)">
 
-<h3>👤 Customer</h3>
+<h3>👤 Customer Details</h3>
 
-<input
-id="customerName"
-placeholder="Customer Name (optional)">
+<input id="customerName"
+placeholder="Customer Name">
 
-<input
-id="customerPhone"
-placeholder="Phone (optional)">
+<input id="customerPhone"
+placeholder="Phone Number">
+
 
 <select id="payment">
+
 <option value="Cash">💵 Cash</option>
+
 <option value="UPI">📱 UPI</option>
+
 <option value="Card">💳 Card</option>
+
 <option value="Credit">📒 Credit</option>
+
 </select>
 
+
 <button class="primary green">
-🧾 Complete Sale
+🧾 COMPLETE SALE
 </button>
 
 </form>
@@ -696,46 +873,65 @@ placeholder="Phone (optional)">
 
 <section id="reports" class="page">
 
-<h2>📊 Reports</h2>
+<h2>📊 Business Reports</h2>
 
-<div class="cards">
 
-<div class="card">
+<div class="report-card">
+
 <small>Total Sales</small>
-<strong id="reportSales">₹0</strong>
+
+<strong id="reportSales">₹0.00</strong>
+
 </div>
 
-<div class="card">
+
+<div class="report-card">
+
 <small>Total Purchase</small>
-<strong id="reportPurchase">₹0</strong>
+
+<strong id="reportPurchase">₹0.00</strong>
+
 </div>
 
-<div class="card">
+
+<div class="report-card">
+
 <small>Gross Profit</small>
-<strong id="reportGross">₹0</strong>
+
+<strong id="reportGross">₹0.00</strong>
+
 </div>
 
-<div class="card">
-<small>Total Expense</small>
-<strong id="reportExpense">₹0</strong>
+
+<div class="report-card">
+
+<small>Total Expenses</small>
+
+<strong id="reportExpense">₹0.00</strong>
+
 </div>
 
-<div class="card">
+
+<div class="report-card">
+
 <small>Net Profit</small>
-<strong id="reportNet">₹0</strong>
-</div>
+
+<strong id="reportNet">₹0.00</strong>
 
 </div>
 
-<br>
 
-<button class="primary" onclick="showPage('expense')">
-💸 Manage Expenses
-</button>
-
-<br><br>
+<h3>🧾 Recent Sales</h3>
 
 <div id="saleHistory"></div>
+
+
+<button class="primary red"
+onclick="showPage('expense')">
+
+💸 Manage Expenses
+
+</button>
 
 </section>
 
@@ -744,17 +940,15 @@ placeholder="Phone (optional)">
 
 <section id="expense" class="page">
 
-<h2>💸 Expense</h2>
+<h2>💸 Expenses</h2>
 
 <form onsubmit="addExpense(event)">
 
-<input
-id="expenseName"
+<input id="expenseName"
 placeholder="Expense Name"
 required>
 
-<input
-id="expenseAmount"
+<input id="expenseAmount"
 type="number"
 step="0.01"
 placeholder="Amount"
@@ -766,18 +960,20 @@ required>
 
 </form>
 
+
 <div id="expenseHistory"></div>
 
 </section>
+
 
 </main>
 
 
 <!-- BOTTOM NAV -->
 
-<nav class="bottom-nav">
+<nav class="bottom">
 
-<button class="nav-item active"
+<button class="nav active"
 onclick="showPage('home')">
 
 <span class="icon">🏠</span>
@@ -785,7 +981,8 @@ onclick="showPage('home')">
 
 </button>
 
-<button class="nav-item"
+
+<button class="nav"
 onclick="showPage('products')">
 
 <span class="icon">📦</span>
@@ -793,7 +990,8 @@ onclick="showPage('products')">
 
 </button>
 
-<button class="nav-item"
+
+<button class="nav"
 onclick="showPage('purchase')">
 
 <span class="icon">🛒</span>
@@ -801,7 +999,8 @@ onclick="showPage('purchase')">
 
 </button>
 
-<button class="nav-item"
+
+<button class="nav"
 onclick="showPage('sales')">
 
 <span class="icon">💰</span>
@@ -809,7 +1008,8 @@ onclick="showPage('sales')">
 
 </button>
 
-<button class="nav-item"
+
+<button class="nav"
 onclick="showPage('reports')">
 
 <span class="icon">📊</span>
@@ -820,16 +1020,10 @@ onclick="showPage('reports')">
 </nav>
 
 
-<!-- PRINT AREA -->
-
 <div id="printArea"></div>
 
 
 <script>
-
-/* =========================
-   DATA
-========================= */
 
 let products =
 JSON.parse(localStorage.getItem("products") || "[]");
@@ -845,10 +1039,6 @@ JSON.parse(localStorage.getItem("expenses") || "[]");
 
 let cart=[];
 
-
-/* =========================
-   SAVE
-========================= */
 
 function save(){
 
@@ -877,20 +1067,12 @@ function save(){
 }
 
 
-/* =========================
-   MONEY
-========================= */
-
 function money(n){
 
  return "₹"+Number(n||0).toFixed(2);
 
 }
 
-
-/* =========================
-   DATE
-========================= */
 
 function today(){
 
@@ -901,15 +1083,14 @@ function today(){
 }
 
 
-/* =========================
-   PAGE
-========================= */
-
 function showPage(id){
 
  document
  .querySelectorAll(".page")
- .forEach(x=>x.classList.remove("active"));
+ .forEach(
+  x=>x.classList.remove("active")
+ );
+
 
  document
  .getElementById(id)
@@ -917,26 +1098,36 @@ function showPage(id){
 
 
  document
- .querySelectorAll(".nav-item")
- .forEach(x=>x.classList.remove("active"));
+ .querySelectorAll(".nav")
+ .forEach(
+  x=>x.classList.remove("active")
+ );
 
 
- let buttons=
- document.querySelectorAll(".nav-item");
+ document
+ .querySelectorAll(".nav")
+ .forEach(btn=>{
 
- buttons.forEach(btn=>{
+  if(
+   btn.getAttribute("onclick")
+   .includes(id)
+  ){
 
-  if(btn.getAttribute("onclick").includes(id)){
    btn.classList.add("active");
+
   }
 
  });
 
 
  if(id==="sales"){
+
   renderSaleProducts();
+
   renderCart();
+
  }
+
 
  update();
 
@@ -945,27 +1136,26 @@ function showPage(id){
 }
 
 
-/* =========================
-   ADD PRODUCT
-========================= */
-
 function addProduct(e){
 
  e.preventDefault();
 
 
- let name=pName.value.trim();
+ let name=
+ pName.value.trim();
+
 
  if(!name)return;
 
 
- let p={
+ products.push({
 
   id:Date.now(),
 
   name:name,
 
-  category:pCategory.value.trim(),
+  category:
+  pCategory.value.trim(),
 
   buy:Number(pBuy.value),
 
@@ -975,102 +1165,105 @@ function addProduct(e){
 
   min:Number(pMin.value)
 
- };
-
-
- products.push(p);
+ });
 
 
  e.target.reset();
 
  pMin.value=5;
 
+
  save();
 
 
- alert("✅ Product added successfully");
-
- showPage("products");
+ alert(
+  "💎 Product added successfully!"
+ );
 
 }
 
 
-/* =========================
-   RENDER PRODUCTS
-========================= */
-
 function renderProducts(){
 
  let search=
- document
- .getElementById("productSearch")
- .value
+ (
+  document
+  .getElementById("productSearch")
+  ?.value || ""
+ )
  .toLowerCase();
 
 
  let filtered=
- products.filter(p=>
- p.name.toLowerCase().includes(search)
+ products.filter(
+  p=>
+  p.name
+  .toLowerCase()
+  .includes(search)
  );
 
 
  productList.innerHTML=
  filtered.map(p=>`
 
- <div class="product-item">
+ <div class="product">
 
-  <div class="product-info">
+ <div>
 
-   <b>${p.name}</b>
+ <b>${p.name}</b>
 
-   <small>
-   ${p.category || "General"}
-   • Buy ${money(p.buy)}
-   • Sell ${money(p.sell)}
-   </small>
+ <small>
 
-   <br>
+ ${p.category || "General"}
 
-   <span class="badge ${
-    p.stock<=p.min ? "low":"good"
-   }">
+ <br>
 
-   Stock: ${p.stock}
+ Buy ${money(p.buy)}
+ • Sell ${money(p.sell)}
 
-   </span>
+ </small>
 
-  </div>
+ <br><br>
 
-  <button
-  class="add-btn"
-  onclick="quickAdd(${p.id})">
+ <span class="badge ${
+  p.stock<=p.min
+  ?"low"
+  :"good"
+ }">
 
-  + Add
+ Stock ${p.stock}
 
-  </button>
+ </span>
+
+ </div>
+
+
+ <button
+ class="add"
+ onclick="quickAdd(${p.id})">
+
+ + Sale
+
+ </button>
 
  </div>
 
  `).join("");
 
-
 }
 
-
-/* =========================
-   PURCHASE
-========================= */
 
 function addPurchase(e){
 
  e.preventDefault();
 
 
- let id=Number(
-  purchaseProduct.value
- );
+ let id=
+ Number(purchaseProduct.value);
 
- let p=products.find(
+
+ let p=
+ products.find(
   x=>x.id===id
  );
 
@@ -1081,11 +1274,18 @@ function addPurchase(e){
  let qty=
  Number(purchaseQty.value);
 
+
  let price=
  Number(purchasePrice.value);
 
 
- if(qty<=0)return;
+ if(qty<=0){
+
+  alert("Enter valid quantity");
+
+  return;
+
+ }
 
 
  p.stock+=qty;
@@ -1108,56 +1308,64 @@ function addPurchase(e){
 
  e.target.reset();
 
+
  save();
 
 
- alert("✅ Purchase saved");
+ alert("✅ Purchase saved!");
 
 }
 
 
-/* =========================
-   SALE PRODUCT SEARCH
-========================= */
-
 function renderSaleProducts(){
 
  let search=
- document
- .getElementById("saleSearch")
- .value
+ (
+  document
+  .getElementById("saleSearch")
+  ?.value || ""
+ )
  .toLowerCase();
 
 
  let filtered=
- products.filter(p=>
- p.name.toLowerCase().includes(search)
+ products.filter(
+  p=>
+  p.name
+  .toLowerCase()
+  .includes(search)
  );
 
 
  saleProductList.innerHTML=
  filtered.map(p=>`
 
- <div class="product-item">
+ <div class="product">
 
-  <div class="product-info">
+ <div>
 
-   <b>${p.name}</b>
+ <b>${p.name}</b>
 
-   <small>
-   Sell ${money(p.sell)}
-   • Stock ${p.stock}
-   </small>
+ <small>
 
-  </div>
+ Sell ${money(p.sell)}
 
-  <button
-  class="add-btn"
-  onclick="addToCart(${p.id})">
+ <br>
 
-  + Add
+ Available Stock: ${p.stock}
 
-  </button>
+ </small>
+
+ </div>
+
+
+ <button
+ class="add"
+ onclick="addToCart(${p.id})">
+
+ + Add
+
+ </button>
 
  </div>
 
@@ -1166,32 +1374,52 @@ function renderSaleProducts(){
 }
 
 
-/* =========================
-   ADD CART
-========================= */
-
 function addToCart(id){
 
  let p=
- products.find(x=>x.id===id);
+ products.find(
+  x=>x.id===id
+ );
+
 
  if(!p)return;
 
 
+ if(p.stock<=0){
+
+  alert(
+   "❌ Product is out of stock"
+  );
+
+  return;
+
+ }
+
+
  let item=
- cart.find(x=>x.id===id);
+ cart.find(
+  x=>x.id===id
+ );
 
 
  if(item){
 
-  if(item.qty < p.stock){
+  if(item.qty<p.stock){
+
    item.qty++;
+
+  }else{
+
+   alert(
+    "❌ Maximum available stock reached"
+   );
+
   }
 
  }else{
 
   cart.push({
-   id:p.id,
+   id:id,
    qty:1
   });
 
@@ -1203,10 +1431,6 @@ function addToCart(id){
 }
 
 
-/* =========================
-   QUICK ADD
-========================= */
-
 function quickAdd(id){
 
  showPage("sales");
@@ -1216,25 +1440,80 @@ function quickAdd(id){
 }
 
 
-/* =========================
-   CART
-========================= */
+function changeQty(id,change){
+
+ let item=
+ cart.find(
+  x=>x.id===id
+ );
+
+
+ let p=
+ products.find(
+  x=>x.id===id
+ );
+
+
+ if(!item||!p)return;
+
+
+ let q=
+ item.qty+change;
+
+
+ if(q<=0){
+
+  removeCart(id);
+
+  return;
+
+ }
+
+
+ if(q>p.stock){
+
+  alert("❌ Not enough stock");
+
+  return;
+
+ }
+
+
+ item.qty=q;
+
+ renderCart();
+
+}
+
+
+function removeCart(id){
+
+ cart=
+ cart.filter(
+  x=>x.id!==id
+ );
+
+ renderCart();
+
+}
+
 
 function renderCart(){
 
- let box=
- document.getElementById("cart");
-
-
  if(cart.length===0){
 
-  box.innerHTML=
+  document
+  .getElementById("cart")
+  .innerHTML=
   `<div class="card">
-  🛒 Cart is empty
+  🛒 Your cart is empty.
   </div>`;
 
-  cartSubtotal.innerText=money(0);
-  cartTotal.innerText=money(0);
+  cartSubtotal.innerText=
+  money(0);
+
+  cartTotal.innerText=
+  money(0);
 
   return;
 
@@ -1244,11 +1523,16 @@ function renderCart(){
  let subtotal=0;
 
 
- box.innerHTML=
+ document
+ .getElementById("cart")
+ .innerHTML=
  cart.map(item=>{
 
   let p=
-  products.find(x=>x.id===item.id);
+  products.find(
+   x=>x.id===item.id
+  );
+
 
   if(!p)return "";
 
@@ -1256,57 +1540,64 @@ function renderCart(){
   let amount=
   p.sell*item.qty;
 
+
   subtotal+=amount;
 
 
   return `
 
-  <div class="cart-item">
+  <div class="cart">
 
-   <div class="cart-top">
+  <div class="cart-head">
 
-    <div>
+  <div>
 
-     <b>${p.name}</b>
+  <b>${p.name}</b>
 
-     <br>
+  <br>
 
-     <small>
-     ${money(p.sell)} × ${item.qty}
-     </small>
+  <small>
 
-    </div>
+  ${money(p.sell)}
+  × ${item.qty}
 
-    <b>${money(amount)}</b>
+  </small>
 
-   </div>
+  </div>
+
+  <b>
+  ${money(amount)}
+  </b>
+
+  </div>
 
 
-   <div class="qty-row">
+  <div class="qty">
 
-    <button
-    class="qty-btn"
-    onclick="changeQty(${p.id},-1)">
-    −
-    </button>
+  <button
+  onclick="changeQty(${p.id},-1)">
+  −
+  </button>
 
-    <b>${item.qty}</b>
 
-    <button
-    class="qty-btn"
-    onclick="changeQty(${p.id},1)">
-    +
-    </button>
+  <b>${item.qty}</b>
 
-    <button
-    class="remove-btn"
-    onclick="removeCart(${p.id})">
 
-    Remove
+  <button
+  onclick="changeQty(${p.id},1)">
+  +
+  </button>
 
-    </button>
 
-   </div>
+  <button
+  class="remove"
+  onclick="removeCart(${p.id})">
+
+  Remove
+
+  </button>
+
+  </div>
 
   </div>
 
@@ -1317,7 +1608,9 @@ function renderCart(){
 
  let discount=
  Number(
-  document.getElementById("discount").value || 0
+  document
+  .getElementById("discount")
+  .value || 0
  );
 
 
@@ -1325,8 +1618,9 @@ function renderCart(){
 
   discount=subtotal;
 
-  document.getElementById("discount").value=
-  subtotal;
+  document
+  .getElementById("discount")
+  .value=subtotal;
 
  }
 
@@ -1338,73 +1632,12 @@ function renderCart(){
  cartSubtotal.innerText=
  money(subtotal);
 
+
  cartTotal.innerText=
  money(total);
 
 }
 
-
-/* =========================
-   CHANGE QTY
-========================= */
-
-function changeQty(id,change){
-
- let item=
- cart.find(x=>x.id===id);
-
- let p=
- products.find(x=>x.id===id);
-
- if(!item || !p)return;
-
-
- let newQty=
- item.qty+change;
-
-
- if(newQty<=0){
-
-  removeCart(id);
-
-  return;
-
- }
-
-
- if(newQty>p.stock){
-
-  alert("❌ Not enough stock");
-
-  return;
-
- }
-
-
- item.qty=newQty;
-
- renderCart();
-
-}
-
-
-/* =========================
-   REMOVE CART
-========================= */
-
-function removeCart(id){
-
- cart=
- cart.filter(x=>x.id!==id);
-
- renderCart();
-
-}
-
-
-/* =========================
-   COMPLETE SALE
-========================= */
 
 function completeSale(e){
 
@@ -1413,7 +1646,9 @@ function completeSale(e){
 
  if(cart.length===0){
 
-  alert("❌ Cart is empty");
+  alert(
+   "❌ Please add products to cart"
+  );
 
   return;
 
@@ -1421,13 +1656,17 @@ function completeSale(e){
 
 
  let subtotal=0;
- let totalCost=0;
+
+ let cost=0;
 
 
  for(let item of cart){
 
   let p=
-  products.find(x=>x.id===item.id);
+  products.find(
+   x=>x.id===item.id
+  );
+
 
   if(!p)continue;
 
@@ -1447,7 +1686,8 @@ function completeSale(e){
   subtotal+=
   p.sell*item.qty;
 
-  totalCost+=
+
+  cost+=
   p.buy*item.qty;
 
  }
@@ -1455,33 +1695,28 @@ function completeSale(e){
 
  let discount=
  Number(
-  document.getElementById("discount").value || 0
+  document
+  .getElementById("discount")
+  .value || 0
  );
 
 
- if(discount>subtotal){
-  discount=subtotal;
- }
+ if(discount>subtotal)
+ discount=subtotal;
 
 
  let total=
  subtotal-discount;
 
 
- let discountRatio=
- subtotal>0
- ? discount/subtotal
- :0;
-
-
  let profit=
- (subtotal-totalCost)
- -
- discount;
+ subtotal-cost-discount;
 
 
- let invoiceNo=
- "INV-"+String(sales.length+1)
+ let invoice=
+ "INV-"+String(
+  sales.length+1
+ )
  .padStart(5,"0");
 
 
@@ -1489,12 +1724,15 @@ function completeSale(e){
  cart.map(item=>{
 
   let p=
-  products.find(x=>x.id===item.id);
+  products.find(
+   x=>x.id===item.id
+  );
+
 
   p.stock-=item.qty;
 
 
-  return {
+  return{
 
    product:p.name,
 
@@ -1504,7 +1742,8 @@ function completeSale(e){
 
    cost:p.buy,
 
-   amount:p.sell*item.qty
+   amount:
+   p.sell*item.qty
 
   };
 
@@ -1515,18 +1754,19 @@ function completeSale(e){
 
   id:Date.now(),
 
-  invoice:invoiceNo,
+  invoice:invoice,
 
   date:today(),
 
-  time:new Date()
+  time:
+  new Date()
   .toLocaleTimeString(),
 
   customer:
-  document.getElementById("customerName").value,
+  customerName.value,
 
   phone:
-  document.getElementById("customerPhone").value,
+  customerPhone.value,
 
   items:items,
 
@@ -1536,12 +1776,12 @@ function completeSale(e){
 
   total:total,
 
-  cost:totalCost,
+  cost:cost,
 
   profit:profit,
 
   payment:
-  document.getElementById("payment").value
+  payment.value
 
  };
 
@@ -1552,72 +1792,100 @@ function completeSale(e){
  save();
 
 
- printInvoice(sale);
+ let shouldPrint=
+ confirm(
+  "💎 Sale completed!\n\n"+
+  "Invoice: "+invoice+
+  "\nTotal: "+money(total)+
+  "\n\nPrint invoice?"
+ );
+
+
+ if(shouldPrint){
+
+  printInvoice(sale);
+
+ }
 
 
  cart=[];
 
+
  e.target.reset();
 
- document.getElementById("discount").value=0;
+
+ discount.value=0;
+
 
  renderCart();
 
  renderSaleProducts();
 
-
- alert(
-  "✅ Sale completed\n"+
-  "Invoice: "+invoiceNo
- );
-
 }
 
 
-/* =========================
-   PRINT INVOICE
-========================= */
-
 function printInvoice(sale){
 
- let html=`
+ printArea.innerHTML=`
 
  <div class="invoice">
 
- <h2>🏪 SHOP POS PRO</h2>
+ <h2>💎 DIAMOND SHOP</h2>
 
  <div style="text-align:center">
- Invoice: ${sale.invoice}<br>
- ${sale.date} ${sale.time}
+
+ Smart • Fast • Professional
+
+ <br>
+
+ Invoice:
+ ${sale.invoice}
+
+ <br>
+
+ ${sale.date}
+ ${sale.time}
+
  </div>
 
  <hr>
 
+
  ${
  sale.customer
- ? `<div>Customer: ${sale.customer}</div>`
- : ""
+ ?
+ `<div>
+ Customer: ${sale.customer}
+ </div>`
+ :""
  }
+
 
  ${
  sale.phone
- ? `<div>Phone: ${sale.phone}</div>`
- : ""
+ ?
+ `<div>
+ Phone: ${sale.phone}
+ </div>`
+ :""
  }
+
 
  <hr>
 
- ${
- sale.items.map(x=>`
 
- <div class="invoice-line">
+ ${
+ sale.items
+ .map(i=>`
+
+ <div class="line">
 
  <span>
- ${x.product} × ${x.qty}
+ ${i.product} × ${i.qty}
  </span>
 
  <span>
- ${money(x.amount)}
+ ${money(i.amount)}
  </span>
 
  </div>
@@ -1625,44 +1893,64 @@ function printInvoice(sale){
  `).join("")
  }
 
+
  <hr>
 
- <div class="invoice-line">
+
+ <div class="line">
 
  <span>Subtotal</span>
 
- <span>${money(sale.subtotal)}</span>
+ <span>
+ ${money(sale.subtotal)}
+ </span>
 
  </div>
 
- <div class="invoice-line">
+
+ <div class="line">
 
  <span>Discount</span>
 
- <span>${money(sale.discount)}</span>
+ <span>
+ ${money(sale.discount)}
+ </span>
 
  </div>
 
- <div class="invoice-line invoice-total">
 
- <span>TOTAL</span>
+ <div class="line final">
 
- <span>${money(sale.total)}</span>
+ <span>GRAND TOTAL</span>
+
+ <span>
+ ${money(sale.total)}
+ </span>
 
  </div>
 
- <div class="invoice-line">
+
+ <div class="line">
 
  <span>Payment</span>
 
- <span>${sale.payment}</span>
+ <span>
+ ${sale.payment}
+ </span>
 
  </div>
+
 
  <br>
 
  <div style="text-align:center">
- Thank You! Visit Again 😊
+
+ Thank You ❤️
+
+ <br>
+
+ Visit Again!
+
  </div>
 
  </div>
@@ -1670,21 +1958,13 @@ function printInvoice(sale){
  `;
 
 
- printArea.innerHTML=html;
-
-
- setTimeout(()=>{
-
-  window.print();
-
- },300);
+ setTimeout(
+  ()=>window.print(),
+  300
+ );
 
 }
 
-
-/* =========================
-   EXPENSE
-========================= */
 
 function addExpense(e){
 
@@ -1706,24 +1986,19 @@ function addExpense(e){
 
  e.target.reset();
 
+
  save();
 
 
- alert("✅ Expense saved");
+ alert("✅ Expense saved!");
 
 }
 
-
-/* =========================
-   UPDATE
-========================= */
 
 function update(){
 
  renderProducts();
 
-
- /* SELECT */
 
  let options=
  `<option value="">
@@ -1737,7 +2012,8 @@ function update(){
 
   <option value="${p.id}">
 
-  ${p.name} — Stock: ${p.stock}
+  ${p.name}
+  — Stock: ${p.stock}
 
   </option>
 
@@ -1750,8 +2026,6 @@ function update(){
  options;
 
 
- /* TODAY */
-
  let ts=
  sales.filter(
   x=>x.date===today()
@@ -1760,40 +2034,49 @@ function update(){
 
  let salesToday=
  ts.reduce(
-  (a,b)=>a+b.total,0
+  (a,b)=>a+b.total,
+  0
  );
 
 
  let profitToday=
  ts.reduce(
-  (a,b)=>a+b.profit,0
+  (a,b)=>a+b.profit,
+  0
  );
 
 
  let cash=
  ts.filter(
   x=>x.payment==="Cash"
- ).reduce(
-  (a,b)=>a+b.total,0
+ )
+ .reduce(
+  (a,b)=>a+b.total,
+  0
  );
 
 
  let upi=
  ts.filter(
   x=>x.payment==="UPI"
- ).reduce(
-  (a,b)=>a+b.total,0
+ )
+ .reduce(
+  (a,b)=>a+b.total,
+  0
  );
 
 
  todaySales.innerText=
  money(salesToday);
 
+
  todayProfit.innerText=
  money(profitToday);
 
+
  cashTotal.innerText=
  money(cash);
+
 
  upiTotal.innerText=
  money(upi);
@@ -1803,20 +2086,17 @@ function update(){
  products.length;
 
 
- /* STOCK VALUE */
-
  let stockVal=
  products.reduce(
   (a,p)=>
-  a+(p.stock*p.buy),0
+  a+p.stock*p.buy,
+  0
  );
 
 
  stockValue.innerText=
  money(stockVal);
 
-
- /* LOW STOCK */
 
  let lows=
  products.filter(
@@ -1826,43 +2106,49 @@ function update(){
 
  lowStock.innerHTML=
  lows.length
+ ?
+ `<div class="alert">
 
- ? `<div class="alert">
+ ⚠️ <b>LOW STOCK ALERT</b>
 
- ⚠️ <b>Low Stock Alert</b><br><br>
+ <br><br>
 
- ${lows.map(
-  p=>`${p.name} (${p.stock})`
- ).join(", ")}
+ ${lows
+  .map(
+   p=>
+   `${p.name} — ${p.stock}`
+  )
+  .join("<br>")}
 
  </div>`
-
  : "";
 
 
- /* REPORTS */
-
  let totalSales=
  sales.reduce(
-  (a,b)=>a+b.total,0
+  (a,b)=>a+b.total,
+  0
  );
 
 
  let totalPurchase=
  purchases.reduce(
-  (a,b)=>a+b.total,0
+  (a,b)=>a+b.total,
+  0
  );
 
 
  let gross=
  sales.reduce(
-  (a,b)=>a+b.profit,0
+  (a,b)=>a+b.profit,
+  0
  );
 
 
  let totalExpense=
  expenses.reduce(
-  (a,b)=>a+b.amount,0
+  (a,b)=>a+b.amount,
+  0
  );
 
 
@@ -1873,20 +2159,72 @@ function update(){
  reportSales.innerText=
  money(totalSales);
 
+
  reportPurchase.innerText=
  money(totalPurchase);
+
 
  reportGross.innerText=
  money(gross);
 
+
  reportExpense.innerText=
  money(totalExpense);
+
 
  reportNet.innerText=
  money(net);
 
 
- /* EXPENSE HISTORY */
+ saleHistory.innerHTML=
+ sales
+ .slice()
+ .reverse()
+ .map(x=>`
+
+ <div class="card">
+
+ <b>🧾 ${x.invoice}</b>
+
+ <br><br>
+
+ ${
+ x.items
+ ?
+ x.items
+ .map(
+  i=>
+  `${i.product} × ${i.qty}`
+ )
+ .join("<br>")
+ :
+ x.product || ""
+ }
+
+ <br><br>
+
+ <b>
+ ${money(x.total)}
+ </b>
+
+ • ${x.payment}
+
+ <br>
+
+ <small>
+
+ Profit:
+ ${money(x.profit)}
+
+ • ${x.date}
+
+ </small>
+
+ </div>
+
+ `)
+ .join("");
+
 
  expenseHistory.innerHTML=
  expenses
@@ -1896,7 +2234,7 @@ function update(){
 
  <div class="card">
 
- <b>${x.name}</b>
+ <b>💸 ${x.name}</b>
 
  <br>
 
@@ -1908,49 +2246,9 @@ function update(){
 
  </div>
 
- `).join("");
+ `)
+ .join("");
 
-
- /* SALES HISTORY */
-
- saleHistory.innerHTML=
- sales
- .slice()
- .reverse()
- .map(x=>`
-
- <div class="card">
-
- <b>${x.invoice}</b>
-
- <br>
-
- ${x.items
-  ? x.items.map(i=>
-    `${i.product} × ${i.qty}`
-   ).join("<br>")
-  : x.product
- }
-
- <br><br>
-
- <b>${money(x.total)}</b>
-
- • ${x.payment}
-
- <br>
-
- <small>
- Profit: ${money(x.profit)}
- • ${x.date}
- </small>
-
- </div>
-
- `).join("");
-
-
- /* PURCHASE HISTORY */
 
  purchaseHistory.innerHTML=
  purchases
@@ -1960,11 +2258,12 @@ function update(){
 
  <div class="card">
 
- <b>${x.product}</b>
+ <b>📥 ${x.product}</b>
 
  <br>
 
- ${x.qty} × ${money(x.price)}
+ ${x.qty}
+ × ${money(x.price)}
 
  <br>
 
@@ -1976,12 +2275,11 @@ function update(){
 
  </div>
 
- `).join("");
+ `)
+ .join("");
 
 }
 
-
-/* INITIAL */
 
 update();
 
