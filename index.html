@@ -2,128 +2,454 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop POS Pro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Shop POS Pro V2</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f6f8;
-  color:#18212f;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f5f7fb;
+ color:#172033;
+ padding-bottom:78px;
 }
+
 header{
-  background:#111827;
-  color:white;
-  padding:18px;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-header h1{margin:0;font-size:22px}
-header small{opacity:.7}
-
-nav{
-  display:flex;
-  overflow-x:auto;
-  gap:8px;
-  padding:10px;
-  background:white;
-  border-bottom:1px solid #ddd;
-}
-nav button{
-  border:0;
-  background:#eef2f7;
-  padding:10px 14px;
-  border-radius:10px;
-  white-space:nowrap;
-}
-nav button.active{
-  background:#111827;
-  color:white;
+ background:#111827;
+ color:white;
+ padding:16px;
+ position:sticky;
+ top:0;
+ z-index:20;
 }
 
-main{padding:15px;max-width:1100px;margin:auto}
+header h1{
+ margin:0;
+ font-size:21px;
+}
+
+header small{
+ opacity:.7;
+}
+
+main{
+ max-width:700px;
+ margin:auto;
+ padding:14px;
+}
+
 .page{display:none}
 .page.active{display:block}
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-.card{
-  background:white;
-  padding:15px;
-  border-radius:14px;
-  box-shadow:0 2px 8px #00000010;
-}
-.card small{color:#687386}
-.card strong{
-  display:block;
-  font-size:21px;
-  margin-top:7px;
+h2{
+ margin:5px 0 15px;
+ font-size:20px;
 }
 
+/* CARDS */
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+
+.card{
+ background:white;
+ padding:15px;
+ border-radius:15px;
+ box-shadow:0 2px 10px #0000000c;
+ margin-bottom:10px;
+}
+
+.card small{
+ color:#6b7280;
+}
+
+.card strong{
+ display:block;
+ font-size:20px;
+ margin-top:6px;
+}
+
+/* FORM */
+
 form{
-  background:white;
-  padding:15px;
-  border-radius:14px;
-  margin-bottom:15px;
+ background:white;
+ padding:15px;
+ border-radius:15px;
+ margin-bottom:15px;
+ box-shadow:0 2px 10px #00000008;
 }
+
 input,select{
-  width:100%;
-  padding:12px;
-  margin:6px 0 10px;
-  border:1px solid #ccd3dc;
-  border-radius:9px;
-  font-size:15px;
+ width:100%;
+ padding:13px;
+ margin:6px 0 10px;
+ border:1px solid #d1d5db;
+ border-radius:10px;
+ font-size:15px;
+ background:white;
 }
-button.primary{
-  width:100%;
-  background:#111827;
-  color:white;
-  border:0;
-  padding:13px;
-  border-radius:9px;
-  font-size:15px;
+
+button{
+ font-family:inherit;
+ cursor:pointer;
 }
+
+.primary{
+ width:100%;
+ background:#111827;
+ color:white;
+ border:0;
+ padding:14px;
+ border-radius:10px;
+ font-size:15px;
+ font-weight:bold;
+}
+
+.green{
+ background:#16a34a!important;
+}
+
+.red{
+ background:#dc2626!important;
+}
+
+.blue{
+ background:#2563eb!important;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ height:72px;
+ background:white;
+ border-top:1px solid #e5e7eb;
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ z-index:100;
+ box-shadow:0 -3px 15px #00000012;
+}
+
+.nav-item{
+ border:0;
+ background:none;
+ color:#6b7280;
+ font-size:11px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:4px;
+ padding:7px 8px;
+ min-width:58px;
+}
+
+.nav-item .icon{
+ font-size:21px;
+}
+
+.nav-item.active{
+ color:#111827;
+ font-weight:bold;
+}
+
+.nav-item.active .icon{
+ transform:scale(1.08);
+}
+
+/* SEARCH */
+
+.search-box{
+ position:relative;
+ margin-bottom:12px;
+}
+
+.search-box input{
+ padding-left:42px;
+ margin:0;
+}
+
+.search-icon{
+ position:absolute;
+ left:14px;
+ top:13px;
+ font-size:18px;
+}
+
+/* PRODUCT LIST */
+
+.product-item{
+ background:white;
+ padding:13px;
+ border-radius:12px;
+ margin-bottom:8px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ box-shadow:0 1px 6px #00000009;
+}
+
+.product-info b{
+ display:block;
+ margin-bottom:4px;
+}
+
+.product-info small{
+ color:#6b7280;
+}
+
+.add-btn{
+ border:0;
+ background:#111827;
+ color:white;
+ padding:9px 13px;
+ border-radius:9px;
+ font-weight:bold;
+}
+
+/* CART */
+
+.cart-item{
+ background:white;
+ padding:12px;
+ border-radius:12px;
+ margin-bottom:8px;
+}
+
+.cart-top{
+ display:flex;
+ justify-content:space-between;
+}
+
+.qty-row{
+ display:flex;
+ align-items:center;
+ gap:8px;
+ margin-top:9px;
+}
+
+.qty-btn{
+ width:34px;
+ height:34px;
+ border:0;
+ border-radius:8px;
+ background:#eef2f7;
+ font-size:18px;
+}
+
+.remove-btn{
+ border:0;
+ background:#fee2e2;
+ color:#b91c1c;
+ padding:7px 10px;
+ border-radius:7px;
+}
+
+.summary{
+ background:white;
+ padding:15px;
+ border-radius:15px;
+ margin-top:12px;
+}
+
+.summary-row{
+ display:flex;
+ justify-content:space-between;
+ padding:7px 0;
+}
+
+.grand-total{
+ font-size:22px;
+ font-weight:bold;
+ border-top:1px solid #ddd;
+ margin-top:7px;
+ padding-top:12px;
+}
+
+/* TABLE */
+
+.table-wrap{
+ overflow-x:auto;
+}
+
 table{
-  width:100%;
-  border-collapse:collapse;
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
+ width:100%;
+ border-collapse:collapse;
+ background:white;
 }
+
 th,td{
-  padding:10px 7px;
-  border-bottom:1px solid #eee;
-  text-align:left;
-  font-size:13px;
+ padding:10px 7px;
+ border-bottom:1px solid #eee;
+ text-align:left;
+ font-size:13px;
 }
-th{background:#f1f4f7}
+
+th{
+ background:#f1f4f7;
+}
+
+/* BADGES */
+
 .badge{
-  padding:5px 8px;
-  border-radius:20px;
-  font-size:11px;
+ padding:4px 8px;
+ border-radius:20px;
+ font-size:11px;
 }
-.good{background:#dcfce7;color:#166534}
-.low{background:#fee2e2;color:#991b1b}
+
+.good{
+ background:#dcfce7;
+ color:#166534;
+}
+
+.low{
+ background:#fee2e2;
+ color:#991b1b;
+}
+
 .alert{
-  background:#fff3cd;
-  padding:12px;
-  border-radius:10px;
-  margin:10px 0;
+ background:#fff3cd;
+ padding:12px;
+ border-radius:10px;
+ margin:10px 0;
 }
-.total{
-  font-size:22px;
+
+/* MORE */
+
+.more-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+
+.more-btn{
+ background:white;
+ border:0;
+ padding:20px 10px;
+ border-radius:14px;
+ box-shadow:0 2px 8px #0000000c;
+ font-size:15px;
+}
+
+/* MODAL */
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#00000066;
+ z-index:200;
+ padding:20px;
+}
+
+.modal-box{
+ background:white;
+ max-width:500px;
+ margin:40px auto;
+ padding:20px;
+ border-radius:15px;
+ max-height:85vh;
+ overflow:auto;
+}
+
+.close{
+ float:right;
+ border:0;
+ background:#eee;
+ border-radius:50%;
+ width:32px;
+ height:32px;
+}
+
+/* PRINT */
+
+#printArea{
+ display:none;
+}
+
+@media print{
+
+ body>*{
+  display:none!important;
+ }
+
+ #printArea{
+  display:block!important;
+ }
+
+ .invoice{
+  width:80mm;
+  margin:auto;
+  font-family:Arial;
+  color:#000;
+ }
+
+ .invoice h2{
+  text-align:center;
+ }
+
+ .invoice-line{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  margin:5px 0;
+ }
+
+ .invoice-total{
+  border-top:1px dashed #000;
+  margin-top:8px;
+  padding-top:8px;
   font-weight:bold;
-  margin:12px 0;
+ }
+
 }
-h2{margin-top:5px}
-.danger{
-  background:#dc2626!important;
+
+/* DESKTOP */
+
+@media(min-width:800px){
+
+ body{
+  padding-bottom:0;
+ }
+
+ .bottom-nav{
+  position:fixed;
+  top:0;
+  bottom:auto;
+  left:0;
+  width:220px;
+  height:100vh;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding-top:100px;
+  border-right:1px solid #ddd;
+  border-top:0;
+ }
+
+ .nav-item{
+  width:190px;
+  flex-direction:row;
+  justify-content:flex-start;
+  gap:12px;
+  padding:13px;
+ }
+
+ main{
+  margin-left:220px;
+  max-width:900px;
+ }
+
+ header{
+  margin-left:220px;
+ }
 }
 </style>
 </head>
@@ -131,471 +457,1537 @@ h2{margin-top:5px}
 <body>
 
 <header>
-  <h1>🏪 Shop POS Pro</h1>
-  <small>Inventory • Sales • Purchase • Profit</small>
+<h1>🏪 Shop POS Pro</h1>
+<small>Inventory • Sales • Purchase • Profit</small>
 </header>
-
-<nav>
-  <button onclick="showPage('dashboard')" class="active">🏠 Dashboard</button>
-  <button onclick="showPage('products')">📦 Products</button>
-  <button onclick="showPage('purchase')">🛒 Purchase</button>
-  <button onclick="showPage('sales')">💰 Sale</button>
-  <button onclick="showPage('expense')">💸 Expense</button>
-  <button onclick="showPage('reports')">📊 Reports</button>
-</nav>
 
 <main>
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="page active">
-<h2>Dashboard</h2>
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<h2>🏠 Dashboard</h2>
 
 <div class="cards">
+
 <div class="card">
 <small>Today's Sales</small>
-<strong id="todaySales">₹0</strong>
+<strong id="todaySales">₹0.00</strong>
 </div>
 
 <div class="card">
 <small>Today's Profit</small>
-<strong id="todayProfit">₹0</strong>
+<strong id="todayProfit">₹0.00</strong>
 </div>
 
 <div class="card">
-<small>Cash Sales</small>
-<strong id="cashTotal">₹0</strong>
+<small>Cash</small>
+<strong id="cashTotal">₹0.00</strong>
 </div>
 
 <div class="card">
-<small>UPI Sales</small>
-<strong id="upiTotal">₹0</strong>
+<small>UPI</small>
+<strong id="upiTotal">₹0.00</strong>
 </div>
 
 <div class="card">
 <small>Total Stock</small>
-<strong id="stockValue">₹0</strong>
+<strong id="stockValue">₹0.00</strong>
 </div>
 
 <div class="card">
-<small>Total Products</small>
+<small>Products</small>
 <strong id="productCount">0</strong>
 </div>
+
 </div>
 
 <div id="lowStock"></div>
+
+<div class="card">
+<b>⚡ Quick Actions</b>
+<br><br>
+
+<button class="primary green" onclick="showPage('sales')">
+💰 New Sale
+</button>
+
+<br><br>
+
+<button class="primary" onclick="showPage('products')">
+📦 Add Product
+</button>
+
+</div>
+
 </section>
 
 
 <!-- PRODUCTS -->
+
 <section id="products" class="page">
+
 <h2>📦 Products</h2>
 
 <form onsubmit="addProduct(event)">
-<input id="pName" placeholder="Product Name" required>
-<input id="pCategory" placeholder="Category">
-<input id="pBuy" type="number" step="0.01" placeholder="Purchase Price" required>
-<input id="pSell" type="number" step="0.01" placeholder="Selling Price" required>
-<input id="pStock" type="number" placeholder="Opening Stock" required>
-<input id="pMin" type="number" placeholder="Minimum Stock" value="5">
 
-<button class="primary">➕ Add Product</button>
+<input id="pName"
+placeholder="Product Name"
+required>
+
+<input id="pCategory"
+placeholder="Category">
+
+<input id="pBuy"
+type="number"
+step="0.01"
+placeholder="Purchase Price"
+required>
+
+<input id="pSell"
+type="number"
+step="0.01"
+placeholder="Selling Price"
+required>
+
+<input id="pStock"
+type="number"
+placeholder="Opening Stock"
+required>
+
+<input id="pMin"
+type="number"
+placeholder="Minimum Stock"
+value="5">
+
+<button class="primary">
+➕ Add Product
+</button>
+
 </form>
 
-<table>
-<thead>
-<tr>
-<th>Product</th>
-<th>Buy</th>
-<th>Sell</th>
-<th>Stock</th>
-</tr>
-</thead>
-<tbody id="productTable"></tbody>
-</table>
+<div class="search-box">
+
+<span class="search-icon">🔍</span>
+
+<input
+id="productSearch"
+placeholder="Search product..."
+oninput="renderProducts()">
+
+</div>
+
+<div id="productList"></div>
+
 </section>
 
 
 <!-- PURCHASE -->
+
 <section id="purchase" class="page">
+
 <h2>🛒 Purchase</h2>
 
 <form onsubmit="addPurchase(event)">
-<select id="purchaseProduct" required></select>
-<input id="purchaseQty" type="number" placeholder="Quantity" required>
-<input id="purchasePrice" type="number" step="0.01" placeholder="Purchase Price" required>
 
-<button class="primary">📥 Save Purchase</button>
+<select id="purchaseProduct" required></select>
+
+<input
+id="purchaseQty"
+type="number"
+placeholder="Quantity"
+required>
+
+<input
+id="purchasePrice"
+type="number"
+step="0.01"
+placeholder="Purchase Price"
+required>
+
+<button class="primary">
+📥 Save Purchase
+</button>
+
 </form>
 
 <div id="purchaseHistory"></div>
+
 </section>
 
 
-<!-- SALES -->
+<!-- SALE -->
+
 <section id="sales" class="page">
+
 <h2>💰 New Sale</h2>
 
-<form onsubmit="addSale(event)">
-<select id="saleProduct" required></select>
-<input id="saleQty" type="number" placeholder="Quantity" required>
+<div class="search-box">
+
+<span class="search-icon">🔍</span>
+
+<input
+id="saleSearch"
+placeholder="Search product to sell..."
+oninput="renderSaleProducts()">
+
+</div>
+
+<div id="saleProductList"></div>
+
+<h3>🛒 Cart</h3>
+
+<div id="cart"></div>
+
+<div class="summary">
+
+<div class="summary-row">
+<span>Subtotal</span>
+<b id="cartSubtotal">₹0.00</b>
+</div>
+
+<label>Discount</label>
+
+<input
+id="discount"
+type="number"
+step="0.01"
+value="0"
+placeholder="Discount"
+oninput="renderCart()">
+
+<div class="summary-row grand-total">
+<span>Total</span>
+<b id="cartTotal">₹0.00</b>
+</div>
+
+</div>
+
+<form onsubmit="completeSale(event)">
+
+<h3>👤 Customer</h3>
+
+<input
+id="customerName"
+placeholder="Customer Name (optional)">
+
+<input
+id="customerPhone"
+placeholder="Phone (optional)">
 
 <select id="payment">
-<option value="Cash">Cash</option>
-<option value="UPI">UPI</option>
-<option value="Card">Card</option>
-<option value="Credit">Credit</option>
+<option value="Cash">💵 Cash</option>
+<option value="UPI">📱 UPI</option>
+<option value="Card">💳 Card</option>
+<option value="Credit">📒 Credit</option>
 </select>
 
-<button class="primary">🧾 Complete Sale</button>
+<button class="primary green">
+🧾 Complete Sale
+</button>
+
 </form>
 
-<div id="saleHistory"></div>
-</section>
-
-
-<!-- EXPENSE -->
-<section id="expense" class="page">
-<h2>💸 Expense</h2>
-
-<form onsubmit="addExpense(event)">
-<input id="expenseName" placeholder="Expense Name" required>
-<input id="expenseAmount" type="number" step="0.01" placeholder="Amount" required>
-<button class="primary">Save Expense</button>
-</form>
-
-<div id="expenseHistory"></div>
 </section>
 
 
 <!-- REPORTS -->
+
 <section id="reports" class="page">
-<h2>📊 Business Reports</h2>
+
+<h2>📊 Reports</h2>
+
+<div class="cards">
 
 <div class="card">
-<p>Total Sales</p>
+<small>Total Sales</small>
 <strong id="reportSales">₹0</strong>
 </div>
 
-<br>
-
 <div class="card">
-<p>Total Purchase</p>
+<small>Total Purchase</small>
 <strong id="reportPurchase">₹0</strong>
 </div>
 
-<br>
-
 <div class="card">
-<p>Gross Profit</p>
+<small>Gross Profit</small>
 <strong id="reportGross">₹0</strong>
 </div>
 
-<br>
-
 <div class="card">
-<p>Total Expenses</p>
+<small>Total Expense</small>
 <strong id="reportExpense">₹0</strong>
 </div>
 
-<br>
-
 <div class="card">
-<p>Net Profit</p>
+<small>Net Profit</small>
 <strong id="reportNet">₹0</strong>
 </div>
+
+</div>
+
+<br>
+
+<button class="primary" onclick="showPage('expense')">
+💸 Manage Expenses
+</button>
+
+<br><br>
+
+<div id="saleHistory"></div>
+
+</section>
+
+
+<!-- EXPENSE -->
+
+<section id="expense" class="page">
+
+<h2>💸 Expense</h2>
+
+<form onsubmit="addExpense(event)">
+
+<input
+id="expenseName"
+placeholder="Expense Name"
+required>
+
+<input
+id="expenseAmount"
+type="number"
+step="0.01"
+placeholder="Amount"
+required>
+
+<button class="primary red">
+💸 Save Expense
+</button>
+
+</form>
+
+<div id="expenseHistory"></div>
+
 </section>
 
 </main>
 
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+<button class="nav-item active"
+onclick="showPage('home')">
+
+<span class="icon">🏠</span>
+<span>Home</span>
+
+</button>
+
+<button class="nav-item"
+onclick="showPage('products')">
+
+<span class="icon">📦</span>
+<span>Products</span>
+
+</button>
+
+<button class="nav-item"
+onclick="showPage('purchase')">
+
+<span class="icon">🛒</span>
+<span>Purchase</span>
+
+</button>
+
+<button class="nav-item"
+onclick="showPage('sales')">
+
+<span class="icon">💰</span>
+<span>Sale</span>
+
+</button>
+
+<button class="nav-item"
+onclick="showPage('reports')">
+
+<span class="icon">📊</span>
+<span>Reports</span>
+
+</button>
+
+</nav>
+
+
+<!-- PRINT AREA -->
+
+<div id="printArea"></div>
+
+
 <script>
 
-let products = JSON.parse(localStorage.getItem("products") || "[]");
-let sales = JSON.parse(localStorage.getItem("sales") || "[]");
-let purchases = JSON.parse(localStorage.getItem("purchases") || "[]");
-let expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
+/* =========================
+   DATA
+========================= */
+
+let products =
+JSON.parse(localStorage.getItem("products") || "[]");
+
+let sales =
+JSON.parse(localStorage.getItem("sales") || "[]");
+
+let purchases =
+JSON.parse(localStorage.getItem("purchases") || "[]");
+
+let expenses =
+JSON.parse(localStorage.getItem("expenses") || "[]");
+
+let cart=[];
+
+
+/* =========================
+   SAVE
+========================= */
 
 function save(){
- localStorage.setItem("products",JSON.stringify(products));
- localStorage.setItem("sales",JSON.stringify(sales));
- localStorage.setItem("purchases",JSON.stringify(purchases));
- localStorage.setItem("expenses",JSON.stringify(expenses));
+
+ localStorage.setItem(
+  "products",
+  JSON.stringify(products)
+ );
+
+ localStorage.setItem(
+  "sales",
+  JSON.stringify(sales)
+ );
+
+ localStorage.setItem(
+  "purchases",
+  JSON.stringify(purchases)
+ );
+
+ localStorage.setItem(
+  "expenses",
+  JSON.stringify(expenses)
+ );
+
  update();
+
 }
+
+
+/* =========================
+   MONEY
+========================= */
 
 function money(n){
+
  return "₹"+Number(n||0).toFixed(2);
+
 }
 
+
+/* =========================
+   DATE
+========================= */
+
 function today(){
- return new Date().toISOString().slice(0,10);
+
+ return new Date()
+ .toISOString()
+ .slice(0,10);
+
 }
+
+
+/* =========================
+   PAGE
+========================= */
 
 function showPage(id){
 
- document.querySelectorAll(".page").forEach(x=>{
-   x.classList.remove("active");
+ document
+ .querySelectorAll(".page")
+ .forEach(x=>x.classList.remove("active"));
+
+ document
+ .getElementById(id)
+ .classList.add("active");
+
+
+ document
+ .querySelectorAll(".nav-item")
+ .forEach(x=>x.classList.remove("active"));
+
+
+ let buttons=
+ document.querySelectorAll(".nav-item");
+
+ buttons.forEach(btn=>{
+
+  if(btn.getAttribute("onclick").includes(id)){
+   btn.classList.add("active");
+  }
+
  });
 
- document.getElementById(id).classList.add("active");
 
- document.querySelectorAll("nav button").forEach(x=>{
-   x.classList.remove("active");
- });
-
- [...document.querySelectorAll("nav button")]
- .find(x=>x.getAttribute("onclick").includes(id))
- ?.classList.add("active");
+ if(id==="sales"){
+  renderSaleProducts();
+  renderCart();
+ }
 
  update();
+
+ window.scrollTo(0,0);
+
 }
 
+
+/* =========================
+   ADD PRODUCT
+========================= */
 
 function addProduct(e){
 
  e.preventDefault();
 
+
+ let name=pName.value.trim();
+
+ if(!name)return;
+
+
  let p={
+
   id:Date.now(),
-  name:pName.value,
-  category:pCategory.value,
+
+  name:name,
+
+  category:pCategory.value.trim(),
+
   buy:Number(pBuy.value),
+
   sell:Number(pSell.value),
+
   stock:Number(pStock.value),
+
   min:Number(pMin.value)
+
  };
+
 
  products.push(p);
 
+
  e.target.reset();
+
+ pMin.value=5;
 
  save();
 
- alert("Product added successfully");
+
+ alert("✅ Product added successfully");
+
+ showPage("products");
+
 }
 
+
+/* =========================
+   RENDER PRODUCTS
+========================= */
+
+function renderProducts(){
+
+ let search=
+ document
+ .getElementById("productSearch")
+ .value
+ .toLowerCase();
+
+
+ let filtered=
+ products.filter(p=>
+ p.name.toLowerCase().includes(search)
+ );
+
+
+ productList.innerHTML=
+ filtered.map(p=>`
+
+ <div class="product-item">
+
+  <div class="product-info">
+
+   <b>${p.name}</b>
+
+   <small>
+   ${p.category || "General"}
+   • Buy ${money(p.buy)}
+   • Sell ${money(p.sell)}
+   </small>
+
+   <br>
+
+   <span class="badge ${
+    p.stock<=p.min ? "low":"good"
+   }">
+
+   Stock: ${p.stock}
+
+   </span>
+
+  </div>
+
+  <button
+  class="add-btn"
+  onclick="quickAdd(${p.id})">
+
+  + Add
+
+  </button>
+
+ </div>
+
+ `).join("");
+
+
+}
+
+
+/* =========================
+   PURCHASE
+========================= */
 
 function addPurchase(e){
 
  e.preventDefault();
 
- let id=Number(purchaseProduct.value);
- let p=products.find(x=>x.id===id);
+
+ let id=Number(
+  purchaseProduct.value
+ );
+
+ let p=products.find(
+  x=>x.id===id
+ );
+
 
  if(!p)return;
 
- let qty=Number(purchaseQty.value);
- let price=Number(purchasePrice.value);
+
+ let qty=
+ Number(purchaseQty.value);
+
+ let price=
+ Number(purchasePrice.value);
+
+
+ if(qty<=0)return;
+
 
  p.stock+=qty;
 
+
  purchases.push({
+
   date:today(),
+
   product:p.name,
+
   qty:qty,
+
   price:price,
+
   total:qty*price
+
  });
+
 
  e.target.reset();
 
  save();
 
- alert("Purchase saved");
+
+ alert("✅ Purchase saved");
+
 }
 
 
-function addSale(e){
+/* =========================
+   SALE PRODUCT SEARCH
+========================= */
 
- e.preventDefault();
+function renderSaleProducts(){
 
- let id=Number(saleProduct.value);
- let p=products.find(x=>x.id===id);
+ let search=
+ document
+ .getElementById("saleSearch")
+ .value
+ .toLowerCase();
+
+
+ let filtered=
+ products.filter(p=>
+ p.name.toLowerCase().includes(search)
+ );
+
+
+ saleProductList.innerHTML=
+ filtered.map(p=>`
+
+ <div class="product-item">
+
+  <div class="product-info">
+
+   <b>${p.name}</b>
+
+   <small>
+   Sell ${money(p.sell)}
+   • Stock ${p.stock}
+   </small>
+
+  </div>
+
+  <button
+  class="add-btn"
+  onclick="addToCart(${p.id})">
+
+  + Add
+
+  </button>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* =========================
+   ADD CART
+========================= */
+
+function addToCart(id){
+
+ let p=
+ products.find(x=>x.id===id);
 
  if(!p)return;
 
- let qty=Number(saleQty.value);
 
- if(qty>p.stock){
-  alert("❌ Not enough stock");
-  return;
+ let item=
+ cart.find(x=>x.id===id);
+
+
+ if(item){
+
+  if(item.qty < p.stock){
+   item.qty++;
+  }
+
+ }else{
+
+  cart.push({
+   id:p.id,
+   qty:1
+  });
+
  }
 
- let total=qty*p.sell;
- let cost=qty*p.buy;
 
- p.stock-=qty;
+ renderCart();
 
- sales.push({
-  date:today(),
-  product:p.name,
-  qty:qty,
-  sell:p.sell,
-  cost:p.buy,
-  total:total,
-  profit:total-cost,
-  payment:payment.value
+}
+
+
+/* =========================
+   QUICK ADD
+========================= */
+
+function quickAdd(id){
+
+ showPage("sales");
+
+ addToCart(id);
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function renderCart(){
+
+ let box=
+ document.getElementById("cart");
+
+
+ if(cart.length===0){
+
+  box.innerHTML=
+  `<div class="card">
+  🛒 Cart is empty
+  </div>`;
+
+  cartSubtotal.innerText=money(0);
+  cartTotal.innerText=money(0);
+
+  return;
+
+ }
+
+
+ let subtotal=0;
+
+
+ box.innerHTML=
+ cart.map(item=>{
+
+  let p=
+  products.find(x=>x.id===item.id);
+
+  if(!p)return "";
+
+
+  let amount=
+  p.sell*item.qty;
+
+  subtotal+=amount;
+
+
+  return `
+
+  <div class="cart-item">
+
+   <div class="cart-top">
+
+    <div>
+
+     <b>${p.name}</b>
+
+     <br>
+
+     <small>
+     ${money(p.sell)} × ${item.qty}
+     </small>
+
+    </div>
+
+    <b>${money(amount)}</b>
+
+   </div>
+
+
+   <div class="qty-row">
+
+    <button
+    class="qty-btn"
+    onclick="changeQty(${p.id},-1)">
+    −
+    </button>
+
+    <b>${item.qty}</b>
+
+    <button
+    class="qty-btn"
+    onclick="changeQty(${p.id},1)">
+    +
+    </button>
+
+    <button
+    class="remove-btn"
+    onclick="removeCart(${p.id})">
+
+    Remove
+
+    </button>
+
+   </div>
+
+  </div>
+
+  `;
+
+ }).join("");
+
+
+ let discount=
+ Number(
+  document.getElementById("discount").value || 0
+ );
+
+
+ if(discount>subtotal){
+
+  discount=subtotal;
+
+  document.getElementById("discount").value=
+  subtotal;
+
+ }
+
+
+ let total=
+ subtotal-discount;
+
+
+ cartSubtotal.innerText=
+ money(subtotal);
+
+ cartTotal.innerText=
+ money(total);
+
+}
+
+
+/* =========================
+   CHANGE QTY
+========================= */
+
+function changeQty(id,change){
+
+ let item=
+ cart.find(x=>x.id===id);
+
+ let p=
+ products.find(x=>x.id===id);
+
+ if(!item || !p)return;
+
+
+ let newQty=
+ item.qty+change;
+
+
+ if(newQty<=0){
+
+  removeCart(id);
+
+  return;
+
+ }
+
+
+ if(newQty>p.stock){
+
+  alert("❌ Not enough stock");
+
+  return;
+
+ }
+
+
+ item.qty=newQty;
+
+ renderCart();
+
+}
+
+
+/* =========================
+   REMOVE CART
+========================= */
+
+function removeCart(id){
+
+ cart=
+ cart.filter(x=>x.id!==id);
+
+ renderCart();
+
+}
+
+
+/* =========================
+   COMPLETE SALE
+========================= */
+
+function completeSale(e){
+
+ e.preventDefault();
+
+
+ if(cart.length===0){
+
+  alert("❌ Cart is empty");
+
+  return;
+
+ }
+
+
+ let subtotal=0;
+ let totalCost=0;
+
+
+ for(let item of cart){
+
+  let p=
+  products.find(x=>x.id===item.id);
+
+  if(!p)continue;
+
+
+  if(item.qty>p.stock){
+
+   alert(
+    "❌ Not enough stock: "+
+    p.name
+   );
+
+   return;
+
+  }
+
+
+  subtotal+=
+  p.sell*item.qty;
+
+  totalCost+=
+  p.buy*item.qty;
+
+ }
+
+
+ let discount=
+ Number(
+  document.getElementById("discount").value || 0
+ );
+
+
+ if(discount>subtotal){
+  discount=subtotal;
+ }
+
+
+ let total=
+ subtotal-discount;
+
+
+ let discountRatio=
+ subtotal>0
+ ? discount/subtotal
+ :0;
+
+
+ let profit=
+ (subtotal-totalCost)
+ -
+ discount;
+
+
+ let invoiceNo=
+ "INV-"+String(sales.length+1)
+ .padStart(5,"0");
+
+
+ let items=
+ cart.map(item=>{
+
+  let p=
+  products.find(x=>x.id===item.id);
+
+  p.stock-=item.qty;
+
+
+  return {
+
+   product:p.name,
+
+   qty:item.qty,
+
+   price:p.sell,
+
+   cost:p.buy,
+
+   amount:p.sell*item.qty
+
+  };
+
  });
 
- e.target.reset();
+
+ let sale={
+
+  id:Date.now(),
+
+  invoice:invoiceNo,
+
+  date:today(),
+
+  time:new Date()
+  .toLocaleTimeString(),
+
+  customer:
+  document.getElementById("customerName").value,
+
+  phone:
+  document.getElementById("customerPhone").value,
+
+  items:items,
+
+  subtotal:subtotal,
+
+  discount:discount,
+
+  total:total,
+
+  cost:totalCost,
+
+  profit:profit,
+
+  payment:
+  document.getElementById("payment").value
+
+ };
+
+
+ sales.push(sale);
+
 
  save();
 
- alert("Sale completed");
+
+ printInvoice(sale);
+
+
+ cart=[];
+
+ e.target.reset();
+
+ document.getElementById("discount").value=0;
+
+ renderCart();
+
+ renderSaleProducts();
+
+
+ alert(
+  "✅ Sale completed\n"+
+  "Invoice: "+invoiceNo
+ );
+
 }
 
+
+/* =========================
+   PRINT INVOICE
+========================= */
+
+function printInvoice(sale){
+
+ let html=`
+
+ <div class="invoice">
+
+ <h2>🏪 SHOP POS PRO</h2>
+
+ <div style="text-align:center">
+ Invoice: ${sale.invoice}<br>
+ ${sale.date} ${sale.time}
+ </div>
+
+ <hr>
+
+ ${
+ sale.customer
+ ? `<div>Customer: ${sale.customer}</div>`
+ : ""
+ }
+
+ ${
+ sale.phone
+ ? `<div>Phone: ${sale.phone}</div>`
+ : ""
+ }
+
+ <hr>
+
+ ${
+ sale.items.map(x=>`
+
+ <div class="invoice-line">
+
+ <span>
+ ${x.product} × ${x.qty}
+ </span>
+
+ <span>
+ ${money(x.amount)}
+ </span>
+
+ </div>
+
+ `).join("")
+ }
+
+ <hr>
+
+ <div class="invoice-line">
+
+ <span>Subtotal</span>
+
+ <span>${money(sale.subtotal)}</span>
+
+ </div>
+
+ <div class="invoice-line">
+
+ <span>Discount</span>
+
+ <span>${money(sale.discount)}</span>
+
+ </div>
+
+ <div class="invoice-line invoice-total">
+
+ <span>TOTAL</span>
+
+ <span>${money(sale.total)}</span>
+
+ </div>
+
+ <div class="invoice-line">
+
+ <span>Payment</span>
+
+ <span>${sale.payment}</span>
+
+ </div>
+
+ <br>
+
+ <div style="text-align:center">
+ Thank You! Visit Again 😊
+ </div>
+
+ </div>
+
+ `;
+
+
+ printArea.innerHTML=html;
+
+
+ setTimeout(()=>{
+
+  window.print();
+
+ },300);
+
+}
+
+
+/* =========================
+   EXPENSE
+========================= */
 
 function addExpense(e){
 
  e.preventDefault();
 
+
  expenses.push({
+
   date:today(),
-  name:expenseName.value,
-  amount:Number(expenseAmount.value)
+
+  name:
+  expenseName.value,
+
+  amount:
+  Number(expenseAmount.value)
+
  });
+
 
  e.target.reset();
 
  save();
 
- alert("Expense saved");
+
+ alert("✅ Expense saved");
+
 }
 
 
+/* =========================
+   UPDATE
+========================= */
+
 function update(){
 
- /* PRODUCT TABLE */
+ renderProducts();
 
- productTable.innerHTML="";
+
+ /* SELECT */
+
+ let options=
+ `<option value="">
+ Select Product
+ </option>`;
+
 
  products.forEach(p=>{
 
-  productTable.innerHTML+=`
-  <tr>
-   <td>${p.name}</td>
-   <td>${money(p.buy)}</td>
-   <td>${money(p.sell)}</td>
-   <td>
-    ${p.stock}
-    ${p.stock<=p.min
-      ? '<span class="badge low">LOW</span>'
-      : '<span class="badge good">OK</span>'}
-   </td>
-  </tr>`;
- });
+  options+=`
 
+  <option value="${p.id}">
 
- /* PRODUCT SELECTS */
-
- let options='<option value="">Select Product</option>';
-
- products.forEach(p=>{
-  options+=`<option value="${p.id}">
   ${p.name} — Stock: ${p.stock}
-  </option>`;
+
+  </option>
+
+  `;
+
  });
 
- purchaseProduct.innerHTML=options;
- saleProduct.innerHTML=options;
+
+ purchaseProduct.innerHTML=
+ options;
 
 
  /* TODAY */
 
- let ts=sales.filter(x=>x.date===today());
+ let ts=
+ sales.filter(
+  x=>x.date===today()
+ );
 
- let salesToday=ts.reduce((a,b)=>a+b.total,0);
- let profitToday=ts.reduce((a,b)=>a+b.profit,0);
 
- let cash=ts.filter(x=>x.payment==="Cash")
-            .reduce((a,b)=>a+b.total,0);
+ let salesToday=
+ ts.reduce(
+  (a,b)=>a+b.total,0
+ );
 
- let upi=ts.filter(x=>x.payment==="UPI")
-           .reduce((a,b)=>a+b.total,0);
 
- todaySales.innerText=money(salesToday);
- todayProfit.innerText=money(profitToday);
- cashTotal.innerText=money(cash);
- upiTotal.innerText=money(upi);
+ let profitToday=
+ ts.reduce(
+  (a,b)=>a+b.profit,0
+ );
 
- productCount.innerText=products.length;
+
+ let cash=
+ ts.filter(
+  x=>x.payment==="Cash"
+ ).reduce(
+  (a,b)=>a+b.total,0
+ );
+
+
+ let upi=
+ ts.filter(
+  x=>x.payment==="UPI"
+ ).reduce(
+  (a,b)=>a+b.total,0
+ );
+
+
+ todaySales.innerText=
+ money(salesToday);
+
+ todayProfit.innerText=
+ money(profitToday);
+
+ cashTotal.innerText=
+ money(cash);
+
+ upiTotal.innerText=
+ money(upi);
+
+
+ productCount.innerText=
+ products.length;
 
 
  /* STOCK VALUE */
 
- let stockVal=products.reduce(
-  (a,p)=>a+(p.stock*p.buy),0
+ let stockVal=
+ products.reduce(
+  (a,p)=>
+  a+(p.stock*p.buy),0
  );
 
- stockValue.innerText=money(stockVal);
+
+ stockValue.innerText=
+ money(stockVal);
 
 
  /* LOW STOCK */
 
- let lows=products.filter(p=>p.stock<=p.min);
+ let lows=
+ products.filter(
+  p=>p.stock<=p.min
+ );
 
- lowStock.innerHTML=lows.length
+
+ lowStock.innerHTML=
+ lows.length
+
  ? `<div class="alert">
-     ⚠️ <b>Low Stock Alert</b><br>
-     ${lows.map(p=>p.name+" ("+p.stock+")").join(", ")}
-    </div>`
+
+ ⚠️ <b>Low Stock Alert</b><br><br>
+
+ ${lows.map(
+  p=>`${p.name} (${p.stock})`
+ ).join(", ")}
+
+ </div>`
+
  : "";
 
 
  /* REPORTS */
 
- let totalSales=sales.reduce((a,b)=>a+b.total,0);
-
- let totalPurchase=purchases.reduce(
+ let totalSales=
+ sales.reduce(
   (a,b)=>a+b.total,0
  );
 
- let gross=sales.reduce(
+
+ let totalPurchase=
+ purchases.reduce(
+  (a,b)=>a+b.total,0
+ );
+
+
+ let gross=
+ sales.reduce(
   (a,b)=>a+b.profit,0
  );
 
- let totalExpense=expenses.reduce(
+
+ let totalExpense=
+ expenses.reduce(
   (a,b)=>a+b.amount,0
  );
 
- let net=gross-totalExpense;
 
- reportSales.innerText=money(totalSales);
- reportPurchase.innerText=money(totalPurchase);
- reportGross.innerText=money(gross);
- reportExpense.innerText=money(totalExpense);
- reportNet.innerText=money(net);
+ let net=
+ gross-totalExpense;
 
 
- /* HISTORY */
+ reportSales.innerText=
+ money(totalSales);
 
- saleHistory.innerHTML=sales.slice().reverse().map(x=>
- `<div class="card">
-  ${x.product} × ${x.qty}<br>
-  ${money(x.total)} — ${x.payment}<br>
-  <small>Profit: ${money(x.profit)} | ${x.date}</small>
- </div><br>`
- ).join("");
+ reportPurchase.innerText=
+ money(totalPurchase);
 
+ reportGross.innerText=
+ money(gross);
 
- purchaseHistory.innerHTML=purchases.slice().reverse().map(x=>
- `<div class="card">
-  ${x.product} × ${x.qty}<br>
-  ${money(x.total)}<br>
-  <small>${x.date}</small>
- </div><br>`
- ).join("");
+ reportExpense.innerText=
+ money(totalExpense);
+
+ reportNet.innerText=
+ money(net);
 
 
- expenseHistory.innerHTML=expenses.slice().reverse().map(x=>
- `<div class="card">
-  ${x.name}<br>
-  ${money(x.amount)}<br>
-  <small>${x.date}</small>
- </div><br>`
- ).join("");
+ /* EXPENSE HISTORY */
+
+ expenseHistory.innerHTML=
+ expenses
+ .slice()
+ .reverse()
+ .map(x=>`
+
+ <div class="card">
+
+ <b>${x.name}</b>
+
+ <br>
+
+ ${money(x.amount)}
+
+ <br>
+
+ <small>${x.date}</small>
+
+ </div>
+
+ `).join("");
+
+
+ /* SALES HISTORY */
+
+ saleHistory.innerHTML=
+ sales
+ .slice()
+ .reverse()
+ .map(x=>`
+
+ <div class="card">
+
+ <b>${x.invoice}</b>
+
+ <br>
+
+ ${x.items
+  ? x.items.map(i=>
+    `${i.product} × ${i.qty}`
+   ).join("<br>")
+  : x.product
+ }
+
+ <br><br>
+
+ <b>${money(x.total)}</b>
+
+ • ${x.payment}
+
+ <br>
+
+ <small>
+ Profit: ${money(x.profit)}
+ • ${x.date}
+ </small>
+
+ </div>
+
+ `).join("");
+
+
+ /* PURCHASE HISTORY */
+
+ purchaseHistory.innerHTML=
+ purchases
+ .slice()
+ .reverse()
+ .map(x=>`
+
+ <div class="card">
+
+ <b>${x.product}</b>
+
+ <br>
+
+ ${x.qty} × ${money(x.price)}
+
+ <br>
+
+ <b>${money(x.total)}</b>
+
+ <br>
+
+ <small>${x.date}</small>
+
+ </div>
+
+ `).join("");
+
 }
 
+
+/* INITIAL */
+
 update();
+
+renderSaleProducts();
+
+renderCart();
 
 </script>
 
