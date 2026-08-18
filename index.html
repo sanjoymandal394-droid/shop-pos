@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-<title>Diamond Shop POS</title>
+<title>Diamond Shop POS Pro</title>
 
 <style>
 
-*{
- box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 :root{
  --bg:#070b18;
@@ -23,32 +22,105 @@
  --green:#22c55e;
  --red:#ef4444;
  --gold:#facc15;
+ --pink:#ec4899;
  --text:#f8fafc;
  --muted:#94a3b8;
  --border:#27324d;
 }
 
-body{
+html,body{
  margin:0;
+ padding:0;
+ min-height:100%;
+}
+
+body{
+ font-family:Arial,sans-serif;
  background:
- radial-gradient(circle at 20% 0%,#312e8155,transparent 35%),
- radial-gradient(circle at 100% 20%,#0891b233,transparent 35%),
+ radial-gradient(circle at 10% 0%,#312e8155,transparent 35%),
+ radial-gradient(circle at 100% 10%,#0891b233,transparent 35%),
  var(--bg);
  color:var(--text);
- font-family:Arial,sans-serif;
  padding-bottom:82px;
- min-height:100vh;
 }
+
+/* LOGIN */
+
+#loginScreen{
+ position:fixed;
+ inset:0;
+ z-index:9999;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:
+ radial-gradient(circle at 20% 20%,#7c3aed55,transparent 35%),
+ radial-gradient(circle at 90% 80%,#06b6d444,transparent 35%),
+ #050816;
+}
+
+.loginBox{
+ width:100%;
+ max-width:390px;
+ padding:28px;
+ border-radius:28px;
+ background:
+ linear-gradient(145deg,#151e36,#090f20);
+ border:1px solid #ffffff16;
+ box-shadow:
+ 0 30px 80px #000b,
+ inset 0 1px #ffffff10;
+ text-align:center;
+}
+
+.loginDiamond{
+ width:75px;
+ height:75px;
+ margin:auto auto 15px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:39px;
+ border-radius:23px;
+ background:
+ linear-gradient(135deg,#67e8f9,#8b5cf6,#ec4899);
+ box-shadow:
+ 0 0 30px #8b5cf699,
+ 0 0 70px #22d3ee33;
+}
+
+.loginBox h1{
+ margin:5px 0;
+}
+
+.loginBox p{
+ color:var(--muted);
+ margin-bottom:25px;
+}
+
+.loginBox input{
+ text-align:center;
+ letter-spacing:3px;
+}
+
+.loginError{
+ color:#fca5a5;
+ min-height:20px;
+ font-size:13px;
+}
+
+/* HEADER */
 
 header{
  position:sticky;
  top:0;
- z-index:50;
- padding:17px 16px;
+ z-index:100;
+ padding:15px;
  background:
  linear-gradient(135deg,#111827ee,#1e1b4bee);
- border-bottom:1px solid #ffffff18;
- box-shadow:0 8px 30px #0008,inset 0 -1px #ffffff0a;
+ border-bottom:1px solid #ffffff15;
+ box-shadow:0 8px 30px #0008;
  backdrop-filter:blur(15px);
 }
 
@@ -56,6 +128,16 @@ header{
  display:flex;
  align-items:center;
  gap:11px;
+}
+
+.menuBtn{
+ width:43px;
+ height:43px;
+ border:0;
+ border-radius:14px;
+ background:#ffffff0d;
+ color:white;
+ font-size:22px;
 }
 
 .diamond{
@@ -73,19 +155,131 @@ header{
  font-size:23px;
 }
 
-header h1{
+.brand h1{
  margin:0;
- font-size:20px;
+ font-size:19px;
 }
 
-header small{
+.brand small{
  color:#a5b4fc;
  display:block;
  margin-top:3px;
 }
 
+/* DRAWER */
+
+.drawerOverlay{
+ position:fixed;
+ inset:0;
+ background:#0009;
+ z-index:500;
+ display:none;
+}
+
+.drawerOverlay.show{
+ display:block;
+}
+
+.drawer{
+ position:fixed;
+ top:0;
+ bottom:0;
+ left:-310px;
+ width:290px;
+ z-index:600;
+ background:
+ linear-gradient(180deg,#111a30,#080d1c);
+ border-right:1px solid #ffffff14;
+ box-shadow:20px 0 60px #000b;
+ transition:.28s ease;
+ padding:20px 14px;
+ overflow-y:auto;
+}
+
+.drawer.open{
+ left:0;
+}
+
+.drawerTop{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:20px;
+}
+
+.drawerTitle{
+ display:flex;
+ align-items:center;
+ gap:10px;
+}
+
+.drawerTitle .miniDiamond{
+ width:42px;
+ height:42px;
+ border-radius:13px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:linear-gradient(135deg,#22d3ee,#8b5cf6);
+}
+
+.closeDrawer{
+ border:0;
+ background:#ffffff0d;
+ color:white;
+ width:38px;
+ height:38px;
+ border-radius:10px;
+ font-size:20px;
+}
+
+.drawerSection{
+ color:#64748b;
+ font-size:11px;
+ text-transform:uppercase;
+ margin:17px 8px 8px;
+ letter-spacing:1px;
+}
+
+.drawerItem{
+ width:100%;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ border:1px solid transparent;
+ background:transparent;
+ color:#cbd5e1;
+ padding:12px;
+ border-radius:13px;
+ text-align:left;
+ margin-bottom:5px;
+ font-size:14px;
+}
+
+.drawerItem:hover,
+.drawerItem.active{
+ background:
+ linear-gradient(135deg,#7c3aed33,#0891b233);
+ border-color:#ffffff10;
+ color:white;
+ box-shadow:0 6px 18px #0004;
+}
+
+.drawerItem span{
+ font-size:20px;
+ width:27px;
+ text-align:center;
+}
+
+.logout{
+ margin-top:20px;
+ color:#fca5a5;
+}
+
+/* MAIN */
+
 main{
- max-width:720px;
+ max-width:760px;
  margin:auto;
  padding:15px;
 }
@@ -102,7 +296,7 @@ main{
 @keyframes fade{
  from{
   opacity:0;
-  transform:translateY(5px);
+  transform:translateY(6px);
  }
  to{
   opacity:1;
@@ -119,52 +313,7 @@ h3{
  margin-top:18px;
 }
 
-.cards{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:11px;
-}
-
-.card{
- position:relative;
- overflow:hidden;
- background:
- linear-gradient(145deg,#121a30,#0d1325);
- border:1px solid #ffffff10;
- padding:16px;
- border-radius:18px;
- box-shadow:
- 0 8px 25px #0005,
- inset 0 1px #ffffff08;
- margin-bottom:11px;
-}
-
-.card::after{
- content:"";
- position:absolute;
- width:70px;
- height:70px;
- right:-30px;
- top:-30px;
- background:#8b5cf622;
- border-radius:50%;
- filter:blur(4px);
-}
-
-.card small{
- color:var(--muted);
-}
-
-.card strong{
- display:block;
- margin-top:7px;
- font-size:21px;
-}
-
-.card .emoji{
- font-size:23px;
- margin-bottom:8px;
-}
+/* HERO */
 
 .hero{
  padding:20px;
@@ -172,8 +321,7 @@ h3{
  margin-bottom:15px;
  background:
  linear-gradient(135deg,#312e81,#7c3aed,#0891b2);
- box-shadow:
- 0 15px 45px #7c3aed55;
+ box-shadow:0 15px 45px #7c3aed55;
  position:relative;
  overflow:hidden;
 }
@@ -202,6 +350,45 @@ h3{
  color:#e0f2fe;
 }
 
+/* CARDS */
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:11px;
+}
+
+.card{
+ position:relative;
+ overflow:hidden;
+ background:
+ linear-gradient(145deg,#121a30,#0d1325);
+ border:1px solid #ffffff10;
+ padding:16px;
+ border-radius:18px;
+ box-shadow:
+ 0 8px 25px #0005,
+ inset 0 1px #ffffff08;
+ margin-bottom:11px;
+}
+
+.card small{
+ color:var(--muted);
+}
+
+.card strong{
+ display:block;
+ margin-top:7px;
+ font-size:21px;
+}
+
+.emoji{
+ font-size:23px;
+ margin-bottom:8px;
+}
+
+/* FORM */
+
 form{
  background:
  linear-gradient(145deg,#11192d,#0d1427);
@@ -212,8 +399,7 @@ form{
  margin-bottom:15px;
 }
 
-input,
-select{
+input,select{
  width:100%;
  padding:13px;
  margin:6px 0 10px;
@@ -225,12 +411,9 @@ select{
  outline:none;
 }
 
-input:focus,
-select:focus{
+input:focus,select:focus{
  border-color:var(--cyan);
- box-shadow:
- 0 0 0 3px #22d3ee18,
- 0 0 15px #22d3ee22;
+ box-shadow:0 0 0 3px #22d3ee18;
 }
 
 button{
@@ -256,21 +439,19 @@ button{
 }
 
 .green{
- background:
- linear-gradient(135deg,#16a34a,#059669);
- box-shadow:0 8px 20px #10b98144;
+ background:linear-gradient(135deg,#16a34a,#059669);
 }
 
 .red{
- background:
- linear-gradient(135deg,#dc2626,#be123c);
+ background:linear-gradient(135deg,#dc2626,#be123c);
 }
 
 .gold{
- background:
- linear-gradient(135deg,#eab308,#f97316);
+ background:linear-gradient(135deg,#eab308,#f97316);
  color:#171717;
 }
+
+/* SEARCH */
 
 .search{
  position:relative;
@@ -287,7 +468,10 @@ button{
  left:14px;
  top:13px;
  font-size:18px;
+ z-index:2;
 }
+
+/* PRODUCT */
 
 .product{
  display:flex;
@@ -310,6 +494,7 @@ button{
 
 .product small{
  color:var(--muted);
+ line-height:1.5;
 }
 
 .add{
@@ -321,7 +506,84 @@ button{
  border-radius:10px;
  font-weight:bold;
  box-shadow:0 5px 15px #8b5cf644;
+ white-space:nowrap;
 }
+
+/* CATALOG */
+
+.catalogHeader{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:10px;
+}
+
+.catalogCount{
+ color:#94a3b8;
+ font-size:12px;
+}
+
+.categoryBar{
+ display:flex;
+ gap:7px;
+ overflow-x:auto;
+ padding-bottom:8px;
+ margin-bottom:10px;
+}
+
+.categoryBar button{
+ flex:0 0 auto;
+ border:1px solid #ffffff12;
+ background:#11192d;
+ color:#94a3b8;
+ padding:8px 12px;
+ border-radius:20px;
+}
+
+.categoryBar button.active{
+ color:white;
+ background:linear-gradient(135deg,#7c3aed,#0891b2);
+}
+
+/* AUTOCOMPLETE */
+
+.autocomplete{
+ position:relative;
+}
+
+.suggestions{
+ position:absolute;
+ left:0;
+ right:0;
+ top:58px;
+ z-index:40;
+ max-height:260px;
+ overflow-y:auto;
+ background:#0c1426;
+ border:1px solid #334155;
+ border-radius:13px;
+ box-shadow:0 15px 40px #000a;
+ display:none;
+}
+
+.suggestion{
+ padding:12px;
+ border-bottom:1px solid #ffffff0a;
+}
+
+.suggestion:last-child{
+ border-bottom:0;
+}
+
+.suggestion b{
+ display:block;
+}
+
+.suggestion small{
+ color:#94a3b8;
+}
+
+/* CART */
 
 .cart{
  background:
@@ -332,9 +594,10 @@ button{
  margin-bottom:9px;
 }
 
-.cart-head{
+.cartHead{
  display:flex;
  justify-content:space-between;
+ gap:10px;
 }
 
 .qty{
@@ -387,28 +650,7 @@ button{
  color:#67e8f9;
 }
 
-.badge{
- display:inline-block;
- padding:5px 9px;
- border-radius:20px;
- font-size:11px;
- font-weight:bold;
-}
-
-.good{
- background:#064e3b;
- color:#86efac;
-}
-
-.low{
- background:#7f1d1d;
- color:#fecaca;
-}
-
-.info{
- background:#172554;
- color:#93c5fd;
-}
+/* ALERT */
 
 .alert{
  padding:13px;
@@ -419,6 +661,8 @@ button{
  color:#fde68a;
  margin:12px 0;
 }
+
+/* QUICK */
 
 .quick{
  display:grid;
@@ -434,8 +678,12 @@ button{
  padding:17px 10px;
  border-radius:15px;
  font-size:14px;
- box-shadow:0 5px 20px #0004;
+ box-shadow:
+ 0 7px 18px #0005,
+ inset 0 1px #ffffff0b;
 }
+
+/* REPORT */
 
 .report-card{
  background:
@@ -453,34 +701,40 @@ button{
  color:#67e8f9;
 }
 
+/* BOTTOM 3D NAV */
+
 .bottom{
  position:fixed;
- left:0;
- right:0;
- bottom:0;
- height:76px;
+ left:8px;
+ right:8px;
+ bottom:8px;
+ height:70px;
  display:flex;
  justify-content:space-around;
  align-items:center;
  background:
- linear-gradient(180deg,#0d1428f5,#070b18);
- border-top:1px solid #ffffff14;
- box-shadow:0 -8px 30px #0008;
+ linear-gradient(180deg,#111a31f5,#080d1cf5);
+ border:1px solid #ffffff15;
+ border-radius:22px;
+ box-shadow:
+ 0 15px 40px #000b,
+ inset 0 1px #ffffff0b;
  backdrop-filter:blur(18px);
- z-index:100;
+ z-index:300;
 }
 
 .nav{
  border:0;
- background:none;
+ background:transparent;
  color:#64748b;
- min-width:58px;
+ min-width:55px;
  display:flex;
  flex-direction:column;
  align-items:center;
- gap:4px;
+ gap:3px;
  font-size:10px;
- padding:7px;
+ padding:6px;
+ transition:.2s;
 }
 
 .nav .icon{
@@ -492,13 +746,25 @@ button{
 }
 
 .nav.active .icon{
- filter:drop-shadow(0 0 8px #22d3ee);
- transform:translateY(-2px);
+ transform:
+ translateY(-5px)
+ scale(1.18);
+ filter:
+ drop-shadow(0 0 6px #22d3ee)
+ drop-shadow(0 5px 8px #000);
 }
 
-#printArea{
- display:none;
+.nav.active:after{
+ content:"";
+ width:25px;
+ height:4px;
+ border-radius:10px;
+ background:
+ linear-gradient(90deg,#22d3ee,#8b5cf6);
+ box-shadow:0 0 10px #22d3ee;
 }
+
+/* DESKTOP */
 
 @media(min-width:800px){
 
@@ -509,14 +775,18 @@ button{
  .bottom{
   top:0;
   bottom:0;
+  left:0;
   right:auto;
   width:210px;
   height:100vh;
+  border-radius:0;
+  border-top:0;
+  border-left:0;
+  border-bottom:0;
+  border-right:1px solid #ffffff12;
   flex-direction:column;
   justify-content:flex-start;
-  padding-top:110px;
-  border-top:0;
-  border-right:1px solid #ffffff12;
+  padding-top:100px;
  }
 
  .nav{
@@ -528,10 +798,6 @@ button{
   font-size:13px;
  }
 
- .nav .icon{
-  font-size:20px;
- }
-
  header{
   margin-left:210px;
  }
@@ -541,6 +807,12 @@ button{
   max-width:1000px;
  }
 
+}
+
+/* PRINT */
+
+#printArea{
+ display:none;
 }
 
 @media print{
@@ -584,9 +856,62 @@ button{
 
 <body>
 
+
+<!-- LOGIN -->
+
+<div id="loginScreen">
+
+<div class="loginBox">
+
+<div class="loginDiamond">💎</div>
+
+<h1>Diamond Shop POS</h1>
+
+<p>Owner Login</p>
+
+<input
+id="loginPin"
+type="password"
+inputmode="numeric"
+maxlength="6"
+placeholder="Enter PIN"
+onkeydown="if(event.key==='Enter')login()">
+
+<div
+id="loginError"
+class="loginError">
+</div>
+
+<button
+class="primary"
+onclick="login()">
+
+🔐 LOGIN
+
+</button>
+
+<br><br>
+
+<small style="color:#64748b">
+First login: create your 4–6 digit PIN
+</small>
+
+</div>
+
+</div>
+
+
+<!-- HEADER -->
+
 <header>
 
 <div class="brand">
+
+<button
+class="menuBtn"
+onclick="openDrawer()">
+☰
+</button>
 
 <div class="diamond">💎</div>
 
@@ -594,7 +919,9 @@ button{
 
 <h1>Diamond Shop POS</h1>
 
-<small>Smart • Fast • Professional</small>
+<small>
+Smart • Fast • Professional
+</small>
 
 </div>
 
@@ -603,12 +930,159 @@ button{
 </header>
 
 
+<!-- DRAWER -->
+
+<div
+id="drawerOverlay"
+class="drawerOverlay"
+onclick="closeDrawer()">
+</div>
+
+
+<aside
+id="drawer"
+class="drawer">
+
+<div class="drawerTop">
+
+<div class="drawerTitle">
+
+<div class="miniDiamond">💎</div>
+
+<div>
+<b>Diamond POS</b>
+<br>
+<small style="color:#64748b">
+Mini Market
+</small>
+</div>
+
+</div>
+
+<button
+class="closeDrawer"
+onclick="closeDrawer()">
+×
+</button>
+
+</div>
+
+
+<div class="drawerSection">
+MAIN MENU
+</div>
+
+
+<button
+class="drawerItem active"
+onclick="drawerPage('home')">
+
+<span>🏠</span>
+Dashboard
+
+</button>
+
+
+<button
+class="drawerItem"
+onclick="drawerPage('products')">
+
+<span>📦</span>
+Products
+
+</button>
+
+
+<button
+class="drawerItem"
+onclick="drawerPage('sales')">
+
+<span>💰</span>
+New Sale
+
+</button>
+
+
+<button
+class="drawerItem"
+onclick="drawerPage('purchase')">
+
+<span>🛒</span>
+Purchase
+
+</button>
+
+
+<button
+class="drawerItem"
+onclick="drawerPage('reports')">
+
+<span>📊</span>
+Reports
+
+</button>
+
+
+<button
+class="drawerItem"
+onclick="drawerPage('expense')">
+
+<span>💸</span>
+Expenses
+
+</button>
+
+
+<div class="drawerSection">
+PRODUCT CATALOG
+</div>
+
+
+<button
+class="drawerItem"
+onclick="drawerPage('catalog')">
+
+<span>🛍️</span>
+Mini Market Items
+
+</button>
+
+
+<button
+class="drawerItem"
+onclick="drawerPage('catalogWholesale')">
+
+<span>🏪</span>
+Wholesale Items
+
+</button>
+
+
+<div class="drawerSection">
+ACCOUNT
+</div>
+
+
+<button
+class="drawerItem logout"
+onclick="logout()">
+
+<span>🔐</span>
+Logout
+
+</button>
+
+</aside>
+
+
 <main>
 
 
 <!-- HOME -->
 
-<section id="home" class="page active">
+<section
+id="home"
+class="page active">
 
 <div class="hero">
 
@@ -616,7 +1090,9 @@ button{
 
 <h2>Shop Dashboard</h2>
 
-<p>Manage your business smarter.</p>
+<p>
+Manage your business smarter.
+</p>
 
 </div>
 
@@ -624,39 +1100,80 @@ button{
 <div class="cards">
 
 <div class="card">
+
 <div class="emoji">💰</div>
+
 <small>Today's Sales</small>
-<strong id="todaySales">₹0.00</strong>
+
+<strong id="todaySales">
+₹0.00
+</strong>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">📈</div>
+
 <small>Today's Profit</small>
-<strong id="todayProfit">₹0.00</strong>
+
+<strong id="todayProfit">
+₹0.00
+</strong>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">💵</div>
+
 <small>Cash</small>
-<strong id="cashTotal">₹0.00</strong>
+
+<strong id="cashTotal">
+₹0.00
+</strong>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">📱</div>
+
 <small>UPI</small>
-<strong id="upiTotal">₹0.00</strong>
+
+<strong id="upiTotal">
+₹0.00
+</strong>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">📦</div>
+
 <small>Stock Value</small>
-<strong id="stockValue">₹0.00</strong>
+
+<strong id="stockValue">
+₹0.00
+</strong>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">💎</div>
+
 <small>Total Products</small>
-<strong id="productCount">0</strong>
+
+<strong id="productCount">
+0
+</strong>
+
 </div>
 
 </div>
@@ -666,6 +1183,7 @@ button{
 
 
 <h3>⚡ Quick Actions</h3>
+
 
 <div class="quick">
 
@@ -681,8 +1199,8 @@ button{
 🛒<br>Purchase
 </button>
 
-<button onclick="showPage('reports')">
-📊<br>Reports
+<button onclick="showPage('catalog')">
+🛍️<br>Catalog
 </button>
 
 </div>
@@ -692,28 +1210,67 @@ button{
 
 <!-- PRODUCTS -->
 
-<section id="products" class="page">
+<section
+id="products"
+class="page">
 
 <h2>📦 Products</h2>
 
-<form onsubmit="addProduct(event)">
 
-<input id="pName" placeholder="Product Name" required>
+<form
+onsubmit="addProduct(event)">
 
-<input id="pCategory" placeholder="Category">
+<div class="autocomplete">
 
-<input id="pBuy" type="number" step="0.01"
-placeholder="Purchase Price" required>
+<input
+id="pName"
+placeholder="Type product name..."
+autocomplete="off"
+required
+oninput="productSuggestions()">
 
-<input id="pSell" type="number" step="0.01"
-placeholder="Selling Price" required>
+<div
+id="productSuggestions"
+class="suggestions">
+</div>
 
-<input id="pStock" type="number"
-placeholder="Opening Stock" required>
+</div>
 
-<input id="pMin" type="number"
+
+<input
+id="pCategory"
+placeholder="Category">
+
+
+<input
+id="pBuy"
+type="number"
+step="0.01"
+placeholder="Purchase Price"
+required>
+
+
+<input
+id="pSell"
+type="number"
+step="0.01"
+placeholder="Selling Price"
+required>
+
+
+<input
+id="pStock"
+type="number"
+placeholder="Opening Stock"
+required>
+
+
+<input
+id="pMin"
+type="number"
 value="5"
 placeholder="Minimum Stock">
+
 
 <button class="primary">
 💎 Add Product
@@ -726,8 +1283,9 @@ placeholder="Minimum Stock">
 
 <span>🔍</span>
 
-<input id="productSearch"
-placeholder="Search products..."
+<input
+id="productSearch"
+placeholder="Search your products..."
 oninput="renderProducts()">
 
 </div>
@@ -738,26 +1296,140 @@ oninput="renderProducts()">
 </section>
 
 
+<!-- CATALOG -->
+
+<section
+id="catalog"
+class="page">
+
+<div class="catalogHeader">
+
+<h2>🛍️ Mini Market</h2>
+
+<span
+class="catalogCount"
+id="catalogCount">
+</span>
+
+</div>
+
+
+<div class="categoryBar"
+id="miniCategories">
+</div>
+
+
+<div class="search">
+
+<span>🔍</span>
+
+<input
+id="catalogSearch"
+placeholder="Search item..."
+oninput="renderCatalog()">
+
+</div>
+
+
+<div id="catalogList"></div>
+
+</section>
+
+
+<!-- WHOLESALE -->
+
+<section
+id="catalogWholesale"
+class="page">
+
+<div class="catalogHeader">
+
+<h2>🏪 Wholesale</h2>
+
+<span
+class="catalogCount"
+id="wholesaleCount">
+</span>
+
+</div>
+
+
+<div class="categoryBar"
+id="wholesaleCategories">
+</div>
+
+
+<div class="search">
+
+<span>🔍</span>
+
+<input
+id="wholesaleSearch"
+placeholder="Search wholesale item..."
+oninput="renderWholesale()">
+
+</div>
+
+
+<div id="wholesaleList"></div>
+
+</section>
+
+
 <!-- PURCHASE -->
 
-<section id="purchase" class="page">
+<section
+id="purchase"
+class="page">
 
 <h2>🛒 Purchase</h2>
 
-<form onsubmit="addPurchase(event)">
 
-<select id="purchaseProduct" required></select>
+<form
+onsubmit="addPurchase(event)">
 
-<input id="purchaseQty"
+<div class="autocomplete">
+
+<input
+id="purchaseName"
+placeholder="Type product name..."
+autocomplete="off"
+oninput="purchaseSuggestions()"
+required>
+
+<div
+id="purchaseSuggestions"
+class="suggestions">
+</div>
+
+</div>
+
+
+<select
+id="purchaseProduct"
+required>
+
+<option value="">
+Select Product
+</option>
+
+</select>
+
+
+<input
+id="purchaseQty"
 type="number"
 placeholder="Quantity"
 required>
 
-<input id="purchasePrice"
+
+<input
+id="purchasePrice"
 type="number"
 step="0.01"
 placeholder="Purchase Price"
 required>
+
 
 <button class="primary">
 📥 Save Purchase
@@ -765,14 +1437,17 @@ required>
 
 </form>
 
+
 <div id="purchaseHistory"></div>
 
 </section>
 
 
-<!-- SALE -->
+<!-- SALES -->
 
-<section id="sales" class="page">
+<section
+id="sales"
+class="page">
 
 <div class="hero">
 
@@ -780,7 +1455,9 @@ required>
 
 <h2>💰 New Sale</h2>
 
-<p>Search product and add to cart.</p>
+<p>
+Search product and add to cart.
+</p>
 
 </div>
 
@@ -789,7 +1466,8 @@ required>
 
 <span>🔍</span>
 
-<input id="saleSearch"
+<input
+id="saleSearch"
 placeholder="Search product..."
 oninput="renderSaleProducts()">
 
@@ -801,6 +1479,7 @@ oninput="renderSaleProducts()">
 
 <h3>🛒 Shopping Cart</h3>
 
+
 <div id="cart"></div>
 
 
@@ -810,14 +1489,17 @@ oninput="renderSaleProducts()">
 
 <span>Subtotal</span>
 
-<b id="cartSubtotal">₹0.00</b>
+<b id="cartSubtotal">
+₹0.00
+</b>
 
 </div>
 
 
 <label>💸 Discount</label>
 
-<input id="discount"
+<input
+id="discount"
 type="number"
 step="0.01"
 value="0"
@@ -829,39 +1511,57 @@ oninput="renderCart()">
 
 <span>Grand Total</span>
 
-<b id="cartTotal">₹0.00</b>
+<b id="cartTotal">
+₹0.00
+</b>
 
 </div>
 
 </div>
 
 
-<form onsubmit="completeSale(event)">
+<form
+onsubmit="completeSale(event)">
 
-<h3>👤 Customer Details</h3>
+<h3>👤 Customer</h3>
 
-<input id="customerName"
+
+<input
+id="customerName"
 placeholder="Customer Name">
 
-<input id="customerPhone"
+
+<input
+id="customerPhone"
 placeholder="Phone Number">
 
 
 <select id="payment">
 
-<option value="Cash">💵 Cash</option>
+<option value="Cash">
+💵 Cash
+</option>
 
-<option value="UPI">📱 UPI</option>
+<option value="UPI">
+📱 UPI
+</option>
 
-<option value="Card">💳 Card</option>
+<option value="Card">
+💳 Card
+</option>
 
-<option value="Credit">📒 Credit</option>
+<option value="Credit">
+📒 Credit
+</option>
 
 </select>
 
 
-<button class="primary green">
+<button
+class="primary green">
+
 🧾 COMPLETE SALE
+
 </button>
 
 </form>
@@ -869,9 +1569,11 @@ placeholder="Phone Number">
 </section>
 
 
-<!-- REPORTS -->
+<!-- REPORT -->
 
-<section id="reports" class="page">
+<section
+id="reports"
+class="page">
 
 <h2>📊 Business Reports</h2>
 
@@ -880,7 +1582,9 @@ placeholder="Phone Number">
 
 <small>Total Sales</small>
 
-<strong id="reportSales">₹0.00</strong>
+<strong id="reportSales">
+₹0.00
+</strong>
 
 </div>
 
@@ -889,7 +1593,9 @@ placeholder="Phone Number">
 
 <small>Total Purchase</small>
 
-<strong id="reportPurchase">₹0.00</strong>
+<strong id="reportPurchase">
+₹0.00
+</strong>
 
 </div>
 
@@ -898,7 +1604,9 @@ placeholder="Phone Number">
 
 <small>Gross Profit</small>
 
-<strong id="reportGross">₹0.00</strong>
+<strong id="reportGross">
+₹0.00
+</strong>
 
 </div>
 
@@ -907,7 +1615,9 @@ placeholder="Phone Number">
 
 <small>Total Expenses</small>
 
-<strong id="reportExpense">₹0.00</strong>
+<strong id="reportExpense">
+₹0.00
+</strong>
 
 </div>
 
@@ -916,7 +1626,9 @@ placeholder="Phone Number">
 
 <small>Net Profit</small>
 
-<strong id="reportNet">₹0.00</strong>
+<strong id="reportNet">
+₹0.00
+</strong>
 
 </div>
 
@@ -925,34 +1637,34 @@ placeholder="Phone Number">
 
 <div id="saleHistory"></div>
 
-
-<button class="primary red"
-onclick="showPage('expense')">
-
-💸 Manage Expenses
-
-</button>
-
 </section>
 
 
 <!-- EXPENSE -->
 
-<section id="expense" class="page">
+<section
+id="expense"
+class="page">
 
 <h2>💸 Expenses</h2>
 
-<form onsubmit="addExpense(event)">
 
-<input id="expenseName"
+<form
+onsubmit="addExpense(event)">
+
+<input
+id="expenseName"
 placeholder="Expense Name"
 required>
 
-<input id="expenseAmount"
+
+<input
+id="expenseAmount"
 type="number"
 step="0.01"
 placeholder="Amount"
 required>
+
 
 <button class="primary red">
 💸 Save Expense
@@ -969,11 +1681,12 @@ required>
 </main>
 
 
-<!-- BOTTOM NAV -->
+<!-- BOTTOM -->
 
 <nav class="bottom">
 
-<button class="nav active"
+<button
+class="nav active"
 onclick="showPage('home')">
 
 <span class="icon">🏠</span>
@@ -982,7 +1695,8 @@ onclick="showPage('home')">
 </button>
 
 
-<button class="nav"
+<button
+class="nav"
 onclick="showPage('products')">
 
 <span class="icon">📦</span>
@@ -991,7 +1705,8 @@ onclick="showPage('products')">
 </button>
 
 
-<button class="nav"
+<button
+class="nav"
 onclick="showPage('purchase')">
 
 <span class="icon">🛒</span>
@@ -1000,7 +1715,8 @@ onclick="showPage('purchase')">
 </button>
 
 
-<button class="nav"
+<button
+class="nav"
 onclick="showPage('sales')">
 
 <span class="icon">💰</span>
@@ -1009,7 +1725,8 @@ onclick="showPage('sales')">
 </button>
 
 
-<button class="nav"
+<button
+class="nav"
 onclick="showPage('reports')">
 
 <span class="icon">📊</span>
@@ -1025,20 +1742,264 @@ onclick="showPage('reports')">
 
 <script>
 
-let products =
-JSON.parse(localStorage.getItem("products") || "[]");
+/* =========================
+   DATA
+========================= */
 
-let sales =
-JSON.parse(localStorage.getItem("sales") || "[]");
+let products=
+JSON.parse(
+ localStorage.getItem("products") || "[]"
+);
 
-let purchases =
-JSON.parse(localStorage.getItem("purchases") || "[]");
+let sales=
+JSON.parse(
+ localStorage.getItem("sales") || "[]"
+);
 
-let expenses =
-JSON.parse(localStorage.getItem("expenses") || "[]");
+let purchases=
+JSON.parse(
+ localStorage.getItem("purchases") || "[]"
+);
+
+let expenses=
+JSON.parse(
+ localStorage.getItem("expenses") || "[]"
+);
 
 let cart=[];
 
+let selectedMiniCategory="All";
+let selectedWholesaleCategory="All";
+
+
+/* =========================
+   PRODUCT CATALOG
+========================= */
+
+const catalog=[
+
+["Rice","Food","চাল"],
+["Atta","Food","আটা"],
+["Maida","Food","ময়দা"],
+["Suji","Food","সুজি"],
+["Dal","Food","ডাল"],
+["Moong Dal","Food","মুগ ডাল"],
+["Masoor Dal","Food","মসুর ডাল"],
+["Chana Dal","Food","ছোলা ডাল"],
+["Sugar","Food","চিনি"],
+["Salt","Food","লবণ"],
+["Mustard Oil","Oil","সরিষার তেল"],
+["Soybean Oil","Oil","সয়াবিন তেল"],
+["Sunflower Oil","Oil","সানফ্লাওয়ার তেল"],
+["Ghee","Food","ঘি"],
+["Tea","Beverage","চা"],
+["Coffee","Beverage","কফি"],
+["Milk Powder","Dairy","দুধের গুঁড়ো"],
+["Biscuit","Snacks","বিস্কুট"],
+["Parle-G","Snacks","পার্লে জি"],
+["Marie Biscuit","Snacks","মেরি বিস্কুট"],
+["Cream Biscuit","Snacks","ক্রিম বিস্কুট"],
+["Bread","Bakery","পাউরুটি"],
+["Toast","Bakery","টোস্ট"],
+["Cake","Bakery","কেক"],
+["Noodles","Food","নুডলস"],
+["Pasta","Food","পাস্তা"],
+["Chips","Snacks","চিপস"],
+["Chanachur","Snacks","চানাচুর"],
+["Chocolate","Snacks","চকলেট"],
+["Candy","Snacks","ক্যান্ডি"],
+["Soft Drink","Beverage","কোল্ড ড্রিংক"],
+["Mineral Water","Beverage","মিনারেল ওয়াটার"],
+["Juice","Beverage","জুস"],
+["Soap","Personal Care","সাবান"],
+["Shampoo","Personal Care","শ্যাম্পু"],
+["Toothpaste","Personal Care","টুথপেস্ট"],
+["Toothbrush","Personal Care","টুথব্রাশ"],
+["Hair Oil","Personal Care","চুলের তেল"],
+["Face Wash","Personal Care","ফেসওয়াশ"],
+["Detergent","Cleaning","ডিটারজেন্ট"],
+["Washing Powder","Cleaning","ওয়াশিং পাউডার"],
+["Dishwash","Cleaning","বাসন ধোয়ার লিকুইড"],
+["Toilet Cleaner","Cleaning","টয়লেট ক্লিনার"],
+["Floor Cleaner","Cleaning","ফ্লোর ক্লিনার"],
+["Phenyl","Cleaning","ফিনাইল"],
+["Tissue","Household","টিস্যু"],
+["Toilet Paper","Household","টয়লেট পেপার"],
+["Matchbox","Household","দেশলাই"],
+["Candle","Household","মোমবাতি"],
+["Battery","Household","ব্যাটারি"],
+["Mosquito Coil","Household","মশার কয়েল"],
+["Agartala","Household","আগরবাতি"],
+["Aluminium Foil","Household","অ্যালুমিনিয়াম ফয়েল"],
+["Plastic Bag","Household","প্লাস্টিক ব্যাগ"],
+
+["Rice 25kg","Wholesale","চাল ২৫ কেজি"],
+["Rice 50kg","Wholesale","চাল ৫০ কেজি"],
+["Atta 25kg","Wholesale","আটা ২৫ কেজি"],
+["Sugar 50kg","Wholesale","চিনি ৫০ কেজি"],
+["Salt 25kg","Wholesale","লবণ ২৫ কেজি"],
+["Oil 15L","Wholesale","তেল ১৫ লিটার"],
+["Oil 20L","Wholesale","তেল ২০ লিটার"],
+["Dal 25kg","Wholesale","ডাল ২৫ কেজি"],
+["Biscuit Carton","Wholesale","বিস্কুট কার্টন"],
+["Noodles Carton","Wholesale","নুডলস কার্টন"],
+["Soap Box","Wholesale","সাবান বক্স"],
+["Shampoo Carton","Wholesale","শ্যাম্পু কার্টন"],
+["Detergent Carton","Wholesale","ডিটারজেন্ট কার্টন"],
+["Water Carton","Wholesale","জলের কার্টন"],
+["Soft Drink Crate","Wholesale","কোল্ড ড্রিংক ক্রেট"]
+
+];
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function checkLogin(){
+
+ return localStorage.getItem("diamondLoggedIn")==="yes";
+
+}
+
+
+function setupLogin(){
+
+ if(checkLogin()){
+
+  document
+  .getElementById("loginScreen")
+  .style.display="none";
+
+ }
+
+}
+
+
+function login(){
+
+ let pin=
+ document
+ .getElementById("loginPin")
+ .value.trim();
+
+
+ let saved=
+ localStorage.getItem("diamondPIN");
+
+
+ if(!saved){
+
+  if(pin.length<4){
+
+   loginError.innerText=
+   "PIN must be at least 4 digits.";
+
+   return;
+
+  }
+
+  localStorage.setItem(
+   "diamondPIN",
+   pin
+  );
+
+  localStorage.setItem(
+   "diamondLoggedIn",
+   "yes"
+  );
+
+  loginError.innerText="";
+
+  document
+  .getElementById("loginScreen")
+  .style.display="none";
+
+  alert(
+   "💎 PIN created successfully!"
+  );
+
+  return;
+
+ }
+
+
+ if(pin===saved){
+
+  localStorage.setItem(
+   "diamondLoggedIn",
+   "yes"
+  );
+
+  loginError.innerText="";
+
+  document
+  .getElementById("loginScreen")
+  .style.display="none";
+
+ }else{
+
+  loginError.innerText=
+  "❌ Incorrect PIN";
+
+ }
+
+}
+
+
+function logout(){
+
+ localStorage.removeItem(
+  "diamondLoggedIn"
+ );
+
+ document
+ .getElementById("loginPin")
+ .value="";
+
+ document
+ .getElementById("loginScreen")
+ .style.display="flex";
+
+ closeDrawer();
+
+}
+
+
+/* =========================
+   DRAWER
+========================= */
+
+function openDrawer(){
+
+ drawer.classList.add("open");
+
+ drawerOverlay.classList.add("show");
+
+}
+
+
+function closeDrawer(){
+
+ drawer.classList.remove("open");
+
+ drawerOverlay.classList.remove("show");
+
+}
+
+
+function drawerPage(id){
+
+ showPage(id);
+
+ closeDrawer();
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
 
 function save(){
 
@@ -1067,9 +2028,15 @@ function save(){
 }
 
 
+/* =========================
+   HELPERS
+========================= */
+
 function money(n){
 
- return "₹"+Number(n||0).toFixed(2);
+ return "₹"+
+ Number(n||0)
+ .toFixed(2);
 
 }
 
@@ -1082,6 +2049,10 @@ function today(){
 
 }
 
+
+/* =========================
+   PAGE
+========================= */
 
 function showPage(id){
 
@@ -1129,12 +2100,30 @@ function showPage(id){
  }
 
 
+ if(id==="catalog"){
+
+  renderCatalog();
+
+ }
+
+
+ if(id==="catalogWholesale"){
+
+  renderWholesale();
+
+ }
+
+
  update();
 
  window.scrollTo(0,0);
 
 }
 
+
+/* =========================
+   ADD PRODUCT
+========================= */
 
 function addProduct(e){
 
@@ -1148,6 +2137,25 @@ function addProduct(e){
  if(!name)return;
 
 
+ let existing=
+ products.find(
+  p=>
+  p.name.toLowerCase()
+  ===name.toLowerCase()
+ );
+
+
+ if(existing){
+
+  alert(
+   "⚠️ Product already exists."
+  );
+
+  return;
+
+ }
+
+
  products.push({
 
   id:Date.now(),
@@ -1155,7 +2163,8 @@ function addProduct(e){
   name:name,
 
   category:
-  pCategory.value.trim(),
+  pCategory.value.trim() ||
+  "General",
 
   buy:Number(pBuy.value),
 
@@ -1173,6 +2182,13 @@ function addProduct(e){
  pMin.value=5;
 
 
+ document
+ .getElementById(
+  "productSuggestions"
+ )
+ .style.display="none";
+
+
  save();
 
 
@@ -1183,13 +2199,289 @@ function addProduct(e){
 }
 
 
+/* =========================
+   PRODUCT SUGGESTION
+========================= */
+
+function productSuggestions(){
+
+ let q=
+ pName.value
+ .trim()
+ .toLowerCase();
+
+
+ if(q.length<1){
+
+  productSuggestionsBox([]);
+
+  return;
+
+ }
+
+
+ let results=
+ catalog
+ .filter(x=>
+  x[0]
+  .toLowerCase()
+  .includes(q)
+ )
+ .slice(0,8);
+
+
+ productSuggestionsBox(results);
+
+}
+
+
+function productSuggestionsBox(results){
+
+ let box=
+ document
+ .getElementById(
+  "productSuggestions"
+ );
+
+
+ if(!results.length){
+
+  box.style.display="none";
+
+  return;
+
+ }
+
+
+ box.innerHTML=
+ results.map(x=>`
+
+ <div
+ class="suggestion"
+ onclick='selectCatalogProduct(${JSON.stringify(x)})'>
+
+ <b>${x[0]}</b>
+
+ <small>
+ ${x[1]} • ${x[2]}
+ </small>
+
+ </div>
+
+ `).join("");
+
+
+ box.style.display="block";
+
+}
+
+
+function selectCatalogProduct(x){
+
+ pName.value=x[0];
+
+ pCategory.value=x[1];
+
+ document
+ .getElementById(
+  "productSuggestions"
+ )
+ .style.display="none";
+
+}
+
+
+/* =========================
+   PURCHASE SUGGESTION
+========================= */
+
+function purchaseSuggestions(){
+
+ let q=
+ purchaseName.value
+ .trim()
+ .toLowerCase();
+
+
+ if(q.length<1){
+
+  document
+  .getElementById(
+   "purchaseSuggestions"
+  )
+  .style.display="none";
+
+  return;
+
+ }
+
+
+ let results=
+ products
+ .filter(
+  p=>
+  p.name
+  .toLowerCase()
+  .includes(q)
+ )
+ .slice(0,8);
+
+
+ if(!results.length){
+
+  results=
+  catalog
+  .filter(
+   x=>
+   x[0]
+   .toLowerCase()
+   .includes(q)
+  )
+  .slice(0,8);
+
+  document
+  .getElementById(
+   "purchaseSuggestions"
+  )
+  .innerHTML=
+  results.map(x=>`
+
+  <div
+   class="suggestion"
+   onclick='selectPurchaseCatalog(${JSON.stringify(x)})'>
+
+   <b>${x[0]}</b>
+
+   <small>
+   ${x[1]} • Tap to use this name
+   </small>
+
+  </div>
+
+  `).join("");
+
+ }else{
+
+  document
+  .getElementById(
+   "purchaseSuggestions"
+  )
+  .innerHTML=
+  results.map(p=>`
+
+  <div
+   class="suggestion"
+   onclick='selectPurchaseProduct(${p.id})'>
+
+   <b>${p.name}</b>
+
+   <small>
+   Stock: ${p.stock}
+   • Buy ${money(p.buy)}
+   </small>
+
+  </div>
+
+  `).join("");
+
+ }
+
+
+ document
+ .getElementById(
+  "purchaseSuggestions"
+ )
+ .style.display="block";
+
+}
+
+
+function selectPurchaseProduct(id){
+
+ let p=
+ products.find(
+  x=>x.id===id
+ );
+
+
+ if(!p)return;
+
+
+ purchaseName.value=
+ p.name;
+
+
+ purchaseProduct.value=
+ p.id;
+
+
+ purchasePrice.value=
+ p.buy;
+
+
+ document
+ .getElementById(
+  "purchaseSuggestions"
+ )
+ .style.display="none";
+
+}
+
+
+function selectPurchaseCatalog(x){
+
+ purchaseName.value=x[0];
+
+ purchasePrice.value="";
+
+
+ let existing=
+ products.find(
+  p=>
+  p.name.toLowerCase()
+  ===x[0].toLowerCase()
+ );
+
+
+ if(existing){
+
+  purchaseProduct.value=
+  existing.id;
+
+  purchasePrice.value=
+  existing.buy;
+
+ }else{
+
+  purchaseProduct.innerHTML=
+  `<option value="">
+  Product not added yet
+  </option>`;
+
+ }
+
+
+ document
+ .getElementById(
+  "purchaseSuggestions"
+ )
+ .style.display="none";
+
+}
+
+
+/* =========================
+   PRODUCTS LIST
+========================= */
+
 function renderProducts(){
 
  let search=
  (
   document
-  .getElementById("productSearch")
-  ?.value || ""
+  .getElementById(
+   "productSearch"
+  )?.value || ""
  )
  .toLowerCase();
 
@@ -1214,7 +2506,7 @@ function renderProducts(){
 
  <small>
 
- ${p.category || "General"}
+ ${p.category}
 
  <br>
 
@@ -1225,7 +2517,8 @@ function renderProducts(){
 
  <br><br>
 
- <span class="badge ${
+ <span
+ class="badge ${
   p.stock<=p.min
   ?"low"
   :"good"
@@ -1250,8 +2543,288 @@ function renderProducts(){
 
  `).join("");
 
+
+ if(!filtered.length){
+
+  productList.innerHTML=
+  `<div class="card">
+  📦 No product found.
+  </div>`;
+
+ }
+
 }
 
+
+/* =========================
+   CATALOG
+========================= */
+
+function getMiniCategories(){
+
+ return [
+  "All",
+  ...new Set(
+   catalog
+   .filter(x=>x[1]!=="Wholesale")
+   .map(x=>x[1])
+  )
+ ];
+
+}
+
+
+function getWholesaleCategories(){
+
+ return [
+  "All",
+  ...new Set(
+   catalog
+   .filter(x=>x[1]==="Wholesale")
+   .map(x=>x[1])
+  )
+ ];
+
+}
+
+
+function renderCategoryButtons(
+ target,
+ categories,
+ selected,
+ callback
+){
+
+ document
+ .getElementById(target)
+ .innerHTML=
+ categories.map(c=>`
+
+ <button
+ class="${
+  c===selected
+  ?"active"
+  :""
+ }"
+ onclick="${callback}('${c}')">
+
+ ${c}
+
+ </button>
+
+ `).join("");
+
+}
+
+
+function selectMiniCategory(c){
+
+ selectedMiniCategory=c;
+
+ renderCatalog();
+
+}
+
+
+function selectWholesaleCategory(c){
+
+ selectedWholesaleCategory=c;
+
+ renderWholesale();
+
+}
+
+
+function renderCatalog(){
+
+ let q=
+ (
+  document
+  .getElementById(
+   "catalogSearch"
+  )?.value || ""
+ )
+ .toLowerCase();
+
+
+ renderCategoryButtons(
+  "miniCategories",
+  getMiniCategories(),
+  selectedMiniCategory,
+  "selectMiniCategory"
+ );
+
+
+ let list=
+ catalog.filter(
+  x=>x[1]!=="Wholesale"
+ );
+
+
+ if(selectedMiniCategory!=="All"){
+
+  list=
+  list.filter(
+   x=>x[1]===selectedMiniCategory
+  );
+
+ }
+
+
+ if(q){
+
+  list=
+  list.filter(
+   x=>
+   x[0]
+   .toLowerCase()
+   .includes(q) ||
+   x[2]
+   .toLowerCase()
+   .includes(q)
+  );
+
+ }
+
+
+ catalogCount.innerText=
+ list.length+" items";
+
+
+ catalogList.innerHTML=
+ list.map(x=>`
+
+ <div class="product">
+
+ <div>
+
+ <b>${x[0]}</b>
+
+ <small>
+ ${x[2]}
+ <br>
+ Category: ${x[1]}
+ </small>
+
+ </div>
+
+
+ <button
+ class="add"
+ onclick='useCatalog(${JSON.stringify(x)})'>
+
+ + Use
+
+ </button>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+function renderWholesale(){
+
+ let q=
+ (
+  document
+  .getElementById(
+   "wholesaleSearch"
+  )?.value || ""
+ )
+ .toLowerCase();
+
+
+ renderCategoryButtons(
+  "wholesaleCategories",
+  getWholesaleCategories(),
+  selectedWholesaleCategory,
+  "selectWholesaleCategory"
+ );
+
+
+ let list=
+ catalog.filter(
+  x=>x[1]==="Wholesale"
+ );
+
+
+ if(q){
+
+  list=
+  list.filter(
+   x=>
+   x[0]
+   .toLowerCase()
+   .includes(q) ||
+   x[2]
+   .toLowerCase()
+   .includes(q)
+  );
+
+ }
+
+
+ wholesaleCount.innerText=
+ list.length+" items";
+
+
+ wholesaleList.innerHTML=
+ list.map(x=>`
+
+ <div class="product">
+
+ <div>
+
+ <b>${x[0]}</b>
+
+ <small>
+ ${x[2]}
+ <br>
+ Wholesale Item
+ </small>
+
+ </div>
+
+
+ <button
+ class="add"
+ onclick='useCatalog(${JSON.stringify(x)})'>
+
+ + Use
+
+ </button>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+function useCatalog(x){
+
+ showPage("products");
+
+
+ pName.value=x[0];
+
+ pCategory.value=x[1];
+
+ pName.focus();
+
+ alert(
+  "💎 "+x[0]+
+  " selected. Now enter Buy, Sell and Stock."
+ );
+
+}
+
+
+/* =========================
+   PURCHASE
+========================= */
 
 function addPurchase(e){
 
@@ -1259,7 +2832,9 @@ function addPurchase(e){
 
 
  let id=
- Number(purchaseProduct.value);
+ Number(
+  purchaseProduct.value
+ );
 
 
  let p=
@@ -1268,7 +2843,15 @@ function addPurchase(e){
  );
 
 
- if(!p)return;
+ if(!p){
+
+  alert(
+   "⚠️ First add this product in Products."
+  );
+
+  return;
+
+ }
 
 
  let qty=
@@ -1279,9 +2862,11 @@ function addPurchase(e){
  Number(purchasePrice.value);
 
 
- if(qty<=0){
+ if(qty<=0||price<0){
 
-  alert("Enter valid quantity");
+  alert(
+   "Enter valid purchase details."
+  );
 
   return;
 
@@ -1289,6 +2874,9 @@ function addPurchase(e){
 
 
  p.stock+=qty;
+
+
+ p.buy=price;
 
 
  purchases.push({
@@ -1309,21 +2897,35 @@ function addPurchase(e){
  e.target.reset();
 
 
+ document
+ .getElementById(
+  "purchaseSuggestions"
+ )
+ .style.display="none";
+
+
  save();
 
 
- alert("✅ Purchase saved!");
+ alert(
+  "✅ Purchase saved!"
+ );
 
 }
 
+
+/* =========================
+   SALE PRODUCTS
+========================= */
 
 function renderSaleProducts(){
 
  let search=
  (
   document
-  .getElementById("saleSearch")
-  ?.value || ""
+  .getElementById(
+   "saleSearch"
+  )?.value || ""
  )
  .toLowerCase();
 
@@ -1352,7 +2954,8 @@ function renderSaleProducts(){
 
  <br>
 
- Available Stock: ${p.stock}
+ Available Stock:
+ ${p.stock}
 
  </small>
 
@@ -1371,8 +2974,22 @@ function renderSaleProducts(){
 
  `).join("");
 
+
+ if(!filtered.length){
+
+  saleProductList.innerHTML=
+  `<div class="card">
+  🔍 No matching product.
+  </div>`;
+
+ }
+
 }
 
+
+/* =========================
+   CART
+========================= */
 
 function addToCart(id){
 
@@ -1411,7 +3028,7 @@ function addToCart(id){
   }else{
 
    alert(
-    "❌ Maximum available stock reached"
+    "❌ Maximum stock reached"
    );
 
   }
@@ -1472,7 +3089,9 @@ function changeQty(id,change){
 
  if(q>p.stock){
 
-  alert("❌ Not enough stock");
+  alert(
+   "❌ Not enough stock"
+  );
 
   return;
 
@@ -1501,6 +3120,9 @@ function removeCart(id){
 function renderCart(){
 
  if(cart.length===0){
+
+  cart.innerHTML=
+  "";
 
   document
   .getElementById("cart")
@@ -1548,7 +3170,7 @@ function renderCart(){
 
   <div class="cart">
 
-  <div class="cart-head">
+  <div class="cartHead">
 
   <div>
 
@@ -1557,10 +3179,8 @@ function renderCart(){
   <br>
 
   <small>
-
   ${money(p.sell)}
   × ${item.qty}
-
   </small>
 
   </div>
@@ -1609,8 +3229,9 @@ function renderCart(){
  let discount=
  Number(
   document
-  .getElementById("discount")
-  .value || 0
+  .getElementById(
+   "discount"
+  ).value || 0
  );
 
 
@@ -1619,8 +3240,9 @@ function renderCart(){
   discount=subtotal;
 
   document
-  .getElementById("discount")
-  .value=subtotal;
+  .getElementById(
+   "discount"
+  ).value=subtotal;
 
  }
 
@@ -1639,6 +3261,10 @@ function renderCart(){
 }
 
 
+/* =========================
+   COMPLETE SALE
+========================= */
+
 function completeSale(e){
 
  e.preventDefault();
@@ -1647,7 +3273,7 @@ function completeSale(e){
  if(cart.length===0){
 
   alert(
-   "❌ Please add products to cart"
+   "❌ Please add products."
   );
 
   return;
@@ -1656,7 +3282,6 @@ function completeSale(e){
 
 
  let subtotal=0;
-
  let cost=0;
 
 
@@ -1696,8 +3321,9 @@ function completeSale(e){
  let discount=
  Number(
   document
-  .getElementById("discount")
-  .value || 0
+  .getElementById(
+   "discount"
+  ).value || 0
  );
 
 
@@ -1714,7 +3340,8 @@ function completeSale(e){
 
 
  let invoice=
- "INV-"+String(
+ "INV-"+
+ String(
   sales.length+1
  )
  .padStart(5,"0");
@@ -1792,7 +3419,7 @@ function completeSale(e){
  save();
 
 
- let shouldPrint=
+ let print=
  confirm(
   "💎 Sale completed!\n\n"+
   "Invoice: "+invoice+
@@ -1801,7 +3428,7 @@ function completeSale(e){
  );
 
 
- if(shouldPrint){
+ if(print){
 
   printInvoice(sale);
 
@@ -1824,6 +3451,10 @@ function completeSale(e){
 }
 
 
+/* =========================
+   PRINT
+========================= */
+
 function printInvoice(sale){
 
  printArea.innerHTML=`
@@ -1834,7 +3465,7 @@ function printInvoice(sale){
 
  <div style="text-align:center">
 
- Smart • Fast • Professional
+ Mini Market • Wholesale
 
  <br>
 
@@ -1875,8 +3506,7 @@ function printInvoice(sale){
 
 
  ${
- sale.items
- .map(i=>`
+ sale.items.map(i=>`
 
  <div class="line">
 
@@ -1966,6 +3596,10 @@ function printInvoice(sale){
 }
 
 
+/* =========================
+   EXPENSE
+========================= */
+
 function addExpense(e){
 
  e.preventDefault();
@@ -1990,10 +3624,16 @@ function addExpense(e){
  save();
 
 
- alert("✅ Expense saved!");
+ alert(
+  "✅ Expense saved!"
+ );
 
 }
 
+
+/* =========================
+   UPDATE
+========================= */
 
 function update(){
 
@@ -2184,7 +3824,9 @@ function update(){
 
  <div class="card">
 
- <b>🧾 ${x.invoice}</b>
+ <b>
+ 🧾 ${x.invoice || "SALE"}
+ </b>
 
  <br><br>
 
@@ -2234,7 +3876,9 @@ function update(){
 
  <div class="card">
 
- <b>💸 ${x.name}</b>
+ <b>
+ 💸 ${x.name}
+ </b>
 
  <br>
 
@@ -2242,7 +3886,9 @@ function update(){
 
  <br>
 
- <small>${x.date}</small>
+ <small>
+ ${x.date}
+ </small>
 
  </div>
 
@@ -2258,7 +3904,9 @@ function update(){
 
  <div class="card">
 
- <b>📥 ${x.product}</b>
+ <b>
+ 📥 ${x.product}
+ </b>
 
  <br>
 
@@ -2267,11 +3915,15 @@ function update(){
 
  <br>
 
- <b>${money(x.total)}</b>
+ <b>
+ ${money(x.total)}
+ </b>
 
  <br>
 
- <small>${x.date}</small>
+ <small>
+ ${x.date}
+ </small>
 
  </div>
 
@@ -2281,7 +3933,17 @@ function update(){
 }
 
 
+/* =========================
+   START
+========================= */
+
+setupLogin();
+
 update();
+
+renderCatalog();
+
+renderWholesale();
 
 renderSaleProducts();
 
