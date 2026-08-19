@@ -2,853 +2,1837 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#070b18">
 
 <title>Diamond Shop POS Pro</title>
 
 <style>
 
-*{box-sizing:border-box}
+/* =========================================================
+   DIAMOND SHOP POS PRO
+   SINGLE FILE VERSION
+========================================================= */
 
-:root{
- --bg:#070b18;
- --panel:#10172b;
- --panel2:#151e36;
- --purple:#8b5cf6;
- --violet:#a855f7;
- --cyan:#22d3ee;
- --blue:#3b82f6;
- --green:#22c55e;
- --red:#ef4444;
- --gold:#facc15;
- --pink:#ec4899;
- --text:#f8fafc;
- --muted:#94a3b8;
- --border:#27324d;
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
- margin:0;
- padding:0;
- min-height:100%;
+:root{
+  --bg:#070b18;
+  --bg2:#0b1120;
+  --panel:#10172b;
+  --panel2:#151e36;
+  --panel3:#1a2540;
+
+  --purple:#8b5cf6;
+  --violet:#a855f7;
+  --cyan:#22d3ee;
+  --blue:#3b82f6;
+  --green:#22c55e;
+  --red:#ef4444;
+  --gold:#facc15;
+  --orange:#f97316;
+  --pink:#ec4899;
+
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --border:#27324d;
+
+  --shadow:0 12px 35px #0008;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  min-height:100%;
 }
 
 body{
- font-family:Arial,sans-serif;
- background:
- radial-gradient(circle at 10% 0%,#312e8155,transparent 35%),
- radial-gradient(circle at 100% 10%,#0891b233,transparent 35%),
- var(--bg);
- color:var(--text);
- padding-bottom:82px;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 5% 0%,
+      #312e8155,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 100% 5%,
+      #0891b233,
+      transparent 30%
+    ),
+    var(--bg);
+
+  color:var(--text);
+
+  padding-bottom:90px;
 }
 
-/* LOGIN */
+button,
+input,
+select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(.97);
+}
+
+/* =========================================================
+   LOGIN
+========================================================= */
 
 #loginScreen{
- position:fixed;
- inset:0;
- z-index:9999;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:20px;
- background:
- radial-gradient(circle at 20% 20%,#7c3aed55,transparent 35%),
- radial-gradient(circle at 90% 80%,#06b6d444,transparent 35%),
- #050816;
+  position:fixed;
+  inset:0;
+  z-index:99999;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      #7c3aed66,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      #06b6d455,
+      transparent 35%
+    ),
+    #050816;
 }
 
 .loginBox{
- width:100%;
- max-width:390px;
- padding:28px;
- border-radius:28px;
- background:
- linear-gradient(145deg,#151e36,#090f20);
- border:1px solid #ffffff16;
- box-shadow:
- 0 30px 80px #000b,
- inset 0 1px #ffffff10;
- text-align:center;
+  width:100%;
+  max-width:400px;
+
+  padding:30px 24px;
+
+  border-radius:30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151e36,
+      #090f20
+    );
+
+  border:1px solid #ffffff18;
+
+  box-shadow:
+    0 35px 90px #000c,
+    inset 0 1px #ffffff12;
+
+  text-align:center;
 }
 
 .loginDiamond{
- width:75px;
- height:75px;
- margin:auto auto 15px;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:39px;
- border-radius:23px;
- background:
- linear-gradient(135deg,#67e8f9,#8b5cf6,#ec4899);
- box-shadow:
- 0 0 30px #8b5cf699,
- 0 0 70px #22d3ee33;
+  width:82px;
+  height:82px;
+
+  margin:0 auto 18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:42px;
+
+  border-radius:25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #67e8f9,
+      #8b5cf6 50%,
+      #ec4899
+    );
+
+  box-shadow:
+    0 0 35px #8b5cf699,
+    0 0 80px #22d3ee33;
 }
 
 .loginBox h1{
- margin:5px 0;
+  margin:5px 0;
+  font-size:25px;
 }
 
 .loginBox p{
- color:var(--muted);
- margin-bottom:25px;
+  margin:7px 0 25px;
+  color:var(--muted);
 }
 
 .loginBox input{
- text-align:center;
- letter-spacing:3px;
+  text-align:center;
+  letter-spacing:5px;
+  font-size:19px;
+}
+
+.loginHint{
+  margin-top:18px;
+  color:#64748b;
+  font-size:12px;
 }
 
 .loginError{
- color:#fca5a5;
- min-height:20px;
- font-size:13px;
+  min-height:20px;
+  color:#fca5a5;
+  font-size:13px;
+  margin:5px 0;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
- position:sticky;
- top:0;
- z-index:100;
- padding:15px;
- background:
- linear-gradient(135deg,#111827ee,#1e1b4bee);
- border-bottom:1px solid #ffffff15;
- box-shadow:0 8px 30px #0008;
- backdrop-filter:blur(15px);
+  position:sticky;
+  top:0;
+  z-index:500;
+
+  padding:12px 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #111827ee,
+      #1e1b4bee
+    );
+
+  border-bottom:1px solid #ffffff15;
+
+  box-shadow:0 8px 30px #0008;
+
+  backdrop-filter:blur(18px);
+}
+
+.headerInner{
+  max-width:1200px;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
 }
 
 .brand{
- display:flex;
- align-items:center;
- gap:11px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .menuBtn{
- width:43px;
- height:43px;
- border:0;
- border-radius:14px;
- background:#ffffff0d;
- color:white;
- font-size:22px;
+  width:43px;
+  height:43px;
+
+  border:0;
+  border-radius:14px;
+
+  background:#ffffff0d;
+  color:white;
+
+  font-size:22px;
 }
 
 .diamond{
- width:43px;
- height:43px;
- display:flex;
- align-items:center;
- justify-content:center;
- border-radius:14px;
- background:
- linear-gradient(135deg,#67e8f9,#8b5cf6 50%,#ec4899);
- box-shadow:
- 0 0 20px #8b5cf688,
- 0 0 45px #22d3ee33;
- font-size:23px;
+  width:43px;
+  height:43px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #67e8f9,
+      #8b5cf6 50%,
+      #ec4899
+    );
+
+  box-shadow:
+    0 0 20px #8b5cf688,
+    0 0 45px #22d3ee33;
+
+  font-size:23px;
 }
 
 .brand h1{
- margin:0;
- font-size:19px;
+  margin:0;
+  font-size:18px;
 }
 
 .brand small{
- color:#a5b4fc;
- display:block;
- margin-top:3px;
+  display:block;
+  margin-top:3px;
+  color:#a5b4fc;
+  font-size:11px;
 }
 
-/* DRAWER */
+.headerActions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.headerBtn{
+  width:40px;
+  height:40px;
+
+  border:1px solid #ffffff12;
+  border-radius:12px;
+
+  background:#ffffff08;
+  color:white;
+
+  font-size:18px;
+}
+
+/* =========================================================
+   DRAWER
+========================================================= */
 
 .drawerOverlay{
- position:fixed;
- inset:0;
- background:#0009;
- z-index:500;
- display:none;
+  position:fixed;
+  inset:0;
+
+  background:#000a;
+
+  z-index:800;
+
+  display:none;
 }
 
 .drawerOverlay.show{
- display:block;
+  display:block;
 }
 
 .drawer{
- position:fixed;
- top:0;
- bottom:0;
- left:-310px;
- width:290px;
- z-index:600;
- background:
- linear-gradient(180deg,#111a30,#080d1c);
- border-right:1px solid #ffffff14;
- box-shadow:20px 0 60px #000b;
- transition:.28s ease;
- padding:20px 14px;
- overflow-y:auto;
+  position:fixed;
+
+  top:0;
+  bottom:0;
+  left:-320px;
+
+  width:300px;
+
+  z-index:900;
+
+  background:
+    linear-gradient(
+      180deg,
+      #111a30,
+      #080d1c
+    );
+
+  border-right:1px solid #ffffff14;
+
+  box-shadow:20px 0 60px #000b;
+
+  transition:.28s ease;
+
+  padding:18px 14px;
+
+  overflow-y:auto;
 }
 
 .drawer.open{
- left:0;
+  left:0;
 }
 
 .drawerTop{
- display:flex;
- align-items:center;
- justify-content:space-between;
- margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:20px;
 }
 
 .drawerTitle{
- display:flex;
- align-items:center;
- gap:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.drawerTitle .miniDiamond{
- width:42px;
- height:42px;
- border-radius:13px;
- display:flex;
- align-items:center;
- justify-content:center;
- background:linear-gradient(135deg,#22d3ee,#8b5cf6);
+.miniDiamond{
+  width:43px;
+  height:43px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #22d3ee,
+      #8b5cf6
+    );
 }
 
 .closeDrawer{
- border:0;
- background:#ffffff0d;
- color:white;
- width:38px;
- height:38px;
- border-radius:10px;
- font-size:20px;
+  width:38px;
+  height:38px;
+
+  border:0;
+  border-radius:11px;
+
+  background:#ffffff0d;
+  color:white;
+
+  font-size:20px;
 }
 
 .drawerSection{
- color:#64748b;
- font-size:11px;
- text-transform:uppercase;
- margin:17px 8px 8px;
- letter-spacing:1px;
+  color:#64748b;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  margin:18px 8px 8px;
+
+  letter-spacing:1.3px;
 }
 
 .drawerItem{
- width:100%;
- display:flex;
- align-items:center;
- gap:12px;
- border:1px solid transparent;
- background:transparent;
- color:#cbd5e1;
- padding:12px;
- border-radius:13px;
- text-align:left;
- margin-bottom:5px;
- font-size:14px;
+  width:100%;
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  border:1px solid transparent;
+
+  background:transparent;
+
+  color:#cbd5e1;
+
+  padding:12px;
+
+  border-radius:13px;
+
+  text-align:left;
+
+  margin-bottom:5px;
+
+  font-size:14px;
 }
 
 .drawerItem:hover,
 .drawerItem.active{
- background:
- linear-gradient(135deg,#7c3aed33,#0891b233);
- border-color:#ffffff10;
- color:white;
- box-shadow:0 6px 18px #0004;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed33,
+      #0891b233
+    );
+
+  border-color:#ffffff10;
+
+  color:white;
+
+  box-shadow:0 6px 18px #0004;
 }
 
 .drawerItem span{
- font-size:20px;
- width:27px;
- text-align:center;
+  width:27px;
+  text-align:center;
+  font-size:20px;
 }
 
 .logout{
- margin-top:20px;
- color:#fca5a5;
+  color:#fca5a5;
 }
 
-/* MAIN */
+/* =========================================================
+   MAIN
+========================================================= */
 
 main{
- max-width:760px;
- margin:auto;
- padding:15px;
+  width:100%;
+  max-width:1200px;
+
+  margin:auto;
+
+  padding:16px;
 }
 
 .page{
- display:none;
- animation:fade .25s ease;
+  display:none;
+  animation:pageIn .25s ease;
 }
 
 .page.active{
- display:block;
+  display:block;
 }
 
-@keyframes fade{
- from{
-  opacity:0;
-  transform:translateY(6px);
- }
- to{
-  opacity:1;
-  transform:translateY(0);
- }
+@keyframes pageIn{
+  from{
+    opacity:0;
+    transform:translateY(7px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 h2{
- margin:5px 0 15px;
- font-size:21px;
+  margin:5px 0 15px;
+  font-size:22px;
 }
 
 h3{
- margin-top:18px;
+  margin:20px 0 12px;
 }
 
-/* HERO */
+.muted{
+  color:var(--muted);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
- padding:20px;
- border-radius:22px;
- margin-bottom:15px;
- background:
- linear-gradient(135deg,#312e81,#7c3aed,#0891b2);
- box-shadow:0 15px 45px #7c3aed55;
- position:relative;
- overflow:hidden;
+  position:relative;
+  overflow:hidden;
+
+  padding:21px;
+
+  border-radius:23px;
+
+  margin-bottom:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #312e81,
+      #7c3aed,
+      #0891b2
+    );
+
+  box-shadow:
+    0 15px 45px #7c3aed55;
 }
 
 .hero:after{
- content:"💎";
- position:absolute;
- right:-5px;
- bottom:-22px;
- font-size:100px;
- opacity:.15;
- transform:rotate(15deg);
+  content:"💎";
+
+  position:absolute;
+
+  right:-7px;
+  bottom:-25px;
+
+  font-size:110px;
+
+  opacity:.14;
+
+  transform:rotate(15deg);
 }
 
 .hero small{
- color:#ddd6fe;
+  color:#ddd6fe;
 }
 
 .hero h2{
- margin:5px 0;
- font-size:27px;
+  margin:6px 0;
+  font-size:28px;
 }
 
 .hero p{
- margin:4px 0;
- color:#e0f2fe;
+  margin:4px 0;
+  color:#e0f2fe;
 }
 
-/* CARDS */
+/* =========================================================
+   CARDS
+========================================================= */
 
 .cards{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:11px;
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:11px;
 }
 
 .card{
- position:relative;
- overflow:hidden;
- background:
- linear-gradient(145deg,#121a30,#0d1325);
- border:1px solid #ffffff10;
- padding:16px;
- border-radius:18px;
- box-shadow:
- 0 8px 25px #0005,
- inset 0 1px #ffffff08;
- margin-bottom:11px;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #121a30,
+      #0d1325
+    );
+
+  border:1px solid #ffffff10;
+
+  padding:16px;
+
+  border-radius:18px;
+
+  box-shadow:
+    0 8px 25px #0005,
+    inset 0 1px #ffffff08;
+
+  margin-bottom:11px;
 }
 
 .card small{
- color:var(--muted);
+  color:var(--muted);
 }
 
 .card strong{
- display:block;
- margin-top:7px;
- font-size:21px;
+  display:block;
+
+  margin-top:7px;
+
+  font-size:21px;
 }
 
-.emoji{
- font-size:23px;
- margin-bottom:8px;
+.card .emoji{
+  font-size:22px;
+  margin-bottom:8px;
 }
 
-/* FORM */
+/* =========================================================
+   STAT COLOR
+========================================================= */
+
+.statGrid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:10px;
+
+  margin-bottom:15px;
+}
+
+.stat{
+  padding:15px;
+
+  border-radius:17px;
+
+  border:1px solid #ffffff10;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111a30,
+      #0b1222
+    );
+}
+
+.statLabel{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.statValue{
+  margin-top:7px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
 
 form{
- background:
- linear-gradient(145deg,#11192d,#0d1427);
- border:1px solid #ffffff10;
- padding:16px;
- border-radius:18px;
- box-shadow:0 8px 25px #0005;
- margin-bottom:15px;
+  background:
+    linear-gradient(
+      145deg,
+      #11192d,
+      #0d1427
+    );
+
+  border:1px solid #ffffff10;
+
+  padding:16px;
+
+  border-radius:18px;
+
+  box-shadow:0 8px 25px #0005;
+
+  margin-bottom:15px;
 }
 
-input,select{
- width:100%;
- padding:13px;
- margin:6px 0 10px;
- background:#080d1c;
- color:white;
- border:1px solid #293550;
- border-radius:11px;
- font-size:15px;
- outline:none;
+.formGrid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:4px 10px;
 }
 
-input:focus,select:focus{
- border-color:var(--cyan);
- box-shadow:0 0 0 3px #22d3ee18;
+.formFull{
+  grid-column:1/-1;
 }
 
-button{
- font-family:inherit;
- cursor:pointer;
+label{
+  display:block;
+
+  color:#cbd5e1;
+
+  font-size:12px;
+
+  margin:5px 2px 2px;
+}
+
+input,
+select{
+  width:100%;
+
+  padding:13px;
+
+  margin:5px 0 9px;
+
+  background:#080d1c;
+
+  color:white;
+
+  border:1px solid #293550;
+
+  border-radius:11px;
+
+  font-size:15px;
+
+  outline:none;
+}
+
+input:focus,
+select:focus{
+  border-color:var(--cyan);
+
+  box-shadow:
+    0 0 0 3px #22d3ee18;
+}
+
+input::placeholder{
+  color:#64748b;
 }
 
 .primary{
- width:100%;
- border:0;
- border-radius:12px;
- padding:14px;
- color:white;
- font-weight:bold;
- font-size:15px;
- background:
- linear-gradient(135deg,#7c3aed,#2563eb);
- box-shadow:0 8px 20px #4f46e555;
-}
+  width:100%;
 
-.primary:active{
- transform:scale(.98);
+  border:0;
+
+  border-radius:12px;
+
+  padding:14px;
+
+  color:white;
+
+  font-weight:bold;
+
+  font-size:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #2563eb
+    );
+
+  box-shadow:
+    0 8px 20px #4f46e555;
 }
 
 .green{
- background:linear-gradient(135deg,#16a34a,#059669);
+  background:
+    linear-gradient(
+      135deg,
+      #16a34a,
+      #059669
+    );
 }
 
 .red{
- background:linear-gradient(135deg,#dc2626,#be123c);
+  background:
+    linear-gradient(
+      135deg,
+      #dc2626,
+      #be123c
+    );
 }
 
 .gold{
- background:linear-gradient(135deg,#eab308,#f97316);
- color:#171717;
+  background:
+    linear-gradient(
+      135deg,
+      #eab308,
+      #f97316
+    );
+
+  color:#171717;
 }
 
-/* SEARCH */
+.secondary{
+  width:100%;
+
+  border:1px solid #ffffff12;
+
+  border-radius:12px;
+
+  padding:12px;
+
+  color:#e2e8f0;
+
+  background:#ffffff08;
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  margin-bottom:12px;
+}
+
+.toolbarTitle{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.toolbarButtons{
+  display:flex;
+  gap:7px;
+}
+
+.smallBtn{
+  border:1px solid #ffffff12;
+
+  background:#111a30;
+
+  color:white;
+
+  border-radius:10px;
+
+  padding:9px 11px;
+
+  font-size:12px;
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
 
 .search{
- position:relative;
- margin-bottom:12px;
+  position:relative;
+  margin-bottom:12px;
 }
 
 .search input{
- margin:0;
- padding-left:43px;
+  margin:0;
+  padding-left:43px;
 }
 
 .search span{
- position:absolute;
- left:14px;
- top:13px;
- font-size:18px;
- z-index:2;
+  position:absolute;
+
+  left:14px;
+  top:12px;
+
+  font-size:18px;
+
+  z-index:2;
 }
 
-/* PRODUCT */
-
-.product{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
- background:
- linear-gradient(145deg,#111a30,#0d1427);
- border:1px solid #ffffff0d;
- padding:13px;
- border-radius:15px;
- margin-bottom:9px;
- box-shadow:0 5px 18px #0004;
-}
-
-.product b{
- display:block;
- margin-bottom:5px;
-}
-
-.product small{
- color:var(--muted);
- line-height:1.5;
-}
-
-.add{
- border:0;
- background:
- linear-gradient(135deg,#8b5cf6,#06b6d4);
- color:white;
- padding:9px 13px;
- border-radius:10px;
- font-weight:bold;
- box-shadow:0 5px 15px #8b5cf644;
- white-space:nowrap;
-}
-
-/* CATALOG */
-
-.catalogHeader{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:10px;
-}
-
-.catalogCount{
- color:#94a3b8;
- font-size:12px;
-}
-
-.categoryBar{
- display:flex;
- gap:7px;
- overflow-x:auto;
- padding-bottom:8px;
- margin-bottom:10px;
-}
-
-.categoryBar button{
- flex:0 0 auto;
- border:1px solid #ffffff12;
- background:#11192d;
- color:#94a3b8;
- padding:8px 12px;
- border-radius:20px;
-}
-
-.categoryBar button.active{
- color:white;
- background:linear-gradient(135deg,#7c3aed,#0891b2);
-}
-
-/* AUTOCOMPLETE */
+/* =========================================================
+   AUTOCOMPLETE
+========================================================= */
 
 .autocomplete{
- position:relative;
+  position:relative;
 }
 
 .suggestions{
- position:absolute;
- left:0;
- right:0;
- top:58px;
- z-index:40;
- max-height:260px;
- overflow-y:auto;
- background:#0c1426;
- border:1px solid #334155;
- border-radius:13px;
- box-shadow:0 15px 40px #000a;
- display:none;
+  position:absolute;
+
+  left:0;
+  right:0;
+  top:58px;
+
+  z-index:100;
+
+  max-height:270px;
+
+  overflow-y:auto;
+
+  background:#0c1426;
+
+  border:1px solid #334155;
+
+  border-radius:13px;
+
+  box-shadow:0 15px 40px #000a;
+
+  display:none;
 }
 
 .suggestion{
- padding:12px;
- border-bottom:1px solid #ffffff0a;
+  padding:12px;
+
+  border-bottom:1px solid #ffffff0a;
 }
 
 .suggestion:last-child{
- border-bottom:0;
+  border-bottom:0;
 }
 
 .suggestion b{
- display:block;
+  display:block;
 }
 
 .suggestion small{
- color:#94a3b8;
+  color:#94a3b8;
 }
 
-/* CART */
+/* =========================================================
+   PRODUCT
+========================================================= */
 
-.cart{
- background:
- linear-gradient(145deg,#11192d,#0b1120);
- border:1px solid #ffffff0e;
- border-radius:17px;
- padding:12px;
- margin-bottom:9px;
+.product{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111a30,
+      #0d1427
+    );
+
+  border:1px solid #ffffff0d;
+
+  padding:13px;
+
+  border-radius:15px;
+
+  margin-bottom:9px;
+
+  box-shadow:0 5px 18px #0004;
+}
+
+.productInfo{
+  min-width:0;
+}
+
+.product b{
+  display:block;
+  margin-bottom:5px;
+}
+
+.product small{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.productActions{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.add{
+  border:0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #06b6d4
+    );
+
+  color:white;
+
+  padding:9px 13px;
+
+  border-radius:10px;
+
+  font-weight:bold;
+
+  box-shadow:
+    0 5px 15px #8b5cf644;
+
+  white-space:nowrap;
+}
+
+.iconBtn{
+  width:36px;
+  height:36px;
+
+  border:1px solid #ffffff10;
+
+  background:#ffffff08;
+
+  color:white;
+
+  border-radius:9px;
+}
+
+.dangerBtn{
+  color:#fecaca;
+  background:#7f1d1d;
+}
+
+.stockGood{
+  color:#86efac;
+}
+
+.stockLow{
+  color:#fcd34d;
+}
+
+.stockOut{
+  color:#fca5a5;
+}
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge{
+  display:inline-block;
+
+  padding:4px 8px;
+
+  border-radius:20px;
+
+  font-size:11px;
+
+  margin-top:3px;
+}
+
+.badge.good{
+  color:#bbf7d0;
+  background:#14532d;
+}
+
+.badge.low{
+  color:#fde68a;
+  background:#713f12;
+}
+
+.badge.out{
+  color:#fecaca;
+  background:#7f1d1d;
+}
+
+/* =========================================================
+   CATALOG
+========================================================= */
+
+.catalogHeader{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:10px;
+}
+
+.catalogCount{
+  color:#94a3b8;
+  font-size:12px;
+}
+
+.categoryBar{
+  display:flex;
+
+  gap:7px;
+
+  overflow-x:auto;
+
+  padding-bottom:8px;
+
+  margin-bottom:10px;
+
+  scrollbar-width:none;
+}
+
+.categoryBar::-webkit-scrollbar{
+  display:none;
+}
+
+.categoryBar button{
+  flex:0 0 auto;
+
+  border:1px solid #ffffff12;
+
+  background:#11192d;
+
+  color:#94a3b8;
+
+  padding:8px 12px;
+
+  border-radius:20px;
+}
+
+.categoryBar button.active{
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #0891b2
+    );
+}
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cartBox{
+  background:
+    linear-gradient(
+      145deg,
+      #11192d,
+      #0b1120
+    );
+
+  border:1px solid #ffffff0e;
+
+  border-radius:17px;
+
+  padding:12px;
+
+  margin-bottom:9px;
 }
 
 .cartHead{
- display:flex;
- justify-content:space-between;
- gap:10px;
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
 }
 
 .qty{
- display:flex;
- align-items:center;
- gap:8px;
- margin-top:9px;
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  margin-top:9px;
 }
 
 .qty button{
- width:34px;
- height:34px;
- border:0;
- border-radius:9px;
- background:#202b45;
- color:white;
- font-size:18px;
+  width:34px;
+  height:34px;
+
+  border:0;
+
+  border-radius:9px;
+
+  background:#202b45;
+
+  color:white;
+
+  font-size:18px;
 }
 
 .remove{
- border:0;
- padding:7px 9px;
- background:#7f1d1d;
- color:#fecaca;
- border-radius:8px;
+  border:0;
+
+  padding:7px 9px;
+
+  background:#7f1d1d;
+
+  color:#fecaca;
+
+  border-radius:8px;
 }
 
 .summary{
- background:
- linear-gradient(145deg,#17203a,#10182b);
- border:1px solid #ffffff12;
- border-radius:18px;
- padding:16px;
- margin:12px 0;
+  background:
+    linear-gradient(
+      145deg,
+      #17203a,
+      #10182b
+    );
+
+  border:1px solid #ffffff12;
+
+  border-radius:18px;
+
+  padding:16px;
+
+  margin:12px 0;
 }
 
 .row{
- display:flex;
- justify-content:space-between;
- padding:7px 0;
- color:#cbd5e1;
+  display:flex;
+
+  justify-content:space-between;
+
+  padding:7px 0;
+
+  color:#cbd5e1;
 }
 
 .total{
- border-top:1px solid #ffffff15;
- margin-top:7px;
- padding-top:12px;
- font-size:23px;
- font-weight:bold;
- color:#67e8f9;
+  border-top:1px solid #ffffff15;
+
+  margin-top:7px;
+
+  padding-top:12px;
+
+  font-size:23px;
+
+  font-weight:bold;
+
+  color:#67e8f9;
 }
 
-/* ALERT */
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+.paymentGrid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:8px;
+
+  margin:8px 0 12px;
+}
+
+.paymentBtn{
+  padding:13px 8px;
+
+  border-radius:12px;
+
+  border:1px solid #ffffff12;
+
+  background:#0b1222;
+
+  color:#94a3b8;
+}
+
+.paymentBtn.active{
+  color:white;
+
+  border-color:#22d3ee55;
+
+  background:
+    linear-gradient(
+      135deg,
+      #164e6355,
+      #312e8155
+    );
+}
+
+/* =========================================================
+   ALERT
+========================================================= */
 
 .alert{
- padding:13px;
- border-radius:13px;
- background:
- linear-gradient(135deg,#78350f,#451a03);
- border:1px solid #f59e0b44;
- color:#fde68a;
- margin:12px 0;
+  padding:13px;
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #78350f,
+      #451a03
+    );
+
+  border:1px solid #f59e0b44;
+
+  color:#fde68a;
+
+  margin:12px 0;
 }
 
-/* QUICK */
+.alert strong{
+  color:#fff7ed;
+}
+
+/* =========================================================
+   QUICK
+========================================================= */
 
 .quick{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:10px;
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:10px;
 }
 
 .quick button{
- border:1px solid #ffffff10;
- background:
- linear-gradient(145deg,#151f38,#0d1427);
- color:white;
- padding:17px 10px;
- border-radius:15px;
- font-size:14px;
- box-shadow:
- 0 7px 18px #0005,
- inset 0 1px #ffffff0b;
+  border:1px solid #ffffff10;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151f38,
+      #0d1427
+    );
+
+  color:white;
+
+  padding:17px 10px;
+
+  border-radius:15px;
+
+  font-size:14px;
+
+  box-shadow:
+    0 7px 18px #0005,
+    inset 0 1px #ffffff0b;
 }
 
-/* REPORT */
+/* =========================================================
+   REPORT
+========================================================= */
+
+.reportGrid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:10px;
+
+  margin-bottom:15px;
+}
 
 .report-card{
- background:
- linear-gradient(135deg,#151e36,#0d1427);
- border:1px solid #ffffff10;
- padding:18px;
- border-radius:18px;
- margin-bottom:11px;
+  background:
+    linear-gradient(
+      135deg,
+      #151e36,
+      #0d1427
+    );
+
+  border:1px solid #ffffff10;
+
+  padding:18px;
+
+  border-radius:18px;
+
+  margin-bottom:0;
+}
+
+.report-card small{
+  color:var(--muted);
 }
 
 .report-card strong{
- display:block;
- font-size:25px;
- margin-top:7px;
- color:#67e8f9;
+  display:block;
+
+  font-size:22px;
+
+  margin-top:7px;
+
+  color:#67e8f9;
 }
 
-/* BOTTOM 3D NAV */
+/* =========================================================
+   TABLE-LIKE HISTORY
+========================================================= */
+
+.historyCard{
+  background:
+    linear-gradient(
+      145deg,
+      #111a30,
+      #0d1427
+    );
+
+  border:1px solid #ffffff0e;
+
+  border-radius:16px;
+
+  padding:14px;
+
+  margin-bottom:9px;
+}
+
+.historyTop{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+}
+
+.historyMeta{
+  color:#94a3b8;
+
+  font-size:12px;
+
+  line-height:1.7;
+
+  margin-top:7px;
+}
+
+.historyTotal{
+  font-size:18px;
+  font-weight:bold;
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty{
+  padding:25px 15px;
+
+  text-align:center;
+
+  color:#64748b;
+
+  background:#ffffff04;
+
+  border:1px dashed #ffffff12;
+
+  border-radius:15px;
+}
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
 
 .bottom{
- position:fixed;
- left:8px;
- right:8px;
- bottom:8px;
- height:70px;
- display:flex;
- justify-content:space-around;
- align-items:center;
- background:
- linear-gradient(180deg,#111a31f5,#080d1cf5);
- border:1px solid #ffffff15;
- border-radius:22px;
- box-shadow:
- 0 15px 40px #000b,
- inset 0 1px #ffffff0b;
- backdrop-filter:blur(18px);
- z-index:300;
+  position:fixed;
+
+  left:8px;
+  right:8px;
+  bottom:8px;
+
+  height:70px;
+
+  display:flex;
+
+  justify-content:space-around;
+
+  align-items:center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #111a31f5,
+      #080d1cf5
+    );
+
+  border:1px solid #ffffff15;
+
+  border-radius:22px;
+
+  box-shadow:
+    0 15px 40px #000b,
+    inset 0 1px #ffffff0b;
+
+  backdrop-filter:blur(18px);
+
+  z-index:700;
 }
 
 .nav{
- border:0;
- background:transparent;
- color:#64748b;
- min-width:55px;
- display:flex;
- flex-direction:column;
- align-items:center;
- gap:3px;
- font-size:10px;
- padding:6px;
- transition:.2s;
+  border:0;
+
+  background:transparent;
+
+  color:#64748b;
+
+  min-width:55px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:3px;
+
+  font-size:10px;
+
+  padding:6px;
+
+  transition:.2s;
 }
 
 .nav .icon{
- font-size:21px;
+  font-size:21px;
 }
 
 .nav.active{
- color:#67e8f9;
+  color:#67e8f9;
 }
 
 .nav.active .icon{
- transform:
- translateY(-5px)
- scale(1.18);
- filter:
- drop-shadow(0 0 6px #22d3ee)
- drop-shadow(0 5px 8px #000);
+  transform:
+    translateY(-5px)
+    scale(1.18);
+
+  filter:
+    drop-shadow(0 0 6px #22d3ee)
+    drop-shadow(0 5px 8px #000);
 }
 
 .nav.active:after{
- content:"";
- width:25px;
- height:4px;
- border-radius:10px;
- background:
- linear-gradient(90deg,#22d3ee,#8b5cf6);
- box-shadow:0 0 10px #22d3ee;
+  content:"";
+
+  width:25px;
+  height:4px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #22d3ee,
+      #8b5cf6
+    );
+
+  box-shadow:
+    0 0 10px #22d3ee;
 }
 
-/* DESKTOP */
+/* =========================================================
+   TOAST
+========================================================= */
+
+#toast{
+  position:fixed;
+
+  left:50%;
+  bottom:90px;
+
+  transform:
+    translateX(-50%)
+    translateY(20px);
+
+  z-index:99999;
+
+  min-width:230px;
+  max-width:90%;
+
+  padding:13px 16px;
+
+  border-radius:13px;
+
+  background:#111827f5;
+
+  border:1px solid #ffffff15;
+
+  box-shadow:0 15px 40px #000b;
+
+  color:white;
+
+  text-align:center;
+
+  font-size:13px;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.25s;
+}
+
+#toast.show{
+  opacity:1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+#toast.success{
+  border-color:#22c55e55;
+}
+
+#toast.error{
+  border-color:#ef444455;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modalOverlay{
+  position:fixed;
+
+  inset:0;
+
+  z-index:9990;
+
+  background:#000b;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:15px;
+}
+
+.modalOverlay.show{
+  display:flex;
+}
+
+.modal{
+  width:100%;
+  max-width:500px;
+
+  max-height:90vh;
+
+  overflow-y:auto;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151e36,
+      #090f20
+    );
+
+  border:1px solid #ffffff15;
+
+  border-radius:22px;
+
+  padding:18px;
+
+  box-shadow:0 30px 80px #000c;
+}
+
+.modalHeader{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:10px;
+}
+
+.modalHeader h3{
+  margin:0;
+}
+
+.closeModal{
+  width:36px;
+  height:36px;
+
+  border:0;
+  border-radius:10px;
+
+  background:#ffffff0d;
+  color:white;
+
+  font-size:20px;
+}
+
+/* =========================================================
+   DESKTOP
+========================================================= */
 
 @media(min-width:800px){
 
- body{
-  padding-bottom:0;
- }
+  body{
+    padding-bottom:0;
+  }
 
- .bottom{
-  top:0;
-  bottom:0;
-  left:0;
-  right:auto;
-  width:210px;
-  height:100vh;
-  border-radius:0;
-  border-top:0;
-  border-left:0;
-  border-bottom:0;
-  border-right:1px solid #ffffff12;
-  flex-direction:column;
-  justify-content:flex-start;
-  padding-top:100px;
- }
+  .bottom{
+    top:0;
+    bottom:0;
 
- .nav{
-  width:180px;
-  flex-direction:row;
-  justify-content:flex-start;
-  gap:12px;
-  padding:13px;
-  font-size:13px;
- }
+    left:0;
+    right:auto;
 
- header{
-  margin-left:210px;
- }
+    width:215px;
+    height:100vh;
 
- main{
-  margin-left:210px;
-  max-width:1000px;
- }
+    border-radius:0;
 
+    border-top:0;
+    border-left:0;
+    border-bottom:0;
+    border-right:1px solid #ffffff12;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    padding-top:90px;
+  }
+
+  .nav{
+    width:185px;
+
+    flex-direction:row;
+
+    justify-content:flex-start;
+
+    gap:12px;
+
+    padding:13px;
+
+    font-size:13px;
+  }
+
+  .nav.active:after{
+    margin-left:auto;
+  }
+
+  header{
+    margin-left:215px;
+  }
+
+  main{
+    margin-left:215px;
+    max-width:1100px;
+  }
+
+  .cards{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+  .statGrid{
+    grid-template-columns:
+      repeat(4,minmax(0,1fr));
+  }
+
+  .quick{
+    grid-template-columns:
+      repeat(4,minmax(0,1fr));
+  }
+
+  .reportGrid{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
 }
 
-/* PRINT */
+/* =========================================================
+   PRINT
+========================================================= */
 
 #printArea{
- display:none;
+  display:none;
 }
 
 @media print{
 
- body>*{
-  display:none!important;
- }
+  body>*{
+    display:none!important;
+  }
 
- #printArea{
-  display:block!important;
- }
+  #printArea{
+    display:block!important;
+  }
 
- .invoice{
-  width:80mm;
-  margin:auto;
-  color:#000;
-  font-family:Arial;
- }
+  .invoice{
+    width:80mm;
 
- .invoice h2{
-  text-align:center;
- }
+    margin:auto;
 
- .line{
-  display:flex;
-  justify-content:space-between;
-  margin:5px 0;
-  font-size:12px;
- }
+    color:#000;
 
- .final{
-  border-top:1px dashed #000;
-  padding-top:7px;
-  font-weight:bold;
- }
+    background:#fff;
 
+    font-family:Arial,sans-serif;
+  }
+
+  .invoice h2{
+    text-align:center;
+    margin:0 0 5px;
+  }
+
+  .invoiceCenter{
+    text-align:center;
+    font-size:11px;
+    line-height:1.5;
+  }
+
+  .invoiceLine{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin:5px 0;
+
+    font-size:12px;
+  }
+
+  .invoiceFinal{
+    border-top:1px dashed #000;
+
+    padding-top:7px;
+
+    font-weight:bold;
+
+    font-size:14px;
+  }
+
+  .invoice hr{
+    border:0;
+
+    border-top:1px dashed #000;
+
+    margin:8px 0;
+  }
 }
 
 </style>
@@ -857,823 +1841,1305 @@ button{
 <body>
 
 
-<!-- LOGIN -->
+<!-- =======================================================
+     LOGIN
+======================================================== -->
 
 <div id="loginScreen">
 
-<div class="loginBox">
+  <div class="loginBox">
 
-<div class="loginDiamond">💎</div>
+    <div class="loginDiamond">
+      💎
+    </div>
 
-<h1>Diamond Shop POS</h1>
+    <h1>Diamond Shop POS</h1>
 
-<p>Owner Login</p>
+    <p>Professional Mini Market Management</p>
 
-<input
-id="loginPin"
-type="password"
-inputmode="numeric"
-maxlength="6"
-placeholder="Enter PIN"
-onkeydown="if(event.key==='Enter')login()">
+    <input
+      id="loginPin"
+      type="password"
+      inputmode="numeric"
+      maxlength="6"
+      placeholder="Enter PIN"
+      onkeydown="if(event.key==='Enter') login()">
 
-<div
-id="loginError"
-class="loginError">
+    <div
+      id="loginError"
+      class="loginError">
+    </div>
+
+    <button
+      class="primary"
+      onclick="login()">
+
+      🔐 LOGIN
+
+    </button>
+
+    <div class="loginHint">
+
+      First login: create your 4–6 digit owner PIN
+
+    </div>
+
+  </div>
+
 </div>
 
-<button
-class="primary"
-onclick="login()">
 
-🔐 LOGIN
-
-</button>
-
-<br><br>
-
-<small style="color:#64748b">
-First login: create your 4–6 digit PIN
-</small>
-
-</div>
-
-</div>
-
-
-<!-- HEADER -->
+<!-- =======================================================
+     HEADER
+======================================================== -->
 
 <header>
 
-<div class="brand">
+  <div class="headerInner">
 
-<button
-class="menuBtn"
-onclick="openDrawer()">
-☰
-</button>
+    <div class="brand">
 
-<div class="diamond">💎</div>
+      <button
+        class="menuBtn"
+        onclick="openDrawer()">
 
-<div>
+        ☰
 
-<h1>Diamond Shop POS</h1>
+      </button>
 
-<small>
-Smart • Fast • Professional
-</small>
+      <div class="diamond">
+        💎
+      </div>
 
-</div>
+      <div>
 
-</div>
+        <h1>
+          Diamond Shop POS
+        </h1>
+
+        <small>
+          Smart • Fast • Professional
+        </small>
+
+      </div>
+
+    </div>
+
+    <div class="headerActions">
+
+      <button
+        class="headerBtn"
+        onclick="showPage('sales')">
+
+        🛒
+
+      </button>
+
+      <button
+        class="headerBtn"
+        onclick="showPage('reports')">
+
+        📊
+
+      </button>
+
+    </div>
+
+  </div>
 
 </header>
 
 
-<!-- DRAWER -->
+<!-- =======================================================
+     DRAWER
+======================================================== -->
 
 <div
-id="drawerOverlay"
-class="drawerOverlay"
-onclick="closeDrawer()">
+  id="drawerOverlay"
+  class="drawerOverlay"
+  onclick="closeDrawer()">
 </div>
 
 
 <aside
-id="drawer"
-class="drawer">
+  id="drawer"
+  class="drawer">
 
-<div class="drawerTop">
+  <div class="drawerTop">
 
-<div class="drawerTitle">
+    <div class="drawerTitle">
 
-<div class="miniDiamond">💎</div>
+      <div class="miniDiamond">
+        💎
+      </div>
 
-<div>
-<b>Diamond POS</b>
-<br>
-<small style="color:#64748b">
-Mini Market
-</small>
-</div>
+      <div>
 
-</div>
+        <b>Diamond POS</b>
 
-<button
-class="closeDrawer"
-onclick="closeDrawer()">
-×
-</button>
+        <br>
 
-</div>
+        <small class="muted">
+          Mini Market
+        </small>
 
+      </div>
 
-<div class="drawerSection">
-MAIN MENU
-</div>
+    </div>
 
+    <button
+      class="closeDrawer"
+      onclick="closeDrawer()">
 
-<button
-class="drawerItem active"
-onclick="drawerPage('home')">
+      ×
 
-<span>🏠</span>
-Dashboard
+    </button>
 
-</button>
+  </div>
 
 
-<button
-class="drawerItem"
-onclick="drawerPage('products')">
-
-<span>📦</span>
-Products
-
-</button>
+  <div class="drawerSection">
+    Main Menu
+  </div>
 
 
-<button
-class="drawerItem"
-onclick="drawerPage('sales')">
+  <button
+    class="drawerItem active"
+    onclick="drawerPage('home')">
 
-<span>💰</span>
-New Sale
+    <span>🏠</span>
+    Dashboard
 
-</button>
-
-
-<button
-class="drawerItem"
-onclick="drawerPage('purchase')">
-
-<span>🛒</span>
-Purchase
-
-</button>
+  </button>
 
 
-<button
-class="drawerItem"
-onclick="drawerPage('reports')">
+  <button
+    class="drawerItem"
+    onclick="drawerPage('products')">
 
-<span>📊</span>
-Reports
+    <span>📦</span>
+    Products
 
-</button>
-
-
-<button
-class="drawerItem"
-onclick="drawerPage('expense')">
-
-<span>💸</span>
-Expenses
-
-</button>
+  </button>
 
 
-<div class="drawerSection">
-PRODUCT CATALOG
-</div>
+  <button
+    class="drawerItem"
+    onclick="drawerPage('sales')">
+
+    <span>💰</span>
+    New Sale
+
+  </button>
 
 
-<button
-class="drawerItem"
-onclick="drawerPage('catalog')">
+  <button
+    class="drawerItem"
+    onclick="drawerPage('purchase')">
 
-<span>🛍️</span>
-Mini Market Items
+    <span>🛒</span>
+    Purchase
 
-</button>
-
-
-<button
-class="drawerItem"
-onclick="drawerPage('catalogWholesale')">
-
-<span>🏪</span>
-Wholesale Items
-
-</button>
+  </button>
 
 
-<div class="drawerSection">
-ACCOUNT
-</div>
+  <button
+    class="drawerItem"
+    onclick="drawerPage('reports')">
+
+    <span>📊</span>
+    Reports
+
+  </button>
 
 
-<button
-class="drawerItem logout"
-onclick="logout()">
+  <button
+    class="drawerItem"
+    onclick="drawerPage('expense')">
 
-<span>🔐</span>
-Logout
+    <span>💸</span>
+    Expenses
 
-</button>
+  </button>
+
+
+  <div class="drawerSection">
+    Product Catalog
+  </div>
+
+
+  <button
+    class="drawerItem"
+    onclick="drawerPage('catalog')">
+
+    <span>🛍️</span>
+    Mini Market Items
+
+  </button>
+
+
+  <button
+    class="drawerItem"
+    onclick="drawerPage('catalogWholesale')">
+
+    <span>🏪</span>
+    Wholesale Items
+
+  </button>
+
+
+  <div class="drawerSection">
+    Account
+  </div>
+
+
+  <button
+    class="drawerItem"
+    onclick="backupData()">
+
+    <span>💾</span>
+    Backup Data
+
+  </button>
+
+
+  <button
+    class="drawerItem"
+    onclick="restoreData()">
+
+    <span>♻️</span>
+    Restore Data
+
+  </button>
+
+
+  <button
+    class="drawerItem logout"
+    onclick="logout()">
+
+    <span>🔐</span>
+    Logout
+
+  </button>
 
 </aside>
 
 
+<!-- =======================================================
+     MAIN
+======================================================== -->
+
 <main>
 
 
-<!-- HOME -->
+<!-- =======================================================
+     DASHBOARD
+======================================================== -->
 
 <section
-id="home"
-class="page active">
+  id="home"
+  class="page active">
 
-<div class="hero">
+  <div class="hero">
 
-<small>WELCOME BACK 👋</small>
+    <small>
+      WELCOME BACK 👋
+    </small>
 
-<h2>Shop Dashboard</h2>
+    <h2>
+      Shop Dashboard
+    </h2>
 
-<p>
-Manage your business smarter.
-</p>
+    <p>
+      Manage your business smarter.
+    </p>
 
-</div>
-
-
-<div class="cards">
-
-<div class="card">
-
-<div class="emoji">💰</div>
-
-<small>Today's Sales</small>
-
-<strong id="todaySales">
-₹0.00
-</strong>
-
-</div>
+  </div>
 
 
-<div class="card">
+  <div class="cards">
 
-<div class="emoji">📈</div>
+    <div class="card">
 
-<small>Today's Profit</small>
+      <div class="emoji">
+        💰
+      </div>
 
-<strong id="todayProfit">
-₹0.00
-</strong>
+      <small>
+        Today's Sales
+      </small>
 
-</div>
+      <strong id="todaySales">
+        ₹0.00
+      </strong>
 
-
-<div class="card">
-
-<div class="emoji">💵</div>
-
-<small>Cash</small>
-
-<strong id="cashTotal">
-₹0.00
-</strong>
-
-</div>
+    </div>
 
 
-<div class="card">
+    <div class="card">
 
-<div class="emoji">📱</div>
+      <div class="emoji">
+        📈
+      </div>
 
-<small>UPI</small>
+      <small>
+        Today's Profit
+      </small>
 
-<strong id="upiTotal">
-₹0.00
-</strong>
+      <strong id="todayProfit">
+        ₹0.00
+      </strong>
 
-</div>
-
-
-<div class="card">
-
-<div class="emoji">📦</div>
-
-<small>Stock Value</small>
-
-<strong id="stockValue">
-₹0.00
-</strong>
-
-</div>
+    </div>
 
 
-<div class="card">
+    <div class="card">
 
-<div class="emoji">💎</div>
+      <div class="emoji">
+        💵
+      </div>
 
-<small>Total Products</small>
+      <small>
+        Cash Today
+      </small>
 
-<strong id="productCount">
-0
-</strong>
+      <strong id="cashTotal">
+        ₹0.00
+      </strong>
 
-</div>
-
-</div>
-
-
-<div id="lowStock"></div>
-
-
-<h3>⚡ Quick Actions</h3>
+    </div>
 
 
-<div class="quick">
+    <div class="card">
 
-<button onclick="showPage('sales')">
-💰<br>New Sale
-</button>
+      <div class="emoji">
+        📱
+      </div>
 
-<button onclick="showPage('products')">
-📦<br>Add Product
-</button>
+      <small>
+        UPI Today
+      </small>
 
-<button onclick="showPage('purchase')">
-🛒<br>Purchase
-</button>
+      <strong id="upiTotal">
+        ₹0.00
+      </strong>
 
-<button onclick="showPage('catalog')">
-🛍️<br>Catalog
-</button>
+    </div>
 
-</div>
+
+    <div class="card">
+
+      <div class="emoji">
+        📦
+      </div>
+
+      <small>
+        Stock Value
+      </small>
+
+      <strong id="stockValue">
+        ₹0.00
+      </strong>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">
+        💎
+      </div>
+
+      <small>
+        Total Products
+      </small>
+
+      <strong id="productCount">
+        0
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <div id="lowStock"></div>
+
+
+  <h3>
+    ⚡ Quick Actions
+  </h3>
+
+
+  <div class="quick">
+
+    <button onclick="showPage('sales')">
+      💰<br>
+      New Sale
+    </button>
+
+    <button onclick="showPage('products')">
+      📦<br>
+      Add Product
+    </button>
+
+    <button onclick="showPage('purchase')">
+      🛒<br>
+      Purchase
+    </button>
+
+    <button onclick="showPage('reports')">
+      📊<br>
+      Reports
+    </button>
+
+  </div>
+
+
+  <h3>
+    📌 Business Snapshot
+  </h3>
+
+
+  <div class="statGrid">
+
+    <div class="stat">
+      <div class="statLabel">
+        Total Sales
+      </div>
+
+      <div
+        class="statValue"
+        id="dashTotalSales">
+
+        ₹0.00
+
+      </div>
+    </div>
+
+
+    <div class="stat">
+      <div class="statLabel">
+        Total Purchase
+      </div>
+
+      <div
+        class="statValue"
+        id="dashTotalPurchase">
+
+        ₹0.00
+
+      </div>
+    </div>
+
+
+    <div class="stat">
+      <div class="statLabel">
+        Gross Profit
+      </div>
+
+      <div
+        class="statValue"
+        id="dashGross">
+
+        ₹0.00
+
+      </div>
+    </div>
+
+
+    <div class="stat">
+      <div class="statLabel">
+        Net Profit
+      </div>
+
+      <div
+        class="statValue"
+        id="dashNet">
+
+        ₹0.00
+
+      </div>
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- PRODUCTS -->
+<!-- =======================================================
+     PRODUCTS
+======================================================== -->
 
 <section
-id="products"
-class="page">
+  id="products"
+  class="page">
 
-<h2>📦 Products</h2>
-
-
-<form
-onsubmit="addProduct(event)">
-
-<div class="autocomplete">
-
-<input
-id="pName"
-placeholder="Type product name..."
-autocomplete="off"
-required
-oninput="productSuggestions()">
-
-<div
-id="productSuggestions"
-class="suggestions">
-</div>
-
-</div>
+  <h2>
+    📦 Products
+  </h2>
 
 
-<input
-id="pCategory"
-placeholder="Category">
+  <form
+    id="productForm"
+    onsubmit="addProduct(event)">
+
+    <input
+      type="hidden"
+      id="editProductId"
+      value="">
 
 
-<input
-id="pBuy"
-type="number"
-step="0.01"
-placeholder="Purchase Price"
-required>
+    <div class="formGrid">
+
+      <div class="formFull autocomplete">
+
+        <label>
+          Product Name
+        </label>
+
+        <input
+          id="pName"
+          placeholder="Type product name..."
+          autocomplete="off"
+          required
+          oninput="productSuggestions()">
+
+        <div
+          id="productSuggestions"
+          class="suggestions">
+        </div>
+
+      </div>
 
 
-<input
-id="pSell"
-type="number"
-step="0.01"
-placeholder="Selling Price"
-required>
+      <div>
+
+        <label>
+          Category
+        </label>
+
+        <input
+          id="pCategory"
+          placeholder="Category">
+
+      </div>
 
 
-<input
-id="pStock"
-type="number"
-placeholder="Opening Stock"
-required>
+      <div>
+
+        <label>
+          Purchase Price
+        </label>
+
+        <input
+          id="pBuy"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="₹ Purchase Price"
+          required>
+
+      </div>
 
 
-<input
-id="pMin"
-type="number"
-value="5"
-placeholder="Minimum Stock">
+      <div>
+
+        <label>
+          Selling Price
+        </label>
+
+        <input
+          id="pSell"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="₹ Selling Price"
+          required>
+
+      </div>
 
 
-<button class="primary">
-💎 Add Product
-</button>
+      <div>
 
-</form>
+        <label>
+          Stock
+        </label>
 
+        <input
+          id="pStock"
+          type="number"
+          min="0"
+          step="1"
+          placeholder="Opening Stock"
+          required>
 
-<div class="search">
-
-<span>🔍</span>
-
-<input
-id="productSearch"
-placeholder="Search your products..."
-oninput="renderProducts()">
-
-</div>
+      </div>
 
 
-<div id="productList"></div>
+      <div>
+
+        <label>
+          Minimum Stock Alert
+        </label>
+
+        <input
+          id="pMin"
+          type="number"
+          min="0"
+          value="5"
+          placeholder="Minimum Stock">
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="productSubmitBtn"
+      class="primary">
+
+      💎 Add Product
+
+    </button>
+
+
+    <button
+      type="button"
+      id="cancelEditBtn"
+      class="secondary"
+      style="display:none;margin-top:8px"
+      onclick="cancelEdit()">
+
+      Cancel Edit
+
+    </button>
+
+  </form>
+
+
+  <div class="toolbar">
+
+    <div class="toolbarTitle">
+      Your Inventory
+    </div>
+
+    <div class="toolbarButtons">
+
+      <button
+        class="smallBtn"
+        onclick="showPage('catalog')">
+
+        🛍️ Catalog
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="search">
+
+    <span>
+      🔍
+    </span>
+
+    <input
+      id="productSearch"
+      placeholder="Search your products..."
+      oninput="renderProducts()">
+
+  </div>
+
+
+  <div id="productList"></div>
 
 </section>
 
 
-<!-- CATALOG -->
+<!-- =======================================================
+     CATALOG
+======================================================== -->
 
 <section
-id="catalog"
-class="page">
+  id="catalog"
+  class="page">
 
-<div class="catalogHeader">
+  <div class="catalogHeader">
 
-<h2>🛍️ Mini Market</h2>
+    <h2>
+      🛍️ Mini Market
+    </h2>
 
-<span
-class="catalogCount"
-id="catalogCount">
-</span>
+    <span
+      class="catalogCount"
+      id="catalogCount">
+    </span>
 
-</div>
-
-
-<div class="categoryBar"
-id="miniCategories">
-</div>
+  </div>
 
 
-<div class="search">
-
-<span>🔍</span>
-
-<input
-id="catalogSearch"
-placeholder="Search item..."
-oninput="renderCatalog()">
-
-</div>
+  <div
+    class="categoryBar"
+    id="miniCategories">
+  </div>
 
 
-<div id="catalogList"></div>
+  <div class="search">
+
+    <span>
+      🔍
+    </span>
+
+    <input
+      id="catalogSearch"
+      placeholder="Search item..."
+      oninput="renderCatalog()">
+
+  </div>
+
+
+  <div id="catalogList"></div>
 
 </section>
 
 
-<!-- WHOLESALE -->
+<!-- =======================================================
+     WHOLESALE
+======================================================== -->
 
 <section
-id="catalogWholesale"
-class="page">
+  id="catalogWholesale"
+  class="page">
 
-<div class="catalogHeader">
+  <div class="catalogHeader">
 
-<h2>🏪 Wholesale</h2>
+    <h2>
+      🏪 Wholesale
+    </h2>
 
-<span
-class="catalogCount"
-id="wholesaleCount">
-</span>
+    <span
+      class="catalogCount"
+      id="wholesaleCount">
+    </span>
 
-</div>
-
-
-<div class="categoryBar"
-id="wholesaleCategories">
-</div>
+  </div>
 
 
-<div class="search">
-
-<span>🔍</span>
-
-<input
-id="wholesaleSearch"
-placeholder="Search wholesale item..."
-oninput="renderWholesale()">
-
-</div>
+  <div
+    class="categoryBar"
+    id="wholesaleCategories">
+  </div>
 
 
-<div id="wholesaleList"></div>
+  <div class="search">
+
+    <span>
+      🔍
+    </span>
+
+    <input
+      id="wholesaleSearch"
+      placeholder="Search wholesale item..."
+      oninput="renderWholesale()">
+
+  </div>
+
+
+  <div id="wholesaleList"></div>
 
 </section>
 
 
-<!-- PURCHASE -->
+<!-- =======================================================
+     PURCHASE
+======================================================== -->
 
 <section
-id="purchase"
-class="page">
+  id="purchase"
+  class="page">
 
-<h2>🛒 Purchase</h2>
-
-
-<form
-onsubmit="addPurchase(event)">
-
-<div class="autocomplete">
-
-<input
-id="purchaseName"
-placeholder="Type product name..."
-autocomplete="off"
-oninput="purchaseSuggestions()"
-required>
-
-<div
-id="purchaseSuggestions"
-class="suggestions">
-</div>
-
-</div>
+  <h2>
+    🛒 Purchase
+  </h2>
 
 
-<select
-id="purchaseProduct"
-required>
+  <form
+    onsubmit="addPurchase(event)">
 
-<option value="">
-Select Product
-</option>
+    <div class="formGrid">
 
-</select>
+      <div class="formFull autocomplete">
 
+        <label>
+          Product
+        </label>
 
-<input
-id="purchaseQty"
-type="number"
-placeholder="Quantity"
-required>
+        <input
+          id="purchaseName"
+          placeholder="Type product name..."
+          autocomplete="off"
+          oninput="purchaseSuggestions()"
+          required>
 
+        <div
+          id="purchaseSuggestions"
+          class="suggestions">
+        </div>
 
-<input
-id="purchasePrice"
-type="number"
-step="0.01"
-placeholder="Purchase Price"
-required>
-
-
-<button class="primary">
-📥 Save Purchase
-</button>
-
-</form>
+      </div>
 
 
-<div id="purchaseHistory"></div>
+      <div>
+
+        <label>
+          Select Product
+        </label>
+
+        <select
+          id="purchaseProduct"
+          required>
+
+          <option value="">
+            Select Product
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div>
+
+        <label>
+          Quantity
+        </label>
+
+        <input
+          id="purchaseQty"
+          type="number"
+          min="1"
+          step="1"
+          placeholder="Quantity"
+          required>
+
+      </div>
+
+
+      <div>
+
+        <label>
+          Purchase Price
+        </label>
+
+        <input
+          id="purchasePrice"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="Purchase Price"
+          required>
+
+      </div>
+
+    </div>
+
+
+    <button class="primary">
+
+      📥 Save Purchase
+
+    </button>
+
+  </form>
+
+
+  <h3>
+    📥 Purchase History
+  </h3>
+
+  <div id="purchaseHistory"></div>
 
 </section>
 
 
-<!-- SALES -->
+<!-- =======================================================
+     SALES
+======================================================== -->
 
 <section
-id="sales"
-class="page">
+  id="sales"
+  class="page">
 
-<div class="hero">
+  <div class="hero">
 
-<small>POINT OF SALE</small>
+    <small>
+      POINT OF SALE
+    </small>
 
-<h2>💰 New Sale</h2>
+    <h2>
+      💰 New Sale
+    </h2>
 
-<p>
-Search product and add to cart.
-</p>
+    <p>
+      Search product and add to cart.
+    </p>
 
-</div>
-
-
-<div class="search">
-
-<span>🔍</span>
-
-<input
-id="saleSearch"
-placeholder="Search product..."
-oninput="renderSaleProducts()">
-
-</div>
+  </div>
 
 
-<div id="saleProductList"></div>
+  <div class="search">
+
+    <span>
+      🔍
+    </span>
+
+    <input
+      id="saleSearch"
+      placeholder="Search product..."
+      oninput="renderSaleProducts()">
+
+  </div>
 
 
-<h3>🛒 Shopping Cart</h3>
+  <div id="saleProductList"></div>
 
 
-<div id="cart"></div>
+  <h3>
+    🛒 Shopping Cart
+  </h3>
 
 
-<div class="summary">
-
-<div class="row">
-
-<span>Subtotal</span>
-
-<b id="cartSubtotal">
-₹0.00
-</b>
-
-</div>
+  <div id="cart"></div>
 
 
-<label>💸 Discount</label>
+  <div class="summary">
 
-<input
-id="discount"
-type="number"
-step="0.01"
-value="0"
-placeholder="Enter discount"
-oninput="renderCart()">
+    <div class="row">
 
+      <span>
+        Subtotal
+      </span>
 
-<div class="row total">
+      <b id="cartSubtotal">
+        ₹0.00
+      </b>
 
-<span>Grand Total</span>
-
-<b id="cartTotal">
-₹0.00
-</b>
-
-</div>
-
-</div>
+    </div>
 
 
-<form
-onsubmit="completeSale(event)">
+    <label>
+      💸 Discount
+    </label>
 
-<h3>👤 Customer</h3>
-
-
-<input
-id="customerName"
-placeholder="Customer Name">
-
-
-<input
-id="customerPhone"
-placeholder="Phone Number">
+    <input
+      id="discount"
+      type="number"
+      min="0"
+      step="0.01"
+      value="0"
+      placeholder="Enter discount"
+      oninput="renderCart()">
 
 
-<select id="payment">
+    <div class="row total">
 
-<option value="Cash">
-💵 Cash
-</option>
+      <span>
+        Grand Total
+      </span>
 
-<option value="UPI">
-📱 UPI
-</option>
+      <b id="cartTotal">
+        ₹0.00
+      </b>
 
-<option value="Card">
-💳 Card
-</option>
+    </div>
 
-<option value="Credit">
-📒 Credit
-</option>
-
-</select>
+  </div>
 
 
-<button
-class="primary green">
+  <form
+    id="saleForm"
+    onsubmit="completeSale(event)">
 
-🧾 COMPLETE SALE
+    <h3>
+      👤 Customer
+    </h3>
 
-</button>
 
-</form>
+    <div class="formGrid">
+
+      <div>
+
+        <label>
+          Customer Name
+        </label>
+
+        <input
+          id="customerName"
+          placeholder="Optional">
+
+      </div>
+
+
+      <div>
+
+        <label>
+          Phone Number
+        </label>
+
+        <input
+          id="customerPhone"
+          inputmode="numeric"
+          placeholder="Optional">
+
+      </div>
+
+    </div>
+
+
+    <label>
+      Payment Method
+    </label>
+
+
+    <div class="paymentGrid">
+
+      <button
+        type="button"
+        class="paymentBtn active"
+        data-payment="Cash"
+        onclick="selectPayment('Cash')">
+
+        💵 Cash
+
+      </button>
+
+
+      <button
+        type="button"
+        class="paymentBtn"
+        data-payment="UPI"
+        onclick="selectPayment('UPI')">
+
+        📱 UPI
+
+      </button>
+
+
+      <button
+        type="button"
+        class="paymentBtn"
+        data-payment="Card"
+        onclick="selectPayment('Card')">
+
+        💳 Card
+
+      </button>
+
+
+      <button
+        type="button"
+        class="paymentBtn"
+        data-payment="Credit"
+        onclick="selectPayment('Credit')">
+
+        📒 Credit
+
+      </button>
+
+    </div>
+
+
+    <input
+      type="hidden"
+      id="payment"
+      value="Cash">
+
+
+    <button
+      class="primary green">
+
+      🧾 COMPLETE SALE
+
+    </button>
+
+  </form>
 
 </section>
 
 
-<!-- REPORT -->
+<!-- =======================================================
+     REPORTS
+======================================================== -->
 
 <section
-id="reports"
-class="page">
+  id="reports"
+  class="page">
 
-<h2>📊 Business Reports</h2>
-
-
-<div class="report-card">
-
-<small>Total Sales</small>
-
-<strong id="reportSales">
-₹0.00
-</strong>
-
-</div>
+  <h2>
+    📊 Business Reports
+  </h2>
 
 
-<div class="report-card">
+  <div class="reportGrid">
 
-<small>Total Purchase</small>
+    <div class="report-card">
 
-<strong id="reportPurchase">
-₹0.00
-</strong>
+      <small>
+        Total Sales
+      </small>
 
-</div>
+      <strong id="reportSales">
+        ₹0.00
+      </strong>
 
-
-<div class="report-card">
-
-<small>Gross Profit</small>
-
-<strong id="reportGross">
-₹0.00
-</strong>
-
-</div>
+    </div>
 
 
-<div class="report-card">
+    <div class="report-card">
 
-<small>Total Expenses</small>
+      <small>
+        Total Purchase
+      </small>
 
-<strong id="reportExpense">
-₹0.00
-</strong>
+      <strong id="reportPurchase">
+        ₹0.00
+      </strong>
 
-</div>
-
-
-<div class="report-card">
-
-<small>Net Profit</small>
-
-<strong id="reportNet">
-₹0.00
-</strong>
-
-</div>
+    </div>
 
 
-<h3>🧾 Recent Sales</h3>
+    <div class="report-card">
 
-<div id="saleHistory"></div>
+      <small>
+        Gross Profit
+      </small>
+
+      <strong id="reportGross">
+        ₹0.00
+      </strong>
+
+    </div>
+
+
+    <div class="report-card">
+
+      <small>
+        Total Expenses
+      </small>
+
+      <strong id="reportExpense">
+        ₹0.00
+      </strong>
+
+    </div>
+
+
+    <div class="report-card">
+
+      <small>
+        Net Profit
+      </small>
+
+      <strong id="reportNet">
+        ₹0.00
+      </strong>
+
+    </div>
+
+
+    <div class="report-card">
+
+      <small>
+        Total Transactions
+      </small>
+
+      <strong id="reportTransactions">
+        0
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <h3>
+    🧾 Recent Sales
+  </h3>
+
+
+  <div id="saleHistory"></div>
 
 </section>
 
 
-<!-- EXPENSE -->
+<!-- =======================================================
+     EXPENSE
+======================================================== -->
 
 <section
-id="expense"
-class="page">
+  id="expense"
+  class="page">
 
-<h2>💸 Expenses</h2>
-
-
-<form
-onsubmit="addExpense(event)">
-
-<input
-id="expenseName"
-placeholder="Expense Name"
-required>
+  <h2>
+    💸 Expenses
+  </h2>
 
 
-<input
-id="expenseAmount"
-type="number"
-step="0.01"
-placeholder="Amount"
-required>
+  <form
+    onsubmit="addExpense(event)">
+
+    <div class="formGrid">
+
+      <div>
+
+        <label>
+          Expense Name
+        </label>
+
+        <input
+          id="expenseName"
+          placeholder="Rent, Electricity, Staff..."
+          required>
+
+      </div>
 
 
-<button class="primary red">
-💸 Save Expense
-</button>
+      <div>
 
-</form>
+        <label>
+          Amount
+        </label>
+
+        <input
+          id="expenseAmount"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="₹ Amount"
+          required>
+
+      </div>
+
+    </div>
 
 
-<div id="expenseHistory"></div>
+    <button class="primary red">
+
+      💸 Save Expense
+
+    </button>
+
+  </form>
+
+
+  <h3>
+    💸 Expense History
+  </h3>
+
+
+  <div id="expenseHistory"></div>
 
 </section>
 
@@ -1681,102 +3147,250 @@ required>
 </main>
 
 
-<!-- BOTTOM -->
+<!-- =======================================================
+     BOTTOM NAV
+======================================================== -->
 
 <nav class="bottom">
 
-<button
-class="nav active"
-onclick="showPage('home')">
+  <button
+    class="nav active"
+    onclick="showPage('home')">
 
-<span class="icon">🏠</span>
-<span>Home</span>
+    <span class="icon">
+      🏠
+    </span>
 
-</button>
+    <span>
+      Home
+    </span>
 
-
-<button
-class="nav"
-onclick="showPage('products')">
-
-<span class="icon">📦</span>
-<span>Products</span>
-
-</button>
+  </button>
 
 
-<button
-class="nav"
-onclick="showPage('purchase')">
+  <button
+    class="nav"
+    onclick="showPage('products')">
 
-<span class="icon">🛒</span>
-<span>Purchase</span>
+    <span class="icon">
+      📦
+    </span>
 
-</button>
+    <span>
+      Products
+    </span>
 
-
-<button
-class="nav"
-onclick="showPage('sales')">
-
-<span class="icon">💰</span>
-<span>Sale</span>
-
-</button>
+  </button>
 
 
-<button
-class="nav"
-onclick="showPage('reports')">
+  <button
+    class="nav"
+    onclick="showPage('purchase')">
 
-<span class="icon">📊</span>
-<span>Reports</span>
+    <span class="icon">
+      🛒
+    </span>
 
-</button>
+    <span>
+      Purchase
+    </span>
+
+  </button>
+
+
+  <button
+    class="nav"
+    onclick="showPage('sales')">
+
+    <span class="icon">
+      💰
+    </span>
+
+    <span>
+      Sale
+    </span>
+
+  </button>
+
+
+  <button
+    class="nav"
+    onclick="showPage('reports')">
+
+    <span class="icon">
+      📊
+    </span>
+
+    <span>
+      Reports
+    </span>
+
+  </button>
 
 </nav>
 
+
+<!-- =======================================================
+     TOAST
+======================================================== -->
+
+<div id="toast"></div>
+
+
+<!-- =======================================================
+     EDIT PRODUCT MODAL
+======================================================== -->
+
+<div
+  id="modalOverlay"
+  class="modalOverlay">
+
+  <div class="modal">
+
+    <div class="modalHeader">
+
+      <h3>
+        ✏️ Edit Product
+      </h3>
+
+      <button
+        class="closeModal"
+        onclick="closeModal()">
+
+        ×
+
+      </button>
+
+    </div>
+
+
+    <input
+      type="hidden"
+      id="modalProductId">
+
+
+    <label>
+      Product Name
+    </label>
+
+    <input
+      id="modalName">
+
+
+    <label>
+      Category
+    </label>
+
+    <input
+      id="modalCategory">
+
+
+    <label>
+      Purchase Price
+    </label>
+
+    <input
+      id="modalBuy"
+      type="number"
+      min="0"
+      step="0.01">
+
+
+    <label>
+      Selling Price
+    </label>
+
+    <input
+      id="modalSell"
+      type="number"
+      min="0"
+      step="0.01">
+
+
+    <label>
+      Current Stock
+    </label>
+
+    <input
+      id="modalStock"
+      type="number"
+      min="0"
+      step="1">
+
+
+    <label>
+      Minimum Stock
+    </label>
+
+    <input
+      id="modalMin"
+      type="number"
+      min="0"
+      step="1">
+
+
+    <button
+      class="primary"
+      onclick="saveEditedProduct()">
+
+      💾 Save Changes
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     PRINT
+======================================================== -->
 
 <div id="printArea"></div>
 
 
 <script>
 
-/* =========================
+/* =========================================================
    DATA
-========================= */
+========================================================= */
 
-let products=
-JSON.parse(
- localStorage.getItem("products") || "[]"
-);
+let products =
+  JSON.parse(
+    localStorage.getItem("diamond_products") || "[]"
+  );
 
-let sales=
-JSON.parse(
- localStorage.getItem("sales") || "[]"
-);
+let sales =
+  JSON.parse(
+    localStorage.getItem("diamond_sales") || "[]"
+  );
 
-let purchases=
-JSON.parse(
- localStorage.getItem("purchases") || "[]"
-);
+let purchases =
+  JSON.parse(
+    localStorage.getItem("diamond_purchases") || "[]"
+  );
 
-let expenses=
-JSON.parse(
- localStorage.getItem("expenses") || "[]"
-);
+let expenses =
+  JSON.parse(
+    localStorage.getItem("diamond_expenses") || "[]"
+  );
 
-let cart=[];
+let cart = [];
 
-let selectedMiniCategory="All";
-let selectedWholesaleCategory="All";
+let selectedMiniCategory = "All";
+
+let selectedWholesaleCategory = "All";
+
+let selectedPayment = "Cash";
+
+let toastTimer = null;
 
 
-/* =========================
-   PRODUCT CATALOG
-========================= */
+/* =========================================================
+   CATALOG
+========================================================= */
 
-const catalog=[
+const catalog = [
 
 ["Rice","Food","চাল"],
 ["Atta","Food","আটা"],
@@ -1788,41 +3402,51 @@ const catalog=[
 ["Chana Dal","Food","ছোলা ডাল"],
 ["Sugar","Food","চিনি"],
 ["Salt","Food","লবণ"],
+
 ["Mustard Oil","Oil","সরিষার তেল"],
 ["Soybean Oil","Oil","সয়াবিন তেল"],
 ["Sunflower Oil","Oil","সানফ্লাওয়ার তেল"],
 ["Ghee","Food","ঘি"],
+
 ["Tea","Beverage","চা"],
 ["Coffee","Beverage","কফি"],
 ["Milk Powder","Dairy","দুধের গুঁড়ো"],
+
 ["Biscuit","Snacks","বিস্কুট"],
 ["Parle-G","Snacks","পার্লে জি"],
 ["Marie Biscuit","Snacks","মেরি বিস্কুট"],
 ["Cream Biscuit","Snacks","ক্রিম বিস্কুট"],
+
 ["Bread","Bakery","পাউরুটি"],
 ["Toast","Bakery","টোস্ট"],
 ["Cake","Bakery","কেক"],
+
 ["Noodles","Food","নুডলস"],
 ["Pasta","Food","পাস্তা"],
+
 ["Chips","Snacks","চিপস"],
 ["Chanachur","Snacks","চানাচুর"],
 ["Chocolate","Snacks","চকলেট"],
 ["Candy","Snacks","ক্যান্ডি"],
+
 ["Soft Drink","Beverage","কোল্ড ড্রিংক"],
 ["Mineral Water","Beverage","মিনারেল ওয়াটার"],
 ["Juice","Beverage","জুস"],
+
 ["Soap","Personal Care","সাবান"],
 ["Shampoo","Personal Care","শ্যাম্পু"],
 ["Toothpaste","Personal Care","টুথপেস্ট"],
 ["Toothbrush","Personal Care","টুথব্রাশ"],
 ["Hair Oil","Personal Care","চুলের তেল"],
 ["Face Wash","Personal Care","ফেসওয়াশ"],
+
 ["Detergent","Cleaning","ডিটারজেন্ট"],
 ["Washing Powder","Cleaning","ওয়াশিং পাউডার"],
 ["Dishwash","Cleaning","বাসন ধোয়ার লিকুইড"],
 ["Toilet Cleaner","Cleaning","টয়লেট ক্লিনার"],
 ["Floor Cleaner","Cleaning","ফ্লোর ক্লিনার"],
 ["Phenyl","Cleaning","ফিনাইল"],
+
 ["Tissue","Household","টিস্যু"],
 ["Toilet Paper","Household","টয়লেট পেপার"],
 ["Matchbox","Household","দেশলাই"],
@@ -1852,2090 +3476,3409 @@ const catalog=[
 ];
 
 
-/* =========================
-   LOGIN
-========================= */
-
-function checkLogin(){
-
- return localStorage.getItem("diamondLoggedIn")==="yes";
-
-}
-
-
-function setupLogin(){
-
- if(checkLogin()){
-
-  document
-  .getElementById("loginScreen")
-  .style.display="none";
-
- }
-
-}
-
-
-function login(){
-
- let pin=
- document
- .getElementById("loginPin")
- .value.trim();
-
-
- let saved=
- localStorage.getItem("diamondPIN");
-
-
- if(!saved){
-
-  if(pin.length<4){
-
-   loginError.innerText=
-   "PIN must be at least 4 digits.";
-
-   return;
-
-  }
-
-  localStorage.setItem(
-   "diamondPIN",
-   pin
-  );
-
-  localStorage.setItem(
-   "diamondLoggedIn",
-   "yes"
-  );
-
-  loginError.innerText="";
-
-  document
-  .getElementById("loginScreen")
-  .style.display="none";
-
-  alert(
-   "💎 PIN created successfully!"
-  );
-
-  return;
-
- }
-
-
- if(pin===saved){
-
-  localStorage.setItem(
-   "diamondLoggedIn",
-   "yes"
-  );
-
-  loginError.innerText="";
-
-  document
-  .getElementById("loginScreen")
-  .style.display="none";
-
- }else{
-
-  loginError.innerText=
-  "❌ Incorrect PIN";
-
- }
-
-}
-
-
-function logout(){
-
- localStorage.removeItem(
-  "diamondLoggedIn"
- );
-
- document
- .getElementById("loginPin")
- .value="";
-
- document
- .getElementById("loginScreen")
- .style.display="flex";
-
- closeDrawer();
-
-}
-
-
-/* =========================
-   DRAWER
-========================= */
-
-function openDrawer(){
-
- drawer.classList.add("open");
-
- drawerOverlay.classList.add("show");
-
-}
-
-
-function closeDrawer(){
-
- drawer.classList.remove("open");
-
- drawerOverlay.classList.remove("show");
-
-}
-
-
-function drawerPage(id){
-
- showPage(id);
-
- closeDrawer();
-
-}
-
-
-/* =========================
-   SAVE
-========================= */
-
-function save(){
-
- localStorage.setItem(
-  "products",
-  JSON.stringify(products)
- );
-
- localStorage.setItem(
-  "sales",
-  JSON.stringify(sales)
- );
-
- localStorage.setItem(
-  "purchases",
-  JSON.stringify(purchases)
- );
-
- localStorage.setItem(
-  "expenses",
-  JSON.stringify(expenses)
- );
-
- update();
-
-}
-
-
-/* =========================
+/* =========================================================
    HELPERS
-========================= */
+========================================================= */
 
 function money(n){
 
- return "₹"+
- Number(n||0)
- .toFixed(2);
+  return "₹" +
+    Number(n || 0).toFixed(2);
 
 }
 
 
 function today(){
 
- return new Date()
- .toISOString()
- .slice(0,10);
+  const d = new Date();
+
+  return d.getFullYear() +
+    "-" +
+    String(d.getMonth()+1).padStart(2,"0") +
+    "-" +
+    String(d.getDate()).padStart(2,"0");
 
 }
 
 
-/* =========================
-   PAGE
-========================= */
+function nowTime(){
 
-function showPage(id){
+  return new Date()
+    .toLocaleTimeString(
+      "en-IN",
+      {
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    );
 
- document
- .querySelectorAll(".page")
- .forEach(
-  x=>x.classList.remove("active")
- );
-
-
- document
- .getElementById(id)
- .classList.add("active");
+}
 
 
- document
- .querySelectorAll(".nav")
- .forEach(
-  x=>x.classList.remove("active")
- );
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
 
 
- document
- .querySelectorAll(".nav")
- .forEach(btn=>{
+/* =========================================================
+   TOAST
+========================================================= */
 
-  if(
-   btn.getAttribute("onclick")
-   .includes(id)
-  ){
+function toast(message,type="success"){
 
-   btn.classList.add("active");
+  const box =
+    document.getElementById("toast");
+
+  box.innerText = message;
+
+  box.className =
+    "show " + type;
+
+  clearTimeout(toastTimer);
+
+  toastTimer =
+    setTimeout(
+      ()=>{
+        box.className="";
+      },
+      2500
+    );
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function checkLogin(){
+
+  return localStorage
+    .getItem("diamond_logged_in")
+    === "yes";
+
+}
+
+
+function setupLogin(){
+
+  if(checkLogin()){
+
+    document
+      .getElementById("loginScreen")
+      .style.display="none";
 
   }
 
- });
+}
 
 
- if(id==="sales"){
+function login(){
+
+  const pin =
+    document
+      .getElementById("loginPin")
+      .value
+      .trim();
+
+  const error =
+    document
+      .getElementById("loginError");
+
+  const saved =
+    localStorage.getItem("diamond_pin");
+
+
+  if(!saved){
+
+    if(!/^\d{4,6}$/.test(pin)){
+
+      error.innerText =
+        "PIN must contain 4–6 digits.";
+
+      return;
+
+    }
+
+    localStorage.setItem(
+      "diamond_pin",
+      pin
+    );
+
+    localStorage.setItem(
+      "diamond_logged_in",
+      "yes"
+    );
+
+    error.innerText="";
+
+    document
+      .getElementById("loginScreen")
+      .style.display="none";
+
+    toast(
+      "💎 PIN created successfully!"
+    );
+
+    return;
+
+  }
+
+
+  if(pin === saved){
+
+    localStorage.setItem(
+      "diamond_logged_in",
+      "yes"
+    );
+
+    error.innerText="";
+
+    document
+      .getElementById("loginScreen")
+      .style.display="none";
+
+    toast("Welcome back 💎");
+
+  }else{
+
+    error.innerText =
+      "❌ Incorrect PIN";
+
+  }
+
+}
+
+
+function logout(){
+
+  localStorage.removeItem(
+    "diamond_logged_in"
+  );
+
+  document
+    .getElementById("loginPin")
+    .value="";
+
+  document
+    .getElementById("loginScreen")
+    .style.display="flex";
+
+  closeDrawer();
+
+}
+
+
+/* =========================================================
+   DRAWER
+========================================================= */
+
+function openDrawer(){
+
+  document
+    .getElementById("drawer")
+    .classList.add("open");
+
+  document
+    .getElementById("drawerOverlay")
+    .classList.add("show");
+
+}
+
+
+function closeDrawer(){
+
+  document
+    .getElementById("drawer")
+    .classList.remove("open");
+
+  document
+    .getElementById("drawerOverlay")
+    .classList.remove("show");
+
+}
+
+
+function drawerPage(id){
+
+  showPage(id);
+
+  closeDrawer();
+
+}
+
+
+/* =========================================================
+   SAVE DATA
+========================================================= */
+
+function saveData(){
+
+  localStorage.setItem(
+    "diamond_products",
+    JSON.stringify(products)
+  );
+
+  localStorage.setItem(
+    "diamond_sales",
+    JSON.stringify(sales)
+  );
+
+  localStorage.setItem(
+    "diamond_purchases",
+    JSON.stringify(purchases)
+  );
+
+  localStorage.setItem(
+    "diamond_expenses",
+    JSON.stringify(expenses)
+  );
+
+  updateDashboard();
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+function showPage(id){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      page =>
+        page.classList.remove("active")
+    );
+
+
+  const page =
+    document.getElementById(id);
+
+  if(page){
+
+    page.classList.add("active");
+
+  }
+
+
+  document
+    .querySelectorAll(".nav")
+    .forEach(
+      btn =>
+        btn.classList.remove("active")
+    );
+
+
+  document
+    .querySelectorAll(".nav")
+    .forEach(btn=>{
+
+      const action =
+        btn.getAttribute("onclick") || "";
+
+      if(action.includes("'" + id + "'")){
+
+        btn.classList.add("active");
+
+      }
+
+    });
+
+
+  if(id==="sales"){
+
+    renderSaleProducts();
+    renderCart();
+
+  }
+
+
+  if(id==="products"){
+
+    renderProducts();
+
+  }
+
+
+  if(id==="catalog"){
+
+    renderCatalog();
+
+  }
+
+
+  if(id==="catalogWholesale"){
+
+    renderWholesale();
+
+  }
+
+
+  updateDashboard();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================================
+   PRODUCT ADD / EDIT
+========================================================= */
+
+function addProduct(e){
+
+  e.preventDefault();
+
+
+  const editId =
+    document
+      .getElementById("editProductId")
+      .value;
+
+
+  const name =
+    document
+      .getElementById("pName")
+      .value
+      .trim();
+
+
+  const category =
+    document
+      .getElementById("pCategory")
+      .value
+      .trim() || "General";
+
+
+  const buy =
+    Number(
+      document
+        .getElementById("pBuy")
+        .value
+    );
+
+
+  const sell =
+    Number(
+      document
+        .getElementById("pSell")
+        .value
+    );
+
+
+  const stock =
+    Number(
+      document
+        .getElementById("pStock")
+        .value
+    );
+
+
+  const min =
+    Number(
+      document
+        .getElementById("pMin")
+        .value || 0
+    );
+
+
+  if(!name){
+
+    toast(
+      "Enter product name.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(buy<0 || sell<0 || stock<0){
+
+    toast(
+      "Enter valid product values.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const duplicate =
+    products.find(
+      p =>
+        p.name.toLowerCase()
+        === name.toLowerCase()
+        &&
+        String(p.id)!==String(editId)
+    );
+
+
+  if(duplicate){
+
+    toast(
+      "⚠️ Product already exists.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(editId){
+
+    const p =
+      products.find(
+        x =>
+          String(x.id)
+          === String(editId)
+      );
+
+
+    if(p){
+
+      p.name=name;
+      p.category=category;
+      p.buy=buy;
+      p.sell=sell;
+      p.stock=stock;
+      p.min=min;
+
+      toast(
+        "✅ Product updated!"
+      );
+
+    }
+
+  }else{
+
+    products.push({
+
+      id:Date.now(),
+
+      name:name,
+
+      category:category,
+
+      buy:buy,
+
+      sell:sell,
+
+      stock:stock,
+
+      min:min
+
+    });
+
+
+    toast(
+      "💎 Product added successfully!"
+    );
+
+  }
+
+
+  resetProductForm();
+
+  saveData();
+
+  renderProducts();
+
+}
+
+
+function resetProductForm(){
+
+  document
+    .getElementById("productForm")
+    .reset();
+
+  document
+    .getElementById("editProductId")
+    .value="";
+
+  document
+    .getElementById("pMin")
+    .value=5;
+
+  document
+    .getElementById("productSubmitBtn")
+    .innerText =
+      "💎 Add Product";
+
+  document
+    .getElementById("cancelEditBtn")
+    .style.display="none";
+
+}
+
+
+function editProduct(id){
+
+  const p =
+    products.find(
+      x => x.id===id
+    );
+
+  if(!p)return;
+
+
+  document
+    .getElementById("modalProductId")
+    .value=p.id;
+
+  document
+    .getElementById("modalName")
+    .value=p.name;
+
+  document
+    .getElementById("modalCategory")
+    .value=p.category;
+
+  document
+    .getElementById("modalBuy")
+    .value=p.buy;
+
+  document
+    .getElementById("modalSell")
+    .value=p.sell;
+
+  document
+    .getElementById("modalStock")
+    .value=p.stock;
+
+  document
+    .getElementById("modalMin")
+    .value=p.min;
+
+
+  document
+    .getElementById("modalOverlay")
+    .classList.add("show");
+
+}
+
+
+function closeModal(){
+
+  document
+    .getElementById("modalOverlay")
+    .classList.remove("show");
+
+}
+
+
+function saveEditedProduct(){
+
+  const id =
+    Number(
+      document
+        .getElementById("modalProductId")
+        .value
+    );
+
+
+  const p =
+    products.find(
+      x=>x.id===id
+    );
+
+
+  if(!p)return;
+
+
+  const name =
+    document
+      .getElementById("modalName")
+      .value.trim();
+
+
+  const category =
+    document
+      .getElementById("modalCategory")
+      .value.trim()
+      || "General";
+
+
+  const buy =
+    Number(
+      document
+        .getElementById("modalBuy")
+        .value
+    );
+
+
+  const sell =
+    Number(
+      document
+        .getElementById("modalSell")
+        .value
+    );
+
+
+  const stock =
+    Number(
+      document
+        .getElementById("modalStock")
+        .value
+    );
+
+
+  const min =
+    Number(
+      document
+        .getElementById("modalMin")
+        .value
+    );
+
+
+  if(!name || buy<0 || sell<0 || stock<0){
+
+    toast(
+      "Invalid product information.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  p.name=name;
+  p.category=category;
+  p.buy=buy;
+  p.sell=sell;
+  p.stock=stock;
+  p.min=min;
+
+
+  saveData();
+
+  renderProducts();
+
+  closeModal();
+
+  toast(
+    "✅ Product updated successfully!"
+  );
+
+}
+
+
+function cancelEdit(){
+
+  resetProductForm();
+
+}
+
+
+/* =========================================================
+   DELETE PRODUCT
+========================================================= */
+
+function deleteProduct(id){
+
+  const p =
+    products.find(
+      x=>x.id===id
+    );
+
+  if(!p)return;
+
+
+  const yes =
+    confirm(
+      "Delete product?\n\n" +
+      p.name
+    );
+
+
+  if(!yes)return;
+
+
+  products =
+    products.filter(
+      x=>x.id!==id
+    );
+
+
+  cart =
+    cart.filter(
+      x=>x.id!==id
+    );
+
+
+  saveData();
+
+  renderProducts();
 
   renderSaleProducts();
 
   renderCart();
 
- }
-
-
- if(id==="catalog"){
-
-  renderCatalog();
-
- }
-
-
- if(id==="catalogWholesale"){
-
-  renderWholesale();
-
- }
-
-
- update();
-
- window.scrollTo(0,0);
-
-}
-
-
-/* =========================
-   ADD PRODUCT
-========================= */
-
-function addProduct(e){
-
- e.preventDefault();
-
-
- let name=
- pName.value.trim();
-
-
- if(!name)return;
-
-
- let existing=
- products.find(
-  p=>
-  p.name.toLowerCase()
-  ===name.toLowerCase()
- );
-
-
- if(existing){
-
-  alert(
-   "⚠️ Product already exists."
+  toast(
+    "🗑️ Product deleted."
   );
 
-  return;
-
- }
-
-
- products.push({
-
-  id:Date.now(),
-
-  name:name,
-
-  category:
-  pCategory.value.trim() ||
-  "General",
-
-  buy:Number(pBuy.value),
-
-  sell:Number(pSell.value),
-
-  stock:Number(pStock.value),
-
-  min:Number(pMin.value)
-
- });
-
-
- e.target.reset();
-
- pMin.value=5;
-
-
- document
- .getElementById(
-  "productSuggestions"
- )
- .style.display="none";
-
-
- save();
-
-
- alert(
-  "💎 Product added successfully!"
- );
-
 }
 
 
-/* =========================
-   PRODUCT SUGGESTION
-========================= */
+/* =========================================================
+   PRODUCT SUGGESTIONS
+========================================================= */
 
 function productSuggestions(){
 
- let q=
- pName.value
- .trim()
- .toLowerCase();
+  const input =
+    document.getElementById("pName");
+
+  const box =
+    document.getElementById(
+      "productSuggestions"
+    );
+
+  const q =
+    input.value
+      .trim()
+      .toLowerCase();
 
 
- if(q.length<1){
+  if(!q){
 
-  productSuggestionsBox([]);
+    box.style.display="none";
 
-  return;
+    return;
 
- }
-
-
- let results=
- catalog
- .filter(x=>
-  x[0]
-  .toLowerCase()
-  .includes(q)
- )
- .slice(0,8);
+  }
 
 
- productSuggestionsBox(results);
-
-}
-
-
-function productSuggestionsBox(results){
-
- let box=
- document
- .getElementById(
-  "productSuggestions"
- );
+  let results =
+    catalog
+      .filter(
+        x =>
+          x[0]
+            .toLowerCase()
+            .includes(q)
+      )
+      .slice(0,8);
 
 
- if(!results.length){
-
-  box.style.display="none";
-
-  return;
-
- }
-
-
- box.innerHTML=
- results.map(x=>`
-
- <div
- class="suggestion"
- onclick='selectCatalogProduct(${JSON.stringify(x)})'>
-
- <b>${x[0]}</b>
-
- <small>
- ${x[1]} • ${x[2]}
- </small>
-
- </div>
-
- `).join("");
+  const own =
+    products
+      .filter(
+        p =>
+          p.name
+            .toLowerCase()
+            .includes(q)
+      )
+      .slice(0,5);
 
 
- box.style.display="block";
+  if(own.length){
+
+    results =
+      own.map(
+        p =>
+          [
+            p.name,
+            p.category,
+            "Stock: "+p.stock
+          ]
+      );
+
+  }
+
+
+  if(!results.length){
+
+    box.style.display="none";
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    results.map(
+      x => `
+
+      <div
+        class="suggestion"
+        onclick='selectCatalogProduct(${JSON.stringify(x)})'>
+
+        <b>
+          ${escapeHTML(x[0])}
+        </b>
+
+        <small>
+          ${escapeHTML(x[1])}
+          •
+          ${escapeHTML(x[2])}
+        </small>
+
+      </div>
+
+      `
+    ).join("");
+
+
+  box.style.display="block";
 
 }
 
 
 function selectCatalogProduct(x){
 
- pName.value=x[0];
-
- pCategory.value=x[1];
-
- document
- .getElementById(
-  "productSuggestions"
- )
- .style.display="none";
-
-}
-
-
-/* =========================
-   PURCHASE SUGGESTION
-========================= */
-
-function purchaseSuggestions(){
-
- let q=
- purchaseName.value
- .trim()
- .toLowerCase();
-
-
- if(q.length<1){
+  document
+    .getElementById("pName")
+    .value=x[0];
 
   document
-  .getElementById(
-   "purchaseSuggestions"
-  )
-  .style.display="none";
+    .getElementById("pCategory")
+    .value=x[1];
 
-  return;
-
- }
-
-
- let results=
- products
- .filter(
-  p=>
-  p.name
-  .toLowerCase()
-  .includes(q)
- )
- .slice(0,8);
-
-
- if(!results.length){
-
-  results=
-  catalog
-  .filter(
-   x=>
-   x[0]
-   .toLowerCase()
-   .includes(q)
-  )
-  .slice(0,8);
 
   document
-  .getElementById(
-   "purchaseSuggestions"
-  )
-  .innerHTML=
-  results.map(x=>`
-
-  <div
-   class="suggestion"
-   onclick='selectPurchaseCatalog(${JSON.stringify(x)})'>
-
-   <b>${x[0]}</b>
-
-   <small>
-   ${x[1]} • Tap to use this name
-   </small>
-
-  </div>
-
-  `).join("");
-
- }else{
-
-  document
-  .getElementById(
-   "purchaseSuggestions"
-  )
-  .innerHTML=
-  results.map(p=>`
-
-  <div
-   class="suggestion"
-   onclick='selectPurchaseProduct(${p.id})'>
-
-   <b>${p.name}</b>
-
-   <small>
-   Stock: ${p.stock}
-   • Buy ${money(p.buy)}
-   </small>
-
-  </div>
-
-  `).join("");
-
- }
-
-
- document
- .getElementById(
-  "purchaseSuggestions"
- )
- .style.display="block";
+    .getElementById(
+      "productSuggestions"
+    )
+    .style.display="none";
 
 }
 
 
-function selectPurchaseProduct(id){
-
- let p=
- products.find(
-  x=>x.id===id
- );
-
-
- if(!p)return;
-
-
- purchaseName.value=
- p.name;
-
-
- purchaseProduct.value=
- p.id;
-
-
- purchasePrice.value=
- p.buy;
-
-
- document
- .getElementById(
-  "purchaseSuggestions"
- )
- .style.display="none";
-
-}
-
-
-function selectPurchaseCatalog(x){
-
- purchaseName.value=x[0];
-
- purchasePrice.value="";
-
-
- let existing=
- products.find(
-  p=>
-  p.name.toLowerCase()
-  ===x[0].toLowerCase()
- );
-
-
- if(existing){
-
-  purchaseProduct.value=
-  existing.id;
-
-  purchasePrice.value=
-  existing.buy;
-
- }else{
-
-  purchaseProduct.innerHTML=
-  `<option value="">
-  Product not added yet
-  </option>`;
-
- }
-
-
- document
- .getElementById(
-  "purchaseSuggestions"
- )
- .style.display="none";
-
-}
-
-
-/* =========================
-   PRODUCTS LIST
-========================= */
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
 
 function renderProducts(){
 
- let search=
- (
-  document
-  .getElementById(
-   "productSearch"
-  )?.value || ""
- )
- .toLowerCase();
+  const search =
+    (
+      document
+        .getElementById("productSearch")
+        ?.value || ""
+    )
+    .toLowerCase();
 
 
- let filtered=
- products.filter(
-  p=>
-  p.name
-  .toLowerCase()
-  .includes(search)
- );
+  const list =
+    products.filter(
+      p =>
+        p.name
+          .toLowerCase()
+          .includes(search)
+        ||
+        p.category
+          .toLowerCase()
+          .includes(search)
+    );
 
 
- productList.innerHTML=
- filtered.map(p=>`
-
- <div class="product">
-
- <div>
-
- <b>${p.name}</b>
-
- <small>
-
- ${p.category}
-
- <br>
-
- Buy ${money(p.buy)}
- • Sell ${money(p.sell)}
-
- </small>
-
- <br><br>
-
- <span
- class="badge ${
-  p.stock<=p.min
-  ?"low"
-  :"good"
- }">
-
- Stock ${p.stock}
-
- </span>
-
- </div>
+  const box =
+    document.getElementById(
+      "productList"
+    );
 
 
- <button
- class="add"
- onclick="quickAdd(${p.id})">
+  if(!list.length){
 
- + Sale
+    box.innerHTML =
+      `<div class="empty">
+        📦 No products found.
+       </div>`;
 
- </button>
+    return;
 
- </div>
-
- `).join("");
+  }
 
 
- if(!filtered.length){
+  box.innerHTML =
+    list.map(
+      p => {
 
-  productList.innerHTML=
-  `<div class="card">
-  📦 No product found.
-  </div>`;
+        let stockClass="good";
 
- }
+        let stockText="In Stock";
+
+        if(p.stock<=0){
+
+          stockClass="out";
+
+          stockText="Out of Stock";
+
+        }else if(p.stock<=p.min){
+
+          stockClass="low";
+
+          stockText="Low Stock";
+
+        }
+
+
+        return `
+
+        <div class="product">
+
+          <div class="productInfo">
+
+            <b>
+              ${escapeHTML(p.name)}
+            </b>
+
+            <small>
+
+              ${escapeHTML(p.category)}
+
+              <br>
+
+              Buy:
+              ${money(p.buy)}
+
+              •
+              Sell:
+              ${money(p.sell)}
+
+              <br>
+
+              Stock:
+              ${p.stock}
+
+            </small>
+
+            <br>
+
+            <span
+              class="badge ${stockClass}">
+
+              ${stockText}
+
+            </span>
+
+          </div>
+
+
+          <div class="productActions">
+
+            <button
+              class="iconBtn"
+              onclick="editProduct(${p.id})">
+
+              ✏️
+
+            </button>
+
+
+            <button
+              class="iconBtn dangerBtn"
+              onclick="deleteProduct(${p.id})">
+
+              🗑️
+
+            </button>
+
+
+            <button
+              class="add"
+              onclick="quickAdd(${p.id})">
+
+              + Sale
+
+            </button>
+
+          </div>
+
+        </div>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
 
-/* =========================
-   CATALOG
-========================= */
+/* =========================================================
+   CATEGORIES
+========================================================= */
 
 function getMiniCategories(){
 
- return [
-  "All",
-  ...new Set(
-   catalog
-   .filter(x=>x[1]!=="Wholesale")
-   .map(x=>x[1])
-  )
- ];
+  return [
+    "All",
+    ...new Set(
+      catalog
+        .filter(
+          x=>x[1]!=="Wholesale"
+        )
+        .map(x=>x[1])
+    )
+  ];
 
 }
 
 
 function getWholesaleCategories(){
 
- return [
-  "All",
-  ...new Set(
-   catalog
-   .filter(x=>x[1]==="Wholesale")
-   .map(x=>x[1])
-  )
- ];
+  return [
+    "All",
+    "Wholesale"
+  ];
 
 }
 
 
 function renderCategoryButtons(
- target,
- categories,
- selected,
- callback
+  target,
+  categories,
+  selected,
+  callback
 ){
 
- document
- .getElementById(target)
- .innerHTML=
- categories.map(c=>`
+  const box =
+    document.getElementById(target);
 
- <button
- class="${
-  c===selected
-  ?"active"
-  :""
- }"
- onclick="${callback}('${c}')">
 
- ${c}
+  box.innerHTML =
+    categories.map(
+      c => `
 
- </button>
+      <button
+        class="${
+          c===selected
+          ? "active"
+          : ""
+        }"
+        onclick="${callback}('${escapeHTML(c)}')">
 
- `).join("");
+        ${escapeHTML(c)}
+
+      </button>
+
+      `
+    ).join("");
 
 }
 
+
+/* =========================================================
+   MINI CATALOG
+========================================================= */
 
 function selectMiniCategory(c){
 
- selectedMiniCategory=c;
+  selectedMiniCategory=c;
 
- renderCatalog();
-
-}
-
-
-function selectWholesaleCategory(c){
-
- selectedWholesaleCategory=c;
-
- renderWholesale();
+  renderCatalog();
 
 }
 
 
 function renderCatalog(){
 
- let q=
- (
+  const q =
+    (
+      document
+        .getElementById("catalogSearch")
+        ?.value || ""
+    )
+    .toLowerCase();
+
+
+  renderCategoryButtons(
+    "miniCategories",
+    getMiniCategories(),
+    selectedMiniCategory,
+    "selectMiniCategory"
+  );
+
+
+  let list =
+    catalog.filter(
+      x=>x[1]!=="Wholesale"
+    );
+
+
+  if(selectedMiniCategory!=="All"){
+
+    list =
+      list.filter(
+        x =>
+          x[1]===selectedMiniCategory
+      );
+
+  }
+
+
+  if(q){
+
+    list =
+      list.filter(
+        x =>
+          x[0]
+            .toLowerCase()
+            .includes(q)
+          ||
+          x[2]
+            .toLowerCase()
+            .includes(q)
+      );
+
+  }
+
+
   document
-  .getElementById(
-   "catalogSearch"
-  )?.value || ""
- )
- .toLowerCase();
+    .getElementById("catalogCount")
+    .innerText =
+      list.length+" items";
 
 
- renderCategoryButtons(
-  "miniCategories",
-  getMiniCategories(),
-  selectedMiniCategory,
-  "selectMiniCategory"
- );
+  const box =
+    document.getElementById(
+      "catalogList"
+    );
 
 
- let list=
- catalog.filter(
-  x=>x[1]!=="Wholesale"
- );
+  box.innerHTML =
+    list.map(
+      x => `
+
+      <div class="product">
+
+        <div class="productInfo">
+
+          <b>
+            ${escapeHTML(x[0])}
+          </b>
+
+          <small>
+
+            ${escapeHTML(x[2])}
+
+            <br>
+
+            Category:
+            ${escapeHTML(x[1])}
+
+          </small>
+
+        </div>
 
 
- if(selectedMiniCategory!=="All"){
+        <button
+          class="add"
+          onclick='useCatalog(${JSON.stringify(x)})'>
 
-  list=
-  list.filter(
-   x=>x[1]===selectedMiniCategory
-  );
+          + Use
 
- }
+        </button>
 
+      </div>
 
- if(q){
+      `
+    ).join("");
 
-  list=
-  list.filter(
-   x=>
-   x[0]
-   .toLowerCase()
-   .includes(q) ||
-   x[2]
-   .toLowerCase()
-   .includes(q)
-  );
-
- }
+}
 
 
- catalogCount.innerText=
- list.length+" items";
+/* =========================================================
+   WHOLESALE CATALOG
+========================================================= */
 
+function selectWholesaleCategory(c){
 
- catalogList.innerHTML=
- list.map(x=>`
+  selectedWholesaleCategory=c;
 
- <div class="product">
-
- <div>
-
- <b>${x[0]}</b>
-
- <small>
- ${x[2]}
- <br>
- Category: ${x[1]}
- </small>
-
- </div>
-
-
- <button
- class="add"
- onclick='useCatalog(${JSON.stringify(x)})'>
-
- + Use
-
- </button>
-
- </div>
-
- `).join("");
+  renderWholesale();
 
 }
 
 
 function renderWholesale(){
 
- let q=
- (
-  document
-  .getElementById(
-   "wholesaleSearch"
-  )?.value || ""
- )
- .toLowerCase();
+  const q =
+    (
+      document
+        .getElementById("wholesaleSearch")
+        ?.value || ""
+    )
+    .toLowerCase();
 
 
- renderCategoryButtons(
-  "wholesaleCategories",
-  getWholesaleCategories(),
-  selectedWholesaleCategory,
-  "selectWholesaleCategory"
- );
-
-
- let list=
- catalog.filter(
-  x=>x[1]==="Wholesale"
- );
-
-
- if(q){
-
-  list=
-  list.filter(
-   x=>
-   x[0]
-   .toLowerCase()
-   .includes(q) ||
-   x[2]
-   .toLowerCase()
-   .includes(q)
+  renderCategoryButtons(
+    "wholesaleCategories",
+    getWholesaleCategories(),
+    selectedWholesaleCategory,
+    "selectWholesaleCategory"
   );
 
- }
 
-
- wholesaleCount.innerText=
- list.length+" items";
-
-
- wholesaleList.innerHTML=
- list.map(x=>`
-
- <div class="product">
-
- <div>
-
- <b>${x[0]}</b>
-
- <small>
- ${x[2]}
- <br>
- Wholesale Item
- </small>
-
- </div>
-
-
- <button
- class="add"
- onclick='useCatalog(${JSON.stringify(x)})'>
-
- + Use
-
- </button>
-
- </div>
-
- `).join("");
-
-}
-
-
-function useCatalog(x){
-
- showPage("products");
-
-
- pName.value=x[0];
-
- pCategory.value=x[1];
-
- pName.focus();
-
- alert(
-  "💎 "+x[0]+
-  " selected. Now enter Buy, Sell and Stock."
- );
-
-}
-
-
-/* =========================
-   PURCHASE
-========================= */
-
-function addPurchase(e){
-
- e.preventDefault();
-
-
- let id=
- Number(
-  purchaseProduct.value
- );
-
-
- let p=
- products.find(
-  x=>x.id===id
- );
-
-
- if(!p){
-
-  alert(
-   "⚠️ First add this product in Products."
-  );
-
-  return;
-
- }
-
-
- let qty=
- Number(purchaseQty.value);
-
-
- let price=
- Number(purchasePrice.value);
-
-
- if(qty<=0||price<0){
-
-  alert(
-   "Enter valid purchase details."
-  );
-
-  return;
-
- }
-
-
- p.stock+=qty;
-
-
- p.buy=price;
-
-
- purchases.push({
-
-  date:today(),
-
-  product:p.name,
-
-  qty:qty,
-
-  price:price,
-
-  total:qty*price
-
- });
-
-
- e.target.reset();
-
-
- document
- .getElementById(
-  "purchaseSuggestions"
- )
- .style.display="none";
-
-
- save();
-
-
- alert(
-  "✅ Purchase saved!"
- );
-
-}
-
-
-/* =========================
-   SALE PRODUCTS
-========================= */
-
-function renderSaleProducts(){
-
- let search=
- (
-  document
-  .getElementById(
-   "saleSearch"
-  )?.value || ""
- )
- .toLowerCase();
-
-
- let filtered=
- products.filter(
-  p=>
-  p.name
-  .toLowerCase()
-  .includes(search)
- );
-
-
- saleProductList.innerHTML=
- filtered.map(p=>`
-
- <div class="product">
-
- <div>
-
- <b>${p.name}</b>
-
- <small>
-
- Sell ${money(p.sell)}
-
- <br>
-
- Available Stock:
- ${p.stock}
-
- </small>
-
- </div>
-
-
- <button
- class="add"
- onclick="addToCart(${p.id})">
-
- + Add
-
- </button>
-
- </div>
-
- `).join("");
-
-
- if(!filtered.length){
-
-  saleProductList.innerHTML=
-  `<div class="card">
-  🔍 No matching product.
-  </div>`;
-
- }
-
-}
-
-
-/* =========================
-   CART
-========================= */
-
-function addToCart(id){
-
- let p=
- products.find(
-  x=>x.id===id
- );
-
-
- if(!p)return;
-
-
- if(p.stock<=0){
-
-  alert(
-   "❌ Product is out of stock"
-  );
-
-  return;
-
- }
-
-
- let item=
- cart.find(
-  x=>x.id===id
- );
-
-
- if(item){
-
-  if(item.qty<p.stock){
-
-   item.qty++;
-
-  }else{
-
-   alert(
-    "❌ Maximum stock reached"
-   );
+  let list =
+    catalog.filter(
+      x=>x[1]==="Wholesale"
+    );
+
+
+  if(q){
+
+    list =
+      list.filter(
+        x =>
+          x[0]
+            .toLowerCase()
+            .includes(q)
+          ||
+          x[2]
+            .toLowerCase()
+            .includes(q)
+      );
 
   }
 
- }else{
 
-  cart.push({
-   id:id,
-   qty:1
+  document
+    .getElementById("wholesaleCount")
+    .innerText =
+      list.length+" items";
+
+
+  document
+    .getElementById("wholesaleList")
+    .innerHTML =
+      list.map(
+        x => `
+
+        <div class="product">
+
+          <div class="productInfo">
+
+            <b>
+              ${escapeHTML(x[0])}
+            </b>
+
+            <small>
+
+              ${escapeHTML(x[2])}
+
+              <br>
+
+              Wholesale Item
+
+            </small>
+
+          </div>
+
+
+          <button
+            class="add"
+            onclick='useCatalog(${JSON.stringify(x)})'>
+
+            + Use
+
+          </button>
+
+        </div>
+
+        `
+      ).join("");
+
+}
+
+
+/* =========================================================
+   USE CATALOG
+========================================================= */
+
+function useCatalog(x){
+
+  showPage("products");
+
+
+  document
+    .getElementById("pName")
+    .value=x[0];
+
+
+  document
+    .getElementById("pCategory")
+    .value=x[1];
+
+
+  document
+    .getElementById("pName")
+    .focus();
+
+
+  toast(
+    "💎 "+x[0]+" selected."
+  );
+
+}
+
+
+/* =========================================================
+   PURCHASE SUGGESTIONS
+========================================================= */
+
+function purchaseSuggestions(){
+
+  const q =
+    document
+      .getElementById("purchaseName")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const box =
+    document.getElementById(
+      "purchaseSuggestions"
+    );
+
+
+  if(!q){
+
+    box.style.display="none";
+
+    return;
+
+  }
+
+
+  let results =
+    products
+      .filter(
+        p =>
+          p.name
+            .toLowerCase()
+            .includes(q)
+      )
+      .slice(0,8);
+
+
+  if(!results.length){
+
+    results =
+      catalog
+        .filter(
+          x =>
+            x[0]
+              .toLowerCase()
+              .includes(q)
+        )
+        .slice(0,8);
+
+
+    box.innerHTML =
+      results.map(
+        x => `
+
+        <div
+          class="suggestion"
+          onclick='selectPurchaseCatalog(${JSON.stringify(x)})'>
+
+          <b>
+            ${escapeHTML(x[0])}
+          </b>
+
+          <small>
+            ${escapeHTML(x[1])}
+            • Tap to use
+          </small>
+
+        </div>
+
+        `
+      ).join("");
+
+  }else{
+
+    box.innerHTML =
+      results.map(
+        p => `
+
+        <div
+          class="suggestion"
+          onclick="selectPurchaseProduct(${p.id})">
+
+          <b>
+            ${escapeHTML(p.name)}
+          </b>
+
+          <small>
+            Stock:
+            ${p.stock}
+            • Buy:
+            ${money(p.buy)}
+          </small>
+
+        </div>
+
+        `
+      ).join("");
+
+  }
+
+
+  box.style.display =
+    results.length
+    ? "block"
+    : "none";
+
+}
+
+
+function selectPurchaseProduct(id){
+
+  const p =
+    products.find(
+      x=>x.id===id
+    );
+
+  if(!p)return;
+
+
+  document
+    .getElementById("purchaseName")
+    .value=p.name;
+
+
+  document
+    .getElementById("purchaseProduct")
+    .value=p.id;
+
+
+  document
+    .getElementById("purchasePrice")
+    .value=p.buy;
+
+
+  document
+    .getElementById(
+      "purchaseSuggestions"
+    )
+    .style.display="none";
+
+}
+
+
+function selectPurchaseCatalog(x){
+
+  document
+    .getElementById("purchaseName")
+    .value=x[0];
+
+
+  const existing =
+    products.find(
+      p =>
+        p.name.toLowerCase()
+        === x[0].toLowerCase()
+    );
+
+
+  if(existing){
+
+    document
+      .getElementById("purchaseProduct")
+      .value=existing.id;
+
+    document
+      .getElementById("purchasePrice")
+      .value=existing.buy;
+
+  }else{
+
+    document
+      .getElementById("purchaseProduct")
+      .value="";
+
+    document
+      .getElementById("purchasePrice")
+      .value="";
+
+    toast(
+      "First add this item to Products.",
+      "error"
+    );
+
+  }
+
+
+  document
+    .getElementById(
+      "purchaseSuggestions"
+    )
+    .style.display="none";
+
+}
+
+
+/* =========================================================
+   PURCHASE
+========================================================= */
+
+function addPurchase(e){
+
+  e.preventDefault();
+
+
+  const id =
+    Number(
+      document
+        .getElementById("purchaseProduct")
+        .value
+    );
+
+
+  const p =
+    products.find(
+      x=>x.id===id
+    );
+
+
+  if(!p){
+
+    toast(
+      "⚠️ Select a valid product.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const qty =
+    Number(
+      document
+        .getElementById("purchaseQty")
+        .value
+    );
+
+
+  const price =
+    Number(
+      document
+        .getElementById("purchasePrice")
+        .value
+    );
+
+
+  if(qty<=0 || price<0){
+
+    toast(
+      "Enter valid purchase details.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  p.stock += qty;
+
+  p.buy = price;
+
+
+  purchases.push({
+
+    id:Date.now(),
+
+    date:today(),
+
+    time:nowTime(),
+
+    product:p.name,
+
+    productId:p.id,
+
+    qty:qty,
+
+    price:price,
+
+    total:qty*price
+
   });
 
- }
+
+  e.target.reset();
 
 
- renderCart();
+  saveData();
+
+  renderProducts();
+
+  renderPurchaseHistory();
+
+
+  toast(
+    "✅ Purchase saved!"
+  );
+
+}
+
+
+/* =========================================================
+   PURCHASE HISTORY
+========================================================= */
+
+function renderPurchaseHistory(){
+
+  const box =
+    document.getElementById(
+      "purchaseHistory"
+    );
+
+
+  if(!purchases.length){
+
+    box.innerHTML =
+      `<div class="empty">
+        📥 No purchase history.
+       </div>`;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    purchases
+      .slice()
+      .reverse()
+      .map(
+        x => `
+
+        <div class="historyCard">
+
+          <div class="historyTop">
+
+            <div>
+
+              <b>
+                📥
+                ${escapeHTML(x.product)}
+              </b>
+
+              <div class="historyMeta">
+
+                ${x.qty}
+                ×
+                ${money(x.price)}
+
+                <br>
+
+                ${x.date}
+                •
+                ${x.time || ""}
+
+              </div>
+
+            </div>
+
+            <div class="historyTotal">
+              ${money(x.total)}
+            </div>
+
+          </div>
+
+        </div>
+
+        `
+      ).join("");
+
+}
+
+
+/* =========================================================
+   SALE PRODUCT LIST
+========================================================= */
+
+function renderSaleProducts(){
+
+  const search =
+    (
+      document
+        .getElementById("saleSearch")
+        ?.value || ""
+    )
+    .toLowerCase();
+
+
+  const list =
+    products.filter(
+      p =>
+        p.name
+          .toLowerCase()
+          .includes(search)
+    );
+
+
+  const box =
+    document.getElementById(
+      "saleProductList"
+    );
+
+
+  if(!list.length){
+
+    box.innerHTML =
+      `<div class="empty">
+        🔍 No matching product.
+       </div>`;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    list.map(
+      p => `
+
+      <div class="product">
+
+        <div class="productInfo">
+
+          <b>
+            ${escapeHTML(p.name)}
+          </b>
+
+          <small>
+
+            Sell:
+            ${money(p.sell)}
+
+            <br>
+
+            Available Stock:
+            ${p.stock}
+
+          </small>
+
+        </div>
+
+
+        <button
+          class="add"
+          onclick="addToCart(${p.id})"
+          ${p.stock<=0 ? "disabled" : ""}>
+
+          ${p.stock<=0 ? "Out" : "+ Add"}
+
+        </button>
+
+      </div>
+
+      `
+    ).join("");
+
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function addToCart(id){
+
+  const p =
+    products.find(
+      x=>x.id===id
+    );
+
+
+  if(!p)return;
+
+
+  if(p.stock<=0){
+
+    toast(
+      "❌ Product is out of stock.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const item =
+    cart.find(
+      x=>x.id===id
+    );
+
+
+  if(item){
+
+    if(item.qty < p.stock){
+
+      item.qty++;
+
+    }else{
+
+      toast(
+        "❌ Maximum stock reached.",
+        "error"
+      );
+
+    }
+
+  }else{
+
+    cart.push({
+
+      id:id,
+
+      qty:1
+
+    });
+
+  }
+
+
+  renderCart();
 
 }
 
 
 function quickAdd(id){
 
- showPage("sales");
+  showPage("sales");
 
- addToCart(id);
+  addToCart(id);
 
 }
 
 
 function changeQty(id,change){
 
- let item=
- cart.find(
-  x=>x.id===id
- );
+  const item =
+    cart.find(
+      x=>x.id===id
+    );
 
 
- let p=
- products.find(
-  x=>x.id===id
- );
+  const p =
+    products.find(
+      x=>x.id===id
+    );
 
 
- if(!item||!p)return;
+  if(!item || !p)return;
 
 
- let q=
- item.qty+change;
+  const q =
+    item.qty + change;
 
 
- if(q<=0){
+  if(q<=0){
 
-  removeCart(id);
+    removeCart(id);
 
-  return;
+    return;
 
- }
-
-
- if(q>p.stock){
-
-  alert(
-   "❌ Not enough stock"
-  );
-
-  return;
-
- }
+  }
 
 
- item.qty=q;
+  if(q>p.stock){
 
- renderCart();
+    toast(
+      "❌ Not enough stock.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  item.qty=q;
+
+  renderCart();
 
 }
 
 
 function removeCart(id){
 
- cart=
- cart.filter(
-  x=>x.id!==id
- );
+  cart =
+    cart.filter(
+      x=>x.id!==id
+    );
 
- renderCart();
+  renderCart();
 
 }
 
+
+/* =========================================================
+   RENDER CART
+========================================================= */
 
 function renderCart(){
 
- if(cart.length===0){
+  const box =
+    document.getElementById("cart");
 
-  cart.innerHTML=
-  "";
 
-  document
-  .getElementById("cart")
-  .innerHTML=
-  `<div class="card">
-  🛒 Your cart is empty.
-  </div>`;
+  if(!cart.length){
 
-  cartSubtotal.innerText=
-  money(0);
+    box.innerHTML =
+      `<div class="empty">
+        🛒 Your cart is empty.
+       </div>`;
 
-  cartTotal.innerText=
-  money(0);
+    document
+      .getElementById("cartSubtotal")
+      .innerText=money(0);
 
-  return;
+    document
+      .getElementById("cartTotal")
+      .innerText=money(0);
 
- }
-
-
- let subtotal=0;
-
-
- document
- .getElementById("cart")
- .innerHTML=
- cart.map(item=>{
-
-  let p=
-  products.find(
-   x=>x.id===item.id
-  );
-
-
-  if(!p)return "";
-
-
-  let amount=
-  p.sell*item.qty;
-
-
-  subtotal+=amount;
-
-
-  return `
-
-  <div class="cart">
-
-  <div class="cartHead">
-
-  <div>
-
-  <b>${p.name}</b>
-
-  <br>
-
-  <small>
-  ${money(p.sell)}
-  × ${item.qty}
-  </small>
-
-  </div>
-
-  <b>
-  ${money(amount)}
-  </b>
-
-  </div>
-
-
-  <div class="qty">
-
-  <button
-  onclick="changeQty(${p.id},-1)">
-  −
-  </button>
-
-
-  <b>${item.qty}</b>
-
-
-  <button
-  onclick="changeQty(${p.id},1)">
-  +
-  </button>
-
-
-  <button
-  class="remove"
-  onclick="removeCart(${p.id})">
-
-  Remove
-
-  </button>
-
-  </div>
-
-  </div>
-
-  `;
-
- }).join("");
-
-
- let discount=
- Number(
-  document
-  .getElementById(
-   "discount"
-  ).value || 0
- );
-
-
- if(discount>subtotal){
-
-  discount=subtotal;
-
-  document
-  .getElementById(
-   "discount"
-  ).value=subtotal;
-
- }
-
-
- let total=
- subtotal-discount;
-
-
- cartSubtotal.innerText=
- money(subtotal);
-
-
- cartTotal.innerText=
- money(total);
-
-}
-
-
-/* =========================
-   COMPLETE SALE
-========================= */
-
-function completeSale(e){
-
- e.preventDefault();
-
-
- if(cart.length===0){
-
-  alert(
-   "❌ Please add products."
-  );
-
-  return;
-
- }
-
-
- let subtotal=0;
- let cost=0;
-
-
- for(let item of cart){
-
-  let p=
-  products.find(
-   x=>x.id===item.id
-  );
-
-
-  if(!p)continue;
-
-
-  if(item.qty>p.stock){
-
-   alert(
-    "❌ Not enough stock: "+
-    p.name
-   );
-
-   return;
+    return;
 
   }
 
 
-  subtotal+=
-  p.sell*item.qty;
+  let subtotal=0;
 
 
-  cost+=
-  p.buy*item.qty;
+  box.innerHTML =
+    cart.map(
+      item => {
 
- }
+        const p =
+          products.find(
+            x=>x.id===item.id
+          );
 
 
- let discount=
- Number(
+        if(!p)return "";
+
+
+        const amount =
+          p.sell * item.qty;
+
+
+        subtotal += amount;
+
+
+        return `
+
+        <div class="cartBox">
+
+          <div class="cartHead">
+
+            <div>
+
+              <b>
+                ${escapeHTML(p.name)}
+              </b>
+
+              <br>
+
+              <small class="muted">
+
+                ${money(p.sell)}
+                ×
+                ${item.qty}
+
+              </small>
+
+            </div>
+
+            <b>
+              ${money(amount)}
+            </b>
+
+          </div>
+
+
+          <div class="qty">
+
+            <button
+              onclick="changeQty(${p.id},-1)">
+
+              −
+
+            </button>
+
+
+            <b>
+              ${item.qty}
+            </b>
+
+
+            <button
+              onclick="changeQty(${p.id},1)">
+
+              +
+
+            </button>
+
+
+            <button
+              class="remove"
+              onclick="removeCart(${p.id})">
+
+              Remove
+
+            </button>
+
+          </div>
+
+        </div>
+
+        `;
+
+      }
+    ).join("");
+
+
+  let discount =
+    Number(
+      document
+        .getElementById("discount")
+        .value || 0
+    );
+
+
+  if(discount<0){
+
+    discount=0;
+
+  }
+
+
+  if(discount>subtotal){
+
+    discount=subtotal;
+
+    document
+      .getElementById("discount")
+      .value=subtotal;
+
+  }
+
+
+  const total =
+    subtotal - discount;
+
+
   document
-  .getElementById(
-   "discount"
-  ).value || 0
- );
+    .getElementById("cartSubtotal")
+    .innerText =
+      money(subtotal);
 
 
- if(discount>subtotal)
- discount=subtotal;
+  document
+    .getElementById("cartTotal")
+    .innerText =
+      money(total);
+
+}
 
 
- let total=
- subtotal-discount;
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+function selectPayment(method){
+
+  selectedPayment=method;
 
 
- let profit=
- subtotal-cost-discount;
+  document
+    .getElementById("payment")
+    .value=method;
 
 
- let invoice=
- "INV-"+
- String(
-  sales.length+1
- )
- .padStart(5,"0");
+  document
+    .querySelectorAll(".paymentBtn")
+    .forEach(
+      btn => {
+
+        btn.classList.toggle(
+          "active",
+          btn.dataset.payment
+          === method
+        );
+
+      }
+    );
+
+}
 
 
- let items=
- cart.map(item=>{
+/* =========================================================
+   COMPLETE SALE
+========================================================= */
 
-  let p=
-  products.find(
-   x=>x.id===item.id
-  );
+function completeSale(e){
 
-
-  p.stock-=item.qty;
+  e.preventDefault();
 
 
-  return{
+  if(!cart.length){
 
-   product:p.name,
+    toast(
+      "❌ Please add products.",
+      "error"
+    );
 
-   qty:item.qty,
+    return;
 
-   price:p.sell,
+  }
 
-   cost:p.buy,
 
-   amount:
-   p.sell*item.qty
+  let subtotal=0;
+
+  let cost=0;
+
+
+  for(const item of cart){
+
+    const p =
+      products.find(
+        x=>x.id===item.id
+      );
+
+
+    if(!p)continue;
+
+
+    if(item.qty>p.stock){
+
+      toast(
+        "❌ Not enough stock: "+p.name,
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    subtotal +=
+      p.sell * item.qty;
+
+
+    cost +=
+      p.buy * item.qty;
+
+  }
+
+
+  let discount =
+    Number(
+      document
+        .getElementById("discount")
+        .value || 0
+    );
+
+
+  if(discount<0){
+
+    discount=0;
+
+  }
+
+
+  if(discount>subtotal){
+
+    discount=subtotal;
+
+  }
+
+
+  const total =
+    subtotal-discount;
+
+
+  const profit =
+    subtotal-cost-discount;
+
+
+  const invoice =
+    "INV-" +
+    String(
+      sales.length+1
+    ).padStart(5,"0");
+
+
+  const items =
+    cart.map(
+      item => {
+
+        const p =
+          products.find(
+            x=>x.id===item.id
+          );
+
+
+        p.stock -= item.qty;
+
+
+        return {
+
+          product:p.name,
+
+          productId:p.id,
+
+          qty:item.qty,
+
+          price:p.sell,
+
+          cost:p.buy,
+
+          amount:
+            p.sell*item.qty
+
+        };
+
+      }
+    );
+
+
+  const sale = {
+
+    id:Date.now(),
+
+    invoice:invoice,
+
+    date:today(),
+
+    time:nowTime(),
+
+    customer:
+      document
+        .getElementById("customerName")
+        .value
+        .trim(),
+
+    phone:
+      document
+        .getElementById("customerPhone")
+        .value
+        .trim(),
+
+    items:items,
+
+    subtotal:subtotal,
+
+    discount:discount,
+
+    total:total,
+
+    cost:cost,
+
+    profit:profit,
+
+    payment:
+      document
+        .getElementById("payment")
+        .value
 
   };
 
- });
+
+  sales.push(sale);
 
 
- let sale={
-
-  id:Date.now(),
-
-  invoice:invoice,
-
-  date:today(),
-
-  time:
-  new Date()
-  .toLocaleTimeString(),
-
-  customer:
-  customerName.value,
-
-  phone:
-  customerPhone.value,
-
-  items:items,
-
-  subtotal:subtotal,
-
-  discount:discount,
-
-  total:total,
-
-  cost:cost,
-
-  profit:profit,
-
-  payment:
-  payment.value
-
- };
+  saveData();
 
 
- sales.push(sale);
+  const print =
+    confirm(
+      "💎 Sale completed!\n\n" +
+      "Invoice: "+invoice+
+      "\nTotal: "+money(total)+
+      "\n\nPrint invoice?"
+    );
 
 
- save();
+  if(print){
+
+    printInvoice(sale);
+
+  }
 
 
- let print=
- confirm(
-  "💎 Sale completed!\n\n"+
-  "Invoice: "+invoice+
-  "\nTotal: "+money(total)+
-  "\n\nPrint invoice?"
- );
+  cart=[];
 
 
- if(print){
-
-  printInvoice(sale);
-
- }
+  document
+    .getElementById("saleForm")
+    .reset();
 
 
- cart=[];
+  document
+    .getElementById("discount")
+    .value=0;
 
 
- e.target.reset();
+  selectPayment("Cash");
 
 
- discount.value=0;
+  renderCart();
+
+  renderSaleProducts();
+
+  renderProducts();
+
+  renderSaleHistory();
 
 
- renderCart();
-
- renderSaleProducts();
+  toast(
+    "🧾 Sale completed: "+invoice
+  );
 
 }
 
 
-/* =========================
-   PRINT
-========================= */
+/* =========================================================
+   PRINT INVOICE
+========================================================= */
 
 function printInvoice(sale){
 
- printArea.innerHTML=`
+  document
+    .getElementById("printArea")
+    .innerHTML = `
 
- <div class="invoice">
+    <div class="invoice">
 
- <h2>💎 DIAMOND SHOP</h2>
+      <h2>
+        💎 DIAMOND SHOP
+      </h2>
 
- <div style="text-align:center">
+      <div class="invoiceCenter">
 
- Mini Market • Wholesale
+        Mini Market • Wholesale
 
- <br>
+        <br>
 
- Invoice:
- ${sale.invoice}
+        Invoice:
+        ${escapeHTML(sale.invoice)}
 
- <br>
+        <br>
 
- ${sale.date}
- ${sale.time}
+        ${sale.date}
+        •
+        ${sale.time}
 
- </div>
-
- <hr>
-
-
- ${
- sale.customer
- ?
- `<div>
- Customer: ${sale.customer}
- </div>`
- :""
- }
+      </div>
 
 
- ${
- sale.phone
- ?
- `<div>
- Phone: ${sale.phone}
- </div>`
- :""
- }
+      <hr>
 
 
- <hr>
+      ${
+        sale.customer
+        ?
+        `
+        <div style="font-size:11px">
+
+          Customer:
+          ${escapeHTML(sale.customer)}
+
+          ${
+            sale.phone
+            ?
+            `<br>
+             Phone:
+             ${escapeHTML(sale.phone)}`
+            :""
+          }
+
+        </div>
+        `
+        :""
+      }
 
 
- ${
- sale.items.map(i=>`
-
- <div class="line">
-
- <span>
- ${i.product} × ${i.qty}
- </span>
-
- <span>
- ${money(i.amount)}
- </span>
-
- </div>
-
- `).join("")
- }
+      <hr>
 
 
- <hr>
+      ${
+        sale.items
+          .map(
+            i => `
+
+            <div class="invoiceLine">
+
+              <span>
+                ${escapeHTML(i.product)}
+                ×
+                ${i.qty}
+              </span>
+
+              <span>
+                ${money(i.amount)}
+              </span>
+
+            </div>
+
+            `
+          ).join("")
+      }
 
 
- <div class="line">
-
- <span>Subtotal</span>
-
- <span>
- ${money(sale.subtotal)}
- </span>
-
- </div>
+      <hr>
 
 
- <div class="line">
+      <div class="invoiceLine">
 
- <span>Discount</span>
+        <span>
+          Subtotal
+        </span>
 
- <span>
- ${money(sale.discount)}
- </span>
+        <span>
+          ${money(sale.subtotal)}
+        </span>
 
- </div>
-
-
- <div class="line final">
-
- <span>GRAND TOTAL</span>
-
- <span>
- ${money(sale.total)}
- </span>
-
- </div>
+      </div>
 
 
- <div class="line">
+      <div class="invoiceLine">
 
- <span>Payment</span>
+        <span>
+          Discount
+        </span>
 
- <span>
- ${sale.payment}
- </span>
+        <span>
+          ${money(sale.discount)}
+        </span>
 
- </div>
-
-
- <br>
-
- <div style="text-align:center">
-
- Thank You ❤️
-
- <br>
-
- Visit Again!
-
- </div>
-
- </div>
-
- `;
+      </div>
 
 
- setTimeout(
-  ()=>window.print(),
-  300
- );
+      <div
+        class="invoiceLine invoiceFinal">
+
+        <span>
+          GRAND TOTAL
+        </span>
+
+        <span>
+          ${money(sale.total)}
+        </span>
+
+      </div>
+
+
+      <div class="invoiceLine">
+
+        <span>
+          Payment
+        </span>
+
+        <span>
+          ${escapeHTML(sale.payment)}
+        </span>
+
+      </div>
+
+
+      <br>
+
+
+      <div class="invoiceCenter">
+
+        Thank You ❤️
+
+        <br>
+
+        Visit Again!
+
+      </div>
+
+    </div>
+
+    `;
+
+
+  setTimeout(
+    ()=>window.print(),
+    300
+  );
 
 }
 
 
-/* =========================
+/* =========================================================
    EXPENSE
-========================= */
+========================================================= */
 
 function addExpense(e){
 
- e.preventDefault();
+  e.preventDefault();
 
 
- expenses.push({
-
-  date:today(),
-
-  name:
-  expenseName.value,
-
-  amount:
-  Number(expenseAmount.value)
-
- });
+  const name =
+    document
+      .getElementById("expenseName")
+      .value
+      .trim();
 
 
- e.target.reset();
+  const amount =
+    Number(
+      document
+        .getElementById("expenseAmount")
+        .value
+    );
 
 
- save();
+  if(!name || amount<=0){
+
+    toast(
+      "Enter valid expense.",
+      "error"
+    );
+
+    return;
+
+  }
 
 
- alert(
-  "✅ Expense saved!"
- );
+  expenses.push({
+
+    id:Date.now(),
+
+    date:today(),
+
+    time:nowTime(),
+
+    name:name,
+
+    amount:amount
+
+  });
+
+
+  e.target.reset();
+
+
+  saveData();
+
+  renderExpenseHistory();
+
+
+  toast(
+    "✅ Expense saved!"
+  );
 
 }
 
 
-/* =========================
-   UPDATE
-========================= */
+/* =========================================================
+   EXPENSE HISTORY
+========================================================= */
 
-function update(){
+function renderExpenseHistory(){
 
- renderProducts();
-
-
- let options=
- `<option value="">
- Select Product
- </option>`;
+  const box =
+    document.getElementById(
+      "expenseHistory"
+    );
 
 
- products.forEach(p=>{
+  if(!expenses.length){
 
-  options+=`
+    box.innerHTML =
+      `<div class="empty">
+        💸 No expenses recorded.
+       </div>`;
 
-  <option value="${p.id}">
+    return;
 
-  ${p.name}
-  — Stock: ${p.stock}
+  }
 
-  </option>
+
+  box.innerHTML =
+    expenses
+      .slice()
+      .reverse()
+      .map(
+        x => `
+
+        <div class="historyCard">
+
+          <div class="historyTop">
+
+            <div>
+
+              <b>
+                💸
+                ${escapeHTML(x.name)}
+              </b>
+
+              <div class="historyMeta">
+
+                ${x.date}
+                •
+                ${x.time || ""}
+
+              </div>
+
+            </div>
+
+            <div class="historyTotal">
+
+              ${money(x.amount)}
+
+            </div>
+
+          </div>
+
+        </div>
+
+        `
+      ).join("");
+
+}
+
+
+/* =========================================================
+   SALE HISTORY
+========================================================= */
+
+function renderSaleHistory(){
+
+  const box =
+    document.getElementById(
+      "saleHistory"
+    );
+
+
+  if(!sales.length){
+
+    box.innerHTML =
+      `<div class="empty">
+        🧾 No sales yet.
+       </div>`;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    sales
+      .slice()
+      .reverse()
+      .slice(0,100)
+      .map(
+        x => `
+
+        <div class="historyCard">
+
+          <div class="historyTop">
+
+            <div>
+
+              <b>
+                🧾
+                ${escapeHTML(x.invoice || "SALE")}
+              </b>
+
+              <div class="historyMeta">
+
+                ${
+                  x.items
+                    ?
+                    x.items
+                      .map(
+                        i =>
+                          escapeHTML(i.product)
+                          +" × "
+                          +i.qty
+                      )
+                      .join("<br>")
+                    :
+                    ""
+                }
+
+                <br>
+
+                ${x.date}
+                •
+                ${x.time || ""}
+
+                <br>
+
+                Payment:
+                ${escapeHTML(x.payment)}
+
+                ${
+                  x.customer
+                  ?
+                  "<br>Customer: "+
+                  escapeHTML(x.customer)
+                  :
+                  ""
+                }
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <div
+                class="historyTotal">
+
+                ${money(x.total)}
+
+              </div>
+
+              <div
+                class="historyMeta">
+
+                Profit:
+                ${money(x.profit)}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        `
+      ).join("");
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function updateDashboard(){
+
+  const todaySalesList =
+    sales.filter(
+      x=>x.date===today()
+    );
+
+
+  const salesToday =
+    todaySalesList.reduce(
+      (a,b)=>
+        a+Number(b.total||0),
+      0
+    );
+
+
+  const profitToday =
+    todaySalesList.reduce(
+      (a,b)=>
+        a+Number(b.profit||0),
+      0
+    );
+
+
+  const cash =
+    todaySalesList
+      .filter(
+        x=>x.payment==="Cash"
+      )
+      .reduce(
+        (a,b)=>
+          a+Number(b.total||0),
+        0
+      );
+
+
+  const upi =
+    todaySalesList
+      .filter(
+        x=>x.payment==="UPI"
+      )
+      .reduce(
+        (a,b)=>
+          a+Number(b.total||0),
+        0
+      );
+
+
+  const stockValue =
+    products.reduce(
+      (a,p)=>
+        a +
+        Number(p.stock||0) *
+        Number(p.buy||0),
+      0
+    );
+
+
+  const totalSales =
+    sales.reduce(
+      (a,b)=>
+        a+Number(b.total||0),
+      0
+    );
+
+
+  const totalPurchase =
+    purchases.reduce(
+      (a,b)=>
+        a+Number(b.total||0),
+      0
+    );
+
+
+  const gross =
+    sales.reduce(
+      (a,b)=>
+        a+Number(b.profit||0),
+      0
+    );
+
+
+  const totalExpense =
+    expenses.reduce(
+      (a,b)=>
+        a+Number(b.amount||0),
+      0
+    );
+
+
+  const net =
+    gross-totalExpense;
+
+
+  setText(
+    "todaySales",
+    money(salesToday)
+  );
+
+  setText(
+    "todayProfit",
+    money(profitToday)
+  );
+
+  setText(
+    "cashTotal",
+    money(cash)
+  );
+
+  setText(
+    "upiTotal",
+    money(upi)
+  );
+
+  setText(
+    "stockValue",
+    money(stockValue)
+  );
+
+  setText(
+    "productCount",
+    products.length
+  );
+
+
+  setText(
+    "dashTotalSales",
+    money(totalSales)
+  );
+
+  setText(
+    "dashTotalPurchase",
+    money(totalPurchase)
+  );
+
+  setText(
+    "dashGross",
+    money(gross)
+  );
+
+  setText(
+    "dashNet",
+    money(net)
+  );
+
+
+  setText(
+    "reportSales",
+    money(totalSales)
+  );
+
+  setText(
+    "reportPurchase",
+    money(totalPurchase)
+  );
+
+  setText(
+    "reportGross",
+    money(gross)
+  );
+
+  setText(
+    "reportExpense",
+    money(totalExpense)
+  );
+
+  setText(
+    "reportNet",
+    money(net)
+  );
+
+  setText(
+    "reportTransactions",
+    sales.length
+  );
+
+
+  renderLowStock();
+
+  renderPurchaseSelect();
+
+  renderSaleHistory();
+
+  renderExpenseHistory();
+
+  renderPurchaseHistory();
+
+}
+
+
+function setText(id,value){
+
+  const el =
+    document.getElementById(id);
+
+  if(el){
+
+    el.innerText=value;
+
+  }
+
+}
+
+
+/* =========================================================
+   LOW STOCK
+========================================================= */
+
+function renderLowStock(){
+
+  const lows =
+    products.filter(
+      p =>
+        Number(p.stock)
+        <=
+        Number(p.min)
+    );
+
+
+  const box =
+    document.getElementById(
+      "lowStock"
+    );
+
+
+  if(!lows.length){
+
+    box.innerHTML="";
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <div class="alert">
+
+      ⚠️
+      <strong>
+        LOW STOCK ALERT
+      </strong>
+
+      <br><br>
+
+      ${
+        lows
+          .map(
+            p =>
+              escapeHTML(p.name)
+              +" — Stock: "
+              +p.stock
+          )
+          .join("<br>")
+      }
+
+    </div>
 
   `;
 
- });
+}
 
 
- purchaseProduct.innerHTML=
- options;
+/* =========================================================
+   PURCHASE SELECT
+========================================================= */
 
+function renderPurchaseSelect(){
 
- let ts=
- sales.filter(
-  x=>x.date===today()
- );
+  const select =
+    document.getElementById(
+      "purchaseProduct"
+    );
 
 
- let salesToday=
- ts.reduce(
-  (a,b)=>a+b.total,
-  0
- );
+  if(!select)return;
 
 
- let profitToday=
- ts.reduce(
-  (a,b)=>a+b.profit,
-  0
- );
+  const current =
+    select.value;
 
 
- let cash=
- ts.filter(
-  x=>x.payment==="Cash"
- )
- .reduce(
-  (a,b)=>a+b.total,
-  0
- );
+  select.innerHTML =
+    `<option value="">
+      Select Product
+     </option>`;
 
 
- let upi=
- ts.filter(
-  x=>x.payment==="UPI"
- )
- .reduce(
-  (a,b)=>a+b.total,
-  0
- );
+  products.forEach(
+    p => {
 
+      select.innerHTML += `
 
- todaySales.innerText=
- money(salesToday);
+        <option value="${p.id}">
 
+          ${escapeHTML(p.name)}
+          —
+          Stock: ${p.stock}
 
- todayProfit.innerText=
- money(profitToday);
+        </option>
 
+      `;
 
- cashTotal.innerText=
- money(cash);
+    }
+  );
 
 
- upiTotal.innerText=
- money(upi);
+  if(
+    current &&
+    products.some(
+      p=>String(p.id)===String(current)
+    )
+  ){
 
+    select.value=current;
 
- productCount.innerText=
- products.length;
-
-
- let stockVal=
- products.reduce(
-  (a,p)=>
-  a+p.stock*p.buy,
-  0
- );
-
-
- stockValue.innerText=
- money(stockVal);
-
-
- let lows=
- products.filter(
-  p=>p.stock<=p.min
- );
-
-
- lowStock.innerHTML=
- lows.length
- ?
- `<div class="alert">
-
- ⚠️ <b>LOW STOCK ALERT</b>
-
- <br><br>
-
- ${lows
-  .map(
-   p=>
-   `${p.name} — ${p.stock}`
-  )
-  .join("<br>")}
-
- </div>`
- : "";
-
-
- let totalSales=
- sales.reduce(
-  (a,b)=>a+b.total,
-  0
- );
-
-
- let totalPurchase=
- purchases.reduce(
-  (a,b)=>a+b.total,
-  0
- );
-
-
- let gross=
- sales.reduce(
-  (a,b)=>a+b.profit,
-  0
- );
-
-
- let totalExpense=
- expenses.reduce(
-  (a,b)=>a+b.amount,
-  0
- );
-
-
- let net=
- gross-totalExpense;
-
-
- reportSales.innerText=
- money(totalSales);
-
-
- reportPurchase.innerText=
- money(totalPurchase);
-
-
- reportGross.innerText=
- money(gross);
-
-
- reportExpense.innerText=
- money(totalExpense);
-
-
- reportNet.innerText=
- money(net);
-
-
- saleHistory.innerHTML=
- sales
- .slice()
- .reverse()
- .map(x=>`
-
- <div class="card">
-
- <b>
- 🧾 ${x.invoice || "SALE"}
- </b>
-
- <br><br>
-
- ${
- x.items
- ?
- x.items
- .map(
-  i=>
-  `${i.product} × ${i.qty}`
- )
- .join("<br>")
- :
- x.product || ""
- }
-
- <br><br>
-
- <b>
- ${money(x.total)}
- </b>
-
- • ${x.payment}
-
- <br>
-
- <small>
-
- Profit:
- ${money(x.profit)}
-
- • ${x.date}
-
- </small>
-
- </div>
-
- `)
- .join("");
-
-
- expenseHistory.innerHTML=
- expenses
- .slice()
- .reverse()
- .map(x=>`
-
- <div class="card">
-
- <b>
- 💸 ${x.name}
- </b>
-
- <br>
-
- ${money(x.amount)}
-
- <br>
-
- <small>
- ${x.date}
- </small>
-
- </div>
-
- `)
- .join("");
-
-
- purchaseHistory.innerHTML=
- purchases
- .slice()
- .reverse()
- .map(x=>`
-
- <div class="card">
-
- <b>
- 📥 ${x.product}
- </b>
-
- <br>
-
- ${x.qty}
- × ${money(x.price)}
-
- <br>
-
- <b>
- ${money(x.total)}
- </b>
-
- <br>
-
- <small>
- ${x.date}
- </small>
-
- </div>
-
- `)
- .join("");
+  }
 
 }
 
 
-/* =========================
+/* =========================================================
+   FULL UPDATE
+========================================================= */
+
+function update(){
+
+  updateDashboard();
+
+  renderProducts();
+
+  renderCatalog();
+
+  renderWholesale();
+
+  renderSaleProducts();
+
+  renderCart();
+
+}
+
+
+/* =========================================================
+   BACKUP
+========================================================= */
+
+function backupData(){
+
+  const data = {
+
+    app:"Diamond Shop POS Pro",
+
+    version:"Professional 1.0",
+
+    exportedAt:
+      new Date().toISOString(),
+
+    products:products,
+
+    sales:sales,
+
+    purchases:purchases,
+
+    expenses:expenses
+
+  };
+
+
+  const blob =
+    new Blob(
+      [
+        JSON.stringify(
+          data,
+          null,
+          2
+        )
+      ],
+      {
+        type:"application/json"
+      }
+    );
+
+
+  const url =
+    URL.createObjectURL(blob);
+
+
+  const a =
+    document.createElement("a");
+
+
+  a.href=url;
+
+  a.download =
+    "diamond-shop-backup-" +
+    today() +
+    ".json";
+
+
+  a.click();
+
+
+  URL.revokeObjectURL(url);
+
+
+  toast(
+    "💾 Backup downloaded."
+  );
+
+}
+
+
+/* =========================================================
+   RESTORE
+========================================================= */
+
+function restoreData(){
+
+  const input =
+    document.createElement("input");
+
+
+  input.type="file";
+
+  input.accept=".json";
+
+
+  input.onchange =
+    e => {
+
+      const file =
+        e.target.files[0];
+
+
+      if(!file)return;
+
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        event => {
+
+          try{
+
+            const data =
+              JSON.parse(
+                event.target.result
+              );
+
+
+            if(
+              !data.products ||
+              !data.sales ||
+              !data.purchases ||
+              !data.expenses
+            ){
+
+              throw new Error(
+                "Invalid backup"
+              );
+
+            }
+
+
+            const yes =
+              confirm(
+                "Restore backup?\n\n" +
+                "Current data will be replaced."
+              );
+
+
+            if(!yes)return;
+
+
+            products =
+              Array.isArray(data.products)
+              ? data.products
+              : [];
+
+
+            sales =
+              Array.isArray(data.sales)
+              ? data.sales
+              : [];
+
+
+            purchases =
+              Array.isArray(data.purchases)
+              ? data.purchases
+              : [];
+
+
+            expenses =
+              Array.isArray(data.expenses)
+              ? data.expenses
+              : [];
+
+
+            saveData();
+
+            update();
+
+            toast(
+              "♻️ Backup restored successfully!"
+            );
+
+          }catch(err){
+
+            toast(
+              "❌ Invalid backup file.",
+              "error"
+            );
+
+          }
+
+        };
+
+
+      reader.readAsText(file);
+
+    };
+
+
+  input.click();
+
+}
+
+
+/* =========================================================
+   KEYBOARD / CLICK OUTSIDE
+========================================================= */
+
+document.addEventListener(
+  "click",
+  function(e){
+
+    const suggestionBoxes =
+      document.querySelectorAll(
+        ".suggestions"
+      );
+
+
+    suggestionBoxes.forEach(
+      box => {
+
+        if(
+          !box.parentElement
+            .contains(e.target)
+        ){
+
+          box.style.display="none";
+
+        }
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   PURCHASE SELECT AUTO PRICE
+========================================================= */
+
+document
+  .getElementById("purchaseProduct")
+  .addEventListener(
+    "change",
+    function(){
+
+      const id =
+        Number(this.value);
+
+
+      const p =
+        products.find(
+          x=>x.id===id
+        );
+
+
+      if(p){
+
+        document
+          .getElementById("purchaseName")
+          .value=p.name;
+
+        document
+          .getElementById("purchasePrice")
+          .value=p.buy;
+
+      }
+
+    }
+  );
+
+
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 setupLogin();
 
