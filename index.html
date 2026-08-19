@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name="theme-color" content="#070b18">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<meta name="theme-color" content="#060816">
 
 <title>Diamond Shop POS Pro</title>
 
@@ -11,7 +15,7 @@
 
 /* =========================================================
    DIAMOND SHOP POS PRO
-   SINGLE FILE VERSION
+   PROFESSIONAL SINGLE FILE VERSION
 ========================================================= */
 
 *{
@@ -20,60 +24,78 @@
 }
 
 :root{
-  --bg:#070b18;
-  --bg2:#0b1120;
-  --panel:#10172b;
-  --panel2:#151e36;
-  --panel3:#1a2540;
 
-  --purple:#8b5cf6;
-  --violet:#a855f7;
+  --bg:#050816;
+  --bg2:#080d1c;
+  --panel:#0d1427;
+  --panel2:#111a30;
+  --panel3:#17213b;
+
+  --primary:#8b5cf6;
+  --primary2:#6366f1;
   --cyan:#22d3ee;
   --blue:#3b82f6;
+
   --green:#22c55e;
   --red:#ef4444;
-  --gold:#facc15;
+  --yellow:#facc15;
   --orange:#f97316;
   --pink:#ec4899;
 
   --text:#f8fafc;
   --muted:#94a3b8;
-  --border:#27324d;
 
-  --shadow:0 12px 35px #0008;
+  --border:#ffffff12;
+
+  --shadow:
+    0 18px 50px #0008;
+
+  --radius:18px;
 }
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 html{
   scroll-behavior:smooth;
 }
 
-html,
 body{
-  margin:0;
-  padding:0;
-  min-height:100%;
-}
 
-body{
+  margin:0;
+
+  min-height:100vh;
+
+  color:var(--text);
+
   font-family:
+    Inter,
     Arial,
     Helvetica,
     sans-serif;
 
   background:
-    radial-gradient(
-      circle at 5% 0%,
-      #312e8155,
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 100% 5%,
-      #0891b233,
-      transparent 30%
-    ),
-    var(--bg);
 
-  color:var(--text);
+    radial-gradient(
+      circle at 0% 0%,
+      #4c1d9550,
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 100% 0%,
+      #0891b238,
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 50% 100%,
+      #312e8130,
+      transparent 30%
+    ),
+
+    var(--bg);
 
   padding-bottom:90px;
 }
@@ -86,10 +108,26 @@ select{
 
 button{
   cursor:pointer;
+  transition:.18s ease;
 }
 
 button:active{
-  transform:scale(.97);
+  transform:scale(.96);
+}
+
+input,
+select{
+  outline:none;
+}
+
+::-webkit-scrollbar{
+  width:5px;
+  height:5px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#475569;
+  border-radius:20px;
 }
 
 /* =========================================================
@@ -97,8 +135,10 @@ button:active{
 ========================================================= */
 
 #loginScreen{
+
   position:fixed;
   inset:0;
+
   z-index:99999;
 
   display:flex;
@@ -108,46 +148,53 @@ button:active{
   padding:20px;
 
   background:
+
     radial-gradient(
       circle at 20% 20%,
-      #7c3aed66,
-      transparent 35%
+      #7c3aed70,
+      transparent 32%
     ),
+
     radial-gradient(
       circle at 90% 80%,
       #06b6d455,
       transparent 35%
     ),
-    #050816;
+
+    #030511;
 }
 
 .loginBox{
-  width:100%;
-  max-width:400px;
 
-  padding:30px 24px;
+  width:100%;
+  max-width:410px;
+
+  padding:32px 25px;
 
   border-radius:30px;
+
+  text-align:center;
 
   background:
     linear-gradient(
       145deg,
-      #151e36,
-      #090f20
+      #18213b,
+      #080d1c
     );
 
   border:1px solid #ffffff18;
 
   box-shadow:
-    0 35px 90px #000c,
-    inset 0 1px #ffffff12;
+    0 40px 100px #000d,
+    inset 0 1px #ffffff15;
 
-  text-align:center;
+  backdrop-filter:blur(25px);
 }
 
 .loginDiamond{
-  width:82px;
-  height:82px;
+
+  width:90px;
+  height:90px;
 
   margin:0 auto 18px;
 
@@ -155,50 +202,58 @@ button:active{
   align-items:center;
   justify-content:center;
 
-  font-size:42px;
+  font-size:45px;
 
-  border-radius:25px;
+  border-radius:27px;
 
   background:
     linear-gradient(
       135deg,
       #67e8f9,
-      #8b5cf6 50%,
+      #6366f1 45%,
       #ec4899
     );
 
   box-shadow:
     0 0 35px #8b5cf699,
-    0 0 80px #22d3ee33;
+    0 0 90px #22d3ee30;
 }
 
 .loginBox h1{
   margin:5px 0;
-  font-size:25px;
+  font-size:27px;
 }
 
 .loginBox p{
-  margin:7px 0 25px;
+  margin:8px 0 25px;
   color:var(--muted);
 }
 
 .loginBox input{
   text-align:center;
-  letter-spacing:5px;
-  font-size:19px;
+  letter-spacing:6px;
+  font-size:20px;
+}
+
+.loginError{
+  min-height:20px;
+  margin:5px 0;
+  color:#fca5a5;
+  font-size:13px;
 }
 
 .loginHint{
   margin-top:18px;
   color:#64748b;
-  font-size:12px;
+  font-size:11px;
 }
 
-.loginError{
-  min-height:20px;
-  color:#fca5a5;
-  font-size:13px;
-  margin:5px 0;
+.forgotBtn{
+  border:0;
+  background:transparent;
+  color:#a5b4fc;
+  margin-top:14px;
+  font-size:12px;
 }
 
 /* =========================================================
@@ -206,56 +261,68 @@ button:active{
 ========================================================= */
 
 header{
+
   position:sticky;
   top:0;
+
   z-index:500;
 
-  padding:12px 15px;
+  padding:11px 15px;
 
   background:
     linear-gradient(
       135deg,
-      #111827ee,
-      #1e1b4bee
+      #0b1224f2,
+      #1e1b4bf2
     );
 
-  border-bottom:1px solid #ffffff15;
+  border-bottom:1px solid #ffffff12;
 
-  box-shadow:0 8px 30px #0008;
+  box-shadow:0 10px 35px #0009;
 
-  backdrop-filter:blur(18px);
+  backdrop-filter:blur(22px);
 }
 
 .headerInner{
-  max-width:1200px;
+
+  max-width:1250px;
+
   margin:auto;
 
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:12px;
 }
 
 .brand{
+
   display:flex;
   align-items:center;
   gap:10px;
 }
 
 .menuBtn{
+
   width:43px;
   height:43px;
 
-  border:0;
-  border-radius:14px;
+  border:1px solid #ffffff12;
 
-  background:#ffffff0d;
+  border-radius:13px;
+
+  background:#ffffff09;
+
   color:white;
 
-  font-size:22px;
+  font-size:21px;
 }
 
 .diamond{
+
   width:43px;
   height:43px;
 
@@ -274,10 +341,9 @@ header{
     );
 
   box-shadow:
-    0 0 20px #8b5cf688,
-    0 0 45px #22d3ee33;
+    0 0 20px #8b5cf688;
 
-  font-size:23px;
+  font-size:22px;
 }
 
 .brand h1{
@@ -287,25 +353,27 @@ header{
 
 .brand small{
   display:block;
-  margin-top:3px;
+  margin-top:2px;
   color:#a5b4fc;
-  font-size:11px;
+  font-size:10px;
 }
 
 .headerActions{
   display:flex;
-  align-items:center;
   gap:7px;
 }
 
 .headerBtn{
+
   width:40px;
   height:40px;
 
   border:1px solid #ffffff12;
+
   border-radius:12px;
 
   background:#ffffff08;
+
   color:white;
 
   font-size:18px;
@@ -316,12 +384,13 @@ header{
 ========================================================= */
 
 .drawerOverlay{
+
   position:fixed;
   inset:0;
 
-  background:#000a;
-
   z-index:800;
+
+  background:#000b;
 
   display:none;
 }
@@ -331,32 +400,33 @@ header{
 }
 
 .drawer{
+
   position:fixed;
 
+  left:-330px;
   top:0;
   bottom:0;
-  left:-320px;
 
-  width:300px;
+  width:310px;
 
   z-index:900;
-
-  background:
-    linear-gradient(
-      180deg,
-      #111a30,
-      #080d1c
-    );
-
-  border-right:1px solid #ffffff14;
-
-  box-shadow:20px 0 60px #000b;
-
-  transition:.28s ease;
 
   padding:18px 14px;
 
   overflow-y:auto;
+
+  background:
+    linear-gradient(
+      180deg,
+      #111a31,
+      #060a16
+    );
+
+  border-right:1px solid #ffffff14;
+
+  box-shadow:20px 0 70px #000c;
+
+  transition:.28s ease;
 }
 
 .drawer.open{
@@ -364,6 +434,7 @@ header{
 }
 
 .drawerTop{
+
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -372,20 +443,22 @@ header{
 }
 
 .drawerTitle{
+
   display:flex;
   align-items:center;
   gap:10px;
 }
 
 .miniDiamond{
-  width:43px;
-  height:43px;
+
+  width:44px;
+  height:44px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  border-radius:13px;
+  border-radius:14px;
 
   background:
     linear-gradient(
@@ -396,6 +469,7 @@ header{
 }
 
 .closeDrawer{
+
   width:38px;
   height:38px;
 
@@ -403,24 +477,27 @@ header{
   border-radius:11px;
 
   background:#ffffff0d;
+
   color:white;
 
   font-size:20px;
 }
 
 .drawerSection{
+
+  margin:19px 8px 8px;
+
   color:#64748b;
 
   font-size:10px;
 
   text-transform:uppercase;
 
-  margin:18px 8px 8px;
-
-  letter-spacing:1.3px;
+  letter-spacing:1.4px;
 }
 
 .drawerItem{
+
   width:100%;
 
   display:flex;
@@ -428,43 +505,44 @@ header{
 
   gap:12px;
 
+  margin-bottom:5px;
+
+  padding:12px;
+
   border:1px solid transparent;
+
+  border-radius:13px;
 
   background:transparent;
 
   color:#cbd5e1;
 
-  padding:12px;
-
-  border-radius:13px;
-
   text-align:left;
 
-  margin-bottom:5px;
-
   font-size:14px;
-}
-
-.drawerItem:hover,
-.drawerItem.active{
-  background:
-    linear-gradient(
-      135deg,
-      #7c3aed33,
-      #0891b233
-    );
-
-  border-color:#ffffff10;
-
-  color:white;
-
-  box-shadow:0 6px 18px #0004;
 }
 
 .drawerItem span{
   width:27px;
   text-align:center;
   font-size:20px;
+}
+
+.drawerItem:hover,
+.drawerItem.active{
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed35,
+      #0891b235
+    );
+
+  border-color:#ffffff12;
+
+  box-shadow:0 6px 20px #0005;
 }
 
 .logout{
@@ -476,12 +554,13 @@ header{
 ========================================================= */
 
 main{
+
   width:100%;
-  max-width:1200px;
+  max-width:1250px;
 
   margin:auto;
 
-  padding:16px;
+  padding:17px;
 }
 
 .page{
@@ -494,9 +573,10 @@ main{
 }
 
 @keyframes pageIn{
+
   from{
     opacity:0;
-    transform:translateY(7px);
+    transform:translateY(8px);
   }
 
   to{
@@ -506,8 +586,8 @@ main{
 }
 
 h2{
-  margin:5px 0 15px;
-  font-size:22px;
+  margin:5px 0 16px;
+  font-size:23px;
 }
 
 h3{
@@ -523,38 +603,40 @@ h3{
 ========================================================= */
 
 .hero{
+
   position:relative;
   overflow:hidden;
 
-  padding:21px;
-
-  border-radius:23px;
+  padding:23px;
 
   margin-bottom:16px;
+
+  border-radius:23px;
 
   background:
     linear-gradient(
       135deg,
       #312e81,
-      #7c3aed,
+      #7c3aed 45%,
       #0891b2
     );
 
   box-shadow:
-    0 15px 45px #7c3aed55;
+    0 18px 55px #7c3aed55;
 }
 
 .hero:after{
+
   content:"💎";
 
   position:absolute;
 
-  right:-7px;
-  bottom:-25px;
+  right:-5px;
+  bottom:-30px;
 
-  font-size:110px;
+  font-size:120px;
 
-  opacity:.14;
+  opacity:.13;
 
   transform:rotate(15deg);
 }
@@ -565,7 +647,7 @@ h3{
 
 .hero h2{
   margin:6px 0;
-  font-size:28px;
+  font-size:29px;
 }
 
 .hero p{
@@ -574,52 +656,59 @@ h3{
 }
 
 /* =========================================================
-   CARDS
+   DASHBOARD CARDS
 ========================================================= */
 
 .cards{
+
   display:grid;
 
   grid-template-columns:
     repeat(2,minmax(0,1fr));
 
   gap:11px;
+
+  margin-bottom:15px;
 }
 
 .card{
+
   position:relative;
   overflow:hidden;
+
+  padding:17px;
+
+  border-radius:18px;
 
   background:
     linear-gradient(
       145deg,
-      #121a30,
-      #0d1325
+      #141d35,
+      #0a1020
     );
 
   border:1px solid #ffffff10;
 
-  padding:16px;
-
-  border-radius:18px;
-
   box-shadow:
-    0 8px 25px #0005,
+    0 9px 28px #0005,
     inset 0 1px #ffffff08;
-
-  margin-bottom:11px;
 }
 
-.card small{
-  color:var(--muted);
-}
+.card:before{
 
-.card strong{
-  display:block;
+  content:"";
 
-  margin-top:7px;
+  position:absolute;
 
-  font-size:21px;
+  width:80px;
+  height:80px;
+
+  right:-35px;
+  top:-35px;
+
+  border-radius:50%;
+
+  background:#8b5cf622;
 }
 
 .card .emoji{
@@ -627,34 +716,47 @@ h3{
   margin-bottom:8px;
 }
 
+.card small{
+  color:var(--muted);
+}
+
+.card strong{
+
+  display:block;
+
+  margin-top:7px;
+
+  font-size:21px;
+}
+
 /* =========================================================
-   STAT COLOR
+   STAT
 ========================================================= */
 
 .statGrid{
+
   display:grid;
 
   grid-template-columns:
-    repeat(2,minmax(0,1fr));
+    repeat(2,1fr);
 
   gap:10px;
-
-  margin-bottom:15px;
 }
 
 .stat{
-  padding:15px;
+
+  padding:16px;
 
   border-radius:17px;
-
-  border:1px solid #ffffff10;
 
   background:
     linear-gradient(
       145deg,
       #111a30,
-      #0b1222
+      #0a1121
     );
+
+  border:1px solid #ffffff10;
 }
 
 .statLabel{
@@ -669,35 +771,38 @@ h3{
 }
 
 /* =========================================================
-   FORM
+   FORMS
 ========================================================= */
 
 form{
+
+  padding:17px;
+
+  margin-bottom:15px;
+
+  border-radius:19px;
+
   background:
     linear-gradient(
       145deg,
-      #11192d,
-      #0d1427
+      #111a30,
+      #0a1121
     );
 
   border:1px solid #ffffff10;
 
-  padding:16px;
-
-  border-radius:18px;
-
-  box-shadow:0 8px 25px #0005;
-
-  margin-bottom:15px;
+  box-shadow:
+    0 9px 28px #0005;
 }
 
 .formGrid{
+
   display:grid;
 
   grid-template-columns:
     repeat(2,minmax(0,1fr));
 
-  gap:4px 10px;
+  gap:3px 10px;
 }
 
 .formFull{
@@ -705,42 +810,43 @@ form{
 }
 
 label{
+
   display:block;
+
+  margin:5px 2px 2px;
 
   color:#cbd5e1;
 
   font-size:12px;
-
-  margin:5px 2px 2px;
 }
 
 input,
 select{
+
   width:100%;
 
   padding:13px;
 
   margin:5px 0 9px;
 
-  background:#080d1c;
-
-  color:white;
-
   border:1px solid #293550;
 
   border-radius:11px;
 
-  font-size:15px;
+  background:#060b19;
 
-  outline:none;
+  color:white;
+
+  font-size:15px;
 }
 
 input:focus,
 select:focus{
+
   border-color:var(--cyan);
 
   box-shadow:
-    0 0 0 3px #22d3ee18;
+    0 0 0 3px #22d3ee16;
 }
 
 input::placeholder{
@@ -748,13 +854,14 @@ input::placeholder{
 }
 
 .primary{
+
   width:100%;
+
+  padding:14px;
 
   border:0;
 
   border-radius:12px;
-
-  padding:14px;
 
   color:white;
 
@@ -770,7 +877,7 @@ input::placeholder{
     );
 
   box-shadow:
-    0 8px 20px #4f46e555;
+    0 9px 23px #4f46e555;
 }
 
 .green{
@@ -792,68 +899,30 @@ input::placeholder{
 }
 
 .gold{
+
+  color:#171717;
+
   background:
     linear-gradient(
       135deg,
-      #eab308,
+      #facc15,
       #f97316
     );
-
-  color:#171717;
 }
 
 .secondary{
+
   width:100%;
+
+  padding:12px;
 
   border:1px solid #ffffff12;
 
   border-radius:12px;
 
-  padding:12px;
-
   color:#e2e8f0;
 
   background:#ffffff08;
-}
-
-/* =========================================================
-   TOOLBAR
-========================================================= */
-
-.toolbar{
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:10px;
-
-  margin-bottom:12px;
-}
-
-.toolbarTitle{
-  font-size:13px;
-  color:var(--muted);
-}
-
-.toolbarButtons{
-  display:flex;
-  gap:7px;
-}
-
-.smallBtn{
-  border:1px solid #ffffff12;
-
-  background:#111a30;
-
-  color:white;
-
-  border-radius:10px;
-
-  padding:9px 11px;
-
-  font-size:12px;
 }
 
 /* =========================================================
@@ -865,20 +934,23 @@ input::placeholder{
   margin-bottom:12px;
 }
 
-.search input{
-  margin:0;
-  padding-left:43px;
-}
-
 .search span{
+
   position:absolute;
 
   left:14px;
   top:12px;
 
-  font-size:18px;
-
   z-index:2;
+
+  font-size:18px;
+}
+
+.search input{
+
+  margin:0;
+
+  padding-left:43px;
 }
 
 /* =========================================================
@@ -890,6 +962,7 @@ input::placeholder{
 }
 
 .suggestions{
+
   position:absolute;
 
   left:0;
@@ -898,29 +971,32 @@ input::placeholder{
 
   z-index:100;
 
-  max-height:270px;
+  display:none;
+
+  max-height:280px;
 
   overflow-y:auto;
-
-  background:#0c1426;
 
   border:1px solid #334155;
 
   border-radius:13px;
 
-  box-shadow:0 15px 40px #000a;
+  background:#0b1325;
 
-  display:none;
+  box-shadow:0 18px 45px #000b;
 }
 
 .suggestion{
+
   padding:12px;
 
   border-bottom:1px solid #ffffff0a;
+
+  cursor:pointer;
 }
 
-.suggestion:last-child{
-  border-bottom:0;
+.suggestion:hover{
+  background:#ffffff08;
 }
 
 .suggestion b{
@@ -936,6 +1012,7 @@ input::placeholder{
 ========================================================= */
 
 .product{
+
   display:flex;
 
   justify-content:space-between;
@@ -944,46 +1021,79 @@ input::placeholder{
 
   gap:10px;
 
+  padding:14px;
+
+  margin-bottom:9px;
+
+  border-radius:16px;
+
   background:
     linear-gradient(
       145deg,
       #111a30,
-      #0d1427
+      #0b1222
     );
 
   border:1px solid #ffffff0d;
 
-  padding:13px;
-
-  border-radius:15px;
-
-  margin-bottom:9px;
-
-  box-shadow:0 5px 18px #0004;
+  box-shadow:0 6px 20px #0004;
 }
 
 .productInfo{
   min-width:0;
 }
 
-.product b{
+.productInfo b{
   display:block;
   margin-bottom:5px;
 }
 
-.product small{
+.productInfo small{
   color:var(--muted);
-  line-height:1.6;
+  line-height:1.7;
 }
 
 .productActions{
+
   display:flex;
+
   align-items:center;
-  gap:6px;
+
+  gap:5px;
+}
+
+.iconBtn{
+
+  width:36px;
+  height:36px;
+
+  border:1px solid #ffffff10;
+
+  border-radius:9px;
+
+  background:#ffffff08;
+
+  color:white;
+}
+
+.dangerBtn{
+  color:#fecaca;
+  background:#7f1d1d;
 }
 
 .add{
+
   border:0;
+
+  padding:9px 13px;
+
+  border-radius:10px;
+
+  color:white;
+
+  font-weight:bold;
+
+  white-space:nowrap;
 
   background:
     linear-gradient(
@@ -992,64 +1102,20 @@ input::placeholder{
       #06b6d4
     );
 
-  color:white;
-
-  padding:9px 13px;
-
-  border-radius:10px;
-
-  font-weight:bold;
-
-  box-shadow:
-    0 5px 15px #8b5cf644;
-
-  white-space:nowrap;
+  box-shadow:0 6px 17px #8b5cf644;
 }
-
-.iconBtn{
-  width:36px;
-  height:36px;
-
-  border:1px solid #ffffff10;
-
-  background:#ffffff08;
-
-  color:white;
-
-  border-radius:9px;
-}
-
-.dangerBtn{
-  color:#fecaca;
-  background:#7f1d1d;
-}
-
-.stockGood{
-  color:#86efac;
-}
-
-.stockLow{
-  color:#fcd34d;
-}
-
-.stockOut{
-  color:#fca5a5;
-}
-
-/* =========================================================
-   BADGES
-========================================================= */
 
 .badge{
+
   display:inline-block;
 
   padding:4px 8px;
 
+  margin-top:3px;
+
   border-radius:20px;
 
   font-size:11px;
-
-  margin-top:3px;
 }
 
 .badge.good{
@@ -1068,17 +1134,24 @@ input::placeholder{
 }
 
 /* =========================================================
-   CATALOG
+   CATEGORY
 ========================================================= */
 
 .catalogHeader{
-  display:flex;
 
-  justify-content:space-between;
+  display:flex;
 
   align-items:center;
 
+  justify-content:space-between;
+
+  gap:10px;
+
   margin-bottom:10px;
+}
+
+.catalogHeader h2{
+  margin:5px 0;
 }
 
 .catalogCount{
@@ -1087,6 +1160,7 @@ input::placeholder{
 }
 
 .categoryBar{
+
   display:flex;
 
   gap:7px;
@@ -1105,20 +1179,22 @@ input::placeholder{
 }
 
 .categoryBar button{
+
   flex:0 0 auto;
+
+  padding:8px 13px;
 
   border:1px solid #ffffff12;
 
-  background:#11192d;
+  border-radius:20px;
 
   color:#94a3b8;
 
-  padding:8px 12px;
-
-  border-radius:20px;
+  background:#11192d;
 }
 
 .categoryBar button.active{
+
   color:white;
 
   background:
@@ -1134,23 +1210,25 @@ input::placeholder{
 ========================================================= */
 
 .cartBox{
+
+  padding:13px;
+
+  margin-bottom:9px;
+
+  border-radius:17px;
+
   background:
     linear-gradient(
       145deg,
       #11192d,
-      #0b1120
+      #0a1121
     );
 
   border:1px solid #ffffff0e;
-
-  border-radius:17px;
-
-  padding:12px;
-
-  margin-bottom:9px;
 }
 
 .cartHead{
+
   display:flex;
 
   justify-content:space-between;
@@ -1159,6 +1237,7 @@ input::placeholder{
 }
 
 .qty{
+
   display:flex;
 
   align-items:center;
@@ -1169,6 +1248,7 @@ input::placeholder{
 }
 
 .qty button{
+
   width:34px;
   height:34px;
 
@@ -1176,43 +1256,46 @@ input::placeholder{
 
   border-radius:9px;
 
-  background:#202b45;
-
   color:white;
+
+  background:#202b45;
 
   font-size:18px;
 }
 
 .remove{
-  border:0;
 
   padding:7px 9px;
 
-  background:#7f1d1d;
+  border:0;
+
+  border-radius:8px;
 
   color:#fecaca;
 
-  border-radius:8px;
+  background:#7f1d1d;
 }
 
 .summary{
-  background:
-    linear-gradient(
-      145deg,
-      #17203a,
-      #10182b
-    );
-
-  border:1px solid #ffffff12;
-
-  border-radius:18px;
 
   padding:16px;
 
   margin:12px 0;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #17203a,
+      #0d1427
+    );
+
+  border:1px solid #ffffff12;
 }
 
 .row{
+
   display:flex;
 
   justify-content:space-between;
@@ -1223,17 +1306,18 @@ input::placeholder{
 }
 
 .total{
-  border-top:1px solid #ffffff15;
 
   margin-top:7px;
 
   padding-top:12px;
 
+  border-top:1px solid #ffffff15;
+
+  color:#67e8f9;
+
   font-size:23px;
 
   font-weight:bold;
-
-  color:#67e8f9;
 }
 
 /* =========================================================
@@ -1241,6 +1325,7 @@ input::placeholder{
 ========================================================= */
 
 .paymentGrid{
+
   display:grid;
 
   grid-template-columns:
@@ -1252,18 +1337,20 @@ input::placeholder{
 }
 
 .paymentBtn{
-  padding:13px 8px;
 
-  border-radius:12px;
+  padding:13px 8px;
 
   border:1px solid #ffffff12;
 
-  background:#0b1222;
+  border-radius:12px;
 
   color:#94a3b8;
+
+  background:#0a1121;
 }
 
 .paymentBtn.active{
+
   color:white;
 
   border-color:#22d3ee55;
@@ -1277,37 +1364,11 @@ input::placeholder{
 }
 
 /* =========================================================
-   ALERT
-========================================================= */
-
-.alert{
-  padding:13px;
-
-  border-radius:13px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #78350f,
-      #451a03
-    );
-
-  border:1px solid #f59e0b44;
-
-  color:#fde68a;
-
-  margin:12px 0;
-}
-
-.alert strong{
-  color:#fff7ed;
-}
-
-/* =========================================================
-   QUICK
+   QUICK ACTIONS
 ========================================================= */
 
 .quick{
+
   display:grid;
 
   grid-template-columns:
@@ -1317,33 +1378,35 @@ input::placeholder{
 }
 
 .quick button{
+
+  padding:18px 10px;
+
   border:1px solid #ffffff10;
+
+  border-radius:16px;
+
+  color:white;
 
   background:
     linear-gradient(
       145deg,
       #151f38,
-      #0d1427
+      #0b1222
     );
 
-  color:white;
-
-  padding:17px 10px;
-
-  border-radius:15px;
+  box-shadow:
+    0 7px 20px #0005,
+    inset 0 1px #ffffff0b;
 
   font-size:14px;
-
-  box-shadow:
-    0 7px 18px #0005,
-    inset 0 1px #ffffff0b;
 }
 
 /* =========================================================
-   REPORT
+   REPORTS
 ========================================================= */
 
 .reportGrid{
+
   display:grid;
 
   grid-template-columns:
@@ -1355,20 +1418,19 @@ input::placeholder{
 }
 
 .report-card{
-  background:
-    linear-gradient(
-      135deg,
-      #151e36,
-      #0d1427
-    );
-
-  border:1px solid #ffffff10;
 
   padding:18px;
 
   border-radius:18px;
 
-  margin-bottom:0;
+  background:
+    linear-gradient(
+      135deg,
+      #151e36,
+      #0b1222
+    );
+
+  border:1px solid #ffffff10;
 }
 
 .report-card small{
@@ -1376,37 +1438,40 @@ input::placeholder{
 }
 
 .report-card strong{
-  display:block;
 
-  font-size:22px;
+  display:block;
 
   margin-top:7px;
 
   color:#67e8f9;
+
+  font-size:22px;
 }
 
 /* =========================================================
-   TABLE-LIKE HISTORY
+   HISTORY
 ========================================================= */
 
 .historyCard{
-  background:
-    linear-gradient(
-      145deg,
-      #111a30,
-      #0d1427
-    );
-
-  border:1px solid #ffffff0e;
-
-  border-radius:16px;
 
   padding:14px;
 
   margin-bottom:9px;
+
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111a30,
+      #0b1222
+    );
+
+  border:1px solid #ffffff0e;
 }
 
 .historyTop{
+
   display:flex;
 
   justify-content:space-between;
@@ -1415,18 +1480,49 @@ input::placeholder{
 }
 
 .historyMeta{
+
+  margin-top:7px;
+
   color:#94a3b8;
 
   font-size:12px;
 
   line-height:1.7;
-
-  margin-top:7px;
 }
 
 .historyTotal{
+
   font-size:18px;
+
   font-weight:bold;
+}
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.alert{
+
+  padding:14px;
+
+  margin:12px 0;
+
+  border-radius:14px;
+
+  color:#fde68a;
+
+  background:
+    linear-gradient(
+      135deg,
+      #78350f,
+      #451a03
+    );
+
+  border:1px solid #f59e0b44;
+}
+
+.alert strong{
+  color:#fff7ed;
 }
 
 /* =========================================================
@@ -1434,17 +1530,18 @@ input::placeholder{
 ========================================================= */
 
 .empty{
-  padding:25px 15px;
+
+  padding:27px 15px;
 
   text-align:center;
 
   color:#64748b;
 
-  background:#ffffff04;
-
-  border:1px dashed #ffffff12;
+  border:1px dashed #ffffff15;
 
   border-radius:15px;
+
+  background:#ffffff04;
 }
 
 /* =========================================================
@@ -1452,6 +1549,7 @@ input::placeholder{
 ========================================================= */
 
 .bottom{
+
   position:fixed;
 
   left:8px;
@@ -1460,11 +1558,17 @@ input::placeholder{
 
   height:70px;
 
+  z-index:700;
+
   display:flex;
+
+  align-items:center;
 
   justify-content:space-around;
 
-  align-items:center;
+  border:1px solid #ffffff15;
+
+  border-radius:22px;
 
   background:
     linear-gradient(
@@ -1473,27 +1577,18 @@ input::placeholder{
       #080d1cf5
     );
 
-  border:1px solid #ffffff15;
-
-  border-radius:22px;
-
   box-shadow:
-    0 15px 40px #000b,
+    0 15px 45px #000b,
     inset 0 1px #ffffff0b;
 
-  backdrop-filter:blur(18px);
-
-  z-index:700;
+  backdrop-filter:blur(20px);
 }
 
 .nav{
-  border:0;
-
-  background:transparent;
-
-  color:#64748b;
 
   min-width:55px;
+
+  padding:6px;
 
   display:flex;
 
@@ -1503,11 +1598,13 @@ input::placeholder{
 
   gap:3px;
 
+  border:0;
+
+  color:#64748b;
+
+  background:transparent;
+
   font-size:10px;
-
-  padding:6px;
-
-  transition:.2s;
 }
 
 .nav .icon{
@@ -1519,16 +1616,17 @@ input::placeholder{
 }
 
 .nav.active .icon{
+
   transform:
-    translateY(-5px)
+    translateY(-4px)
     scale(1.18);
 
   filter:
-    drop-shadow(0 0 6px #22d3ee)
-    drop-shadow(0 5px 8px #000);
+    drop-shadow(0 0 7px #22d3ee);
 }
 
 .nav.active:after{
+
   content:"";
 
   width:25px;
@@ -1552,14 +1650,11 @@ input::placeholder{
 ========================================================= */
 
 #toast{
+
   position:fixed;
 
   left:50%;
   bottom:90px;
-
-  transform:
-    translateX(-50%)
-    translateY(20px);
 
   z-index:99999;
 
@@ -1570,26 +1665,29 @@ input::placeholder{
 
   border-radius:13px;
 
-  background:#111827f5;
-
-  border:1px solid #ffffff15;
-
-  box-shadow:0 15px 40px #000b;
-
   color:white;
 
   text-align:center;
 
-  font-size:13px;
+  background:#111827f5;
+
+  border:1px solid #ffffff15;
+
+  box-shadow:0 15px 45px #000b;
 
   opacity:0;
 
   pointer-events:none;
 
+  transform:
+    translateX(-50%)
+    translateY(20px);
+
   transition:.25s;
 }
 
 #toast.show{
+
   opacity:1;
 
   transform:
@@ -1610,13 +1708,11 @@ input::placeholder{
 ========================================================= */
 
 .modalOverlay{
-  position:fixed;
 
+  position:fixed;
   inset:0;
 
   z-index:9990;
-
-  background:#000b;
 
   display:none;
 
@@ -1624,6 +1720,8 @@ input::placeholder{
   justify-content:center;
 
   padding:15px;
+
+  background:#000c;
 }
 
 .modalOverlay.show{
@@ -1631,12 +1729,17 @@ input::placeholder{
 }
 
 .modal{
+
   width:100%;
-  max-width:500px;
+  max-width:510px;
 
   max-height:90vh;
 
   overflow-y:auto;
+
+  padding:19px;
+
+  border-radius:22px;
 
   background:
     linear-gradient(
@@ -1647,19 +1750,16 @@ input::placeholder{
 
   border:1px solid #ffffff15;
 
-  border-radius:22px;
-
-  padding:18px;
-
-  box-shadow:0 30px 80px #000c;
+  box-shadow:0 30px 90px #000d;
 }
 
 .modalHeader{
+
   display:flex;
 
-  justify-content:space-between;
-
   align-items:center;
+
+  justify-content:space-between;
 
   margin-bottom:10px;
 }
@@ -1669,14 +1769,15 @@ input::placeholder{
 }
 
 .closeModal{
+
   width:36px;
   height:36px;
 
   border:0;
   border-radius:10px;
 
-  background:#ffffff0d;
   color:white;
+  background:#ffffff0d;
 
   font-size:20px;
 }
@@ -1692,13 +1793,14 @@ input::placeholder{
   }
 
   .bottom{
+
     top:0;
     bottom:0;
 
     left:0;
     right:auto;
 
-    width:215px;
+    width:220px;
     height:100vh;
 
     border-radius:0;
@@ -1706,17 +1808,17 @@ input::placeholder{
     border-top:0;
     border-left:0;
     border-bottom:0;
-    border-right:1px solid #ffffff12;
 
     flex-direction:column;
 
     justify-content:flex-start;
 
-    padding-top:90px;
+    padding-top:95px;
   }
 
   .nav{
-    width:185px;
+
+    width:190px;
 
     flex-direction:row;
 
@@ -1734,32 +1836,38 @@ input::placeholder{
   }
 
   header{
-    margin-left:215px;
+    margin-left:220px;
   }
 
   main{
-    margin-left:215px;
+
+    margin-left:220px;
+
     max-width:1100px;
   }
 
   .cards{
+
     grid-template-columns:
-      repeat(3,minmax(0,1fr));
+      repeat(3,1fr);
   }
 
   .statGrid{
+
     grid-template-columns:
-      repeat(4,minmax(0,1fr));
+      repeat(4,1fr);
   }
 
   .quick{
+
     grid-template-columns:
-      repeat(4,minmax(0,1fr));
+      repeat(4,1fr);
   }
 
   .reportGrid{
+
     grid-template-columns:
-      repeat(3,minmax(0,1fr));
+      repeat(3,1fr);
   }
 }
 
@@ -1782,9 +1890,12 @@ input::placeholder{
   }
 
   .invoice{
+
     width:80mm;
 
     margin:auto;
+
+    padding:4px;
 
     color:#000;
 
@@ -1794,17 +1905,23 @@ input::placeholder{
   }
 
   .invoice h2{
+
+    margin:0 0 4px;
+
     text-align:center;
-    margin:0 0 5px;
   }
 
   .invoiceCenter{
+
     text-align:center;
+
     font-size:11px;
+
     line-height:1.5;
   }
 
   .invoiceLine{
+
     display:flex;
 
     justify-content:space-between;
@@ -1816,34 +1933,37 @@ input::placeholder{
     font-size:12px;
   }
 
-  .invoiceFinal{
-    border-top:1px dashed #000;
-
-    padding-top:7px;
-
-    font-weight:bold;
-
-    font-size:14px;
-  }
-
   .invoice hr{
+
     border:0;
 
     border-top:1px dashed #000;
 
     margin:8px 0;
   }
+
+  .invoiceFinal{
+
+    padding-top:7px;
+
+    border-top:1px dashed #000;
+
+    font-size:14px;
+
+    font-weight:bold;
+  }
 }
 
 </style>
+
 </head>
 
 <body>
 
 
-<!-- =======================================================
+<!-- =====================================================
      LOGIN
-======================================================== -->
+===================================================== -->
 
 <div id="loginScreen">
 
@@ -1853,9 +1973,13 @@ input::placeholder{
       💎
     </div>
 
-    <h1>Diamond Shop POS</h1>
+    <h1>
+      Diamond Shop POS
+    </h1>
 
-    <p>Professional Mini Market Management</p>
+    <p>
+      Professional Mini Market Management
+    </p>
 
     <input
       id="loginPin"
@@ -1863,7 +1987,7 @@ input::placeholder{
       inputmode="numeric"
       maxlength="6"
       placeholder="Enter PIN"
-      onkeydown="if(event.key==='Enter') login()">
+      onkeydown="if(event.key==='Enter')login()">
 
     <div
       id="loginError"
@@ -1878,9 +2002,17 @@ input::placeholder{
 
     </button>
 
+    <button
+      class="forgotBtn"
+      onclick="forgotPIN()">
+
+      Forgot PIN?
+
+    </button>
+
     <div class="loginHint">
 
-      First login: create your 4–6 digit owner PIN
+      First login → create your 4–6 digit owner PIN
 
     </div>
 
@@ -1889,9 +2021,9 @@ input::placeholder{
 </div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      HEADER
-======================================================== -->
+===================================================== -->
 
 <header>
 
@@ -1950,9 +2082,9 @@ input::placeholder{
 </header>
 
 
-<!-- =======================================================
+<!-- =====================================================
      DRAWER
-======================================================== -->
+===================================================== -->
 
 <div
   id="drawerOverlay"
@@ -1980,7 +2112,7 @@ input::placeholder{
         <br>
 
         <small class="muted">
-          Mini Market
+          Professional Edition
         </small>
 
       </div>
@@ -2018,7 +2150,7 @@ input::placeholder{
     onclick="drawerPage('products')">
 
     <span>📦</span>
-    Products
+    Inventory
 
   </button>
 
@@ -2064,7 +2196,7 @@ input::placeholder{
 
 
   <div class="drawerSection">
-    Product Catalog
+    Smart Catalog
   </div>
 
 
@@ -2073,7 +2205,7 @@ input::placeholder{
     onclick="drawerPage('catalog')">
 
     <span>🛍️</span>
-    Mini Market Items
+    Mini Market
 
   </button>
 
@@ -2083,13 +2215,13 @@ input::placeholder{
     onclick="drawerPage('catalogWholesale')">
 
     <span>🏪</span>
-    Wholesale Items
+    Wholesale
 
   </button>
 
 
   <div class="drawerSection">
-    Account
+    Data & Security
   </div>
 
 
@@ -2125,16 +2257,16 @@ input::placeholder{
 </aside>
 
 
-<!-- =======================================================
+<!-- =====================================================
      MAIN
-======================================================== -->
+===================================================== -->
 
 <main>
 
 
-<!-- =======================================================
+<!-- =====================================================
      DASHBOARD
-======================================================== -->
+===================================================== -->
 
 <section
   id="home"
@@ -2151,7 +2283,7 @@ input::placeholder{
     </h2>
 
     <p>
-      Manage your business smarter.
+      Your business at a glance.
     </p>
 
   </div>
@@ -2251,7 +2383,7 @@ input::placeholder{
       </div>
 
       <small>
-        Total Products
+        Products
       </small>
 
       <strong id="productCount">
@@ -2304,6 +2436,7 @@ input::placeholder{
   <div class="statGrid">
 
     <div class="stat">
+
       <div class="statLabel">
         Total Sales
       </div>
@@ -2315,10 +2448,12 @@ input::placeholder{
         ₹0.00
 
       </div>
+
     </div>
 
 
     <div class="stat">
+
       <div class="statLabel">
         Total Purchase
       </div>
@@ -2330,10 +2465,12 @@ input::placeholder{
         ₹0.00
 
       </div>
+
     </div>
 
 
     <div class="stat">
+
       <div class="statLabel">
         Gross Profit
       </div>
@@ -2345,10 +2482,12 @@ input::placeholder{
         ₹0.00
 
       </div>
+
     </div>
 
 
     <div class="stat">
+
       <div class="statLabel">
         Net Profit
       </div>
@@ -2360,6 +2499,7 @@ input::placeholder{
         ₹0.00
 
       </div>
+
     </div>
 
   </div>
@@ -2367,16 +2507,16 @@ input::placeholder{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      PRODUCTS
-======================================================== -->
+===================================================== -->
 
 <section
   id="products"
   class="page">
 
   <h2>
-    📦 Products
+    📦 Inventory Management
   </h2>
 
 
@@ -2386,8 +2526,7 @@ input::placeholder{
 
     <input
       type="hidden"
-      id="editProductId"
-      value="">
+      id="editProductId">
 
 
     <div class="formGrid">
@@ -2421,7 +2560,7 @@ input::placeholder{
 
         <input
           id="pCategory"
-          placeholder="Category">
+          placeholder="Food, Beverage, Cleaning...">
 
       </div>
 
@@ -2437,7 +2576,7 @@ input::placeholder{
           type="number"
           min="0"
           step="0.01"
-          placeholder="₹ Purchase Price"
+          placeholder="₹ Buy Price"
           required>
 
       </div>
@@ -2454,7 +2593,7 @@ input::placeholder{
           type="number"
           min="0"
           step="0.01"
-          placeholder="₹ Selling Price"
+          placeholder="₹ Sell Price"
           required>
 
       </div>
@@ -2463,7 +2602,7 @@ input::placeholder{
       <div>
 
         <label>
-          Stock
+          Opening Stock
         </label>
 
         <input
@@ -2471,7 +2610,7 @@ input::placeholder{
           type="number"
           min="0"
           step="1"
-          placeholder="Opening Stock"
+          placeholder="Stock"
           required>
 
       </div>
@@ -2488,7 +2627,7 @@ input::placeholder{
           type="number"
           min="0"
           value="5"
-          placeholder="Minimum Stock">
+          placeholder="Alert at">
 
       </div>
 
@@ -2524,17 +2663,14 @@ input::placeholder{
       Your Inventory
     </div>
 
-    <div class="toolbarButtons">
+    <button
+      class="secondary"
+      style="width:auto"
+      onclick="showPage('catalog')">
 
-      <button
-        class="smallBtn"
-        onclick="showPage('catalog')">
+      🛍️ Catalog
 
-        🛍️ Catalog
-
-      </button>
-
-    </div>
+    </button>
 
   </div>
 
@@ -2547,7 +2683,7 @@ input::placeholder{
 
     <input
       id="productSearch"
-      placeholder="Search your products..."
+      placeholder="Search products..."
       oninput="renderProducts()">
 
   </div>
@@ -2558,9 +2694,9 @@ input::placeholder{
 </section>
 
 
-<!-- =======================================================
-     CATALOG
-======================================================== -->
+<!-- =====================================================
+     MINI MARKET CATALOG
+===================================================== -->
 
 <section
   id="catalog"
@@ -2569,7 +2705,7 @@ input::placeholder{
   <div class="catalogHeader">
 
     <h2>
-      🛍️ Mini Market
+      🛍️ Mini Market Catalog
     </h2>
 
     <span
@@ -2581,16 +2717,14 @@ input::placeholder{
 
 
   <div
-    class="categoryBar"
-    id="miniCategories">
+    id="miniCategories"
+    class="categoryBar">
   </div>
 
 
   <div class="search">
 
-    <span>
-      🔍
-    </span>
+    <span>🔍</span>
 
     <input
       id="catalogSearch"
@@ -2605,9 +2739,9 @@ input::placeholder{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      WHOLESALE
-======================================================== -->
+===================================================== -->
 
 <section
   id="catalogWholesale"
@@ -2616,7 +2750,7 @@ input::placeholder{
   <div class="catalogHeader">
 
     <h2>
-      🏪 Wholesale
+      🏪 Wholesale Catalog
     </h2>
 
     <span
@@ -2628,20 +2762,18 @@ input::placeholder{
 
 
   <div
-    class="categoryBar"
-    id="wholesaleCategories">
+    id="wholesaleCategories"
+    class="categoryBar">
   </div>
 
 
   <div class="search">
 
-    <span>
-      🔍
-    </span>
+    <span>🔍</span>
 
     <input
       id="wholesaleSearch"
-      placeholder="Search wholesale item..."
+      placeholder="Search wholesale..."
       oninput="renderWholesale()">
 
   </div>
@@ -2652,21 +2784,20 @@ input::placeholder{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      PURCHASE
-======================================================== -->
+===================================================== -->
 
 <section
   id="purchase"
   class="page">
 
   <h2>
-    🛒 Purchase
+    🛒 Purchase Management
   </h2>
 
 
-  <form
-    onsubmit="addPurchase(event)">
+  <form onsubmit="addPurchase(event)">
 
     <div class="formGrid">
 
@@ -2680,8 +2811,8 @@ input::placeholder{
           id="purchaseName"
           placeholder="Type product name..."
           autocomplete="off"
-          oninput="purchaseSuggestions()"
-          required>
+          required
+          oninput="purchaseSuggestions()">
 
         <div
           id="purchaseSuggestions"
@@ -2738,7 +2869,7 @@ input::placeholder{
           type="number"
           min="0"
           step="0.01"
-          placeholder="Purchase Price"
+          placeholder="₹ Price"
           required>
 
       </div>
@@ -2759,14 +2890,15 @@ input::placeholder{
     📥 Purchase History
   </h3>
 
+
   <div id="purchaseHistory"></div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      SALES
-======================================================== -->
+===================================================== -->
 
 <section
   id="sales"
@@ -2783,7 +2915,7 @@ input::placeholder{
     </h2>
 
     <p>
-      Search product and add to cart.
+      Search → Add → Checkout → Print Invoice
     </p>
 
   </div>
@@ -2791,9 +2923,7 @@ input::placeholder{
 
   <div class="search">
 
-    <span>
-      🔍
-    </span>
+    <span>🔍</span>
 
     <input
       id="saleSearch"
@@ -2839,7 +2969,7 @@ input::placeholder{
       min="0"
       step="0.01"
       value="0"
-      placeholder="Enter discount"
+      placeholder="Discount"
       oninput="renderCart()">
 
 
@@ -2863,7 +2993,7 @@ input::placeholder{
     onsubmit="completeSale(event)">
 
     <h3>
-      👤 Customer
+      👤 Customer Details
     </h3>
 
 
@@ -2885,12 +3015,13 @@ input::placeholder{
       <div>
 
         <label>
-          Phone Number
+          Phone
         </label>
 
         <input
           id="customerPhone"
           inputmode="numeric"
+          maxlength="15"
           placeholder="Optional">
 
       </div>
@@ -2957,8 +3088,7 @@ input::placeholder{
       value="Cash">
 
 
-    <button
-      class="primary green">
+    <button class="primary green">
 
       🧾 COMPLETE SALE
 
@@ -2969,9 +3099,9 @@ input::placeholder{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      REPORTS
-======================================================== -->
+===================================================== -->
 
 <section
   id="reports"
@@ -3052,7 +3182,7 @@ input::placeholder{
     <div class="report-card">
 
       <small>
-        Total Transactions
+        Transactions
       </small>
 
       <strong id="reportTransactions">
@@ -3074,21 +3204,20 @@ input::placeholder{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      EXPENSE
-======================================================== -->
+===================================================== -->
 
 <section
   id="expense"
   class="page">
 
   <h2>
-    💸 Expenses
+    💸 Expense Management
   </h2>
 
 
-  <form
-    onsubmit="addExpense(event)">
+  <form onsubmit="addExpense(event)">
 
     <div class="formGrid">
 
@@ -3147,9 +3276,9 @@ input::placeholder{
 </main>
 
 
-<!-- =======================================================
+<!-- =====================================================
      BOTTOM NAV
-======================================================== -->
+===================================================== -->
 
 <nav class="bottom">
 
@@ -3157,13 +3286,9 @@ input::placeholder{
     class="nav active"
     onclick="showPage('home')">
 
-    <span class="icon">
-      🏠
-    </span>
+    <span class="icon">🏠</span>
 
-    <span>
-      Home
-    </span>
+    <span>Home</span>
 
   </button>
 
@@ -3172,13 +3297,9 @@ input::placeholder{
     class="nav"
     onclick="showPage('products')">
 
-    <span class="icon">
-      📦
-    </span>
+    <span class="icon">📦</span>
 
-    <span>
-      Products
-    </span>
+    <span>Products</span>
 
   </button>
 
@@ -3187,13 +3308,9 @@ input::placeholder{
     class="nav"
     onclick="showPage('purchase')">
 
-    <span class="icon">
-      🛒
-    </span>
+    <span class="icon">🛒</span>
 
-    <span>
-      Purchase
-    </span>
+    <span>Purchase</span>
 
   </button>
 
@@ -3202,13 +3319,9 @@ input::placeholder{
     class="nav"
     onclick="showPage('sales')">
 
-    <span class="icon">
-      💰
-    </span>
+    <span class="icon">💰</span>
 
-    <span>
-      Sale
-    </span>
+    <span>Sale</span>
 
   </button>
 
@@ -3217,29 +3330,25 @@ input::placeholder{
     class="nav"
     onclick="showPage('reports')">
 
-    <span class="icon">
-      📊
-    </span>
+    <span class="icon">📊</span>
 
-    <span>
-      Reports
-    </span>
+    <span>Reports</span>
 
   </button>
 
 </nav>
 
 
-<!-- =======================================================
+<!-- =====================================================
      TOAST
-======================================================== -->
+===================================================== -->
 
 <div id="toast"></div>
 
 
-<!-- =======================================================
-     EDIT PRODUCT MODAL
-======================================================== -->
+<!-- =====================================================
+     EDIT MODAL
+===================================================== -->
 
 <div
   id="modalOverlay"
@@ -3273,16 +3382,14 @@ input::placeholder{
       Product Name
     </label>
 
-    <input
-      id="modalName">
+    <input id="modalName">
 
 
     <label>
       Category
     </label>
 
-    <input
-      id="modalCategory">
+    <input id="modalCategory">
 
 
     <label>
@@ -3342,9 +3449,9 @@ input::placeholder{
 </div>
 
 
-<!-- =======================================================
-     PRINT
-======================================================== -->
+<!-- =====================================================
+     PRINT AREA
+===================================================== -->
 
 <div id="printArea"></div>
 
@@ -3352,7 +3459,7 @@ input::placeholder{
 <script>
 
 /* =========================================================
-   DATA
+   DATABASE
 ========================================================= */
 
 let products =
@@ -3375,22 +3482,22 @@ let expenses =
     localStorage.getItem("diamond_expenses") || "[]"
   );
 
-let cart = [];
+let cart=[];
 
-let selectedMiniCategory = "All";
+let selectedMiniCategory="All";
 
-let selectedWholesaleCategory = "All";
+let selectedWholesaleCategory="All";
 
-let selectedPayment = "Cash";
+let selectedPayment="Cash";
 
-let toastTimer = null;
+let toastTimer=null;
 
 
 /* =========================================================
-   CATALOG
+   SMART CATALOG
 ========================================================= */
 
-const catalog = [
+const catalog=[
 
 ["Rice","Food","চাল"],
 ["Atta","Food","আটা"],
@@ -3453,7 +3560,7 @@ const catalog = [
 ["Candle","Household","মোমবাতি"],
 ["Battery","Household","ব্যাটারি"],
 ["Mosquito Coil","Household","মশার কয়েল"],
-["Agartala","Household","আগরবাতি"],
+["Agarbatti","Household","আগরবাতি"],
 ["Aluminium Foil","Household","অ্যালুমিনিয়াম ফয়েল"],
 ["Plastic Bag","Household","প্লাস্টিক ব্যাগ"],
 
@@ -3482,20 +3589,20 @@ const catalog = [
 
 function money(n){
 
-  return "₹" +
-    Number(n || 0).toFixed(2);
+  return "₹"+
+    Number(n||0).toFixed(2);
 
 }
 
 
 function today(){
 
-  const d = new Date();
+  const d=new Date();
 
-  return d.getFullYear() +
-    "-" +
-    String(d.getMonth()+1).padStart(2,"0") +
-    "-" +
+  return d.getFullYear()+
+    "-"+
+    String(d.getMonth()+1).padStart(2,"0")+
+    "-"+
     String(d.getDate()).padStart(2,"0");
 
 }
@@ -3517,12 +3624,21 @@ function nowTime(){
 
 function escapeHTML(value){
 
-  return String(value ?? "")
+  return String(value??"")
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
+
+}
+
+
+function setText(id,value){
+
+  const el=document.getElementById(id);
+
+  if(el)el.innerText=value;
 
 }
 
@@ -3533,23 +3649,20 @@ function escapeHTML(value){
 
 function toast(message,type="success"){
 
-  const box =
-    document.getElementById("toast");
+  const box=document.getElementById("toast");
 
-  box.innerText = message;
+  box.innerText=message;
 
-  box.className =
-    "show " + type;
+  box.className="show "+type;
 
   clearTimeout(toastTimer);
 
-  toastTimer =
-    setTimeout(
-      ()=>{
-        box.className="";
-      },
-      2500
-    );
+  toastTimer=setTimeout(
+    ()=>{
+      box.className="";
+    },
+    2500
+  );
 
 }
 
@@ -3560,9 +3673,9 @@ function toast(message,type="success"){
 
 function checkLogin(){
 
-  return localStorage
-    .getItem("diamond_logged_in")
-    === "yes";
+  return localStorage.getItem(
+    "diamond_logged_in"
+  )==="yes";
 
 }
 
@@ -3571,9 +3684,9 @@ function setupLogin(){
 
   if(checkLogin()){
 
-    document
-      .getElementById("loginScreen")
-      .style.display="none";
+    document.getElementById(
+      "loginScreen"
+    ).style.display="none";
 
   }
 
@@ -3582,25 +3695,22 @@ function setupLogin(){
 
 function login(){
 
-  const pin =
-    document
-      .getElementById("loginPin")
-      .value
-      .trim();
+  const input=document.getElementById("loginPin");
 
-  const error =
-    document
-      .getElementById("loginError");
+  const pin=input.value.trim();
 
-  const saved =
-    localStorage.getItem("diamond_pin");
+  const error=document.getElementById("loginError");
+
+  const saved=localStorage.getItem(
+    "diamond_pin"
+  );
 
 
   if(!saved){
 
     if(!/^\d{4,6}$/.test(pin)){
 
-      error.innerText =
+      error.innerText=
         "PIN must contain 4–6 digits.";
 
       return;
@@ -3619,12 +3729,12 @@ function login(){
 
     error.innerText="";
 
-    document
-      .getElementById("loginScreen")
-      .style.display="none";
+    document.getElementById(
+      "loginScreen"
+    ).style.display="none";
 
     toast(
-      "💎 PIN created successfully!"
+      "💎 Owner PIN created successfully!"
     );
 
     return;
@@ -3632,7 +3742,7 @@ function login(){
   }
 
 
-  if(pin === saved){
+  if(pin===saved){
 
     localStorage.setItem(
       "diamond_logged_in",
@@ -3641,18 +3751,62 @@ function login(){
 
     error.innerText="";
 
-    document
-      .getElementById("loginScreen")
-      .style.display="none";
+    document.getElementById(
+      "loginScreen"
+    ).style.display="none";
 
-    toast("Welcome back 💎");
+    toast(
+      "Welcome back 💎"
+    );
 
   }else{
 
-    error.innerText =
+    error.innerText=
       "❌ Incorrect PIN";
 
   }
+
+}
+
+
+function forgotPIN(){
+
+  const saved=
+    localStorage.getItem("diamond_pin");
+
+  if(!saved){
+
+    toast(
+      "No PIN has been created yet.",
+      "error"
+    );
+
+    return;
+
+  }
+
+  const yes=confirm(
+    "Forgot owner PIN?\n\n"+
+    "Resetting will remove the current PIN.\n"+
+    "Your shop data will NOT be deleted."
+  );
+
+  if(!yes)return;
+
+  localStorage.removeItem("diamond_pin");
+
+  localStorage.removeItem(
+    "diamond_logged_in"
+  );
+
+  document.getElementById(
+    "loginPin"
+  ).value="";
+
+  document.getElementById(
+    "loginError"
+  ).innerText=
+    "Create a new 4–6 digit PIN.";
 
 }
 
@@ -3663,13 +3817,13 @@ function logout(){
     "diamond_logged_in"
   );
 
-  document
-    .getElementById("loginPin")
-    .value="";
+  document.getElementById(
+    "loginPin"
+  ).value="";
 
-  document
-    .getElementById("loginScreen")
-    .style.display="flex";
+  document.getElementById(
+    "loginScreen"
+  ).style.display="flex";
 
   closeDrawer();
 
@@ -3682,26 +3836,26 @@ function logout(){
 
 function openDrawer(){
 
-  document
-    .getElementById("drawer")
-    .classList.add("open");
+  document.getElementById(
+    "drawer"
+  ).classList.add("open");
 
-  document
-    .getElementById("drawerOverlay")
-    .classList.add("show");
+  document.getElementById(
+    "drawerOverlay"
+  ).classList.add("show");
 
 }
 
 
 function closeDrawer(){
 
-  document
-    .getElementById("drawer")
-    .classList.remove("open");
+  document.getElementById(
+    "drawer"
+  ).classList.remove("open");
 
-  document
-    .getElementById("drawerOverlay")
-    .classList.remove("show");
+  document.getElementById(
+    "drawerOverlay"
+  ).classList.remove("show");
 
 }
 
@@ -3716,7 +3870,7 @@ function drawerPage(id){
 
 
 /* =========================================================
-   SAVE DATA
+   SAVE
 ========================================================= */
 
 function saveData(){
@@ -3747,52 +3901,54 @@ function saveData(){
 
 
 /* =========================================================
-   PAGE
+   PAGE SYSTEM
 ========================================================= */
 
 function showPage(id){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(
-      page =>
-        page.classList.remove("active")
-    );
+  document.querySelectorAll(
+    ".page"
+  ).forEach(
+    p=>p.classList.remove("active")
+  );
 
 
-  const page =
-    document.getElementById(id);
+  const page=document.getElementById(id);
 
   if(page){
-
     page.classList.add("active");
-
   }
 
 
-  document
-    .querySelectorAll(".nav")
-    .forEach(
-      btn =>
-        btn.classList.remove("active")
-    );
+  document.querySelectorAll(
+    ".nav"
+  ).forEach(
+    n=>n.classList.remove("active")
+  );
 
 
-  document
-    .querySelectorAll(".nav")
-    .forEach(btn=>{
+  document.querySelectorAll(
+    ".nav"
+  ).forEach(btn=>{
 
-      const action =
-        btn.getAttribute("onclick") || "";
+    const action=
+      btn.getAttribute("onclick")||"";
 
-      if(action.includes("'" + id + "'")){
+    if(
+      action.includes(
+        "showPage('"+id+"')"
+      )
+    ){
 
-        btn.classList.add("active");
+      btn.classList.add("active");
 
-      }
+    }
 
-    });
+  });
 
+
+  if(id==="products")
+    renderProducts();
 
   if(id==="sales"){
 
@@ -3801,26 +3957,24 @@ function showPage(id){
 
   }
 
+  if(id==="purchase"){
 
-  if(id==="products"){
-
-    renderProducts();
+    renderPurchaseSelect();
+    renderPurchaseHistory();
 
   }
 
-
-  if(id==="catalog"){
-
+  if(id==="catalog")
     renderCatalog();
 
-  }
-
-
-  if(id==="catalogWholesale"){
-
+  if(id==="catalogWholesale")
     renderWholesale();
 
-  }
+  if(id==="reports")
+    renderSaleHistory();
+
+  if(id==="expense")
+    renderExpenseHistory();
 
 
   updateDashboard();
@@ -3834,64 +3988,43 @@ function showPage(id){
 
 
 /* =========================================================
-   PRODUCT ADD / EDIT
+   PRODUCT
 ========================================================= */
 
 function addProduct(e){
 
   e.preventDefault();
 
+  const editId=
+    document.getElementById(
+      "editProductId"
+    ).value;
 
-  const editId =
-    document
-      .getElementById("editProductId")
-      .value;
+  const name=
+    document.getElementById(
+      "pName"
+    ).value.trim();
 
+  const category=
+    document.getElementById(
+      "pCategory"
+    ).value.trim()||"General";
 
-  const name =
-    document
-      .getElementById("pName")
-      .value
-      .trim();
+  const buy=Number(
+    document.getElementById("pBuy").value
+  );
 
+  const sell=Number(
+    document.getElementById("pSell").value
+  );
 
-  const category =
-    document
-      .getElementById("pCategory")
-      .value
-      .trim() || "General";
+  const stock=Number(
+    document.getElementById("pStock").value
+  );
 
-
-  const buy =
-    Number(
-      document
-        .getElementById("pBuy")
-        .value
-    );
-
-
-  const sell =
-    Number(
-      document
-        .getElementById("pSell")
-        .value
-    );
-
-
-  const stock =
-    Number(
-      document
-        .getElementById("pStock")
-        .value
-    );
-
-
-  const min =
-    Number(
-      document
-        .getElementById("pMin")
-        .value || 0
-    );
+  const min=Number(
+    document.getElementById("pMin").value||0
+  );
 
 
   if(!name){
@@ -3906,7 +4039,12 @@ function addProduct(e){
   }
 
 
-  if(buy<0 || sell<0 || stock<0){
+  if(
+    buy<0||
+    sell<0||
+    stock<0||
+    min<0
+  ){
 
     toast(
       "Enter valid product values.",
@@ -3918,13 +4056,14 @@ function addProduct(e){
   }
 
 
-  const duplicate =
+  const duplicate=
     products.find(
-      p =>
+      p=>
         p.name.toLowerCase()
-        === name.toLowerCase()
+        ===name.toLowerCase()
         &&
-        String(p.id)!==String(editId)
+        String(p.id)!==
+        String(editId)
     );
 
 
@@ -3942,13 +4081,9 @@ function addProduct(e){
 
   if(editId){
 
-    const p =
-      products.find(
-        x =>
-          String(x.id)
-          === String(editId)
-      );
-
+    const p=products.find(
+      x=>String(x.id)===String(editId)
+    );
 
     if(p){
 
@@ -3971,20 +4106,14 @@ function addProduct(e){
 
       id:Date.now(),
 
-      name:name,
-
-      category:category,
-
-      buy:buy,
-
-      sell:sell,
-
-      stock:stock,
-
-      min:min
+      name,
+      category,
+      buy,
+      sell,
+      stock,
+      min
 
     });
-
 
     toast(
       "💎 Product added successfully!"
@@ -4004,150 +4133,143 @@ function addProduct(e){
 
 function resetProductForm(){
 
-  document
-    .getElementById("productForm")
-    .reset();
+  document.getElementById(
+    "productForm"
+  ).reset();
 
-  document
-    .getElementById("editProductId")
-    .value="";
+  document.getElementById(
+    "editProductId"
+  ).value="";
 
-  document
-    .getElementById("pMin")
-    .value=5;
+  document.getElementById(
+    "pMin"
+  ).value=5;
 
-  document
-    .getElementById("productSubmitBtn")
-    .innerText =
-      "💎 Add Product";
+  document.getElementById(
+    "productSubmitBtn"
+  ).innerText=
+    "💎 Add Product";
 
-  document
-    .getElementById("cancelEditBtn")
-    .style.display="none";
+  document.getElementById(
+    "cancelEditBtn"
+  ).style.display="none";
 
 }
 
 
+/* =========================================================
+   EDIT
+========================================================= */
+
 function editProduct(id){
 
-  const p =
-    products.find(
-      x => x.id===id
-    );
+  const p=products.find(
+    x=>x.id===id
+  );
 
   if(!p)return;
 
+  document.getElementById(
+    "modalProductId"
+  ).value=p.id;
 
-  document
-    .getElementById("modalProductId")
-    .value=p.id;
+  document.getElementById(
+    "modalName"
+  ).value=p.name;
 
-  document
-    .getElementById("modalName")
-    .value=p.name;
+  document.getElementById(
+    "modalCategory"
+  ).value=p.category;
 
-  document
-    .getElementById("modalCategory")
-    .value=p.category;
+  document.getElementById(
+    "modalBuy"
+  ).value=p.buy;
 
-  document
-    .getElementById("modalBuy")
-    .value=p.buy;
+  document.getElementById(
+    "modalSell"
+  ).value=p.sell;
 
-  document
-    .getElementById("modalSell")
-    .value=p.sell;
+  document.getElementById(
+    "modalStock"
+  ).value=p.stock;
 
-  document
-    .getElementById("modalStock")
-    .value=p.stock;
+  document.getElementById(
+    "modalMin"
+  ).value=p.min;
 
-  document
-    .getElementById("modalMin")
-    .value=p.min;
-
-
-  document
-    .getElementById("modalOverlay")
-    .classList.add("show");
+  document.getElementById(
+    "modalOverlay"
+  ).classList.add("show");
 
 }
 
 
 function closeModal(){
 
-  document
-    .getElementById("modalOverlay")
-    .classList.remove("show");
+  document.getElementById(
+    "modalOverlay"
+  ).classList.remove("show");
 
 }
 
 
 function saveEditedProduct(){
 
-  const id =
-    Number(
-      document
-        .getElementById("modalProductId")
-        .value
-    );
+  const id=Number(
+    document.getElementById(
+      "modalProductId"
+    ).value
+  );
 
-
-  const p =
-    products.find(
-      x=>x.id===id
-    );
-
+  const p=products.find(
+    x=>x.id===id
+  );
 
   if(!p)return;
 
 
-  const name =
-    document
-      .getElementById("modalName")
-      .value.trim();
+  const name=
+    document.getElementById(
+      "modalName"
+    ).value.trim();
+
+  const category=
+    document.getElementById(
+      "modalCategory"
+    ).value.trim()||"General";
+
+  const buy=Number(
+    document.getElementById(
+      "modalBuy"
+    ).value
+  );
+
+  const sell=Number(
+    document.getElementById(
+      "modalSell"
+    ).value
+  );
+
+  const stock=Number(
+    document.getElementById(
+      "modalStock"
+    ).value
+  );
+
+  const min=Number(
+    document.getElementById(
+      "modalMin"
+    ).value
+  );
 
 
-  const category =
-    document
-      .getElementById("modalCategory")
-      .value.trim()
-      || "General";
-
-
-  const buy =
-    Number(
-      document
-        .getElementById("modalBuy")
-        .value
-    );
-
-
-  const sell =
-    Number(
-      document
-        .getElementById("modalSell")
-        .value
-    );
-
-
-  const stock =
-    Number(
-      document
-        .getElementById("modalStock")
-        .value
-    );
-
-
-  const min =
-    Number(
-      document
-        .getElementById("modalMin")
-        .value
-    );
-
-
-  if(!name || buy<0 || sell<0 || stock<0){
+  if(
+    !name||
+    buy<0||
+    sell<0||
+    stock<0||
+    min<0
+  ){
 
     toast(
       "Invalid product information.",
@@ -4188,47 +4310,39 @@ function cancelEdit(){
 
 
 /* =========================================================
-   DELETE PRODUCT
+   DELETE
 ========================================================= */
 
 function deleteProduct(id){
 
-  const p =
-    products.find(
-      x=>x.id===id
-    );
+  const p=products.find(
+    x=>x.id===id
+  );
 
   if(!p)return;
 
 
-  const yes =
-    confirm(
-      "Delete product?\n\n" +
-      p.name
-    );
-
+  const yes=confirm(
+    "Delete product?\n\n"+
+    p.name
+  );
 
   if(!yes)return;
 
 
-  products =
-    products.filter(
-      x=>x.id!==id
-    );
+  products=products.filter(
+    x=>x.id!==id
+  );
 
-
-  cart =
-    cart.filter(
-      x=>x.id!==id
-    );
+  cart=cart.filter(
+    x=>x.id!==id
+  );
 
 
   saveData();
 
   renderProducts();
-
   renderSaleProducts();
-
   renderCart();
 
   toast(
@@ -4239,23 +4353,21 @@ function deleteProduct(id){
 
 
 /* =========================================================
-   PRODUCT SUGGESTIONS
+   PRODUCT AUTOCOMPLETE
 ========================================================= */
 
 function productSuggestions(){
 
-  const input =
+  const input=
     document.getElementById("pName");
 
-  const box =
+  const box=
     document.getElementById(
       "productSuggestions"
     );
 
-  const q =
-    input.value
-      .trim()
-      .toLowerCase();
+  const q=
+    input.value.trim().toLowerCase();
 
 
   if(!q){
@@ -4267,39 +4379,31 @@ function productSuggestions(){
   }
 
 
-  let results =
-    catalog
-      .filter(
-        x =>
-          x[0]
-            .toLowerCase()
-            .includes(q)
-      )
-      .slice(0,8);
+  let own=products.filter(
+    p=>
+      p.name
+        .toLowerCase()
+        .includes(q)
+  );
 
 
-  const own =
-    products
-      .filter(
-        p =>
-          p.name
-            .toLowerCase()
-            .includes(q)
-      )
-      .slice(0,5);
+  let results=own.map(
+    p=>[
+      p.name,
+      p.category,
+      "Stock: "+p.stock
+    ]
+  );
 
 
-  if(own.length){
+  if(!results.length){
 
-    results =
-      own.map(
-        p =>
-          [
-            p.name,
-            p.category,
-            "Stock: "+p.stock
-          ]
-      );
+    results=catalog.filter(
+      x=>
+        x[0]
+          .toLowerCase()
+          .includes(q)
+    ).slice(0,10);
 
   }
 
@@ -4313,9 +4417,9 @@ function productSuggestions(){
   }
 
 
-  box.innerHTML =
+  box.innerHTML=
     results.map(
-      x => `
+      x=>`
 
       <div
         class="suggestion"
@@ -4344,20 +4448,17 @@ function productSuggestions(){
 
 function selectCatalogProduct(x){
 
-  document
-    .getElementById("pName")
-    .value=x[0];
+  document.getElementById(
+    "pName"
+  ).value=x[0];
 
-  document
-    .getElementById("pCategory")
-    .value=x[1];
+  document.getElementById(
+    "pCategory"
+  ).value=x[1];
 
-
-  document
-    .getElementById(
-      "productSuggestions"
-    )
-    .style.display="none";
+  document.getElementById(
+    "productSuggestions"
+  ).style.display="none";
 
 }
 
@@ -4368,29 +4469,22 @@ function selectCatalogProduct(x){
 
 function renderProducts(){
 
-  const search =
+  const search=
     (
-      document
-        .getElementById("productSearch")
-        ?.value || ""
-    )
-    .toLowerCase();
+      document.getElementById(
+        "productSearch"
+      )?.value||""
+    ).toLowerCase();
 
 
-  const list =
-    products.filter(
-      p =>
-        p.name
-          .toLowerCase()
-          .includes(search)
-        ||
-        p.category
-          .toLowerCase()
-          .includes(search)
-    );
+  const list=products.filter(
+    p=>
+      p.name.toLowerCase().includes(search)||
+      p.category.toLowerCase().includes(search)
+  );
 
 
-  const box =
+  const box=
     document.getElementById(
       "productList"
     );
@@ -4398,7 +4492,7 @@ function renderProducts(){
 
   if(!list.length){
 
-    box.innerHTML =
+    box.innerHTML=
       `<div class="empty">
         📦 No products found.
        </div>`;
@@ -4408,27 +4502,28 @@ function renderProducts(){
   }
 
 
-  box.innerHTML =
+  box.innerHTML=
     list.map(
-      p => {
+      p=>{
 
-        let stockClass="good";
-
-        let stockText="In Stock";
+        let status="good";
+        let text="In Stock";
 
         if(p.stock<=0){
 
-          stockClass="out";
-
-          stockText="Out of Stock";
+          status="out";
+          text="Out of Stock";
 
         }else if(p.stock<=p.min){
 
-          stockClass="low";
-
-          stockText="Low Stock";
+          status="low";
+          text="Low Stock";
 
         }
+
+
+        const margin=
+          p.sell-p.buy;
 
 
         return `
@@ -4449,10 +4544,14 @@ function renderProducts(){
 
               Buy:
               ${money(p.buy)}
-
               •
               Sell:
               ${money(p.sell)}
+
+              <br>
+
+              Margin:
+              ${money(margin)}
 
               <br>
 
@@ -4463,11 +4562,8 @@ function renderProducts(){
 
             <br>
 
-            <span
-              class="badge ${stockClass}">
-
-              ${stockText}
-
+            <span class="badge ${status}">
+              ${text}
             </span>
 
           </div>
@@ -4523,9 +4619,7 @@ function getMiniCategories(){
     "All",
     ...new Set(
       catalog
-        .filter(
-          x=>x[1]!=="Wholesale"
-        )
+        .filter(x=>x[1]!=="Wholesale")
         .map(x=>x[1])
     )
   ];
@@ -4550,20 +4644,14 @@ function renderCategoryButtons(
   callback
 ){
 
-  const box =
-    document.getElementById(target);
+  const box=document.getElementById(target);
 
-
-  box.innerHTML =
+  box.innerHTML=
     categories.map(
-      c => `
+      c=>`
 
       <button
-        class="${
-          c===selected
-          ? "active"
-          : ""
-        }"
+        class="${c===selected?"active":""}"
         onclick="${callback}('${escapeHTML(c)}')">
 
         ${escapeHTML(c)}
@@ -4577,7 +4665,7 @@ function renderCategoryButtons(
 
 
 /* =========================================================
-   MINI CATALOG
+   MINI MARKET
 ========================================================= */
 
 function selectMiniCategory(c){
@@ -4591,13 +4679,12 @@ function selectMiniCategory(c){
 
 function renderCatalog(){
 
-  const q =
+  const q=
     (
-      document
-        .getElementById("catalogSearch")
-        ?.value || ""
-    )
-    .toLowerCase();
+      document.getElementById(
+        "catalogSearch"
+      )?.value||""
+    ).toLowerCase();
 
 
   renderCategoryButtons(
@@ -4608,55 +4695,43 @@ function renderCatalog(){
   );
 
 
-  let list =
-    catalog.filter(
-      x=>x[1]!=="Wholesale"
-    );
+  let list=catalog.filter(
+    x=>x[1]!=="Wholesale"
+  );
 
 
   if(selectedMiniCategory!=="All"){
 
-    list =
-      list.filter(
-        x =>
-          x[1]===selectedMiniCategory
-      );
+    list=list.filter(
+      x=>x[1]===selectedMiniCategory
+    );
 
   }
 
 
   if(q){
 
-    list =
-      list.filter(
-        x =>
-          x[0]
-            .toLowerCase()
-            .includes(q)
-          ||
-          x[2]
-            .toLowerCase()
-            .includes(q)
-      );
+    list=list.filter(
+      x=>
+        x[0].toLowerCase().includes(q)||
+        x[2].toLowerCase().includes(q)
+    );
 
   }
 
 
-  document
-    .getElementById("catalogCount")
-    .innerText =
-      list.length+" items";
+  setText(
+    "catalogCount",
+    list.length+" items"
+  );
 
 
-  const box =
-    document.getElementById(
-      "catalogList"
-    );
+  document.getElementById(
+    "catalogList"
+  ).innerHTML=
 
-
-  box.innerHTML =
     list.map(
-      x => `
+      x=>`
 
       <div class="product">
 
@@ -4679,6 +4754,101 @@ function renderCatalog(){
 
         </div>
 
+        <button
+          class="add"
+          onclick='useCatalog(${JSON.stringify(x)})'>
+
+          + Use
+
+        </button>
+
+      </div>
+
+      `
+    ).join("");
+
+}
+
+
+/* =========================================================
+   WHOLESALE
+========================================================= */
+
+function selectWholesaleCategory(c){
+
+  selectedWholesaleCategory=c;
+
+  renderWholesale();
+
+}
+
+
+function renderWholesale(){
+
+  const q=
+    (
+      document.getElementById(
+        "wholesaleSearch"
+      )?.value||""
+    ).toLowerCase();
+
+
+  renderCategoryButtons(
+    "wholesaleCategories",
+    getWholesaleCategories(),
+    selectedWholesaleCategory,
+    "selectWholesaleCategory"
+  );
+
+
+  let list=catalog.filter(
+    x=>x[1]==="Wholesale"
+  );
+
+
+  if(q){
+
+    list=list.filter(
+      x=>
+        x[0].toLowerCase().includes(q)||
+        x[2].toLowerCase().includes(q)
+    );
+
+  }
+
+
+  setText(
+    "wholesaleCount",
+    list.length+" items"
+  );
+
+
+  document.getElementById(
+    "wholesaleList"
+  ).innerHTML=
+
+    list.map(
+      x=>`
+
+      <div class="product">
+
+        <div class="productInfo">
+
+          <b>
+            ${escapeHTML(x[0])}
+          </b>
+
+          <small>
+
+            ${escapeHTML(x[2])}
+
+            <br>
+
+            Wholesale Item
+
+          </small>
+
+        </div>
 
         <button
           class="add"
@@ -4697,110 +4867,6 @@ function renderCatalog(){
 
 
 /* =========================================================
-   WHOLESALE CATALOG
-========================================================= */
-
-function selectWholesaleCategory(c){
-
-  selectedWholesaleCategory=c;
-
-  renderWholesale();
-
-}
-
-
-function renderWholesale(){
-
-  const q =
-    (
-      document
-        .getElementById("wholesaleSearch")
-        ?.value || ""
-    )
-    .toLowerCase();
-
-
-  renderCategoryButtons(
-    "wholesaleCategories",
-    getWholesaleCategories(),
-    selectedWholesaleCategory,
-    "selectWholesaleCategory"
-  );
-
-
-  let list =
-    catalog.filter(
-      x=>x[1]==="Wholesale"
-    );
-
-
-  if(q){
-
-    list =
-      list.filter(
-        x =>
-          x[0]
-            .toLowerCase()
-            .includes(q)
-          ||
-          x[2]
-            .toLowerCase()
-            .includes(q)
-      );
-
-  }
-
-
-  document
-    .getElementById("wholesaleCount")
-    .innerText =
-      list.length+" items";
-
-
-  document
-    .getElementById("wholesaleList")
-    .innerHTML =
-      list.map(
-        x => `
-
-        <div class="product">
-
-          <div class="productInfo">
-
-            <b>
-              ${escapeHTML(x[0])}
-            </b>
-
-            <small>
-
-              ${escapeHTML(x[2])}
-
-              <br>
-
-              Wholesale Item
-
-            </small>
-
-          </div>
-
-
-          <button
-            class="add"
-            onclick='useCatalog(${JSON.stringify(x)})'>
-
-            + Use
-
-          </button>
-
-        </div>
-
-        `
-      ).join("");
-
-}
-
-
-/* =========================================================
    USE CATALOG
 ========================================================= */
 
@@ -4808,21 +4874,17 @@ function useCatalog(x){
 
   showPage("products");
 
+  document.getElementById(
+    "pName"
+  ).value=x[0];
 
-  document
-    .getElementById("pName")
-    .value=x[0];
+  document.getElementById(
+    "pCategory"
+  ).value=x[1];
 
-
-  document
-    .getElementById("pCategory")
-    .value=x[1];
-
-
-  document
-    .getElementById("pName")
-    .focus();
-
+  document.getElementById(
+    "pName"
+  ).focus();
 
   toast(
     "💎 "+x[0]+" selected."
@@ -4832,20 +4894,17 @@ function useCatalog(x){
 
 
 /* =========================================================
-   PURCHASE SUGGESTIONS
+   PURCHASE AUTOCOMPLETE
 ========================================================= */
 
 function purchaseSuggestions(){
 
-  const q =
-    document
-      .getElementById("purchaseName")
-      .value
-      .trim()
-      .toLowerCase();
+  const q=
+    document.getElementById(
+      "purchaseName"
+    ).value.trim().toLowerCase();
 
-
-  const box =
+  const box=
     document.getElementById(
       "purchaseSuggestions"
     );
@@ -4860,57 +4919,18 @@ function purchaseSuggestions(){
   }
 
 
-  let results =
-    products
-      .filter(
-        p =>
-          p.name
-            .toLowerCase()
-            .includes(q)
-      )
-      .slice(0,8);
+  let results=
+    products.filter(
+      p=>
+        p.name.toLowerCase().includes(q)
+    ).slice(0,10);
 
 
-  if(!results.length){
+  if(results.length){
 
-    results =
-      catalog
-        .filter(
-          x =>
-            x[0]
-              .toLowerCase()
-              .includes(q)
-        )
-        .slice(0,8);
-
-
-    box.innerHTML =
+    box.innerHTML=
       results.map(
-        x => `
-
-        <div
-          class="suggestion"
-          onclick='selectPurchaseCatalog(${JSON.stringify(x)})'>
-
-          <b>
-            ${escapeHTML(x[0])}
-          </b>
-
-          <small>
-            ${escapeHTML(x[1])}
-            • Tap to use
-          </small>
-
-        </div>
-
-        `
-      ).join("");
-
-  }else{
-
-    box.innerHTML =
-      results.map(
-        p => `
+        p=>`
 
         <div
           class="suggestion"
@@ -4932,99 +4952,108 @@ function purchaseSuggestions(){
         `
       ).join("");
 
+  }else{
+
+    const cat=
+      catalog.filter(
+        x=>
+          x[0].toLowerCase().includes(q)
+      ).slice(0,10);
+
+
+    box.innerHTML=
+      cat.map(
+        x=>`
+
+        <div
+          class="suggestion"
+          onclick='selectPurchaseCatalog(${JSON.stringify(x)})'>
+
+          <b>
+            ${escapeHTML(x[0])}
+          </b>
+
+          <small>
+            ${escapeHTML(x[1])}
+            • Tap to use
+          </small>
+
+        </div>
+
+        `
+      ).join("");
+
   }
 
 
-  box.style.display =
-    results.length
-    ? "block"
-    : "none";
+  box.style.display=
+    box.innerHTML
+    ?"block"
+    :"none";
 
 }
 
 
 function selectPurchaseProduct(id){
 
-  const p =
-    products.find(
-      x=>x.id===id
-    );
+  const p=products.find(
+    x=>x.id===id
+  );
 
   if(!p)return;
 
+  document.getElementById(
+    "purchaseName"
+  ).value=p.name;
 
-  document
-    .getElementById("purchaseName")
-    .value=p.name;
+  document.getElementById(
+    "purchaseProduct"
+  ).value=p.id;
 
+  document.getElementById(
+    "purchasePrice"
+  ).value=p.buy;
 
-  document
-    .getElementById("purchaseProduct")
-    .value=p.id;
-
-
-  document
-    .getElementById("purchasePrice")
-    .value=p.buy;
-
-
-  document
-    .getElementById(
-      "purchaseSuggestions"
-    )
-    .style.display="none";
+  document.getElementById(
+    "purchaseSuggestions"
+  ).style.display="none";
 
 }
 
 
 function selectPurchaseCatalog(x){
 
-  document
-    .getElementById("purchaseName")
-    .value=x[0];
+  document.getElementById(
+    "purchaseName"
+  ).value=x[0];
 
-
-  const existing =
-    products.find(
-      p =>
-        p.name.toLowerCase()
-        === x[0].toLowerCase()
-    );
+  const existing=products.find(
+    p=>
+      p.name.toLowerCase()
+      ===x[0].toLowerCase()
+  );
 
 
   if(existing){
 
-    document
-      .getElementById("purchaseProduct")
-      .value=existing.id;
-
-    document
-      .getElementById("purchasePrice")
-      .value=existing.buy;
+    selectPurchaseProduct(existing.id);
 
   }else{
 
-    document
-      .getElementById("purchaseProduct")
-      .value="";
+    document.getElementById(
+      "purchaseProduct"
+    ).value="";
 
-    document
-      .getElementById("purchasePrice")
-      .value="";
+    document.getElementById(
+      "purchasePrice"
+    ).value="";
 
     toast(
-      "First add this item to Products.",
+      "First add this item to Inventory.",
       "error"
     );
 
   }
-
-
-  document
-    .getElementById(
-      "purchaseSuggestions"
-    )
-    .style.display="none";
 
 }
 
@@ -5037,25 +5066,20 @@ function addPurchase(e){
 
   e.preventDefault();
 
+  const id=Number(
+    document.getElementById(
+      "purchaseProduct"
+    ).value
+  );
 
-  const id =
-    Number(
-      document
-        .getElementById("purchaseProduct")
-        .value
-    );
-
-
-  const p =
-    products.find(
-      x=>x.id===id
-    );
-
+  const p=products.find(
+    x=>x.id===id
+  );
 
   if(!p){
 
     toast(
-      "⚠️ Select a valid product.",
+      "Select a valid product.",
       "error"
     );
 
@@ -5064,23 +5088,20 @@ function addPurchase(e){
   }
 
 
-  const qty =
-    Number(
-      document
-        .getElementById("purchaseQty")
-        .value
-    );
+  const qty=Number(
+    document.getElementById(
+      "purchaseQty"
+    ).value
+  );
+
+  const price=Number(
+    document.getElementById(
+      "purchasePrice"
+    ).value
+  );
 
 
-  const price =
-    Number(
-      document
-        .getElementById("purchasePrice")
-        .value
-    );
-
-
-  if(qty<=0 || price<0){
+  if(qty<=0||price<0){
 
     toast(
       "Enter valid purchase details.",
@@ -5092,9 +5113,9 @@ function addPurchase(e){
   }
 
 
-  p.stock += qty;
+  p.stock+=qty;
 
-  p.buy = price;
+  p.buy=price;
 
 
   purchases.push({
@@ -5109,9 +5130,9 @@ function addPurchase(e){
 
     productId:p.id,
 
-    qty:qty,
+    qty,
 
-    price:price,
+    price,
 
     total:qty*price
 
@@ -5120,13 +5141,11 @@ function addPurchase(e){
 
   e.target.reset();
 
-
   saveData();
 
   renderProducts();
 
   renderPurchaseHistory();
-
 
   toast(
     "✅ Purchase saved!"
@@ -5141,7 +5160,7 @@ function addPurchase(e){
 
 function renderPurchaseHistory(){
 
-  const box =
+  const box=
     document.getElementById(
       "purchaseHistory"
     );
@@ -5149,7 +5168,7 @@ function renderPurchaseHistory(){
 
   if(!purchases.length){
 
-    box.innerHTML =
+    box.innerHTML=
       `<div class="empty">
         📥 No purchase history.
        </div>`;
@@ -5159,12 +5178,13 @@ function renderPurchaseHistory(){
   }
 
 
-  box.innerHTML =
+  box.innerHTML=
     purchases
       .slice()
       .reverse()
+      .slice(0,100)
       .map(
-        x => `
+        x=>`
 
         <div class="historyCard">
 
@@ -5187,14 +5207,16 @@ function renderPurchaseHistory(){
 
                 ${x.date}
                 •
-                ${x.time || ""}
+                ${x.time||""}
 
               </div>
 
             </div>
 
             <div class="historyTotal">
+
               ${money(x.total)}
+
             </div>
 
           </div>
@@ -5208,30 +5230,26 @@ function renderPurchaseHistory(){
 
 
 /* =========================================================
-   SALE PRODUCT LIST
+   SALES
 ========================================================= */
 
 function renderSaleProducts(){
 
-  const search =
+  const search=
     (
-      document
-        .getElementById("saleSearch")
-        ?.value || ""
-    )
-    .toLowerCase();
+      document.getElementById(
+        "saleSearch"
+      )?.value||""
+    ).toLowerCase();
 
 
-  const list =
-    products.filter(
-      p =>
-        p.name
-          .toLowerCase()
-          .includes(search)
-    );
+  const list=products.filter(
+    p=>
+      p.name.toLowerCase().includes(search)
+  );
 
 
-  const box =
+  const box=
     document.getElementById(
       "saleProductList"
     );
@@ -5239,9 +5257,9 @@ function renderSaleProducts(){
 
   if(!list.length){
 
-    box.innerHTML =
+    box.innerHTML=
       `<div class="empty">
-        🔍 No matching product.
+        🔍 No matching products.
        </div>`;
 
     return;
@@ -5249,9 +5267,9 @@ function renderSaleProducts(){
   }
 
 
-  box.innerHTML =
+  box.innerHTML=
     list.map(
-      p => `
+      p=>`
 
       <div class="product">
 
@@ -5268,20 +5286,19 @@ function renderSaleProducts(){
 
             <br>
 
-            Available Stock:
+            Stock:
             ${p.stock}
 
           </small>
 
         </div>
 
-
         <button
           class="add"
           onclick="addToCart(${p.id})"
-          ${p.stock<=0 ? "disabled" : ""}>
+          ${p.stock<=0?"disabled":""}>
 
-          ${p.stock<=0 ? "Out" : "+ Add"}
+          ${p.stock<=0?"Out":"+ Add"}
 
         </button>
 
@@ -5299,11 +5316,9 @@ function renderSaleProducts(){
 
 function addToCart(id){
 
-  const p =
-    products.find(
-      x=>x.id===id
-    );
-
+  const p=products.find(
+    x=>x.id===id
+  );
 
   if(!p)return;
 
@@ -5320,15 +5335,14 @@ function addToCart(id){
   }
 
 
-  const item =
-    cart.find(
-      x=>x.id===id
-    );
+  const item=cart.find(
+    x=>x.id===id
+  );
 
 
   if(item){
 
-    if(item.qty < p.stock){
+    if(item.qty<p.stock){
 
       item.qty++;
 
@@ -5344,11 +5358,8 @@ function addToCart(id){
   }else{
 
     cart.push({
-
-      id:id,
-
+      id,
       qty:1
-
     });
 
   }
@@ -5370,23 +5381,18 @@ function quickAdd(id){
 
 function changeQty(id,change){
 
-  const item =
-    cart.find(
-      x=>x.id===id
-    );
+  const item=cart.find(
+    x=>x.id===id
+  );
+
+  const p=products.find(
+    x=>x.id===id
+  );
+
+  if(!item||!p)return;
 
 
-  const p =
-    products.find(
-      x=>x.id===id
-    );
-
-
-  if(!item || !p)return;
-
-
-  const q =
-    item.qty + change;
+  const q=item.qty+change;
 
 
   if(q<=0){
@@ -5419,10 +5425,9 @@ function changeQty(id,change){
 
 function removeCart(id){
 
-  cart =
-    cart.filter(
-      x=>x.id!==id
-    );
+  cart=cart.filter(
+    x=>x.id!==id
+  );
 
   renderCart();
 
@@ -5435,24 +5440,28 @@ function removeCart(id){
 
 function renderCart(){
 
-  const box =
-    document.getElementById("cart");
+  const box=
+    document.getElementById(
+      "cart"
+    );
 
 
   if(!cart.length){
 
-    box.innerHTML =
+    box.innerHTML=
       `<div class="empty">
         🛒 Your cart is empty.
        </div>`;
 
-    document
-      .getElementById("cartSubtotal")
-      .innerText=money(0);
+    setText(
+      "cartSubtotal",
+      money(0)
+    );
 
-    document
-      .getElementById("cartTotal")
-      .innerText=money(0);
+    setText(
+      "cartTotal",
+      money(0)
+    );
 
     return;
 
@@ -5462,24 +5471,22 @@ function renderCart(){
   let subtotal=0;
 
 
-  box.innerHTML =
+  box.innerHTML=
     cart.map(
-      item => {
+      item=>{
 
-        const p =
-          products.find(
-            x=>x.id===item.id
-          );
+        const p=products.find(
+          x=>x.id===item.id
+        );
 
-
-        if(!p)return "";
+        if(!p)return"";
 
 
-        const amount =
-          p.sell * item.qty;
+        const amount=
+          p.sell*item.qty;
 
 
-        subtotal += amount;
+        subtotal+=amount;
 
 
         return `
@@ -5517,24 +5524,17 @@ function renderCart(){
 
             <button
               onclick="changeQty(${p.id},-1)">
-
               −
-
             </button>
-
 
             <b>
               ${item.qty}
             </b>
 
-
             <button
               onclick="changeQty(${p.id},1)">
-
               +
-
             </button>
-
 
             <button
               class="remove"
@@ -5554,46 +5554,41 @@ function renderCart(){
     ).join("");
 
 
-  let discount =
-    Number(
-      document
-        .getElementById("discount")
-        .value || 0
-    );
+  let discount=Number(
+    document.getElementById(
+      "discount"
+    ).value||0
+  );
 
 
-  if(discount<0){
-
+  if(discount<0)
     discount=0;
-
-  }
 
 
   if(discount>subtotal){
 
     discount=subtotal;
 
-    document
-      .getElementById("discount")
-      .value=subtotal;
+    document.getElementById(
+      "discount"
+    ).value=subtotal;
 
   }
 
 
-  const total =
-    subtotal - discount;
+  const total=
+    subtotal-discount;
 
 
-  document
-    .getElementById("cartSubtotal")
-    .innerText =
-      money(subtotal);
+  setText(
+    "cartSubtotal",
+    money(subtotal)
+  );
 
-
-  document
-    .getElementById("cartTotal")
-    .innerText =
-      money(total);
+  setText(
+    "cartTotal",
+    money(total)
+  );
 
 }
 
@@ -5606,25 +5601,20 @@ function selectPayment(method){
 
   selectedPayment=method;
 
+  document.getElementById(
+    "payment"
+  ).value=method;
 
-  document
-    .getElementById("payment")
-    .value=method;
 
-
-  document
-    .querySelectorAll(".paymentBtn")
-    .forEach(
-      btn => {
-
-        btn.classList.toggle(
-          "active",
-          btn.dataset.payment
-          === method
-        );
-
-      }
-    );
+  document.querySelectorAll(
+    ".paymentBtn"
+  ).forEach(
+    btn=>
+      btn.classList.toggle(
+        "active",
+        btn.dataset.payment===method
+      )
+  );
 
 }
 
@@ -5657,11 +5647,9 @@ function completeSale(e){
 
   for(const item of cart){
 
-    const p =
-      products.find(
-        x=>x.id===item.id
-      );
-
+    const p=products.find(
+      x=>x.id===item.id
+    );
 
     if(!p)continue;
 
@@ -5678,64 +5666,54 @@ function completeSale(e){
     }
 
 
-    subtotal +=
-      p.sell * item.qty;
+    subtotal+=
+      p.sell*item.qty;
 
-
-    cost +=
-      p.buy * item.qty;
-
-  }
-
-
-  let discount =
-    Number(
-      document
-        .getElementById("discount")
-        .value || 0
-    );
-
-
-  if(discount<0){
-
-    discount=0;
+    cost+=
+      p.buy*item.qty;
 
   }
 
 
-  if(discount>subtotal){
+  let discount=Number(
+    document.getElementById(
+      "discount"
+    ).value||0
+  );
 
-    discount=subtotal;
 
-  }
+  discount=Math.max(
+    0,
+    Math.min(
+      discount,
+      subtotal
+    )
+  );
 
 
-  const total =
+  const total=
     subtotal-discount;
 
-
-  const profit =
+  const profit=
     subtotal-cost-discount;
 
 
-  const invoice =
-    "INV-" +
+  const invoice=
+    "INV-"+
     String(
       sales.length+1
     ).padStart(5,"0");
 
 
-  const items =
+  const items=
     cart.map(
-      item => {
+      item=>{
 
-        const p =
-          products.find(
-            x=>x.id===item.id
-          );
+        const p=products.find(
+          x=>x.id===item.id
+        );
 
-
-        p.stock -= item.qty;
+        p.stock-=item.qty;
 
 
         return {
@@ -5759,85 +5737,77 @@ function completeSale(e){
     );
 
 
-  const sale = {
+  const sale={
 
     id:Date.now(),
 
-    invoice:invoice,
+    invoice,
 
     date:today(),
 
     time:nowTime(),
 
     customer:
-      document
-        .getElementById("customerName")
-        .value
-        .trim(),
+      document.getElementById(
+        "customerName"
+      ).value.trim(),
 
     phone:
-      document
-        .getElementById("customerPhone")
-        .value
-        .trim(),
+      document.getElementById(
+        "customerPhone"
+      ).value.trim(),
 
-    items:items,
+    items,
 
-    subtotal:subtotal,
+    subtotal,
 
-    discount:discount,
+    discount,
 
-    total:total,
+    total,
 
-    cost:cost,
+    cost,
 
-    profit:profit,
+    profit,
 
     payment:
-      document
-        .getElementById("payment")
-        .value
+      document.getElementById(
+        "payment"
+      ).value
 
   };
 
 
   sales.push(sale);
 
-
   saveData();
 
 
-  const print =
-    confirm(
-      "💎 Sale completed!\n\n" +
-      "Invoice: "+invoice+
-      "\nTotal: "+money(total)+
-      "\n\nPrint invoice?"
-    );
+  const print=confirm(
+    "💎 Sale completed!\n\n"+
+    "Invoice: "+invoice+
+    "\nTotal: "+money(total)+
+    "\nProfit: "+money(profit)+
+    "\n\nPrint invoice?"
+  );
 
 
-  if(print){
-
+  if(print)
     printInvoice(sale);
-
-  }
 
 
   cart=[];
 
 
-  document
-    .getElementById("saleForm")
-    .reset();
+  document.getElementById(
+    "saleForm"
+  ).reset();
 
-
-  document
-    .getElementById("discount")
-    .value=0;
+  document.getElementById(
+    "discount"
+  ).value=0;
 
 
   selectPayment("Cash");
-
 
   renderCart();
 
@@ -5849,7 +5819,7 @@ function completeSale(e){
 
 
   toast(
-    "🧾 Sale completed: "+invoice
+    "🧾 "+invoice+" completed!"
   );
 
 }
@@ -5861,9 +5831,9 @@ function completeSale(e){
 
 function printInvoice(sale){
 
-  document
-    .getElementById("printArea")
-    .innerHTML = `
+  document.getElementById(
+    "printArea"
+  ).innerHTML=`
 
     <div class="invoice">
 
@@ -5888,9 +5858,7 @@ function printInvoice(sale){
 
       </div>
 
-
       <hr>
-
 
       ${
         sale.customer
@@ -5904,9 +5872,8 @@ function printInvoice(sale){
           ${
             sale.phone
             ?
-            `<br>
-             Phone:
-             ${escapeHTML(sale.phone)}`
+            `<br>Phone:
+            ${escapeHTML(sale.phone)}`
             :""
           }
 
@@ -5915,36 +5882,33 @@ function printInvoice(sale){
         :""
       }
 
-
       <hr>
-
 
       ${
-        sale.items
-          .map(
-            i => `
+        sale.items.map(
+          i=>`
 
-            <div class="invoiceLine">
+          <div class="invoiceLine">
 
-              <span>
-                ${escapeHTML(i.product)}
-                ×
-                ${i.qty}
-              </span>
+            <span>
 
-              <span>
-                ${money(i.amount)}
-              </span>
+              ${escapeHTML(i.product)}
+              ×
+              ${i.qty}
 
-            </div>
+            </span>
 
-            `
-          ).join("")
+            <span>
+              ${money(i.amount)}
+            </span>
+
+          </div>
+
+          `
+        ).join("")
       }
 
-
       <hr>
-
 
       <div class="invoiceLine">
 
@@ -5958,7 +5922,6 @@ function printInvoice(sale){
 
       </div>
 
-
       <div class="invoiceLine">
 
         <span>
@@ -5971,9 +5934,7 @@ function printInvoice(sale){
 
       </div>
 
-
-      <div
-        class="invoiceLine invoiceFinal">
+      <div class="invoiceLine invoiceFinal">
 
         <span>
           GRAND TOTAL
@@ -5984,7 +5945,6 @@ function printInvoice(sale){
         </span>
 
       </div>
-
 
       <div class="invoiceLine">
 
@@ -5998,9 +5958,7 @@ function printInvoice(sale){
 
       </div>
 
-
       <br>
-
 
       <div class="invoiceCenter">
 
@@ -6014,7 +5972,7 @@ function printInvoice(sale){
 
     </div>
 
-    `;
+  `;
 
 
   setTimeout(
@@ -6034,22 +5992,19 @@ function addExpense(e){
   e.preventDefault();
 
 
-  const name =
-    document
-      .getElementById("expenseName")
-      .value
-      .trim();
+  const name=
+    document.getElementById(
+      "expenseName"
+    ).value.trim();
+
+  const amount=Number(
+    document.getElementById(
+      "expenseAmount"
+    ).value
+  );
 
 
-  const amount =
-    Number(
-      document
-        .getElementById("expenseAmount")
-        .value
-    );
-
-
-  if(!name || amount<=0){
+  if(!name||amount<=0){
 
     toast(
       "Enter valid expense.",
@@ -6069,20 +6024,18 @@ function addExpense(e){
 
     time:nowTime(),
 
-    name:name,
+    name,
 
-    amount:amount
+    amount
 
   });
 
 
   e.target.reset();
 
-
   saveData();
 
   renderExpenseHistory();
-
 
   toast(
     "✅ Expense saved!"
@@ -6097,7 +6050,7 @@ function addExpense(e){
 
 function renderExpenseHistory(){
 
-  const box =
+  const box=
     document.getElementById(
       "expenseHistory"
     );
@@ -6105,7 +6058,7 @@ function renderExpenseHistory(){
 
   if(!expenses.length){
 
-    box.innerHTML =
+    box.innerHTML=
       `<div class="empty">
         💸 No expenses recorded.
        </div>`;
@@ -6115,12 +6068,13 @@ function renderExpenseHistory(){
   }
 
 
-  box.innerHTML =
+  box.innerHTML=
     expenses
       .slice()
       .reverse()
+      .slice(0,100)
       .map(
-        x => `
+        x=>`
 
         <div class="historyCard">
 
@@ -6137,7 +6091,7 @@ function renderExpenseHistory(){
 
                 ${x.date}
                 •
-                ${x.time || ""}
+                ${x.time||""}
 
               </div>
 
@@ -6165,7 +6119,7 @@ function renderExpenseHistory(){
 
 function renderSaleHistory(){
 
-  const box =
+  const box=
     document.getElementById(
       "saleHistory"
     );
@@ -6173,7 +6127,7 @@ function renderSaleHistory(){
 
   if(!sales.length){
 
-    box.innerHTML =
+    box.innerHTML=
       `<div class="empty">
         🧾 No sales yet.
        </div>`;
@@ -6183,13 +6137,13 @@ function renderSaleHistory(){
   }
 
 
-  box.innerHTML =
+  box.innerHTML=
     sales
       .slice()
       .reverse()
       .slice(0,100)
       .map(
-        x => `
+        x=>`
 
         <div class="historyCard">
 
@@ -6199,31 +6153,30 @@ function renderSaleHistory(){
 
               <b>
                 🧾
-                ${escapeHTML(x.invoice || "SALE")}
+                ${escapeHTML(
+                  x.invoice||"SALE"
+                )}
               </b>
 
               <div class="historyMeta">
 
                 ${
                   x.items
-                    ?
-                    x.items
-                      .map(
-                        i =>
-                          escapeHTML(i.product)
-                          +" × "
-                          +i.qty
-                      )
-                      .join("<br>")
-                    :
-                    ""
+                  ?
+                  x.items.map(
+                    i=>
+                      escapeHTML(i.product)
+                      +" × "
+                      +i.qty
+                  ).join("<br>")
+                  :""
                 }
 
                 <br>
 
                 ${x.date}
                 •
-                ${x.time || ""}
+                ${x.time||""}
 
                 <br>
 
@@ -6235,8 +6188,7 @@ function renderSaleHistory(){
                   ?
                   "<br>Customer: "+
                   escapeHTML(x.customer)
-                  :
-                  ""
+                  :""
                 }
 
               </div>
@@ -6246,15 +6198,13 @@ function renderSaleHistory(){
 
             <div>
 
-              <div
-                class="historyTotal">
+              <div class="historyTotal">
 
                 ${money(x.total)}
 
               </div>
 
-              <div
-                class="historyMeta">
+              <div class="historyMeta">
 
                 Profit:
                 ${money(x.profit)}
@@ -6279,30 +6229,30 @@ function renderSaleHistory(){
 
 function updateDashboard(){
 
-  const todaySalesList =
+  const todayList=
     sales.filter(
       x=>x.date===today()
     );
 
 
-  const salesToday =
-    todaySalesList.reduce(
+  const salesToday=
+    todayList.reduce(
       (a,b)=>
         a+Number(b.total||0),
       0
     );
 
 
-  const profitToday =
-    todaySalesList.reduce(
+  const profitToday=
+    todayList.reduce(
       (a,b)=>
         a+Number(b.profit||0),
       0
     );
 
 
-  const cash =
-    todaySalesList
+  const cash=
+    todayList
       .filter(
         x=>x.payment==="Cash"
       )
@@ -6313,8 +6263,8 @@ function updateDashboard(){
       );
 
 
-  const upi =
-    todaySalesList
+  const upi=
+    todayList
       .filter(
         x=>x.payment==="UPI"
       )
@@ -6325,17 +6275,17 @@ function updateDashboard(){
       );
 
 
-  const stockValue =
+  const stockValue=
     products.reduce(
       (a,p)=>
-        a +
-        Number(p.stock||0) *
+        a+
+        Number(p.stock||0)*
         Number(p.buy||0),
       0
     );
 
 
-  const totalSales =
+  const totalSales=
     sales.reduce(
       (a,b)=>
         a+Number(b.total||0),
@@ -6343,7 +6293,7 @@ function updateDashboard(){
     );
 
 
-  const totalPurchase =
+  const totalPurchase=
     purchases.reduce(
       (a,b)=>
         a+Number(b.total||0),
@@ -6351,7 +6301,7 @@ function updateDashboard(){
     );
 
 
-  const gross =
+  const gross=
     sales.reduce(
       (a,b)=>
         a+Number(b.profit||0),
@@ -6359,7 +6309,7 @@ function updateDashboard(){
     );
 
 
-  const totalExpense =
+  const totalExpense=
     expenses.reduce(
       (a,b)=>
         a+Number(b.amount||0),
@@ -6367,7 +6317,7 @@ function updateDashboard(){
     );
 
 
-  const net =
+  const net=
     gross-totalExpense;
 
 
@@ -6458,26 +6408,6 @@ function updateDashboard(){
 
   renderPurchaseSelect();
 
-  renderSaleHistory();
-
-  renderExpenseHistory();
-
-  renderPurchaseHistory();
-
-}
-
-
-function setText(id,value){
-
-  const el =
-    document.getElementById(id);
-
-  if(el){
-
-    el.innerText=value;
-
-  }
-
 }
 
 
@@ -6487,16 +6417,16 @@ function setText(id,value){
 
 function renderLowStock(){
 
-  const lows =
+  const lows=
     products.filter(
-      p =>
+      p=>
         Number(p.stock)
         <=
         Number(p.min)
     );
 
 
-  const box =
+  const box=
     document.getElementById(
       "lowStock"
     );
@@ -6511,7 +6441,7 @@ function renderLowStock(){
   }
 
 
-  box.innerHTML = `
+  box.innerHTML=`
 
     <div class="alert">
 
@@ -6523,14 +6453,12 @@ function renderLowStock(){
       <br><br>
 
       ${
-        lows
-          .map(
-            p =>
-              escapeHTML(p.name)
-              +" — Stock: "
-              +p.stock
-          )
-          .join("<br>")
+        lows.map(
+          p=>
+            escapeHTML(p.name)
+            +" — Stock: "
+            +p.stock
+        ).join("<br>")
       }
 
     </div>
@@ -6546,29 +6474,27 @@ function renderLowStock(){
 
 function renderPurchaseSelect(){
 
-  const select =
+  const select=
     document.getElementById(
       "purchaseProduct"
     );
 
-
   if(!select)return;
 
 
-  const current =
-    select.value;
+  const current=select.value;
 
 
-  select.innerHTML =
+  select.innerHTML=
     `<option value="">
       Select Product
      </option>`;
 
 
   products.forEach(
-    p => {
+    p=>{
 
-      select.innerHTML += `
+      select.innerHTML+=`
 
         <option value="${p.id}">
 
@@ -6585,7 +6511,7 @@ function renderPurchaseSelect(){
 
 
   if(
-    current &&
+    current&&
     products.some(
       p=>String(p.id)===String(current)
     )
@@ -6599,85 +6525,64 @@ function renderPurchaseSelect(){
 
 
 /* =========================================================
-   FULL UPDATE
-========================================================= */
-
-function update(){
-
-  updateDashboard();
-
-  renderProducts();
-
-  renderCatalog();
-
-  renderWholesale();
-
-  renderSaleProducts();
-
-  renderCart();
-
-}
-
-
-/* =========================================================
    BACKUP
 ========================================================= */
 
 function backupData(){
 
-  const data = {
+  const data={
 
     app:"Diamond Shop POS Pro",
 
-    version:"Professional 1.0",
+    version:"Professional 2.0",
 
     exportedAt:
       new Date().toISOString(),
 
-    products:products,
+    products,
 
-    sales:sales,
+    sales,
 
-    purchases:purchases,
+    purchases,
 
-    expenses:expenses
+    expenses
 
   };
 
 
-  const blob =
-    new Blob(
-      [
-        JSON.stringify(
-          data,
-          null,
-          2
-        )
-      ],
-      {
-        type:"application/json"
-      }
-    );
+  const blob=new Blob(
+    [
+      JSON.stringify(
+        data,
+        null,
+        2
+      )
+    ],
+    {
+      type:"application/json"
+    }
+  );
 
 
-  const url =
+  const url=
     URL.createObjectURL(blob);
 
 
-  const a =
+  const a=
     document.createElement("a");
-
 
   a.href=url;
 
-  a.download =
-    "diamond-shop-backup-" +
-    today() +
+  a.download=
+    "diamond-shop-backup-"+
+    today()+
     ".json";
 
+  document.body.appendChild(a);
 
   a.click();
 
+  a.remove();
 
   URL.revokeObjectURL(url);
 
@@ -6695,111 +6600,85 @@ function backupData(){
 
 function restoreData(){
 
-  const input =
+  const input=
     document.createElement("input");
-
 
   input.type="file";
 
   input.accept=".json";
 
 
-  input.onchange =
-    e => {
+  input.onchange=e=>{
 
-      const file =
-        e.target.files[0];
+    const file=e.target.files[0];
 
-
-      if(!file)return;
+    if(!file)return;
 
 
-      const reader =
-        new FileReader();
+    const reader=new FileReader();
 
 
-      reader.onload =
-        event => {
+    reader.onload=event=>{
 
-          try{
+      try{
 
-            const data =
-              JSON.parse(
-                event.target.result
-              );
-
-
-            if(
-              !data.products ||
-              !data.sales ||
-              !data.purchases ||
-              !data.expenses
-            ){
-
-              throw new Error(
-                "Invalid backup"
-              );
-
-            }
+        const data=
+          JSON.parse(
+            event.target.result
+          );
 
 
-            const yes =
-              confirm(
-                "Restore backup?\n\n" +
-                "Current data will be replaced."
-              );
+        if(
+          !Array.isArray(data.products)||
+          !Array.isArray(data.sales)||
+          !Array.isArray(data.purchases)||
+          !Array.isArray(data.expenses)
+        ){
+
+          throw new Error(
+            "Invalid backup"
+          );
+
+        }
 
 
-            if(!yes)return;
+        const yes=confirm(
+          "Restore backup?\n\n"+
+          "Current shop data will be replaced."
+        );
+
+        if(!yes)return;
 
 
-            products =
-              Array.isArray(data.products)
-              ? data.products
-              : [];
+        products=data.products;
+        sales=data.sales;
+        purchases=data.purchases;
+        expenses=data.expenses;
 
 
-            sales =
-              Array.isArray(data.sales)
-              ? data.sales
-              : [];
+        saveData();
 
+        updateAll();
 
-            purchases =
-              Array.isArray(data.purchases)
-              ? data.purchases
-              : [];
+        toast(
+          "♻️ Backup restored successfully!"
+        );
 
+      }catch(err){
 
-            expenses =
-              Array.isArray(data.expenses)
-              ? data.expenses
-              : [];
+        toast(
+          "❌ Invalid backup file.",
+          "error"
+        );
 
-
-            saveData();
-
-            update();
-
-            toast(
-              "♻️ Backup restored successfully!"
-            );
-
-          }catch(err){
-
-            toast(
-              "❌ Invalid backup file.",
-              "error"
-            );
-
-          }
-
-        };
-
-
-      reader.readAsText(file);
+      }
 
     };
+
+
+    reader.readAsText(file);
+
+  };
 
 
   input.click();
@@ -6808,25 +6687,22 @@ function restoreData(){
 
 
 /* =========================================================
-   KEYBOARD / CLICK OUTSIDE
+   CLICK OUTSIDE AUTOCOMPLETE
 ========================================================= */
 
 document.addEventListener(
   "click",
-  function(e){
+  e=>{
 
-    const suggestionBoxes =
-      document.querySelectorAll(
-        ".suggestions"
-      );
-
-
-    suggestionBoxes.forEach(
-      box => {
+    document.querySelectorAll(
+      ".suggestions"
+    ).forEach(
+      box=>{
 
         if(
-          !box.parentElement
-            .contains(e.target)
+          !box.parentElement.contains(
+            e.target
+          )
         ){
 
           box.style.display="none";
@@ -6841,39 +6717,62 @@ document.addEventListener(
 
 
 /* =========================================================
-   PURCHASE SELECT AUTO PRICE
+   PURCHASE SELECT CHANGE
 ========================================================= */
 
-document
-  .getElementById("purchaseProduct")
-  .addEventListener(
-    "change",
-    function(){
+document.getElementById(
+  "purchaseProduct"
+).addEventListener(
+  "change",
+  function(){
 
-      const id =
-        Number(this.value);
+    const id=Number(this.value);
 
+    const p=products.find(
+      x=>x.id===id
+    );
 
-      const p =
-        products.find(
-          x=>x.id===id
-        );
+    if(p){
 
+      document.getElementById(
+        "purchaseName"
+      ).value=p.name;
 
-      if(p){
-
-        document
-          .getElementById("purchaseName")
-          .value=p.name;
-
-        document
-          .getElementById("purchasePrice")
-          .value=p.buy;
-
-      }
+      document.getElementById(
+        "purchasePrice"
+      ).value=p.buy;
 
     }
-  );
+
+  }
+);
+
+
+/* =========================================================
+   UPDATE ALL
+========================================================= */
+
+function updateAll(){
+
+  updateDashboard();
+
+  renderProducts();
+
+  renderCatalog();
+
+  renderWholesale();
+
+  renderSaleProducts();
+
+  renderCart();
+
+  renderPurchaseHistory();
+
+  renderSaleHistory();
+
+  renderExpenseHistory();
+
+}
 
 
 /* =========================================================
@@ -6882,15 +6781,7 @@ document
 
 setupLogin();
 
-update();
-
-renderCatalog();
-
-renderWholesale();
-
-renderSaleProducts();
-
-renderCart();
+updateAll();
 
 </script>
 
